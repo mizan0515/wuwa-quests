@@ -25,7 +25,7 @@ for(const x of items){
  const same=groups.get(x.version+'|'+x.type),pos=same.findIndex(y=>y.id===x.id);
  let md=`---\ntitle: ${JSON.stringify(x.title)}\ndescription: ${JSON.stringify(display(x.version)+' '+display(x.type)+' · '+x.title+' 한국어 대사와 선택지')}\n---\n\n`;
  md+=`<div class="quest-context" data-pagefind-ignore><a href="${base}/index.html?version=${encodeURIComponent(x.version)}">${e(display(x.version))}</a><span>›</span><a href="${base}/index.html?version=${encodeURIComponent(x.version)}&amp;type=${encodeURIComponent(x.type)}">${e(display(x.type))}</a></div>\n\n`;
- md+=`<p class="quest-id" data-pagefind-meta="quest-id">퀘스트 ${x.id}</p>\n\n`;
+ md+=`<p class="quest-id">퀘스트 <span data-pagefind-meta="퀘스트">${x.id}</span></p>\n\n`;
  md+=`<div class="quest-actions" data-pagefind-ignore><span>${matches.length}개 장면</span><a href="${base}/originals/${x.id}.txt" download>원본 TXT</a><button id="line-toggle" type="button" aria-pressed="false">대사 번호 보기</button></div>\n\n`;
  md+=`<details class="quest-info" data-pagefind-ignore><summary>퀘스트 설명 · 수록 안내</summary><pre>${e(intro)}</pre></details>\n\n`;
  for(let i=0;i<matches.length;i++){

@@ -112,4 +112,3 @@ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Includes other software related under the MIT license:
 - vscode-ripgrep, Copyright Microsoft Corporation. For licensing see /LICENSE/LICENSE-vscode-ripgrep
-
