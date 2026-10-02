@@ -1,0 +1,14 @@
+{
+  "name": "wuwa-quest-docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/generate.mjs && astro build",
+    "preview": "astro preview",
+    "deploy:files": "node tools/export.mjs"
+  },
+  "devDependencies": {
+    "astro": "7.3.5",
+    "@astrojs/starlight": "0.42.5"
+  }
+}
