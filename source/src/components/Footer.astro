@@ -1,0 +1,12 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+---
+<footer class="quest-footer" data-pagefind-ignore>
+  <p>비공식 자료집 · 대사와 게임 콘텐츠의 권리는 KURO GAMES 등 해당 권리자에게 있습니다.</p>
+  <a href={`${import.meta.env.BASE_URL}/about.html`}>수록 범위와 자료 안내</a>
+</footer>
+<Default />
+<script>
+  const button=document.querySelector<HTMLButtonElement>('#line-toggle');
+  button?.addEventListener('click',()=>{const show=document.documentElement.classList.toggle('show-line-ids');button.setAttribute('aria-pressed',String(show));button.textContent=show?'대사 번호 숨기기':'대사 번호 보기';});
+</script>

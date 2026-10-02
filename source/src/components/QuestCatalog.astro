@@ -1,0 +1,33 @@
+---
+import items from '../../generated-catalog.json';
+const versions=[...new Set(items.map(x=>x.version))];
+const types=[...new Set(items.map(x=>x.type))].sort((a,b)=>(a==='메인임무'?-1:b==='메인임무'?1:a.localeCompare(b,'ko')));
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
+const label=(s)=>s.replace(/^기타임무_유형(\d+)$/,'기타임무 (유형 $1)').replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
+---
+<div class="catalog" data-pagefind-ignore>
+  <div class="catalog-intro"><p>제목을 기억하면 목록에서, 대사만 기억하면 상단 검색에서 찾아보세요.</p><span>{items.length}개 퀘스트</span></div>
+  <div class="quick-types" role="group" aria-label="임무 종류 바로 선택">
+    {['','메인임무','기록임무','이벤트임무'].map(type=><button type="button" data-quick-type={type} aria-pressed={type===''?'true':'false'}>{type||'전체 임무'}</button>)}
+  </div>
+  <div class="catalog-filters" role="search" aria-label="퀘스트 목록 필터">
+    <label class="title-filter">퀘스트 제목 또는 ID<input id="catalog-q" type="search" placeholder="예: 스타토치, 915000001" /></label>
+    <label>버전<select id="catalog-version"><option value="">모든 버전</option>{versions.map(v=><option value={v}>{label(v)}</option>)}</select></label>
+    <label>임무 종류<select id="catalog-type"><option value="">모든 임무</option>{types.map(t=><option value={t}>{label(t)}</option>)}</select></label>
+  </div>
+  <div class="catalog-results"><p id="catalog-count" aria-live="polite">{items.length}개 퀘스트</p><button type="button" id="catalog-reset" hidden>필터 초기화</button></div>
+  <p id="catalog-empty" hidden>조건에 맞는 퀘스트가 없습니다. 검색어를 줄이거나 필터를 초기화해 주세요.</p>
+  {versions.map(v=><section class="catalog-group" data-version={v}>
+    <h2>{label(v)}<span>{items.filter(x=>x.version===v).length}</span></h2>
+    <ul role="list">{items.filter(x=>x.version===v).map(x=><li class="catalog-row" data-version={x.version} data-type={x.type} data-title={x.title} data-id={x.id}>
+      <a href={`${base}/quests/${x.id}.html`} aria-label={`${x.title} · 퀘스트 ${x.id}`}><strong>{x.title}</strong><span class="catalog-meta"><span>{label(x.type)}</span><span>{x.id}</span><span>{x.scenes}개 장면</span></span><span class="row-arrow" aria-hidden="true">›</span></a>
+    </li>)}</ul>
+  </section>)}
+</div>
+<script>
+const q=document.querySelector<HTMLInputElement>('#catalog-q')!,v=document.querySelector<HTMLSelectElement>('#catalog-version')!,t=document.querySelector<HTMLSelectElement>('#catalog-type')!;
+const rows=[...document.querySelectorAll<HTMLElement>('.catalog-row')],groups=[...document.querySelectorAll<HTMLElement>('.catalog-group')];
+const params=new URLSearchParams(location.search);q.value=params.get('q')||'';v.value=params.get('version')||'';t.value=params.get('type')||'';
+function render(save=true){const needle=q.value.trim().toLocaleLowerCase('ko');let count=0;for(const row of rows){const match=(!v.value||row.dataset.version===v.value)&&(!t.value||row.dataset.type===t.value)&&(!needle||(row.dataset.title+' '+row.dataset.id).toLocaleLowerCase('ko').includes(needle));row.hidden=!match;if(match)count++;}for(const group of groups)group.hidden=![...group.querySelectorAll<HTMLElement>('.catalog-row')].some(row=>!row.hidden);document.querySelector('#catalog-count')!.textContent=count+'개 퀘스트';(document.querySelector('#catalog-empty') as HTMLElement).hidden=count!==0;(document.querySelector('#catalog-reset') as HTMLElement).hidden=!(q.value||v.value||t.value);document.querySelectorAll<HTMLButtonElement>('[data-quick-type]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.quickType===t.value)));if(save){const p=new URLSearchParams();if(q.value)p.set('q',q.value);if(v.value)p.set('version',v.value);if(t.value)p.set('type',t.value);history.replaceState(null,'',location.pathname+(p.size?'?'+p:'')+location.hash);}}
+q.addEventListener('input',()=>render());v.addEventListener('change',()=>render());t.addEventListener('change',()=>render());document.querySelector('#catalog-reset')!.addEventListener('click',()=>{q.value='';v.value='';t.value='';render();q.focus();});document.querySelectorAll<HTMLButtonElement>('[data-quick-type]').forEach(b=>b.addEventListener('click',()=>{t.value=b.dataset.quickType||'';render();}));render(false);
+</script>
