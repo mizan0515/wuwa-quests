@@ -1,0 +1,10 @@
+"use strict";
+const q=document.querySelector('#q'),v=document.querySelector('#version'),t=document.querySelector('#type');
+const rows=[...document.querySelectorAll('.quest')],groups=[...document.querySelectorAll('.version')];
+const params=new URLSearchParams(location.search);q.value=params.get('q')||'';v.value=params.get('version')||'';t.value=params.get('type')||'';
+function render(save=true){const needle=q.value.trim().toLocaleLowerCase('ko');let count=0;for(const row of rows){const match=(!v.value||row.dataset.version===v.value)&&(!t.value||row.dataset.type===t.value)&&(!needle||(row.dataset.title+' '+row.dataset.id).toLocaleLowerCase('ko').includes(needle));row.hidden=!match;if(match)count++;}for(const group of groups)group.hidden=![...group.querySelectorAll('.quest')].some(row=>!row.hidden);document.querySelector('#count').textContent=count+'개 퀘스트';document.querySelector('#empty').hidden=count!==0;document.querySelector('#clear-filters').hidden=!(q.value||v.value||t.value);document.querySelectorAll('[data-quick-type]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.quickType===t.value)));document.dispatchEvent(new Event('filters-changed'));if(save){const p=new URLSearchParams();if(q.value)p.set('q',q.value);if(v.value)p.set('version',v.value);if(t.value)p.set('type',t.value);try{history.replaceState(null,'',location.pathname+(p.size?'?'+p:'')+location.hash);}catch(_){}}}
+let timer;q.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(render,180);});v.addEventListener('change',()=>render());t.addEventListener('change',()=>render());document.querySelector('#reset').addEventListener('click',()=>{q.value='';v.value='';t.value='';render();q.focus();});window.addEventListener('pageshow',()=>render(false));render(false);
+
+function clearAll(){q.value='';v.value='';t.value='';render();q.focus();}
+document.querySelector('#clear-filters').addEventListener('click',clearAll);
+document.querySelectorAll('[data-quick-type]').forEach(b=>b.addEventListener('click',()=>{t.value=b.dataset.quickType;render();}));
