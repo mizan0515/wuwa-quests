@@ -1,0 +1,9 @@
+---
+const { entry } = Astro.locals.starlightRoute;
+const catalog = Astro.locals.starlightRoute.id === '';
+---
+<div class:list={['archive-heading', { 'catalog-heading': catalog }]}>
+  <p class="archive-eyebrow" data-pagefind-ignore>{catalog ? 'WUTHERING WAVES / 한국어 대사 자료집' : 'WUTHERING WAVES / QUEST ARCHIVE'}</p>
+  <h1 id="_top">{entry.data.title}</h1>
+  {catalog && <p class="archive-description">다시 읽고 싶은 이야기, 기억에 남은 한마디를 찾아보세요.</p>}
+</div>

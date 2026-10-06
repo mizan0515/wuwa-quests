@@ -1,0 +1,11 @@
+---
+import Default from '@astrojs/starlight/components/Search.astro';
+---
+<Default {...Astro.props} />
+<script is:inline>
+  // Preserve the native search; its accessible name includes the exact visible label and shortcut.
+  (() => {
+    const button = document.querySelector('site-search button[data-open-modal]');
+    if (button) button.setAttribute('aria-label', button.textContent.trim());
+  })();
+</script>
