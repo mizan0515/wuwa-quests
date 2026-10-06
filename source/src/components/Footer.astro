@@ -2,7 +2,7 @@
 import Default from '@astrojs/starlight/components/Footer.astro';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
-<footer class="quest-footer" data-pagefind-ignore>
+<footer class="quest-footer" data-pagefind-ignore="all">
   <div class="quest-footer-brand">
     <a class="quest-brand-home" href="https://ttaem.com/" aria-label="TTaem CVA 홈">
       <img src={`${base}/brand/ttaem-cva-master.svg`} width="1621" height="793" alt="TTaem CVA" loading="lazy" decoding="async" />
