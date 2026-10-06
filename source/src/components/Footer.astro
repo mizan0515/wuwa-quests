@@ -1,9 +1,24 @@
 ---
 import Default from '@astrojs/starlight/components/Footer.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <footer class="quest-footer" data-pagefind-ignore>
-  <p>비공식 자료집 · 대사와 게임 콘텐츠의 권리는 KURO GAMES 등 해당 권리자에게 있습니다.</p>
-  <a href={`${import.meta.env.BASE_URL}/about.html`}>수록 범위와 자료 안내</a>
+  <div class="quest-footer-brand">
+    <a class="quest-brand-home" href="https://ttaem.com/" aria-label="TTaem CVA 홈">
+      <img src={`${base}/brand/ttaem-cva-master.svg`} width="1621" height="793" alt="TTaem CVA" loading="lazy" decoding="async" />
+    </a>
+    <div class="quest-brand-copy">
+      <p class="quest-brand-tagline">명조의 이야기 속, 당신이 찾는 한마디까지.</p>
+      <div class="quest-brand-links">
+        <a href="https://ttaem.com/">ttaem.com</a>
+        <a href="mailto:ttaem00@naver.com">Contact: ttaem00@naver.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="quest-footer-notice">
+    <p>비공식 자료집 · 대사와 게임 콘텐츠의 권리는 KURO GAMES 등 해당 권리자에게 있습니다.</p>
+    <a href={`${base}/about.html`}>수록 범위와 자료 안내</a>
+  </div>
 </footer>
 <Default />
 <script>
