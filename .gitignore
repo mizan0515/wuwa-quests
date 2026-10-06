@@ -5,3 +5,5 @@ source/src/content/docs/
 source/public/originals/
 source/generated-sidebar.json
 source/generated-catalog.json
+.runtime/
+source/build.log

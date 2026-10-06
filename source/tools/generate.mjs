@@ -37,7 +37,7 @@ for(const x of items){
    if(/^(순서 근거:|대화 ID:|대화 묶음)/.test(raw.trim())||/^─+$/.test(raw.trim())){metadata.push(raw);continue;}
    const line=readable(raw).trim();const cls=line.startsWith('선택 ')?'quest-choice':line.startsWith('→')?'quest-branch':'quest-utterance';
    const m=line.match(/^(\[대화ID [^\]]+\])\s*([^:：]+):\s*(.*)$/);
-   const body=m?`<span class="line-id">${e(m[1])} </span><strong>${e(m[2])}</strong>: ${e(m[3])}`:e(line);
+   const body=m?`<span class="line-id">${e(m[1])} </span><strong class="quest-speaker">${e(m[2])}</strong><span class="quest-speech"><span class="speaker-colon">: </span>${e(m[3])}</span>`:e(line);
    md+=`<p class="quest-source-line ${cls}">${body}</p>\n\n`;
   }
   if(metadata.length)md+=`<details class="quest-scene-info" data-pagefind-ignore><summary>장면 자료 정보</summary><pre>${e(metadata.join('\n'))}</pre></details>\n\n`;

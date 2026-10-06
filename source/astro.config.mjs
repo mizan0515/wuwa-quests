@@ -18,7 +18,7 @@ export default defineConfig({
     pagination:false,
     lastUpdated:false,
     customCss:['./src/styles/quest.css'],
-    components:{Footer:'./src/components/Footer.astro'},
+    components:{Footer:'./src/components/Footer.astro',Sidebar:'./src/components/Sidebar.astro',PageTitle:'./src/components/PageTitle.astro',Search:'./src/components/Search.astro'},
     expressiveCode:false,
     credits:true,
   })],

@@ -1,33 +1,83 @@
 ---
 import items from '../../generated-catalog.json';
-const versions=[...new Set(items.map(x=>x.version))];
-const types=[...new Set(items.map(x=>x.type))].sort((a,b)=>(a==='메인임무'?-1:b==='메인임무'?1:a.localeCompare(b,'ko')));
-const base=import.meta.env.BASE_URL.replace(/\/$/,'');
-const label=(s)=>s.replace(/^기타임무_유형(\d+)$/,'기타임무 (유형 $1)').replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
+const versions = [...new Set(items.map(x => x.version))];
+const types = [...new Set(items.map(x => x.type))].sort((a,b) => a === '메인임무' ? -1 : b === '메인임무' ? 1 : a.localeCompare(b,'ko'));
+const base = import.meta.env.BASE_URL.replace(/\/$/,'');
+const label = (s: string) => s.replace(/^기타임무_유형(\d+)$/,'기타임무 (유형 $1)').replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
 ---
-<div class="catalog" data-pagefind-ignore>
-  <div class="catalog-intro"><p>제목을 기억하면 목록에서, 대사만 기억하면 상단 검색에서 찾아보세요.</p><span>{items.length}개 퀘스트</span></div>
-  <div class="quick-types" role="group" aria-label="임무 종류 바로 선택">
-    {['','메인임무','기록임무','이벤트임무'].map(type=><button type="button" data-quick-type={type} aria-pressed={type===''?'true':'false'}>{type||'전체 임무'}</button>)}
-  </div>
+<div class="catalog not-content" data-pagefind-ignore>
   <div class="catalog-filters" role="search" aria-label="퀘스트 목록 필터">
-    <label class="title-filter">퀘스트 제목 또는 ID<input id="catalog-q" type="search" placeholder="예: 스타토치, 915000001" /></label>
-    <label>버전<select id="catalog-version"><option value="">모든 버전</option>{versions.map(v=><option value={v}>{label(v)}</option>)}</select></label>
-    <label>임무 종류<select id="catalog-type"><option value="">모든 임무</option>{types.map(t=><option value={t}>{label(t)}</option>)}</select></label>
+    <label class="title-filter" for="catalog-q">퀘스트 제목 또는 ID
+      <span class="search-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="catalog-q" type="search" placeholder="예: 스타토치, 915000001" autocomplete="off" /></span>
+    </label>
+    <label for="catalog-version">버전<select id="catalog-version"><option value="">모든 버전</option>{versions.map(v => <option value={v}>{label(v)}</option>)}</select></label>
+    <label for="catalog-type">임무 종류<select id="catalog-type"><option value="">모든 임무</option>{types.map(t => <option value={t}>{label(t)}</option>)}</select></label>
   </div>
-  <div class="catalog-results"><p id="catalog-count" aria-live="polite">{items.length}개 퀘스트</p><button type="button" id="catalog-reset" hidden>필터 초기화</button></div>
-  <p id="catalog-empty" hidden>조건에 맞는 퀘스트가 없습니다. 검색어를 줄이거나 필터를 초기화해 주세요.</p>
-  {versions.map(v=><section class="catalog-group" data-version={v}>
-    <h2>{label(v)}<span>{items.filter(x=>x.version===v).length}</span></h2>
-    <ul role="list">{items.filter(x=>x.version===v).map(x=><li class="catalog-row" data-version={x.version} data-type={x.type} data-title={x.title} data-id={x.id}>
-      <a href={`${base}/quests/${x.id}.html`} aria-label={`${x.title} · 퀘스트 ${x.id}`}><strong>{x.title}</strong><span class="catalog-meta"><span>{label(x.type)}</span><span>{x.id}</span><span>{x.scenes}개 장면</span></span><span class="row-arrow" aria-hidden="true">›</span></a>
+  <div class="catalog-toolbar">
+    <div class="quick-types" role="group" aria-label="임무 종류 바로 선택">
+      {['','메인임무','기록임무','이벤트임무'].map(type => <button type="button" data-quick-type={type} aria-pressed={type === '' ? 'true' : 'false'}>{type ? label(type).replace('임무',' 임무') : '전체'}<span>{type ? items.filter(x => x.type === type).length : items.length}</span></button>)}
+    </div>
+  </div>
+  <div class="catalog-results"><p id="catalog-count" role="status" aria-live="polite">{items.length}개 퀘스트</p><div class="catalog-results-actions"><span>버전 · 임무 · ID 순</span><button type="button" id="catalog-reset" disabled>초기화 <span aria-hidden="true">↺</span></button></div></div>
+  <div id="catalog-empty" hidden><span class="empty-symbol" aria-hidden="true">⌕</span><h2>찾으시는 퀘스트가 없어요</h2><p>검색어를 짧게 바꾸거나 다른 버전·임무 종류를 선택해 보세요.</p><button type="button" id="empty-reset">검색 조건 초기화</button></div>
+  {versions.map(v => <section class="catalog-group" data-version={v}>
+    <h2><span class="version-heading">{label(v)}</span><span class="group-count">{items.filter(x => x.version === v).length}개 퀘스트</span><span class="version-rule" aria-hidden="true"></span></h2>
+    <ul role="list">{items.filter(x => x.version === v).map(x => <li class="catalog-row" data-version={x.version} data-type={x.type} data-title={x.title} data-id={x.id}>
+      <a href={`${base}/quests/${x.id}.html`}><span class="quest-type" data-main={x.type === '메인임무'}>{label(x.type).replace('임무',' 임무')}</span><span class="row-content"><strong>{x.title}</strong><span class="catalog-meta"><span class="row-id">{x.id}</span><span class="meta-dot" aria-hidden="true">·</span><span>{x.scenes}개 장면</span></span></span><span class="row-arrow" aria-hidden="true">→</span></a>
     </li>)}</ul>
   </section>)}
+  <p class="catalog-footnote">버전은 추출 자료를 기준으로 분류했습니다. 이야기의 시간 순서와 다를 수 있습니다. <a href={`${base}/about.html`}>자료 안내</a></p>
 </div>
 <script>
-const q=document.querySelector<HTMLInputElement>('#catalog-q')!,v=document.querySelector<HTMLSelectElement>('#catalog-version')!,t=document.querySelector<HTMLSelectElement>('#catalog-type')!;
-const rows=[...document.querySelectorAll<HTMLElement>('.catalog-row')],groups=[...document.querySelectorAll<HTMLElement>('.catalog-group')];
-const params=new URLSearchParams(location.search);q.value=params.get('q')||'';v.value=params.get('version')||'';t.value=params.get('type')||'';
-function render(save=true){const needle=q.value.trim().toLocaleLowerCase('ko');let count=0;for(const row of rows){const match=(!v.value||row.dataset.version===v.value)&&(!t.value||row.dataset.type===t.value)&&(!needle||(row.dataset.title+' '+row.dataset.id).toLocaleLowerCase('ko').includes(needle));row.hidden=!match;if(match)count++;}for(const group of groups)group.hidden=![...group.querySelectorAll<HTMLElement>('.catalog-row')].some(row=>!row.hidden);document.querySelector('#catalog-count')!.textContent=count+'개 퀘스트';(document.querySelector('#catalog-empty') as HTMLElement).hidden=count!==0;(document.querySelector('#catalog-reset') as HTMLElement).hidden=!(q.value||v.value||t.value);document.querySelectorAll<HTMLButtonElement>('[data-quick-type]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.quickType===t.value)));if(save){const p=new URLSearchParams();if(q.value)p.set('q',q.value);if(v.value)p.set('version',v.value);if(t.value)p.set('type',t.value);history.replaceState(null,'',location.pathname+(p.size?'?'+p:'')+location.hash);}}
-q.addEventListener('input',()=>render());v.addEventListener('change',()=>render());t.addEventListener('change',()=>render());document.querySelector('#catalog-reset')!.addEventListener('click',()=>{q.value='';v.value='';t.value='';render();q.focus();});document.querySelectorAll<HTMLButtonElement>('[data-quick-type]').forEach(b=>b.addEventListener('click',()=>{t.value=b.dataset.quickType||'';render();}));render(false);
+  const q = document.querySelector<HTMLInputElement>('#catalog-q')!;
+  const v = document.querySelector<HTMLSelectElement>('#catalog-version')!;
+  const t = document.querySelector<HTMLSelectElement>('#catalog-type')!;
+  const rows = [...document.querySelectorAll<HTMLElement>('.catalog-row')];
+  const groups = [...document.querySelectorAll<HTMLElement>('.catalog-group')];
+  const params = new URLSearchParams(location.search);
+  q.value = params.get('q') || '';
+  v.value = params.get('version') || '';
+  t.value = params.get('type') || '';
+  function render(save = true) {
+    const needle = q.value.trim().toLocaleLowerCase('ko');
+    let count = 0;
+    for (const row of rows) {
+      const match = (!v.value || row.dataset.version === v.value) && (!t.value || row.dataset.type === t.value) && (!needle || (row.dataset.title + ' ' + row.dataset.id).toLocaleLowerCase('ko').includes(needle));
+      row.hidden = !match;
+      if (match) count++;
+    }
+    for (const group of groups) {
+      const visible = [...group.querySelectorAll<HTMLElement>('.catalog-row')].filter(row => !row.hidden).length;
+      group.hidden = visible === 0;
+      group.querySelector('.group-count')!.textContent = visible + '개 퀘스트';
+    }
+    document.querySelector('#catalog-count')!.textContent = count + '개 퀘스트' + (q.value || v.value || t.value ? ' · 전체 ' + rows.length + '개' : '');
+    (document.querySelector('#catalog-empty') as HTMLElement).hidden = count !== 0;
+    (document.querySelector('#catalog-reset') as HTMLButtonElement).disabled = !(q.value || v.value || t.value);
+    document.querySelectorAll<HTMLButtonElement>('[data-quick-type]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.quickType === t.value)));
+    document.querySelectorAll<HTMLAnchorElement>('[data-version-link]').forEach(link => {
+      if (link.dataset.versionLink === v.value) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+      const p = new URLSearchParams();
+      p.set('version', link.dataset.versionLink!);
+      if (q.value) p.set('q', q.value);
+      if (t.value) p.set('type', t.value);
+      link.search = p.toString();
+    });
+    if (save) {
+      const p = new URLSearchParams();
+      if (q.value) p.set('q', q.value);
+      if (v.value) p.set('version', v.value);
+      if (t.value) p.set('type', t.value);
+      history.replaceState(null, '', location.pathname + (p.size ? '?' + p : '') + location.hash);
+    }
+  }
+  function reset() { q.value = ''; v.value = ''; t.value = ''; render(); q.focus(); }
+  q.addEventListener('input', () => render());
+  v.addEventListener('change', () => render());
+  t.addEventListener('change', () => render());
+  document.querySelector('#catalog-reset')!.addEventListener('click', reset);
+  document.querySelector('#empty-reset')!.addEventListener('click', reset);
+  document.querySelectorAll<HTMLButtonElement>('[data-quick-type]').forEach(b => b.addEventListener('click', () => { t.value = b.dataset.quickType || ''; render(); }));
+  render(false);
 </script>

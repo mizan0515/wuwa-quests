@@ -1,0 +1,24 @@
+---
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+import items from '../../generated-catalog.json';
+const catalog = Astro.locals.starlightRoute.id === '';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const versions = [...new Set(items.map(x => x.version))];
+const label = (s: string) => s.replace('버전미확인', '버전 미확인').replace('버전혼합_', '버전 혼합 ');
+---
+{catalog ? <div class="archive-sidebar">
+  <p class="sidebar-caption">자료집</p>
+  <a class="archive-nav-link" href={`${base}/index.html`} aria-current="page"><span aria-hidden="true">▤</span> 퀘스트 목록 <span class="nav-count">{items.length}</span></a>
+  <a class="archive-nav-link" href={`${base}/about.html`}><span aria-hidden="true">ⓘ</span> 자료 안내</a>
+  <div class="sidebar-section">
+    <p class="sidebar-caption">버전으로 찾기</p>
+    {[3, 2, 1].map(era => <div class="version-era">
+      <span class="era-label">{era}.x</span>
+      <div class="version-grid">{versions.filter(v => v.startsWith(`${era}.`)).map(v => <a href={`${base}/index.html?version=${v}`} data-version-link={v} aria-label={`${v} 버전 퀘스트`}>{v}</a>)}</div>
+    </div>)}
+    <div class="unknown-versions">{versions.filter(v => !/^\d\.\d$/.test(v)).map(v => <a href={`${base}/index.html?version=${encodeURIComponent(v)}`} data-version-link={v}>{label(v)}</a>)}</div>
+  </div>
+  <div class="sidebar-note"><span class="note-rule" aria-hidden="true"></span><p>이야기와 선택지를<br />한 장면씩, 천천히.</p><a href={`${base}/about.html#버전과-임무-분류`}>자료 분류에 관하여 <span aria-hidden="true">↗</span></a></div>
+  <div class="md:sl-hidden"><MobileMenuFooter /></div>
+</div> : <Default />}
