@@ -2,6 +2,102 @@
 
 지역·인물·세계의 큰 설정을 관계와 사건, 원문으로 이어 읽습니다.
 
+## 세력과 위협
+
+### 잔성회
+
+**질문:** 조직의 간부, 인간과 잔상의 결합, 인물별 발언
+
+잔성회는 간부와 사이보그의 기록, 야귀군 대원의 설명, 관련 인물의 발언으로 소개된다. 조직의 구성과 변형 기술을 먼저 읽고, 금주에서 방랑자가 스카와 만나는 장면으로 이어진다.
+
+#### 간부의 기록
+
+스카의 생태 기록과 플로로의 소개는 두 사람을 잔성회 간부로 명시한다. 스카의 기록은 질서와 아름다움을 공허로 보고 대혼돈을 희망하는 태도를 설명한다. 플로로는 생사의 경계를 넘나드는 지휘자로 소개된다.
+
+[스카 · 얽혀진 암흑](https://mizan0515.github.io/wuwa-quests/sources/1c139d121ede388d.html#field-undiscovered_description) · [스카 · 얽혀진 암흑](https://mizan0515.github.io/wuwa-quests/sources/1c139d121ede388d.html#field-discovered_description) · [플로로 · 소개와 공명 기록](https://mizan0515.github.io/wuwa-quests/sources/d67c848888f3b976.html#field-info)
+
+#### 사이보그의 결합 과정
+
+사이보그 해머링맨의 생태 기록에 따르면 잔성회는 금지된 과학으로 인간과 잔상의 몸을 기계 부품을 통해 연결한다. 기록은 잔상의 주파수가 영혼과 육체를 변질시킨다고 설명한다. 심해의 사이보그에는 바다의 주파수와 합쳐진 뒤 나타난 변이가 기록되어 있다.
+
+[잔성 · 사이보그 해머링맨](https://mizan0515.github.io/wuwa-quests/sources/b0833718b98dd892.html#field-discovered_description) · [잔성 · 심해의 사이보그](https://mizan0515.github.io/wuwa-quests/sources/401364e958a131b9.html#field-discovered_description)
+
+#### 회장과 플로로
+
+플로로는 잔성회 회장을 살아 있는 목표이자 참고물로 부르며, 서로를 알고 이용하는 관계라고 말한다.
+
+[플로로 · 잔성회 회장에 관하여](https://mizan0515.github.io/wuwa-quests/sources/fbfcce66b5885a5e.html#field-content)
+
+#### 루크와 린네의 관점
+
+루크는 잔성회를 뿌리째 뽑겠다는 의사를 밝힌다. 린네는 잔성회에 대한 적대적인 평가와 더 이상 엮이고 싶지 않다는 의사를 말한다.
+
+[루크 · 헤르센 · 잔성회와 「그」에 관하여](https://mizan0515.github.io/wuwa-quests/sources/4741713efeec20b6.html#field-content) · [린네 · 잔성회에 관하여](https://mizan0515.github.io/wuwa-quests/sources/0a5a7601efa0b59f.html#field-content)
+
+#### 의뢰를 받은 추방자
+
+추방자의 통신 기록에는 잔성회가 보수를 주고 진팅 유적의 잔해를 캐게 했다는 보고가 있다. 이 기록은 의뢰를 받은 추방자들이 보낸 통신으로 수록되어 있다.
+
+[추방자의 통신 기록](https://mizan0515.github.io/wuwa-quests/sources/bcda223591baf9cf.html#field-content)
+
+#### 야귀군 대원이 설명하는 조직
+
+인간과 잔상을 융합하려고 하는 극단적인 미치광이들이에요. 방대한 조직을 이뤄 여러 나라에서 많은 테러를 저지르고 있죠
+
+[첫 마주치는 잔성](https://mizan0515.github.io/wuwa-quests/quests/139000030.html#scene-7)
+
+#### 양양이 전하는 목적의 차이
+
+그들의 진짜 목적은 알 수 없어요. 누구는 세상을 파괴하고 싶어 하고, 다른 누구는 영원한 힘을 추구하기도 해요
+
+[첫 마주치는 잔성](https://mizan0515.github.io/wuwa-quests/quests/139000030.html#scene-7)
+
+- 잔성회 → **간부** → 스카: 스카의 생태 기록은 잔성회 간부로 명시한다.
+- 잔성회 → **간부** → 플로로: 플로로의 소개는 잔성회 간부로 명시한다.
+- 잔성회 → **금지된 과학으로 결합** → 사이보그: 잔성회는 인간과 잔상의 몸을 기계 부품으로 연결한다.
+
+[화면에서 관계·원문 함께 읽기](https://mizan0515.github.io/wuwa-quests/factions/fractsidus.html)
+
+### 스카
+
+**질문:** 잔성회 간부의 기록과 금주에서의 첫 만남
+
+스카는 잔성회 간부로 기록된다. 생태 기록의 인간 형태와 특수 형태, 질서와 파괴에 대한 서술을 퀘스트의 첫 만남과 함께 읽는다.
+
+#### 소속과 형태
+
+「스카 · 얽혀진 암흑」은 잔성회 간부이며 인간 형태로, 「스카 · 악몽의 유령」은 특수 형태로 수록된다.
+
+[스카 · 얽혀진 암흑](https://mizan0515.github.io/wuwa-quests/sources/1c139d121ede388d.html#field-discovered_description) · [스카 · 악몽의 유령](https://mizan0515.github.io/wuwa-quests/sources/3d48c83be66ae934.html#field-undiscovered_description)
+
+#### 질서와 파괴에 대한 기록
+
+스카의 생태 기록은 질서와 아름다움을 공허로 보고, 대혼돈을 바라며 파괴를 새로운 생명으로 여긴다고 서술한다.
+
+[스카 · 얽혀진 암흑](https://mizan0515.github.io/wuwa-quests/sources/1c139d121ede388d.html#field-discovered_description)
+
+#### 방랑자에게 스카를 소개하는 양양
+
+바로 잔성회의 간부, 스카예요
+
+[첫 마주치는 잔성](https://mizan0515.github.io/wuwa-quests/quests/139000030.html#scene-7)
+
+#### 방랑자를 친구로 부르는 스카
+
+그래서, 널 친구로 생각하는 내가, 너에게 진실을 말해주는 거야. 네가 마주할 일에 대한 미안함도 있고
+
+[첫 마주치는 잔성](https://mizan0515.github.io/wuwa-quests/quests/139000030.html#scene-9)
+
+#### 방랑자의 선택을 기다린다는 발언
+
+정확히는, 너의 선택을 기대하고 있지
+
+[첫 마주치는 잔성](https://mizan0515.github.io/wuwa-quests/quests/139000030.html#scene-9)
+
+- 스카 → **잔성회 간부** → 잔성회: 스카의 생태 기록은 잔성회 간부로 소개한다.
+
+[화면에서 관계·원문 함께 읽기](https://mizan0515.github.io/wuwa-quests/factions/scar.html)
+
 ## 지역
 
 ### 금주
@@ -33,6 +129,18 @@
 승소산은 금주성 동남쪽 해역에 있다. 지역 기록은 용의 별자리가 시간 흐름으로 잔상의 피해를 막았다고 전한다. 「승소산에서 울렸던 경칩 소리」는 금희가 수호신의 희생을 거부하고 결전을 거쳐 시간 제어 능력을 넘겨받은 사건을 서술한다.
 
 [승소산](https://mizan0515.github.io/wuwa-quests/sources/c62265b07df7ab5c.html#field-content) · [승소산에서 울렸던 경칩 소리](https://mizan0515.github.io/wuwa-quests/sources/7b3b24971f579a92.html#field-content)
+
+#### 금희가 위험을 감수하는 이유
+
+제 목숨이 붙어 있는 한, 잠깐이라도 시간을 제어하는 능력을 계승할 수 있다면 존재하지 않는 금주의 미래와 당신을 지킬 수 있을 거라고 믿고 있어요
+
+[승소산에서 울렸던 경칩 소리](https://mizan0515.github.io/wuwa-quests/quests/125900000.html#scene-55)
+
+#### 계승 이후 수호신의 역할
+
+이미 권력을 넘겨주었으니 진정한 금주의 주인은 금희입니다. 앞으로 저는 금희를 돕기 위해 보좌하는 역으로 남을 거예요
+
+[승소산에서 울렸던 경칩 소리](https://mizan0515.github.io/wuwa-quests/quests/125900000.html#scene-59)
 
 #### 관련 기록과 사건
 
@@ -510,4 +618,73 @@
 
 
 [화면에서 관계·원문 함께 읽기](https://mizan0515.github.io/wuwa-quests/cosmology/civilization.html)
+
+### 명식
+
+**질문:** 비명과 함께 태어난 잔상과 문명의 의지
+
+명식은 무너진 인간의 의지를 식량으로 삼는 잔상으로 설명된다. 지역별 기록에는 레비아탄, 알레프-원의 창조물, 엑소스트라이더가 봉인한 재난이 수록되어 있다.
+
+#### 정의와 문명
+
+명식은 비명과 함께 태어난 잔상이다. 세계관 도움말은 명식이 무너진 인간의 의지를 식량으로 삼으며, 문명에 응집된 의지 이면의 불안과 악을 재난의 모습으로 드러낸다고 설명한다.
+
+[명식](https://mizan0515.github.io/wuwa-quests/sources/08f7f870494a5676.html#field-content)
+
+#### 리나시타의 레비아탄
+
+레비아탄의 생태 기록은 리나시타의 문명에 뿌리내린 명식이며 「융합」의 권력을 가진 존재로 설명한다. 수호신의 족쇄에서 벗어난 주파수는 보석으로 깨어났고, 과거 성녀 플뢰르 드 리스를 원형으로 신의 육체를 다시 만들었다고 기록한다.
+
+[명식 · 레비아탄](https://mizan0515.github.io/wuwa-quests/sources/c972e77224a987f6.html#field-discovered_description)
+
+#### 알레프-원과 창조물
+
+「공명의 메아리 · 명식 · 허무의 신」은 알레프-원의 창조물로 기록된다. 생태 기록은 스트라이더 게이트 너머에서 온 존재이며, 알레프-원이 탐구자들에게 「알 수 있는 것」의 한계를 투영했다고 서술한다.
+
+[공명의 메아리 · 명식 · 허무의 신](https://mizan0515.github.io/wuwa-quests/sources/744715dd566fd248.html#field-discovered_description)
+
+#### 라하이 로이의 재난과 봉인
+
+잠이든 엑소스트라이더 기록은 두 번째 비명 중 게이트를 넘어온 거대 메카스카우트가 명식과 싸우고 재난을 게이트 너머에 봉인했다고 설명한다. 보이드웜은 명식의 힘으로 태어나 라하이 로이에 구멍을 뚫는 잔상으로 기록된다.
+
+[잠이 든 엑소스트라이더](https://mizan0515.github.io/wuwa-quests/sources/9a452a6ec085c921.html#field-content) · [보이드웜](https://mizan0515.github.io/wuwa-quests/sources/5fae276d9416d3fa.html#field-content)
+
+- 레비아탄 → **융합의 권력을 가진 명식** → 명식: 레비아탄의 생태 기록은 리나시타에 뿌리내린 명식으로 소개한다.
+- 알레프-원 → **창조했다** → 허무의 신: 허무의 신의 생태 기록은 알레프-원의 창조물로 명시한다.
+
+[화면에서 관계·원문 함께 읽기](https://mizan0515.github.io/wuwa-quests/cosmology/threnodians.html)
+
+### 흑조
+
+**질문:** 리나시타의 재난과 수도회의 역사 기록
+
+흑조는 리나시타의 검은 안개와 잔상 재난으로 기록된다. 현상의 설명, 수도회가 전한 두 차례의 재난, 레비아탄과 순례의 땅 기록을 함께 읽는다.
+
+#### 현상과 확산
+
+흑조 기록은 상공에 응집된 검은 안개가 해양으로 쏟아져 육지로 흐르며 잔상을 생성하는 리나시타의 비명 현상으로 설명한다.
+
+[흑조(黑潮)](https://mizan0515.github.io/wuwa-quests/sources/80ca08d201b0f1fa.html#field-content) · [흑조 · Ⅰ](https://mizan0515.github.io/wuwa-quests/sources/d4b36105fa753811.html#field-content)
+
+#### 수도회의 두 차례 재난 기록
+
+흑조 문서는 깊은 바다의 수도회 기록을 인용해 첫 번째 재난은 나폴리 2세가 막았고, 두 번째는 성녀 플뢰르 드 리스의 희생으로 끝났다고 전한다.
+
+[흑조(黑潮)](https://mizan0515.github.io/wuwa-quests/sources/80ca08d201b0f1fa.html#field-content)
+
+#### 신앙과 실험의 장소
+
+순례의 땅 기록에는 흑조가 자원자의 의식을 자유롭게 할 수 있는지 수도회가 실험했으며, 자원자들이 혼란에 빠졌다는 내용이 수록된다.
+
+[순례의 땅](https://mizan0515.github.io/wuwa-quests/sources/41202b7ce521bedb.html#field-content)
+
+#### 레비아탄의 육체에 관한 기록
+
+레비아탄의 생태 기록은 과거 성녀 플뢰르 드 리스를 원형으로 신의 육체를 다시 만들었다고 설명한다. 재난의 역사와 생태 기록에서 성녀가 각각 어떤 역할로 등장하는지 대조할 수 있다.
+
+[명식 · 레비아탄](https://mizan0515.github.io/wuwa-quests/sources/c972e77224a987f6.html#field-discovered_description)
+
+- 레비아탄 → **육체의 원형** → 플뢰르 드 리스: 레비아탄의 생태 기록은 과거 성녀를 원형으로 육체를 다시 만들었다고 설명한다.
+
+[화면에서 관계·원문 함께 읽기](https://mizan0515.github.io/wuwa-quests/cosmology/black-tide.html)
 
