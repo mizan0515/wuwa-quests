@@ -7,7 +7,7 @@ import {generateAtlas} from './generate-atlas.mjs';
 const source=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=path.dirname(source),data=path.join(site,'settings'),content=path.join(source,'src/content/docs'),base='/wuwa-quests';
 const read=name=>readFile(path.join(data,name),'utf8').then(JSON.parse);
 const manifest=await read('manifest.json');
-for(const [name,sha] of Object.entries(manifest.files)){if(crypto.createHash('sha256').update(await readFile(path.join(data,name))).digest('hex')!==sha)throw Error('Setting input changed: '+name);}
+for(const [name,sha] of Object.entries(manifest.files)){const bytes=await readFile(path.join(data,name));const input=manifest.hash_normalization?.[name]==='lf'?bytes.toString('utf8').replace(/\r\n/g,'\n'):bytes;if(crypto.createHash('sha256').update(input).digest('hex')!==sha)throw Error('Setting input changed: '+name);}
 const book=await read('editorial.json'),index=await read('index.json'),records={};
 const originalCurated=new Set(Object.keys(index.curated_sources));
 for(const name of await readdir(data))if(name.startsWith('records-'))Object.assign(records,await read(name));
