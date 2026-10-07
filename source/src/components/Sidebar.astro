@@ -6,7 +6,7 @@ const base=import.meta.env.BASE_URL.replace(/\/$/,'');
 const currentQuest=items.find(x=>'quests/'+x.id===routeId);
 const versions=[...new Set(items.map(x=>x.version))];
 const label=(v:string)=>v.replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
-const nav=[['','퀘스트 목록'],['world','설정집'],['regions','지역'],['people','인물'],['cosmology','세계관의 큰 설정'],['about','자료 안내']];
+const nav=[['','퀘스트 목록'],['world','설정집'],['regions','지역'],['people','인물'],['factions','세력과 위협'],['cosmology','세계관의 큰 설정'],['about','자료 안내']];
 const active=(id:string)=>id===''?routeId===''||routeId.startsWith('quests/'):id==='regions'?/^(regions|places|entities)(\/|$)/.test(routeId):routeId===id||routeId.startsWith(id+'/');
 ---
 <div class="archive-sidebar">
