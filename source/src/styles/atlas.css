@@ -2,3 +2,13 @@
 @media(max-width:64rem){.atlas-axis-grid{grid-template-columns:1fr}.atlas-axis-grid>a{padding:22px}.atlas-axis-grid h2{margin:13px 0!important}.atlas-axis-grid h2 br{display:none}.atlas-axis-grid p{margin-bottom:14px!important}}
 @media(max-width:40rem){.atlas-card-grid,.atlas-perspectives{grid-template-columns:1fr}.atlas-card{padding:21px}.atlas-deck{font-size:19px;line-height:1.9}.atlas-home-links>a{display:block}.atlas-home-links span{display:block;margin-top:6px}.atlas-edge{grid-template-columns:1fr;gap:10px}.atlas-connector{flex-direction:row;justify-content:center;gap:10px}.atlas-arrow{transform:rotate(90deg);font-size:27px}.atlas-node{min-height:60px}.atlas-reading p{word-break:normal;line-height:2;font-size:16px}.atlas-relation{padding:15px}.atlas-interpretation{padding:18px}.atlas-person-controls label{width:100%}.atlas-person-controls input,.atlas-person-controls select{width:100%;font-size:16px}.lore-context-dialog{padding:20px}.atlas-timeline>li{gap:13px}.atlas-timeline h3{font-size:18px!important}}
 @media(prefers-reduced-motion:reduce){.atlas-card,.atlas-axis-grid>a{transition:none}}
+/* Reading hierarchy for the source-linked setting clusters. */
+.atlas-reading>p,.atlas-relation-reason,.atlas-timeline p,.atlas-perspectives p{font-size:1.0625rem;line-height:1.9;word-break:keep-all;overflow-wrap:anywhere}
+.atlas-card small{font-size:.9375rem;line-height:1.8;display:block;margin-top:.8rem;color:var(--sl-color-gray-2)}
+.atlas-card h3{font-size:1.25rem;line-height:1.5}
+.atlas-relation-reason{margin:1rem 0 .7rem!important;max-width:65ch}
+.atlas-relation details>summary{font-size:.875rem;padding:.5rem 0;cursor:pointer}
+.atlas-node strong{font-size:1rem;line-height:1.5}
+.atlas-connector span:first-child{font-size:.875rem;line-height:1.5}
+.atlas-card:focus-visible,.atlas-node:focus-visible,.atlas-jump a:focus-visible{outline:3px solid var(--sl-color-accent-high);outline-offset:4px}
+@media(max-width:600px){.atlas-card-grid{grid-template-columns:1fr}.atlas-reading>p,.atlas-relation-reason{font-size:1rem}.atlas-edge{gap:.5rem}.atlas-node{min-width:0;overflow-wrap:anywhere}}
