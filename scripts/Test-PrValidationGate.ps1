@@ -9,5 +9,11 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Reading data QA failed'}
   & python tools/verify_reading_site.py
   if($LASTEXITCODE -ne 0){throw 'Source and link QA failed'}
+  & python tools/verify_original_rendering.py
+  if($LASTEXITCODE -ne 0){throw 'Rendered original text QA failed'}
+  & python tools/verify_people_catalog.py
+  if($LASTEXITCODE -ne 0){throw 'People classification and original evidence QA failed'}
+  & python tools/verify_game_images.py
+  if($LASTEXITCODE -ne 0){throw 'Game image source QA failed'}
   Write-Output 'RESULT: PASS'
 } finally {Pop-Location}

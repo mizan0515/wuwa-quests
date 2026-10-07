@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import { readFileSync } from 'node:fs';
+import { satteri } from '@astrojs/markdown-satteri';
 
 const sidebar=JSON.parse(readFileSync(new URL('./generated-sidebar.json',import.meta.url),'utf8'));
 export default defineConfig({
@@ -8,6 +9,7 @@ export default defineConfig({
   base:'/wuwa-quests',
   trailingSlash:'never',
   build:{format:'file'},
+  markdown:{processor:satteri({features:{smartPunctuation:false}})},
   integrations:[starlight({
     title:'명조 이야기 자료집',
     description:'퀘스트 대사와 인물·문서·세계관 설정을 근거 원문과 함께 이어 읽는 비공식 자료집',
