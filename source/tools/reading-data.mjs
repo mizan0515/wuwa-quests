@@ -5,21 +5,29 @@ import {createReadingGraph,resolveCluster} from '../src/lib/reading-kit/graph.mj
 import {writeReadingGraph} from '../src/lib/reading-kit/write.mjs';
 const hash=s=>createHash('sha256').update(s).digest('hex');
 export async function buildReadingData({source,index,records,atlas,entityLinks}){
- const base='/wuwa-quests',entities=[...entityLinks].map(([name,url])=>({id:'entity-'+hash(name).slice(0,16),name,url:base+url,kind:index.characters.some(p=>p.name===name)?'인물':atlas.regions.some(c=>c.title.split(' · ')[0]===name)?'지역':atlas.cosmology.some(c=>c.title.split(' · ')[0]===name)?'세계관':'설정 대상'})),byName=new Map(entities.map(e=>[e.name,e]));
+ const atlasPeople=atlas.people||[];
+ const base='/wuwa-quests',entities=[...entityLinks].map(([name,url])=>({id:'entity-'+hash(name).slice(0,16),name,url:base+url,kind:index.characters.some(p=>p.name===name)||atlasPeople.some(p=>p.title.split(' · ')[0]===name)?'인물':atlas.regions.some(c=>c.title.split(' · ')[0]===name)?'지역':atlas.cosmology.some(c=>c.title.split(' · ')[0]===name)?'세계관':atlas.factions.some(c=>c.title.split(' · ')[0]===name)?'세력':'설정 대상'})),byName=new Map(entities.map(e=>[e.name,e]));
  const sources=index.entries.map(e=>{const r=records[e.id];if(!r)throw Error('Missing reading record '+e.id);return {id:e.id,title:e.title,kind:e.category_label,url:base+e.page,blocks:r.values.filter(v=>v.status==='OK'&&v.text).map(v=>({id:v.field,field:v.field,text:v.text,sha256:hash(v.raw),url:base+e.page+(e.page.includes('#')?'':'#field-'+encodeURIComponent(v.field)),locator:{recordId:e.id,field:v.field,textId:v.text_id}}))};});
- const dialogueRefs=[...atlas.regions,...atlas.cosmology,...atlas.sentinels,...atlas.factions].flatMap(c=>c.dialogue||[]);
+ const dialogueRefs=[];
+ function gatherDialogueRefs(value){
+  if(Array.isArray(value)){value.forEach(gatherDialogueRefs);return;}
+  if(!value||typeof value!=='object')return;
+  if(value.quest_id&&value.quote&&Number.isInteger(value.scene))dialogueRefs.push(value);
+  Object.values(value).forEach(gatherDialogueRefs);
+ }
+ gatherDialogueRefs([...atlas.regions,...atlas.cosmology,...atlas.sentinels,...atlas.factions,...atlasPeople]);
  for(const questId of new Set(dialogueRefs.map(q=>q.quest_id))){
   const bytes=await readFile(path.join(source,'../originals',questId+'.txt')),raw=bytes.toString('utf8');
   const sceneStarts=[...raw.matchAll(/^장면 (\d+):/gm)];
   sources.push({id:'quest-'+questId,title:dialogueRefs.find(q=>q.quest_id===questId).title,kind:'퀘스트 대사',url:base+'/quests/'+questId+'.html',blocks:sceneStarts.map((m,i)=>{const text=raw.slice(m.index,sceneStarts[i+1]?.index||raw.length),anchor='scene-'+m[1];return {id:anchor,anchor,field:'dialogue',text,sha256:hash(text),url:base+'/quests/'+questId+'.html#'+anchor,locator:{questId,scene:Number(m[1]),originalSha256:hash(bytes)}};})});
  }
  const graph=createReadingGraph({game:'wuwa',sources,entities}),clusters=[],relations=[],events=[];
- const refs=rs=>rs.map(r=>({sourceId:index.aliases[r.id]||r.id,field:r.field,quote:r.excerpt,title:r.label,sourceSha256:r.source_text_sha256}));
- for(const [group,rows] of [['regions',atlas.regions],['cosmology',atlas.cosmology],['sentinels',atlas.sentinels],['factions',atlas.factions]])for(const c of rows){const id=group+'/'+c.id,sections=[];
+ const refs=rs=>(rs||[]).map(r=>r.quest_id?{sourceId:'quest-'+r.quest_id,anchor:'scene-'+r.scene,quote:r.quote,title:r.title||r.label}:{sourceId:index.aliases[r.id]||r.id,field:r.field,quote:r.excerpt,title:r.label,sourceSha256:r.source_text_sha256});
+ for(const [group,rows] of [['regions',atlas.regions],['cosmology',atlas.cosmology],['sentinels',atlas.sentinels],['factions',atlas.factions],['people',atlasPeople]])for(const c of rows){const id=group+'/'+c.id,sections=[];
   for(const [i,s] of (c.sections||[]).entries())sections.push({id:'section-'+i,title:s.title,deck:s.deck||'',claimIds:[graph.claim(s.text,refs(s.refs),{kind:s.kind==='reading'?'inference':s.speaker?'attributed':'explicit',speaker:s.speaker||''})]});
   for(const [i,q] of (c.dialogue||[]).entries())sections.push({id:'dialogue-'+i,title:q.label,claimIds:[graph.claim(q.quote,[{sourceId:'quest-'+q.quest_id,anchor:'scene-'+q.scene,quote:q.quote,title:q.title}],{kind:'attributed',speaker:q.speaker})]});
-  if(c.paragraphs.length)sections.push({id:'context',title:'관련 기록과 사건',claimIds:c.paragraphs.map(p=>graph.claim(p.text,refs(p.refs),{kind:p.kind==='reading'?'inference':'explicit'}))});
-  for(const [i,r] of c.edges.entries()){const a=byName.get(r.a),b=byName.get(r.b);if(!a||!b)throw Error('Unresolved entity '+r.a+' / '+r.b);relations.push({id:id+'/relation-'+i,clusterId:id,from:a.id,to:b.id,label:r.verb,kind:r.kind==='reading'?'inference':r.speaker?'attributed':'explicit',reasonClaimId:graph.claim(r.reason,refs(r.refs),{kind:r.kind==='reading'?'inference':r.speaker?'attributed':'explicit',speaker:r.speaker||''})});}
+  if(c.paragraphs?.length)sections.push({id:'context',title:'관련 기록과 사건',claimIds:c.paragraphs.map(p=>graph.claim(p.text,refs(p.refs),{kind:p.kind==='reading'?'inference':p.speaker?'attributed':'explicit',speaker:p.speaker||''}))});
+  for(const [i,r] of (c.edges||[]).entries()){const a=byName.get(r.a),b=byName.get(r.b);if(!a||!b)throw Error('Unresolved entity '+r.a+' / '+r.b);relations.push({id:id+'/relation-'+i,clusterId:id,from:a.id,to:b.id,label:r.verb,kind:r.kind==='reading'?'inference':r.speaker?'attributed':'explicit',reasonClaimId:graph.claim(r.reason,refs(r.refs),{kind:r.kind==='reading'?'inference':r.speaker?'attributed':'explicit',speaker:r.speaker||''})});}
   for(const [i,t] of (c.timeline?.items||[]).entries())events.push({id:id+'/event-'+i,clusterId:id,title:t.title,when:t.when||'',claimId:graph.claim(t.text,refs(t.refs)),order:i});
   const comparisons=(c.comparison||[]).map(p=>({title:p.title,claimId:graph.claim(p.text,refs(p.refs),{kind:'attributed',speaker:p.speaker||p.title})}));
   const process=(c.process||[]).map(p=>({title:p.title,claimId:graph.claim(p.text,refs(p.refs))}));

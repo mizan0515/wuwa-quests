@@ -12,10 +12,11 @@ const book=await read('editorial.json'),index=await read('index.json'),records={
 const originalCurated=new Set(Object.keys(index.curated_sources));
 for(const name of await readdir(data))if(name.startsWith('records-'))Object.assign(records,await read(name));
 const entries=new Map(index.entries.map(e=>[e.id,e])),chapters=new Map(book.chapters.map(c=>[c.id,c])),people=new Map(index.characters.map(c=>[c.id,c]));
-const H=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])).replace(/ +(?=\r?\n|$)/g,spaces=>'&#32;'.repeat(spaces.length));
+// Encode source line endings inside HTML so Markdown cannot turn them into paragraphs.
+const H=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])).replace(/ +(?=\r?\n|$)/g,spaces=>'&#32;'.repeat(spaces.length)).replace(/\r/g,'&#13;').replace(/\n/g,'&#10;');
 const canonical=id=>index.aliases[id]||id,entry=id=>entries.get(canonical(id));
 const sourceLink=(id,field='')=>{const e=entry(id);if(e.page.startsWith('/library.html#')){const slug=crypto.createHash('sha256').update(e.id).digest('hex').slice(0,16);e.page='/sources/'+slug+'.html';index.curated_sources[e.id]=slug;}return base+e.page+(field?'#field-'+encodeURIComponent(field):'');};
-const cite=r=>`<a href="${H(sourceLink(r.id,r.field))}">${H(r.label)} <span aria-hidden="true">↗</span></a>`;
+const cite=r=>`<a href="${H(r.quest_id?base+'/quests/'+r.quest_id+'.html#scene-'+r.scene:sourceLink(r.id,r.field))}">${H(r.label||r.title)} <span aria-hidden="true">↗</span></a>`;
 const refs=rs=>`<div class="lore-citations" data-pagefind-ignore>${rs.map(cite).join('')}</div>`;
 const clean=s=>s.replace(/<br\s*\/?\s*>/gi,'\n').replace(/<\/?(?:te|color|size|b|i|u|ano|s)(?:[=\s][^>]*)?>/g,'');
 function linked(raw){let out='',last=0;for(const m of raw.matchAll(/<te\s+href[=\s]+["']?(\d+)["']?\s*>(.*?)<\/te>/gs)){out+=H(clean(raw.slice(last,m.index)));const i=book.concepts.findIndex(c=>c.term_id===m[1]);out+=i>=0?`<a href="${base}/concepts/${i}.html">${H(clean(m[2]))}</a>`:H(clean(m[2]));last=m.index+m[0].length;}return out+H(clean(raw.slice(last)));}
@@ -64,5 +65,6 @@ await generateAtlas({site,content,book,index,records,doc,H,refs,related});
 for(const [id,slug] of Object.entries(index.curated_sources)){if(originalCurated.has(id))continue;const e=entry(id),row=records[id];await doc('sources/'+slug,e.title,`<p class="lore-kicker">${H(e.category_label)}</p>${fields(row)}`,e.title+' · 원문 기록');}
 
 await mkdir(path.join(source,'public/settings'),{recursive:true});for(const name of await readdir(data))await copyFile(path.join(data,name),path.join(source,'public/settings',name));
+await writeFile(path.join(source,'public/settings/curated-sources.json'),JSON.stringify({schema:'wuwa-curated-sources.v1',inputIndexSha256:manifest.files['index.json'],sources:index.curated_sources}));
 const about=path.join(content,'about.md');await writeFile(about,(await readFile(about,'utf8'))+`\n\n## 세계관 설정집\n\n[세계관 설정집](${base}/world.html)은 인물 검사 기록·이야기·소장품·문서·지역·생태·무기 설명을 실제로 읽고 관계를 엮은 비공식 해설입니다. ‘원문 연결’과 ‘읽는 관점’을 구분하고 서술 차이를 보존했습니다. 원자료 ${index.source_records}개를 유지하고, 동일 종류·인물에서 모든 원문 읽기 필드가 같은 기록을 접어 ${index.reading_entries}개 읽기 항목으로 보여줍니다. 캐시 자료의 관찰 날짜는 2026-10-07이며 실제 클라이언트 버전과 최초 출시 시점은 미확인입니다. 이번에 새 클라이언트를 추출했다는 뜻은 아닙니다.\n\n상단 검색은 퀘스트·해설·인물 및 선택된 근거 원문을 함께 찾습니다. 전체 설정 원문 ${index.reading_entries}개를 본문으로 찾으려면 [원문 보관함](${base}/library.html)에서 ‘본문까지’를 선택합니다. 모든 기록에 개별 해석을 붙였다는 뜻은 아닙니다.\n`);
 console.log(JSON.stringify({loreChapters:book.chapters.length,people:64,concepts:16,curatedSources:Object.keys(index.curated_sources).length,readingEntries:8668,evidenceSha256:'PASS',localPaths:'EXCLUDED'}));

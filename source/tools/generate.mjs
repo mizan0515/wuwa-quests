@@ -9,7 +9,7 @@ const content=path.join(source,'src/content/docs');
 const all=JSON.parse(await readFile(path.join(site,'content-manifest.json'),'utf8'));
 const items=process.env.WUWA_SAMPLE_ONLY==='1'?all.filter(x=>['915000001','915000003','915000004'].includes(x.id)):all;
 const base='/wuwa-quests';
-const e=(s)=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const e=(s)=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/\r/g,'&#13;').replace(/\n/g,'&#10;');
 const display=(s)=>s.replace(/^기타임무_유형(\d+)$/,'기타임무 (유형 $1)').replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
 const readable=(s)=>s.replace(/<\/?(?:te|color|size|b|i|u|ano|s)(?:[=\s][^>]*)?>/g,'');
 const versions=[...new Set(items.map(x=>x.version))].sort((a,b)=>/^\d\.\d$/.test(a)&&/^\d\.\d$/.test(b)?parseFloat(b)-parseFloat(a):/^\d\.\d$/.test(a)?-1:/^\d\.\d$/.test(b)?1:a.localeCompare(b,'ko'));
