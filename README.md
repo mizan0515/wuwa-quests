@@ -1,8 +1,14 @@
-# 명조 한국어 퀘스트 자료집
+# 명조 이야기 자료집
 
 [자료집 바로가기](https://mizan0515.github.io/wuwa-quests/index.html)
 
+[세계관 설정집](https://mizan0515.github.io/wuwa-quests/world.html) · [인물별 설정](https://mizan0515.github.io/wuwa-quests/people.html) · [개념과 용어](https://mizan0515.github.io/wuwa-quests/concepts.html) · [원문 보관함](https://mizan0515.github.io/wuwa-quests/library.html) · [해설 문서](settings/world-guide.md)
+
 GitHub Pages에서 제공하는 비공식 퀘스트 대사 자료집입니다. 766개 퀘스트의 대사·선택지를 버전과 임무 종류별로 찾아 읽을 수 있습니다.
+
+세계관 설정집은 주파수와 기억, 공명자의 감각, 금주의 방어와 추모, 검은 해안의 계산과 선택, 리나시타의 신앙과 공공 에코, 라하이 로이의 생존 기술, 생태와 기록의 서술 차이를 여덟 개의 질문으로 엮었습니다. ‘원문 연결’과 ‘읽는 관점’을 구분하고 각 문단에서 근거로 이동할 수 있습니다. 인물 64묶음·핵심 개념 16개·주요 근거 원문 50개와 전체 원문 보관함을 함께 제공합니다.
+
+상단 검색은 퀘스트·해설·인물·주요 근거를 함께 찾습니다. 전체 설정 원문은 원문 보관함의 ‘본문까지’로 검색합니다. 원자료 9,228개를 보존하며 동일 종류·인물에서 모든 읽기 필드가 같은 기록은 접어 8,668개 읽기 항목으로 보여줍니다. 캐시 자료의 관찰 날짜는 2026-10-07이며 실제 클라이언트 버전·최초 출시 시점은 미확인입니다. 이번에 새 게임 버전을 추출했다는 뜻은 아닙니다.
 
 ## 화면과 기능
 
@@ -34,3 +40,7 @@ npm run deploy:files
 ```
 
 빌드 결과 `source/dist/`를 검증한 뒤 `deploy:files`로 저장소 루트에 반영합니다. `node_modules/`와 생성 중간 파일은 추적하지 않습니다. Starlight와 Pagefind의 라이선스는 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)에 보관합니다. 게임 대사에는 해당 오픈소스 라이선스가 적용되지 않습니다.
+
+`settings/`에는 개인 경로와 게임 DB 파일을 제외한 읽기 원문·해설·검증용 해시를 보관합니다. `source/tools/generate-lore.mjs`는 입력 해시와 해설의 근거 문자열 해시를 검사한 뒤 기존 Starlight 문서·목차·검색에 설정집을 생성합니다. 게임 업데이트로 인용한 문장이 달라지면 해설을 다시 읽고 검토해야 합니다. 키워드가 같다는 이유만으로 새 원문에 기존 해석을 자동 적용하지 않습니다.
+
+`npm run deploy:settings`는 검증한 설정집·홈·공통 검색만 반영하는 추가 경로입니다. 기존 퀘스트 HTML과 해시 자산을 유지하며, 전체 재생성은 `deploy:files`를 사용합니다.

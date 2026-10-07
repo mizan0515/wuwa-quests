@@ -3,6 +3,7 @@ source/.astro/
 source/dist/
 source/src/content/docs/
 source/public/originals/
+source/public/settings/
 source/generated-sidebar.json
 source/generated-catalog.json
 .runtime/

@@ -1,0 +1,27 @@
+{
+  "schema": "wuwa-public-settings.v1",
+  "observed_date": "2026-10-07",
+  "client_version": "UNVERIFIED",
+  "original_records": 9228,
+  "reading_entries": 8668,
+  "characters": 64,
+  "source_settings_sha256": "d21962b09d40711b9b1a34bfbfd8ca4d5ce064689f3ddedb35c41a5b21eb91c1",
+  "files": {
+    "editorial.json": "9e9d73c74eef2f93127f444f631bf353fb514f2443bec878a3848bf70110da2e",
+    "index.json": "6a84302be76dca556eea88ca51019f219f447d99c9c62174e5a83ebf3bca08fb",
+    "records-animals.json": "7e25e788eb4b60c64ba204499fbf67336e7746ed3a79b16e83f6e82b2ab108c5",
+    "records-documents.json": "b8b52012332831a0c06da573cfebdeb409266e93dbea683e1f4e2b9b8ef6c00a",
+    "records-geography.json": "c7854af928461bb51a11f41d8b0a9c63f2faece2dd9f668bfe9404010576e91e",
+    "records-goods.json": "915d264d2bc3ad08dec5ee7eaa08f189cc29296c3abfc6eca4e6d1f7ea84c7ae",
+    "records-items.json": "9b3d11f445927e30d58a70a6239c4b75e755c5272c82b8bf2e3d60bb28af7ec7",
+    "records-monsters.json": "c83f4221c58002138556263a181d661ddade39a9fdee36378c976a4233fdab8d",
+    "records-photos.json": "1fbbf9d119352bb7b25ea63f0dd824fa05955fd2f0c52ba8995064c3fd8576ff",
+    "records-profile.json": "321011d8f89825a006fd4718e9a27c0be368751dde711eab78bf8be0b79d4d79",
+    "records-stories.json": "10621f6eb0edbcf28a896e8da4c036c3cd0c7709502d1623bc37e32be1fdaa76",
+    "records-ui-help.json": "d92ef303f1c05ea58c52b1a1fc4b6e2979f23b699933cc09fe78e3f4ef3de724",
+    "records-ui.json": "74a454a2be7758f029f59429755718329c54683470f00da01bd3e57e357f35d5",
+    "records-voice.json": "87e8e6b6454ab4d5602cf403b4f3cbbadffce961ff1a5c38e0987a30e7ed0d9d",
+    "records-weapons.json": "4a6f858fd5a547d9f89f4a25173bb7dacac9ce20599a6f95f2104f1028886f1a",
+    "records-world.json": "2b153dd3319ed5afbfe1bf1608c7d174ec3d375e15c8d93d99d44c97a41f1c3a"
+  }
+}

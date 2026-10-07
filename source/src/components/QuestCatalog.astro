@@ -6,6 +6,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/,'');
 const label = (s: string) => s.replace(/^기타임무_유형(\d+)$/,'기타임무 (유형 $1)').replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
 ---
 <div class="catalog not-content" data-pagefind-ignore>
+  <div class="lore-entry-callout"><p><strong>이야기 너머의 세계를 읽다.</strong>인물의 기록, 도시의 신앙, 생존의 기술을 서로 이어 읽는 설정집.</p><a href={`${base}/world.html`}>세계관 설정집 <span aria-hidden="true">↗</span></a></div>
   <div class="catalog-filters" role="search" aria-label="퀘스트 목록 필터">
     <label class="title-filter" for="catalog-q">퀘스트 제목 또는 ID
       <span class="search-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="catalog-q" type="search" placeholder="예: 스타토치, 915000001" autocomplete="off" /></span>

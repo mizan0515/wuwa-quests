@@ -2,14 +2,27 @@
 import Default from '@astrojs/starlight/components/Sidebar.astro';
 import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
 import items from '../../generated-catalog.json';
+import book from '../../../settings/editorial.json';
 const catalog = Astro.locals.starlightRoute.id === '';
+const lore = /^(world|people|concepts|sources|library)(\/|$)/.test(Astro.locals.starlightRoute.id);
+const routeId = Astro.locals.starlightRoute.id;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const versions = [...new Set(items.map(x => x.version))];
 const label = (s: string) => s.replace('버전미확인', '버전 미확인').replace('버전혼합_', '버전 혼합 ');
 ---
-{catalog ? <div class="archive-sidebar">
+{lore ? <div class="archive-sidebar">
+  <p class="sidebar-caption">이야기 자료집</p>
+  <a class="archive-nav-link" href={`${base}/index.html`}>퀘스트 목록 <span class="nav-count">{items.length}</span></a>
+  <a class="archive-nav-link" href={`${base}/world.html`} aria-current={routeId==='world'?'page':undefined}>세계관 설정집</a>
+  <div class="sidebar-section"><p class="sidebar-caption">질문을 따라 이어 읽기</p>{book.chapters.map(c=><a class="archive-nav-link lore-sidebar-chapter" href={`${base}/world/${c.id}.html`} aria-current={routeId==='world/'+c.id?'page':undefined}><span>{c.number}</span>{c.title}</a>)}</div>
+  <div class="sidebar-section"><p class="sidebar-caption">찾아 읽는 자료</p><a class="archive-nav-link" href={`${base}/people.html`} aria-current={routeId.startsWith('people')?'page':undefined}>인물별 설정</a><a class="archive-nav-link" href={`${base}/concepts.html`} aria-current={routeId.startsWith('concepts')?'page':undefined}>개념과 용어</a><a class="archive-nav-link" href={`${base}/library.html#/library?group=documents`}>문서·편지·일기</a><a class="archive-nav-link" href={`${base}/library.html`} aria-current={routeId.startsWith('library')||routeId.startsWith('sources')?'page':undefined}>원문 보관함</a></div>
+  <div class="sidebar-note"><span class="note-rule" aria-hidden="true"></span><p>원문과 해석을,<br/>근거와 함께 읽다.</p><a href={`${base}/settings/world-guide.md`} download>전체 해설 문서 ↓</a></div>
+  <div class="md:sl-hidden"><MobileMenuFooter /></div>
+</div> : catalog ? <div class="archive-sidebar">
   <p class="sidebar-caption">자료집</p>
   <a class="archive-nav-link" href={`${base}/index.html`} aria-current="page"><span aria-hidden="true">▤</span> 퀘스트 목록 <span class="nav-count">{items.length}</span></a>
+  <a class="archive-nav-link" href={`${base}/world.html`}>세계관 설정집 <span class="nav-count">8</span></a>
+  <a class="archive-nav-link" href={`${base}/people.html`}>인물별 설정</a>
   <a class="archive-nav-link" href={`${base}/about.html`}><span aria-hidden="true">ⓘ</span> 자료 안내</a>
   <div class="sidebar-section">
     <p class="sidebar-caption">버전으로 찾기</p>
