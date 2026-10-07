@@ -1,4 +1,6 @@
 /* The settings book shares Starlight's theme, navigation and search. */
+/* This non-interactive region receives focus after routing; controls retain shared focus rings. */
+#lore-reader:focus{outline:none}
 .lore-heading h1{font-family:"Noto Serif KR","Batang",Georgia,serif!important;font-weight:600!important;letter-spacing:-.04em!important}
 .lore-sidebar-chapter{font-size:12px;line-height:1.7;align-items:baseline;word-break:keep-all}.lore-sidebar-chapter>span:first-child{font-size:11px;min-width:20px;color:var(--brass)}
 .lore-kicker{font-size:12px;letter-spacing:.04em;color:var(--brass);font-weight:650;margin:0 0 15px}
