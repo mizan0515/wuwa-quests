@@ -2,6 +2,7 @@ import {readFile,writeFile,mkdir,copyFile,readdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import {generateAtlas} from './generate-atlas.mjs';
 const source=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=path.dirname(source),data=path.join(site,'settings'),content=path.join(source,'src/content/docs'),base='/wuwa-quests';
 const read=name=>readFile(path.join(data,name),'utf8').then(JSON.parse);
 const manifest=await read('manifest.json');
@@ -21,10 +22,10 @@ function fields(row,only=null,prefix=''){const used=new Set(),values=row.values.
 async function doc(slug,title,body,description='',toc=true,pagefind=true){await mkdir(path.dirname(path.join(content,slug+'.md')),{recursive:true});await writeFile(path.join(content,slug+'.md'),`---\ntitle: ${JSON.stringify(title)}\ndescription: ${JSON.stringify(description||title+' · 근거 원문과 함께 읽는 명조 설정집')}\ntableOfContents: ${toc}\npagefind: ${pagefind}\n---\n\n${body}\n`);}
 const card=c=>`<a class="lore-card" href="${base}/world/${c.id}.html"><span class="lore-card-number">${c.number}<span aria-hidden="true">↗</span></span><h3>${H(c.title)}</h3><p>${H(c.summary)}</p><small>${H(c.subtitle)}</small></a>`;
 const related=ids=>`<div class="lore-related">${ids.map(id=>chapters.get(id)).filter(Boolean).map(c=>`<a href="${base}/world/${c.id}.html"><strong>${H(c.title)}</strong><small>${H(c.question)}</small></a>`).join('')}</div>`;
-let overview=`<div class="lore-intro"><p class="lore-kicker">서로 이어 읽는 세계관</p><p class="lore-statement">흩어진 설정을,<br>하나의 세계로 읽다.</p><p class="lore-lead">주파수에서 한 사람의 삶으로, 도시의 신앙에서 생존의 기술로.<br>자료 사이의 관계를 따라 읽는 여덟 개의 해설입니다.</p><div class="lore-actions"><a class="lore-primary" href="${base}/world/frequency.html">주파수부터 읽기 <span aria-hidden="true">→</span></a><a href="${base}/people.html">인물 찾기</a><a href="${base}/concepts.html">용어 살펴보기</a></div></div>`;
-for(const [title,description,ids] of [['세계의 법칙','재앙의 흔적이 힘과 감각이 되는 과정',['frequency','resonance']],['도시와 문명','사람들은 같은 세계를 어떻게 다르게 살아가는가',['city','shore','rinascita','raha']],['기록을 읽는 시선','서식지의 관계와 기록 속 서술 차이',['ecology','evidence']]])overview+=`<section class="lore-group"><div class="lore-group-heading"><h2>${title}</h2><p>${description}</p></div><div class="lore-card-grid">${ids.map(id=>card(chapters.get(id))).join('')}</div></section>`;
+let overview=`<div class="lore-intro"><p class="lore-kicker">서로 이어 읽는 세계관</p><p class="lore-statement">흩어진 설정을,<br>하나의 세계로 읽다.</p><p class="lore-lead">주파수에서 한 사람의 삶으로, 도시의 신앙에서 생존의 기술로.<br>자료 사이의 관계를 따라 읽는 일곱 개의 해설입니다.</p><div class="lore-actions"><a class="lore-primary" href="${base}/world/frequency.html">주파수부터 읽기 <span aria-hidden="true">→</span></a><a href="${base}/people.html">인물 찾기</a><a href="${base}/concepts.html">용어 살펴보기</a></div></div>`;
+for(const [title,description,ids] of [['세계의 법칙','재앙의 흔적이 힘과 감각이 되는 과정',['frequency','resonance']],['도시와 문명','사람들은 같은 세계를 어떻게 다르게 살아가는가',['city','shore','rinascita','raha']],['기록을 읽는 시선','서식지의 관계와 기록 속 서술 차이',['ecology']]])overview+=`<section class="lore-group"><div class="lore-group-heading"><h2>${title}</h2><p>${description}</p></div><div class="lore-card-grid">${ids.map(id=>card(chapters.get(id))).join('')}</div></section>`;
 overview+=`<div class="lore-note"><strong>원문 연결</strong>은 자료에 적힌 내용, <strong>읽는 관점</strong>은 자료 사이의 해석입니다. 서술 차이와 확인되지 않은 관계는 그대로 남겼습니다.</div><div class="lore-actions lore-download"><a href="${base}/settings/world-guide.md" download>전체 해설 문서 ↓</a><a href="${base}/library.html">원문 보관함 ↗</a></div>`;
-await doc('world','세계관 설정집',overview,'인물·문서·지역·생태의 관계를 엮어 읽는 여덟 가지 세계관 해설',false);
+await doc('world','세계관 설정집',overview,'인물·문서·지역·생태의 관계를 엮어 읽는 세계관 해설',false);
 const citedFields=[];
 for(const c of book.chapters){
  let body=`<div class="lore-article-intro"><p class="lore-kicker">${c.number} · ${H(c.subtitle)}</p><p class="lore-question">${H(c.question)}</p><p class="lore-lead">${H(c.summary)}</p></div><ol class="lore-flow" aria-label="이 장의 연결 구조">${c.flow.map(s=>`<li><strong>${H(s.title)}</strong><span>${H(s.detail)}</span></li>`).join('')}</ol>`;
@@ -35,6 +36,8 @@ for(const c of book.chapters){
  body+=`\n\n## 함께 읽는 인물과 개념\n\n<div class="lore-pills">${c.roles.map(id=>people.get(id)).filter(Boolean).map(p=>`<a href="${base}/people/${p.id}.html">${H(p.name)}</a>`).join('')}${book.concepts.map((term,i)=>({term,i})).filter(x=>x.term.term_id&&c.terms.includes(x.term.term_id)).map(x=>`<a href="${base}/concepts/${x.i}.html">${H(x.term.name)}</a>`).join('')}</div>`;
  if(c.quest_links?.length){body+=`\n\n## 대사에서 이어 읽기\n\n<p class="lore-muted">같은 인물·용어가 실제 대사에 등장하는 퀘스트입니다. 언급의 연결이며 같은 사건이라는 뜻은 아닙니다.</p><div class="lore-source-list">${c.quest_links.map(q=>`<a href="${base}/quests/${q.id}.html"><small>${H(q.terms.join(' · '))}</small><strong>${H(q.title)}</strong><span>${H(q.snippet)}</span></a>`).join('')}</div>`;}
  body+=`\n\n## 이 질문에서 이어지는 설정\n\n${related(c.related)}`;
+ const chapterRefs=[...new Map(c.sections.flatMap(s=>s.paragraphs.flatMap(p=>p.refs)).concat(c.caution?.refs||[]).map(r=>[r.id+'|'+r.field,r])).values()];
+ body+=`<section class="atlas-evidence"><h2>이 페이지의 원문 근거</h2><p class="atlas-caption">실제 텍스트에서 확인한 자료입니다. 각 링크는 해당 원문 본문으로 이동합니다.</p>${chapterRefs.map(r=>`<details><summary>${H(r.label)}</summary><blockquote>${H(r.quote||r.excerpt||'')}</blockquote>${refs([r])}</details>`).join('')}</section>`;
  await doc('world/'+c.id,c.title,body);
 }
 for(const r of [...citedFields,...book.concepts.map(c=>c.ref)]){const row=records[canonical(r.id)],v=row.values.find(v=>v.field===r.field);if(!v||v.status!=='OK'||crypto.createHash('sha256').update(v.raw).digest('hex')!==r.source_text_sha256)throw Error('Invalid interpretation evidence: '+r.id);if(r.quote&&!v.text.includes(r.quote))throw Error('Quotation mismatch');}
@@ -54,6 +57,7 @@ await doc('library','원문 보관함',`<div id="lore-reader" data-base="${base}
 const sidebar=JSON.parse(await readFile(path.join(source,'generated-sidebar.json'),'utf8'));
 sidebar.splice(1,0,{label:'세계관 설정집',link:'/world.html'},{label:'인물별 설정',link:'/people.html'},{label:'개념과 용어',link:'/concepts.html'},{label:'원문 보관함',link:'/library.html'},{label:'이어 읽는 설정',collapsed:true,items:book.chapters.map(c=>({label:c.title,link:'/world/'+c.id+'.html'}))});
 await writeFile(path.join(source,'generated-sidebar.json'),JSON.stringify(sidebar));
+await generateAtlas({site,content,book,index,records,doc,H,refs,related});
 await mkdir(path.join(source,'public/settings'),{recursive:true});for(const name of await readdir(data))await copyFile(path.join(data,name),path.join(source,'public/settings',name));
 const about=path.join(content,'about.md');await writeFile(about,(await readFile(about,'utf8'))+`\n\n## 세계관 설정집\n\n[세계관 설정집](${base}/world.html)은 인물 검사 기록·이야기·소장품·문서·지역·생태·무기 설명을 실제로 읽고 관계를 엮은 비공식 해설입니다. ‘원문 연결’과 ‘읽는 관점’을 구분하고 서술 차이를 보존했습니다. 원자료 ${index.source_records}개를 유지하고, 동일 종류·인물에서 모든 원문 읽기 필드가 같은 기록을 접어 ${index.reading_entries}개 읽기 항목으로 보여줍니다. 캐시 자료의 관찰 날짜는 2026-10-07이며 실제 클라이언트 버전과 최초 출시 시점은 미확인입니다. 이번에 새 클라이언트를 추출했다는 뜻은 아닙니다.\n\n상단 검색은 퀘스트·해설·인물 및 선택된 근거 원문을 함께 찾습니다. 전체 설정 원문 ${index.reading_entries}개를 본문으로 찾으려면 [원문 보관함](${base}/library.html)에서 ‘본문까지’를 선택합니다. 모든 기록에 개별 해석을 붙였다는 뜻은 아닙니다.\n`);
-console.log(JSON.stringify({loreChapters:8,people:64,concepts:16,curatedSources:50,readingEntries:8668,evidenceSha256:'PASS',localPaths:'EXCLUDED'}));
+console.log(JSON.stringify({loreChapters:book.chapters.length,people:64,concepts:16,curatedSources:Object.keys(index.curated_sources).length,readingEntries:8668,evidenceSha256:'PASS',localPaths:'EXCLUDED'}));

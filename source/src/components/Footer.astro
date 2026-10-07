@@ -21,6 +21,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </div>
 </footer>
 <Default />
+<script src={`${base}/lore/context.js`} defer></script>
 <script>
   const button=document.querySelector<HTMLButtonElement>('#line-toggle');
   button?.addEventListener('click',()=>{const show=document.documentElement.classList.toggle('show-line-ids');button.setAttribute('aria-pressed',String(show));button.textContent=show?'대사 번호 숨기기':'대사 번호 보기';});
