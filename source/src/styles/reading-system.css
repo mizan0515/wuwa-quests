@@ -1,0 +1,35 @@
+/* Common reading surface: WuWa catalogue reference. */
+:root{--sl-font:"Pretendard Variable",Pretendard,"Noto Sans KR",system-ui,"Malgun Gothic",sans-serif}
+body,h1,h2,h3,input,select,button,.lore-heading h1,.lore-statement,.lore-card h3,.lore-entry-callout strong{font-family:var(--sl-font)!important}
+.lore-entry-callout strong{font-size:1.125rem;font-weight:700;letter-spacing:-.025em}
+.lore-heading h1{font-weight:750!important}
+.archive-sidebar *{margin-block-start:0}
+.archive-sidebar{font-family:var(--sl-font)}
+.site-global-nav{display:grid;gap:.2rem}
+.site-global-nav a{min-height:44px;align-items:center}
+.sidebar-section{border-top:1px solid var(--line);padding-top:1.2rem;margin-top:1.2rem}
+.sidebar-section summary{min-height:44px;cursor:pointer;display:flex;align-items:center}
+.sidebar-caption{font-size:.75rem;letter-spacing:.02em}
+.archive-nav-link{font-size:.875rem}
+.atlas-intro{border:0;background:transparent;padding:0;margin:0 0 1.5rem}
+.atlas-reading{margin-block:1.25rem}
+.atlas-reading>p,.lore-source-text,.lore-paragraph p{font-size:1.0625rem;line-height:1.9}
+.atlas-reading .lore-kind{display:none}
+.atlas-jump{border-block:1px solid var(--line);padding-block:.75rem;gap:.5rem}
+.atlas-jump a{min-height:44px;display:inline-flex;align-items:center}
+.setting-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:1.5rem 0 2rem!important;padding:1.2rem 0;border-block:1px solid var(--line)}
+.setting-facts div{margin:0}.setting-facts dt{font-size:.8125rem;color:var(--muted)}
+.setting-facts dd{margin:.35rem 0 0!important;font-weight:650;line-height:1.65}
+.setting-sections section{margin-block:2.5rem}.setting-sections h2{margin-top:0!important}
+.setting-process{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:0!important;list-style:none;gap:1rem;counter-reset:step}
+.setting-process li{border-top:3px solid var(--brass);padding:1rem 0;counter-increment:step;margin:0!important}
+.setting-process li:before{content:counter(step,decimal-leading-zero);font-size:.75rem;color:var(--brass)}
+.setting-process h3{font-size:1.05rem!important;margin:.5rem 0!important}.setting-process p{font-size:.95rem;line-height:1.8}
+.world-directory{display:grid;gap:2.2rem}.world-directory section{margin:0!important}.world-directory h2{margin-top:0!important}
+.world-directory-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.5rem}
+.world-directory-links a{display:block;padding:1rem 0;border-bottom:1px solid var(--line);text-decoration:none}
+.world-directory-links strong{display:block;color:var(--ink);font-size:1.05rem}.world-directory-links span{display:block;font-size:.9rem;color:var(--muted);line-height:1.7;margin-top:.35rem}
+.setting-source-heading{margin-top:2rem!important}
+@media(max-width:40rem){.setting-facts,.world-directory-links,.setting-process{grid-template-columns:1fr}.setting-facts{gap:.85rem}.atlas-reading>p,.lore-source-text,.lore-paragraph p{font-size:1rem}.atlas-edge{grid-template-columns:1fr}.atlas-connector{transform:none}.atlas-arrow{transform:rotate(90deg)}.setting-process{gap:.5rem}}
+
+.atlas-interpretation .lore-kind{display:block}.setting-cycle-return{border:1px solid var(--brass);border-radius:2rem;padding:.8rem 1.2rem;max-width:max-content;font-size:.9rem}.setting-containment{border-left:3px solid var(--brass);padding:1rem 1.5rem}.setting-containment ul{display:flex;flex-wrap:wrap;gap:1rem;list-style:none;padding:0}.setting-containment li{border:1px solid var(--line);padding:.7rem 1rem;border-radius:6px}

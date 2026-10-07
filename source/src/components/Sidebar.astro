@@ -1,49 +1,20 @@
 ---
-import Default from '@astrojs/starlight/components/Sidebar.astro';
 import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
 import items from '../../generated-catalog.json';
-import book from '../../../settings/editorial.json';
-const catalog = Astro.locals.starlightRoute.id === '';
-const lore = /^(world|people|concepts|sources|library|regions|cosmology|sentinels|relationships|events)(\/|$)/.test(Astro.locals.starlightRoute.id);
-const routeId = Astro.locals.starlightRoute.id;
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const versions = [...new Set(items.map(x => x.version))];
+const routeId=Astro.locals.starlightRoute.id;
+const base=import.meta.env.BASE_URL.replace(/\/$/,'');
 const currentQuest=items.find(x=>'quests/'+x.id===routeId);
-const currentGroup=currentQuest?items.filter(x=>x.version===currentQuest.version&&x.type===currentQuest.type).sort((a,b)=>Number(a.id)-Number(b.id)):[];
-const currentPosition=currentQuest?currentGroup.findIndex(x=>x.id===currentQuest.id):0;
-const label = (s: string) => s.replace('버전미확인', '버전 미확인').replace('버전혼합_', '버전 혼합 ');
+const versions=[...new Set(items.map(x=>x.version))];
+const label=(v:string)=>v.replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
+const nav=[['','퀘스트 목록'],['world','설정집'],['regions','지역'],['people','인물'],['cosmology','세계관의 큰 설정'],['about','자료 안내']];
+const active=(id:string)=>id===''?routeId===''||routeId.startsWith('quests/'):id==='regions'?/^(regions|places|entities)(\/|$)/.test(routeId):routeId===id||routeId.startsWith(id+'/');
 ---
-{lore ? <div class="archive-sidebar">
-  <p class="sidebar-caption">이야기 자료집</p>
-  <a class="archive-nav-link" href={`${base}/index.html`}>퀘스트 목록 <span class="nav-count">{items.length}</span></a>
-  <a class="archive-nav-link" href={`${base}/world.html`} aria-current={routeId==='world'?'page':undefined}>세계관 설정집</a>
-  <div class="sidebar-section"><p class="sidebar-caption">관점으로 찾아 읽기</p>{[['regions','지역'],['people','인물'],['cosmology','세계관의 큰 설정']].map(([id,label])=><a class="archive-nav-link" href={`${base}/${id}.html`} aria-current={routeId.startsWith(id)?'page':undefined}>{label}</a>)}</div>
-  <div class="sidebar-section"><p class="sidebar-caption">연결을 따라 읽기</p>{[['sentinels','수호신과 문명'],['relationships','관계 따라 읽기'],['events','전환점 따라 읽기']].map(([id,label])=><a class="archive-nav-link" href={`${base}/${id}.html`} aria-current={routeId.startsWith(id)?'page':undefined}>{label}</a>)}</div>
-  <details class="sidebar-section"><summary class="sidebar-caption">질문을 깊이 읽는 해설</summary>{book.chapters.map(c=><a class="archive-nav-link lore-sidebar-chapter" href={`${base}/world/${c.id}.html`} aria-current={routeId==='world/'+c.id?'page':undefined}>{c.title}</a>)}</details>
-  <div class="sidebar-section"><p class="sidebar-caption">찾아 읽는 자료</p><a class="archive-nav-link" href={`${base}/people.html`} aria-current={routeId.startsWith('people')?'page':undefined}>인물별 설정</a><a class="archive-nav-link" href={`${base}/concepts.html`} aria-current={routeId.startsWith('concepts')?'page':undefined}>개념과 용어</a><a class="archive-nav-link" href={`${base}/library.html#/library?group=documents`}>문서·편지·일기</a><a class="archive-nav-link" href={`${base}/library.html`} aria-current={routeId.startsWith('library')||routeId.startsWith('sources')?'page':undefined}>원문 보관함</a></div>
-  <div class="sidebar-note"><span class="note-rule" aria-hidden="true"></span><p>원문과 해석을,<br/>근거와 함께 읽다.</p><a href={`${base}/settings/world-guide.md`} download>전체 해설 문서 ↓</a></div>
-  <div class="md:sl-hidden"><MobileMenuFooter /></div>
-</div> : catalog ? <div class="archive-sidebar">
-  <p class="sidebar-caption">자료집</p>
-  <a class="archive-nav-link" href={`${base}/index.html`} aria-current="page"><span aria-hidden="true">▤</span> 퀘스트 목록 <span class="nav-count">{items.length}</span></a>
-  <a class="archive-nav-link" href={`${base}/world.html`}>세계관 설정집</a>
-  <a class="archive-nav-link" href={`${base}/people.html`}>인물별 설정</a>
-  <a class="archive-nav-link" href={`${base}/about.html`}><span aria-hidden="true">ⓘ</span> 자료 안내</a>
-  <div class="sidebar-section">
-    <p class="sidebar-caption">버전으로 찾기</p>
-    {[3, 2, 1].map(era => <div class="version-era">
-      <span class="era-label">{era}.x</span>
-      <div class="version-grid">{versions.filter(v => v.startsWith(`${era}.`)).map(v => <a href={`${base}/index.html?version=${v}`} data-version-link={v} aria-label={`${v} 버전 퀘스트`}>{v}</a>)}</div>
-    </div>)}
-    <div class="unknown-versions">{versions.filter(v => !/^\d\.\d$/.test(v)).map(v => <a href={`${base}/index.html?version=${encodeURIComponent(v)}`} data-version-link={v}>{label(v)}</a>)}</div>
-  </div>
-  <div class="sidebar-note"><span class="note-rule" aria-hidden="true"></span><p>이야기와 선택지를<br />한 장면씩, 천천히.</p><a href={`${base}/about.html#버전과-임무-분류`}>자료 분류에 관하여 <span aria-hidden="true">↗</span></a></div>
-  <div class="md:sl-hidden"><MobileMenuFooter /></div>
-</div> : <div class="archive-sidebar">
-  <p class="sidebar-caption">이야기 자료집</p>
-  <a class="archive-nav-link" href={`${base}/index.html`}>퀘스트 목록 <span class="nav-count">{items.length}</span></a>
-  {currentQuest && <div class="sidebar-section"><p class="sidebar-caption">지금 읽는 분류</p><a class="archive-nav-link" href={`${base}/index.html?version=${encodeURIComponent(currentQuest.version)}`}>{label(currentQuest.version)}</a><a class="archive-nav-link" href={`${base}/index.html?version=${encodeURIComponent(currentQuest.version)}&type=${encodeURIComponent(currentQuest.type)}`}>{currentQuest.type}</a><p class="sidebar-caption">가까운 퀘스트</p>{currentGroup.slice(Math.max(0,currentPosition-2),currentPosition+3).map(q=><a class="archive-nav-link" href={`${base}/quests/${q.id}.html`} aria-current={q.id===currentQuest.id?'page':undefined}>{q.title}</a>)}<p class="atlas-caption">같은 분류의 ID 순서입니다.</p></div>}
-  <div class="sidebar-section"><p class="sidebar-caption">설정과 이어 읽기</p>{[['world','세계관 설정집'],['regions','지역'],['people','인물'],['cosmology','세계관의 큰 설정'],['sentinels','수호신과 문명'],['library','원문 보관함']].map(([id,label])=><a class="archive-nav-link" href={`${base}/${id}.html`}>{label}</a>)}</div>
-  <a class="archive-nav-link" href={`${base}/about.html`}>자료 안내</a>
-  <div class="md:sl-hidden"><MobileMenuFooter /></div>
-</div>}
+<div class="archive-sidebar">
+ <p class="sidebar-caption">이야기 자료집</p>
+ <nav class="site-global-nav" aria-label="주요 탐색">{nav.map(([id,title])=><a class="archive-nav-link" href={`${base}/${id||'index'}.html`} aria-current={active(id)?'page':undefined}>{title}{id===''&&<span class="nav-count">{items.length}</span>}</a>)}</nav>
+ {currentQuest&&<div class="sidebar-section"><p class="sidebar-caption">지금 읽는 퀘스트</p><p>{currentQuest.title}</p><a class="archive-nav-link" href={`${base}/index.html?version=${encodeURIComponent(currentQuest.version)}&type=${encodeURIComponent(currentQuest.type)}`}>{label(currentQuest.version)} · {currentQuest.type}</a></div>}
+ <details class="sidebar-section" open={routeId===''||routeId.startsWith('quests/')}><summary class="sidebar-caption">버전으로 찾기</summary>{[3,2,1].map(era=><div class="version-era"><span class="era-label">{era}.x</span><div class="version-grid">{versions.filter(v=>v.startsWith(`${era}.`)).map(v=><a href={`${base}/index.html?version=${v}`} data-version-link={v} aria-label={`${v} 버전 퀘스트`}>{v}</a>)}</div></div>)}<div class="unknown-versions">{versions.filter(v=>!/^\d\.\d$/.test(v)).map(v=><a href={`${base}/index.html?version=${encodeURIComponent(v)}`} data-version-link={v}>{label(v)}</a>)}</div></details>
+ <details class="sidebar-section"><summary class="sidebar-caption">연결해서 읽기</summary>{[['sentinels','수호신과 문명'],['relationships','인물·장소의 관계'],['events','사건과 전환점'],['concepts','개념과 용어']].map(([id,title])=><a class="archive-nav-link" href={`${base}/${id}.html`} aria-current={active(id)?'page':undefined}>{title}</a>)}</details>
+ <div class="sidebar-section"><a class="archive-nav-link" href={`${base}/library.html`} aria-current={active('library')||active('sources')?'page':undefined}>원문 보관함</a></div>
+ <div class="md:sl-hidden"><MobileMenuFooter /></div>
+</div>
