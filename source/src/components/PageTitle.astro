@@ -1,7 +1,7 @@
 ---
 const { entry } = Astro.locals.starlightRoute;
 const catalog = Astro.locals.starlightRoute.id === '';
-const lore = /^(world|people|concepts|sources|library|regions|cosmology|sentinels|relationships|events)(\/|$)/.test(Astro.locals.starlightRoute.id);
+const lore = /^(world|people|concepts|sources|library|regions|cosmology|sentinels|relationships|events|entities)(\/|$)/.test(Astro.locals.starlightRoute.id);
 ---
 <div class:list={['archive-heading', { 'catalog-heading': catalog, 'lore-heading': lore }]}>
   <p class="archive-eyebrow" data-pagefind-ignore>{lore ? 'WUTHERING WAVES / WORLD & STORIES' : catalog ? 'WUTHERING WAVES / 한국어 대사 자료집' : 'WUTHERING WAVES / QUEST ARCHIVE'}</p>

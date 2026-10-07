@@ -17,7 +17,7 @@ export default defineConfig({
     tableOfContents:{minHeadingLevel:2,maxHeadingLevel:2},
     pagination:false,
     lastUpdated:false,
-    customCss:['./src/styles/quest.css','./src/styles/lore.css','./src/styles/atlas.css'],
+    customCss:['./src/styles/quest.css','./src/styles/lore.css','./src/styles/atlas.css','./src/styles/reading-system.css'],
     components:{Footer:'./src/components/Footer.astro',Sidebar:'./src/components/Sidebar.astro',PageTitle:'./src/components/PageTitle.astro',Search:'./src/components/Search.astro'},
     expressiveCode:false,
     credits:true,
