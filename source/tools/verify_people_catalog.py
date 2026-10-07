@@ -7,6 +7,7 @@ import sys
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlsplit, parse_qs
 
 sys.dont_write_bytecode = True
 from verify_original_rendering import visible_text, load_curated_sources
@@ -18,7 +19,7 @@ VOID = {'area','base','br','col','embed','hr','img','input','link','meta','param
 class Page(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
-        self.stack, self.links, self.cards, self.quotes, self.text = [], [], [], [], []
+        self.stack, self.links, self.scripts, self.cards, self.quotes, self.text = [], [], [], [], [], []
         self.card = self.quote = None
         self.heading = None
         self.ids = []
@@ -29,6 +30,8 @@ class Page(HTMLParser):
         flags = set()
         if a.get('id'):
             self.ids.append(a['id'])
+        if tag == 'script' and a.get('src'):
+            self.scripts.append(a['src'])
         if tag == 'a':
             self.links.append(a.get('href',''))
             if 'lore-person-card' in classes:
@@ -105,6 +108,18 @@ def main(dist):
             cache[relative] = parsed
         return cache[relative]
     directory = page('people.html')
+    # Bind the HTML to its current filter implementation so older cached JS
+    # cannot silently interpret the new multi-region card metadata incorrectly.
+    filter_bytes = (site/'source/public/lore/people.js').read_bytes()
+    filter_bytes = filter_bytes.decode('utf-8').replace('\r\n','\n').encode('utf-8')
+    filter_version = hashlib.sha256(filter_bytes).hexdigest()[:12]
+    filter_scripts = [urlsplit(src) for src in directory.scripts
+                      if urlsplit(src).path == BASE+'/lore/people.js']
+    require(len(filter_scripts)==1,'people filter script count differs',actual=len(filter_scripts))
+    if len(filter_scripts)==1:
+        require(parse_qs(filter_scripts[0].query).get('v')==[filter_version],
+                'people filter script cache version differs',expected=filter_version,
+                actual=parse_qs(filter_scripts[0].query).get('v'))
     expected = [(p['name'],BASE+'/people/'+str(p['id'])+'.html') for p in index['characters']]
     expected += [(p['title'],BASE+'/people/'+p['id']+'.html') for p in people]
     actual = [(''.join(p['name']),p['href']) for p in directory.cards]
