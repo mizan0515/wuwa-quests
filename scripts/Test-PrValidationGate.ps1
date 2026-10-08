@@ -17,5 +17,7 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Game image source QA failed'}
   & python tools/verify_threnodian_site.py --dist dist
   if($LASTEXITCODE -ne 0){throw 'Threnodian source and relation QA failed'}
+  & python tools/verify_published_site.py
+  if($LASTEXITCODE -ne 0){throw 'Published files differ from build; run npm run deploy:files and include the generated output'}
   Write-Output 'RESULT: PASS'
 } finally {Pop-Location}
