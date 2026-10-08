@@ -31,6 +31,12 @@ export async function generateAtlas({site,content,book,index,records,doc,H,refs,
  const url=s=>base+s;
  const entityLinks=new Map(index.characters.map(p=>[p.name,'/people/'+p.id+'.html']));
  for(const c of all) entityLinks.set(c.title.split(' · ')[0],'/'+groupFor(c)+'/'+c.id+'.html');
+ const canonicalAliases=atlas.entityAliases||[];
+ for(const alias of canonicalAliases){
+  if(!alias.refs?.length||entityLinks.get(alias.targetName)!==alias.targetUrl)throw Error('Unproved entity alias target: '+alias.name);
+  if(entityLinks.has(alias.name)&&entityLinks.get(alias.name)!==alias.targetUrl)throw Error('Conflicting entity alias: '+alias.name);
+  entityLinks.set(alias.name,alias.targetUrl);
+ }
  for(const [i,c] of book.concepts.entries()) if(!entityLinks.has(c.name))entityLinks.set(c.name,'/concepts/'+i+'.html');
  const entitySources=new Map();
  for(const c of all)for(const n of c.nodes){
@@ -79,8 +85,14 @@ export async function generateAtlas({site,content,book,index,records,doc,H,refs,
   }
  }
  await doc('factions/scar','스카',`<p><a href="${url('/people/scar.html')}">스카의 인물 자료와 관계 읽기 →</a></p><script>location.replace('/wuwa-quests/people/scar.html'+location.search+location.hash)</script>`,'스카의 인물 자료',false,false);
- // Preserve incoming links when a previously automatic entity gains a dossier.
- for(const p of npcData.people){const name=p.title.split(' · ')[0],slug=crypto.createHash('sha256').update(name).digest('hex').slice(0,16),target=url('/people/'+p.id+'.html');await doc('entities/'+slug,name,`<p><a href="${H(target)}">${H(name)}의 행적과 원문 자료 읽기 →</a></p><script>location.replace(${JSON.stringify(target)}+location.search+location.hash)</script>`,name+'의 인물 자료',false,false);}
+ // Resolve old automatic entity routes through the same canonical registry.
+ const canonicalEntities=new Map(all.map(c=>[c.title.split(' · ')[0],{target:'/'+groupFor(c)+'/'+c.id+'.html'}]));
+ for(const alias of canonicalAliases)canonicalEntities.set(alias.name,{target:alias.targetUrl,alias});
+ for(const [name,entry] of canonicalEntities){
+  const slug=crypto.createHash('sha256').update(name).digest('hex').slice(0,16),target=url(entry.target);
+  const explanation=entry.alias?`<p>${H(entry.alias.targetName)} · ${H(entry.alias.relation)}</p>${refs(entry.alias.refs)}`:'';
+  await doc('entities/'+slug,name,`${explanation}<p><a href="${H(target)}">${H(name)}의 본문과 원문 자료 읽기 →</a></p><script>location.replace(${JSON.stringify(target)}+location.search+location.hash)</script>`,name+'의 원문 자료',false,false);
+ }
  await doc('relationships','관계 따라 읽기',`<p class="atlas-deck">같은 단어보다, 서로에게 하는 일을 따라갑니다.</p><nav class="atlas-jump" aria-label="지역 관계 바로가기">${[...atlas.people,...atlas.factions,...atlas.regions].map(c=>`<a href="#relation-${c.id}">${H(c.title.split(' · ')[0])}</a>`).join('')}</nav>${[...atlas.people,...atlas.factions,...atlas.regions].map(c=>`<h2 id="relation-${c.id}">${H(c.title)}</h2><p>${H(c.question)}</p>${relations(c)}<a class="lore-more" href="${url('/'+groupFor(c)+'/'+c.id+'.html#evidence')}">본문과 원문 근거 →</a>`).join('')}${evidence([...atlas.people,...atlas.factions,...atlas.regions].map(c=>c.edges))}`,'관계 이름과 원문 근거를 함께 읽는 세력·지역의 관계도');
  await doc('events','전환점 따라 읽기',`<p class="atlas-deck">인물의 결정과 문명의 변화가 맞물리는 순간을 읽습니다.</p><p class="atlas-caption">지역별 기록에 명시된 사건의 전후 관계를 따라 배열했습니다.</p>${atlas.regions.filter(c=>c.timeline).map(c=>`<h2>${H(c.title)}</h2>${events(c).replace('id="events"','id="events-'+c.id+'"')}<a class="lore-more" href="${url('/regions/'+c.id+'.html')}">관계와 배경을 함께 읽기 →</a>`).join('')}${evidence(atlas.regions.filter(c=>c.timeline).map(c=>c.timeline))}`,'원문이 확인하는 사건 흐름과 전환점');
  function regionFor(p){return atlas.regions.find(r=>r.roles.includes(p.id))?.id||(p.influence.includes('금주')?'jinzhou':p.influence.includes('검은 해안')||p.influence.includes('검은해안')?'black-shores':/라군나|몬텔리|피살리아|수도회|우인/.test(p.influence)?'rinascita':p.influence.includes('일곱 언덕')?'seven-hills':/스타토치|라하이|로야|스페이스 트렉/.test(p.influence)?'raha':p.influence.includes('몽주')?'mongju':'other');}

@@ -11,7 +11,11 @@ export function claimAttribution(item){
 export const readingReferences=(rs,aliases={})=>(rs||[]).map(r=>r.quest_id?{sourceId:'quest-'+r.quest_id,anchor:'scene-'+r.scene,quote:r.quote,title:r.title||r.label,speaker:r.speaker||''}:{sourceId:aliases[r.id]||r.id,field:r.field,quote:r.excerpt,title:r.label,sourceSha256:r.source_text_sha256,speaker:r.speaker||''});
 export async function buildReadingData({source,index,records,atlas,entityLinks}){
  const atlasPeople=atlas.people||[];
- const base='/wuwa-quests',entities=[...entityLinks].map(([name,url])=>({id:'entity-'+hash(name).slice(0,16),name,url:base+url,kind:index.characters.some(p=>p.name===name)||atlasPeople.some(p=>p.title.split(' · ')[0]===name)?'인물':atlas.regions.some(c=>c.title.split(' · ')[0]===name)?'지역':atlas.cosmology.some(c=>c.title.split(' · ')[0]===name)?'세계관':atlas.factions.some(c=>c.title.split(' · ')[0]===name)?'세력':'설정 대상'})),byName=new Map(entities.map(e=>[e.name,e]));
+ const kindFor=name=>{
+  const canonicalName=(atlas.entityAliases||[]).find(alias=>alias.name===name)?.targetName||name;
+  return index.characters.some(p=>p.name===canonicalName)||atlasPeople.some(p=>p.title.split(' · ')[0]===canonicalName)?'인물':atlas.regions.some(c=>c.title.split(' · ')[0]===canonicalName)?'지역':atlas.cosmology.some(c=>c.title.split(' · ')[0]===canonicalName)?'세계관':atlas.factions.some(c=>c.title.split(' · ')[0]===canonicalName)?'세력':'설정 대상';
+ };
+ const base='/wuwa-quests',entities=[...entityLinks].map(([name,url])=>({id:'entity-'+hash(name).slice(0,16),name,url:base+url,kind:kindFor(name)})),byName=new Map(entities.map(e=>[e.name,e]));
  const sources=index.entries.map(e=>{const r=records[e.id];if(!r)throw Error('Missing reading record '+e.id);return {id:e.id,title:e.title,kind:e.category_label,url:base+e.page,blocks:r.values.filter(v=>v.status==='OK'&&v.text).map(v=>({id:v.field,field:v.field,text:v.text,sha256:hash(v.raw),url:base+e.page+(e.page.includes('#')?'':'#field-'+encodeURIComponent(v.field)),locator:{recordId:e.id,field:v.field,textId:v.text_id}}))};});
  const dialogueRefs=[];
  function gatherDialogueRefs(value){
