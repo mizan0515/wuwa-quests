@@ -153,6 +153,156 @@ def gather(value):
             for item in value.values(): yield from gather(item)
 
 
+def audit_relation_structures(clusters, records, aliases, quest_cache, require, stats):
+    """Check source-audited membership/inclusion, independently of its layout.
+
+    A common endpoint is not sufficient to claim affiliation. Each authored
+    structural tag below has a named original clause and preserves the audited
+    member-to-group or container-to-contained direction. New tags require a
+    corresponding original audit, rather than a geometry or keyword guess.
+    """
+    setting = lambda ident, field, literal: ('setting', ident, field, literal)
+    quest = lambda ident, scene, speaker, literal, context='': ('quest', ident, scene, speaker, literal, context)
+    proofs = {
+        'jinzhou': setting('로딩_세계관_도움말:loadingtipstext:1009', 'content',
+                           '광활한 황룡에는 하나의 수도와 6개의 주(州)가 있다. 금주는 그중 가장 늦게 세워진 주로'),
+        'phoebe': setting('인물_프로필_공명기록:favorroleinfo:1506', 'info', '깊은 바다 수도회의 성직자 페비'),
+        'capitoline': setting('로딩_세계관_도움말:loadingtipstext:200601', 'content', '리나시타에 속한 일곱 언덕 중심지'),
+        'dragon-grave': setting('로딩_세계관_도움말:loadingtipstext:200607', 'content', '이곳은 일곱 언덕의 유명한 시련의 땅'),
+        'boundary-mountains': setting('로딩_세계관_도움말:loadingtipstext:200605', 'content', '일곱 언덕 변경 지대에 위치한 높은 산맥'),
+        'xuanfang': setting('로딩_세계관_도움말:loadingtipstext:201404', 'content', '몽주의 관할을 받는 공중 기관성'),
+        'mongju': setting('인물_프로필_공명기록:favorroleinfo:1307', 'info', '황룡 몽주의 도사'),
+        'axion': quest('140000004', 33, '기염', '전쟁을 대표하는 명식, 「더 엑시온」'),
+        'leviathan': setting('잔상_생태:monsterinfo:340000200', 'discovered_description', '리나시타의 문명에 뿌리내린 명식'),
+        'aleph': setting('잔상_생태:monsterinfo:340000271', 'discovered_description', '명식 알레프-원의 창조물'),
+        'scar': setting('잔상_생태:monsterinfo:330000100', 'undiscovered_description', '잔성회 간부의 일원'),
+        'phrolova': setting('인물_프로필_공명기록:favorroleinfo:1608', 'info', '잔성회 간부이자'),
+        'calcharo': setting('인물_음성대사:favorword:130122', 'content', '유령사냥단의 단장 카카루다'),
+        'carlotta': setting('인물_프로필_공명기록:favorroleinfo:1107', 'info', '몬텔리 가문의 둘째 아가씨'),
+        'cantarella': setting('인물_프로필_공명기록:favorroleinfo:1607', 'info', '현 피살리아 가문의 가주'),
+        'christoforo': quest('121000038', 36, '카르티시아', '잔성회의 극작가 크리스토포로'),
+        'fenrico': quest('114000027', 18, '알렉시스 사제', '펜리코 수좌이십니다',
+                         '[대화ID 1] 알렉시스 사제: 귀한 손님, 수도회에는 무슨 일이십니까?'),
+    }
+    audited = (
+        ('regions/jinzhou', 'edge:5', 'membership', '금주', '황룡', 'jinzhou'),
+        ('regions/rinascita', 'edge:4', 'membership', '페비', '깊은 바다 수도회', 'phoebe'),
+        ('regions/seven-hills', 'edge:0', 'membership', '카피톨리누스 언덕 도시', '일곱 언덕', 'capitoline'),
+        ('regions/seven-hills', 'edge:1', 'membership', '석룡의 무덤', '일곱 언덕', 'dragon-grave'),
+        ('regions/seven-hills', 'edge:2', 'membership', '경계의 산', '일곱 언덕', 'boundary-mountains'),
+        ('regions/mongju', 'edge:4', 'membership', '현방성', '몽주', 'xuanfang'),
+        ('regions/huanglong', 'edge:0', 'membership', '금주', '황룡', 'jinzhou'),
+        ('regions/huanglong', 'edge:1', 'membership', '몽주', '황룡', 'mongju'),
+        ('cosmology/threnodians', 'edge:0', 'membership', '더 엑시온', '명식', 'axion'),
+        ('cosmology/threnodians', 'edge:1', 'membership', '레비아탄', '명식', 'leviathan'),
+        ('cosmology/the-axion', 'edge:0', 'membership', '더 엑시온', '명식', 'axion'),
+        ('factions/fractsidus', 'edge:0', 'containment', '잔성회', '스카', 'scar'),
+        ('factions/fractsidus', 'edge:1', 'containment', '잔성회', '플로로', 'phrolova'),
+        ('factions/ghost-hounds', 'edge:1', 'membership', '카카루', '유령사냥단', 'calcharo'),
+        ('factions/montelli', 'edge:0', 'membership', '카를로타', '몬텔리 가문', 'carlotta'),
+        ('factions/fisalia', 'edge:0', 'membership', '칸타렐라', '피살리아 가문', 'cantarella'),
+        ('people/scar', 'edge:0', 'membership', '스카', '잔성회', 'scar'),
+        ('people/christoforo', 'edge:0', 'membership', '크리스토포로', '잔성회', 'christoforo'),
+        ('people/fenrico', 'edge:0', 'membership', '펜리코', '깊은 바다 수도회', 'fenrico'),
+        ('cosmology/threnodians', 'threnodian-branches/threnodian-axion', 'containment', '명식', '더 엑시온', 'axion'),
+        ('cosmology/threnodians', 'threnodian-branches/threnodian-branches-edge-0', 'containment', '명식', '레비아탄', 'leviathan'),
+        ('cosmology/threnodians', 'threnodian-branches/threnodian-aleph', 'containment', '명식', '알레프-원', 'aleph'),
+        ('factions/fractsidus', 'fractsidus-structure/org-scar', 'containment', '잔성회', '스카', 'scar'),
+        ('factions/fractsidus', 'fractsidus-structure/org-flo', 'containment', '잔성회', '플로로', 'phrolova'),
+    )
+    expected = {(cid, location):(structure, actor, target, proofs[proof])
+                for cid, location, structure, actor, target, proof in audited}
+    actual = {}
+    for cid, cluster in clusters.items():
+        names = {n['name'] for n in cluster['nodes']}
+        for i, edge in enumerate(cluster.get('edges', [])):
+            actual[(cid, 'edge:'+str(i))] = edge, edge['a'], edge['b'], names
+        for topology in [cluster.get('topology')]+cluster.get('views', []):
+            if not topology: continue
+            nodes = {n['id']:n['name'] for n in topology['nodes']}
+            for edge in topology['edges']:
+                location = topology['id']+'/'+edge['id']
+                require((cid, location) not in actual, 'duplicate structural relation location', cluster=cid, location=location)
+                actual[(cid, location)] = edge, nodes.get(edge['from']), nodes.get(edge['to']), set(nodes.values())
+    for (cid, location), (edge, actor, target, names) in actual.items():
+        stats['structureRelationCandidates'] += 1
+        if 'structure' not in edge: continue
+        structure = edge['structure']
+        require(structure in ('membership', 'containment'), 'unknown relation structure', cluster=cid, location=location)
+        require(edge.get('kind') not in ('reading', 'inference') and edge.get('claimKind')!='inference',
+                'editorial connection has a factual structure', cluster=cid, location=location)
+        require(actor in names and target in names and actor!=target,
+                'structural relation lacks distinct declared endpoints', cluster=cid, location=location)
+        require(bool(edge.get('refs')), 'structural relation lacks original proof', cluster=cid, location=location)
+        require((cid, location) in expected, 'structure lacks a source-audited direction and scope', cluster=cid, location=location)
+        stats['typedRelationStructures'] += 1
+        stats['structure_'+str(structure)] += 1
+    for (cid, location), (structure, actor, target, proof) in expected.items():
+        edge, actual_actor, actual_target, _ = actual.get((cid, location), ({}, None, None, set()))
+        require((edge.get('structure'), actual_actor, actual_target)==(structure, actor, target),
+                'source-backed structure or member/group direction differs', cluster=cid, location=location)
+        if proof[0]=='setting':
+            _, ident, field, literal = proof
+            value = next((v for v in records.get(ident, {}).get('values', []) if v['field']==field), None)
+            refs = [r for r in edge.get('refs', []) if aliases.get(r.get('id'), r.get('id'))==ident and r.get('field')==field]
+            require(value is not None and literal in value['text'] and
+                    any(literal in r.get('excerpt', '') and
+                        r.get('source_text_sha256')==hashlib.sha256(value['raw'].encode()).hexdigest() for r in refs),
+                    'structure lost its exact original membership/inclusion clause', cluster=cid, location=location, source=ident)
+        else:
+            _, ident, scene, speaker, literal, context = proof
+            digest, scenes = quest_cache.get(ident, ('', {}))
+            refs = [r for r in edge.get('refs', []) if r.get('quest_id')==ident and r.get('scene')==scene and r.get('speaker')==speaker]
+            require(literal in scenes.get(scene, '') and context in scenes.get(scene, '') and
+                    any(literal in r.get('quote', '') and r.get('source_sha256')==digest for r in refs),
+                    'structure lost its exact attributed scene or institutional context', cluster=cid, location=location, quest=ident)
+        stats['structureOriginalCanaries'] += 1
+
+
+def canonical_topology_urls(index, atlas, npc, book):
+    """Reconstruct approved entity destinations from the original registries.
+
+    generate-atlas changes only a topology node's URL after resolving profile,
+    dossier, alias, glossary and named-original destinations in this order.
+    Expected links must come from these inputs, not from the emitted graph
+    whose links this check is intended to verify.
+    """
+    authored = [(group,c) for group in ('regions','sentinels','cosmology','factions','people')
+                for c in atlas[group]] + [('people',c) for c in npc['people']]
+    links = {p['name']:'/people/'+str(p['id'])+'.html' for p in index['characters']}
+    for group,c in authored:
+        links[c['title'].split(' · ')[0]] = '/'+group+'/'+c['id']+'.html'
+    for alias in atlas.get('entityAliases',[]):
+        if not alias.get('refs') or links.get(alias['targetName'])!=alias['targetUrl']:
+            raise ValueError('invalid source-backed topology alias target: '+alias['name'])
+        links[alias['name']] = alias['targetUrl']
+    for i,concept in enumerate(book['concepts']):
+        links.setdefault(concept['name'],'/concepts/'+str(i)+'.html')
+    for _,c in authored:
+        proofs = list(gather(c))
+        for node in c['nodes']:
+            name = node['name']
+            if name not in links and any(name in (r.get('excerpt') or r.get('quote') or '') or
+                                         name in (r.get('label') or r.get('title') or '') for r in proofs):
+                links[name] = '/entities/'+hashlib.sha256(name.encode()).hexdigest()[:16]+'.html'
+    for _,c in authored:
+        for node in c['nodes']:
+            if node['name'] not in links:
+                links[node['name']] = node.get('url')
+    if any(not isinstance(route,str) or not route.startswith('/') or route.startswith('//')
+           for route in links.values()):
+        raise ValueError('original topology registry has an invalid local entity destination')
+    return {name:BASE+route for name,route in links.items()}
+
+
+def audited_topology_nodes(topology, canonical_urls):
+    # All original fields remain exact, including id/name/kind/layer/focus/
+    # scale and any additional authored fields. Only the known canonical URL
+    # replacement (or addition) is allowed; undeclared subjects retain theirs.
+    return [{**node, 'url':canonical_urls[node['name']]} if node['name'] in canonical_urls else dict(node)
+            for node in topology['nodes']]
+
+
 def audit_relation_semantics(site, atlas, npc, records, aliases, require, stats):
     """Source-only regressions for actor/target, modality and editorial links.
 
@@ -191,6 +341,7 @@ def audit_relation_semantics(site, atlas, npc, records, aliases, require, stats)
                         ref['excerpt'].endswith(('.', '!', '?','。','！','？')),
                         'registry excerpt stops inside a source line',source=ident,field=ref['field'])
             stats['registrySettingProofs'] += 1
+    audit_relation_structures(clusters, records, aliases, quest_cache, require, stats)
     for cid, index, actor, verb, target, source, field, literal in (
             ('regions/jinzhou',4,'기염','지휘한다','야귀군','잔상_생태:monsterinfo:310000690','discovered_description',
              '이 모든 부대는 금주 야귀 장군 기염의 지휘 아래 움직인다'),
@@ -254,6 +405,8 @@ def main(dist):
     load = lambda path: json.loads(path.read_text(encoding='utf-8'))
     index, atlas = load(site/'settings/index.json'), load(site/'settings/atlas.json')
     npc = load(site/'settings/npc-people.json')
+    book = load(site/'settings/editorial.json')
+    canonical_urls = canonical_topology_urls(index,atlas,npc,book)
     people = atlas.get('people',[]) + npc['people']
     records = {}
     for path in (site/'settings').glob('records-*.json'): records.update(load(path))
@@ -629,7 +782,31 @@ def main(dist):
                     edge.get('speaker') or any(r.get('speaker') for r in edge.get('refs',[]))) else 'explicit'
             require(actual_edge.get('kind')==expected_kind,
                     'whole registry relationship attribution or reading kind differs',cluster=cid,index=i)
+            require(actual_edge.get('structure')==edge.get('structure'),
+                    'whole registry source-backed relationship structure differs',cluster=cid,index=i)
             stats['wholeRegistryRelations'] += 1
+        source_topologies = [c.get('topology')]+c.get('views',[])
+        emitted_topologies = [cluster.get('topology')]+cluster.get('views',[])
+        require(len(source_topologies)==len(emitted_topologies),
+                'whole registry authored topology count differs',cluster=cid)
+        for source_topology, emitted_topology in zip(source_topologies,emitted_topologies):
+            if not source_topology:
+                require(emitted_topology is None,'unexpected authored topology',cluster=cid)
+                continue
+            emitted_topology = emitted_topology or {}
+            require(source_topology['id']==emitted_topology.get('id') and
+                    audited_topology_nodes(source_topology,canonical_urls)==emitted_topology.get('nodes'),
+                    'whole registry authored topology identity or node scope differs',cluster=cid)
+            source_edges = source_topology['edges']
+            emitted_edges = emitted_topology.get('edges',[])
+            require(len(source_edges)==len(emitted_edges),
+                    'whole registry authored topology relation count differs',cluster=cid)
+            for source_edge, emitted_edge in zip(source_edges,emitted_edges):
+                require(all(source_edge.get(key)==emitted_edge.get(key)
+                            for key in ('id','from','to','label','kind','structure')),
+                        'whole registry topology statement direction or structure differs',cluster=cid,
+                        topology=source_topology['id'],edge=source_edge['id'])
+                stats['wholeRegistryTopologyRelations'] += 1
         person = profiles.get(name)
         if person:
             profile_id = '인물_프로필_공명기록:favorroleinfo:'+str(person['id'])
@@ -661,7 +838,6 @@ def main(dist):
                 stats['wholeRegistryFocusProfileImages'] += 1
         stats['wholeRegistryClusters'] += 1
     stats['wholeRegistryEntities'] = len(entities)
-    book = load(site/'settings/editorial.json')
     declared_names = {n['name'] for _,c in authored for n in c['nodes']}
     for concept in book['concepts']:
         entity = entities.get(concept['name'],{})
