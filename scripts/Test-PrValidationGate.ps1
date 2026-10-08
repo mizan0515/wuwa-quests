@@ -9,11 +9,13 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Reading data QA failed'}
   & python tools/verify_reading_site.py
   if($LASTEXITCODE -ne 0){throw 'Source and link QA failed'}
+  & python -B -X utf8 ../tools/verify_cva_editorial.py --self-test
+  if($LASTEXITCODE -ne 0){throw 'Whole CVA editorial and original reader QA failed'}
   & python tools/verify_original_rendering.py
   if($LASTEXITCODE -ne 0){throw 'Rendered original text QA failed'}
   & python tools/verify_people_catalog.py
   if($LASTEXITCODE -ne 0){throw 'People classification and original evidence QA failed'}
-  & python tools/verify_game_images.py
+  & python tools/verify_game_images.py --dist dist
   if($LASTEXITCODE -ne 0){throw 'Game image source QA failed'}
   & python tools/verify_threnodian_site.py --dist dist
   if($LASTEXITCODE -ne 0){throw 'Threnodian source and relation QA failed'}

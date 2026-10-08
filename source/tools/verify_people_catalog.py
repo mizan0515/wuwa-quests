@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 import sys
+from html import escape
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
@@ -25,11 +26,17 @@ class Page(HTMLParser):
         self.caption = None
         self.heading = None
         self.ids = []
+        self.nodes = []
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
         classes = set(a.get('class','').split())
         flags = set()
+        node = {'tag':tag, 'attrs':a, 'parent':self.stack[-1][2] if self.stack else None,
+                'text':[], 'children':[]}
+        if node['parent'] is not None:
+            node['parent']['children'].append(node)
+        self.nodes.append(node)
         if a.get('id'):
             self.ids.append(a['id'])
         if tag == 'script' and a.get('src'):
@@ -61,7 +68,7 @@ class Page(HTMLParser):
             self.caption = self.figure['caption']
             flags.add('caption')
         if tag not in VOID:
-            self.stack.append((tag,flags))
+            self.stack.append((tag,flags,node))
 
     def handle_startendtag(self,tag,attrs):
         self.handle_starttag(tag,attrs)
@@ -85,6 +92,53 @@ class Page(HTMLParser):
         if self.heading is not None: self.heading.append(text)
         if self.quote is not None: self.quote.append(text)
         if self.caption is not None: self.caption.append(text)
+        if not any(n[0] in ('script','style') for n in self.stack):
+            for _,_,node in self.stack:
+                node['text'].append(text)
+
+    @staticmethod
+    def within(node,parent):
+        while node is not None:
+            if node is parent: return True
+            node = node['parent']
+        return False
+
+    def image_cards(self,url):
+        """The image and its original/provenance links share one CVA item.
+
+        Legacy figure is the fallback boundary. A page-wide link or neighbouring
+        card cannot satisfy this association, and duplicate rendered images
+        remain separate results for the caller's exact-one assertion.
+        """
+        result = []
+        for image in self.nodes:
+            if image['tag']!='img' or image['attrs'].get('src')!=url: continue
+            parent,figure = image['parent'],None
+            while parent is not None and 'data-cva-item-index' not in parent['attrs']:
+                if parent['tag']=='figure' and figure is None: figure=parent
+                parent=parent['parent']
+            boundary=parent or figure
+            if boundary is None: continue
+            children=[n for n in self.nodes if self.within(n,boundary)]
+            captions=[n for n in children if n['tag']=='figcaption' or
+                      {'sc-item-title','cva-item-title'} & set(n['attrs'].get('class','').split())]
+            result.append({'images':[n['attrs'] for n in children if n['tag']=='img'],
+                           'caption':[''.join(n['text']) for n in captions],
+                           'links':[n['attrs'].get('href','') for n in children if n['tag']=='a']})
+        return result
+
+    def local_role(self,name,kind):
+        # Kind and name must be adjacent children of the same endpoint/title,
+        # rather than separate occurrences anywhere in the page or JSON model.
+        for node in self.nodes:
+            if node['tag']!='small' or ''.join(node['text'])!=kind or node['parent'] is None: continue
+            siblings=node['parent']['children']
+            index=next(i for i,n in enumerate(siblings) if n is node)
+            if index+1<len(siblings):
+                following=siblings[index+1]
+                if following['tag'] in ('a','strong') and ''.join(following['text'])==name:
+                    return True
+        return False
 
 
 def gather(value):
@@ -244,8 +298,7 @@ def main(dist):
                 image = monster['images']['icon']
                 require(image['referenceField']==3,
                         'Fenrico icon reference field differs')
-                figures = [f for f in parsed.figures if
-                           any(im.get('src')==image['url'] for im in f['images'])]
+                figures = parsed.image_cards(image['url'])
                 require(len(figures)==1,'Fenrico exact handbook icon missing or duplicated',
                         expected=image['url'],actual=len(figures))
                 for figure in figures:
@@ -438,6 +491,87 @@ def main(dist):
         stats['profileIdentityAliases'] += 1
     # Every profile character also has a real destination, not merely a card.
     for p in index['characters']: page('people/'+str(p['id'])+'.html')
+    # Validate every authored cluster, not only named NPC canaries. Canonical
+    # classes and source-local roles serve different purposes and both survive.
+    image_manifest = load(site/'source/public/game-images/provenance.json')
+    profiles = {p['name']:p for p in index['characters']}
+    relation_index = {r['id']:r for r in graph['relations']}
+    authored = [(group,c) for group in ('regions','sentinels','cosmology','factions','people')
+                for c in atlas[group]] + [('people',c) for c in npc['people']]
+    for group,c in authored:
+        cid = group+'/'+c['id']
+        cluster = clusters.get(cid,{})
+        expected_roles = [{'name':n['name'],'kind':n['kind']} for n in c['nodes']]
+        require(cluster.get('nodeKinds')==expected_roles,
+                'whole registry local node roles differ',cluster=cid)
+        name = c['title'].split(' · ')[0]
+        canonical = entities.get(name,{})
+        focus_kind = '수호신' if group=='sentinels' else canonical.get('kind')
+        require(cluster.get('focusKind')==focus_kind,
+                'cluster focus role differs from its category',cluster=cid)
+        if group=='sentinels':
+            require(canonical.get('kind')==('인물' if name in profiles else '수호신'),
+                    'guardian canonical class differs from profile identity',cluster=cid)
+        parsed = page(cid+'.html')
+        raw_html = (dist/(cid+'.html')).read_text(encoding='utf-8')
+        participating = {edge[end] for edge in c.get('edges',[]) for end in ('a','b')}
+        for n in c['nodes']:
+            entity = entities.get(n['name'],{})
+            require(bool(entity) and entity.get('kind')!='설정 대상',
+                    'declared entity class lost in whole registry',cluster=cid,name=n['name'])
+            if not c.get('topology') and n['name'] in participating:
+                require(parsed.local_role(n['name'],n['kind']),
+                        'source-local relation role missing in HTML',cluster=cid,name=n['name'],kind=n['kind'])
+        for i,edge in enumerate(c.get('edges',[])):
+            actual_edge = relation_index.get(cid+'/relation-'+str(i),{})
+            require(actual_edge.get('from')==entities.get(edge['a'],{}).get('id') and
+                    actual_edge.get('to')==entities.get(edge['b'],{}).get('id') and
+                    actual_edge.get('label')==edge['verb'],
+                    'whole registry relationship direction or predicate differs',cluster=cid,index=i)
+            stats['wholeRegistryRelations'] += 1
+        person = profiles.get(name)
+        if person:
+            profile_id = '인물_프로필_공명기록:favorroleinfo:'+str(person['id'])
+            source_refs = [ref for ref in gather(c) if aliases.get(ref.get('id'),ref.get('id'))==profile_id]
+            asset = next((im for im in image_manifest['people'] if str(im['id'])==str(person['id'])),None)
+            if source_refs and asset and asset['images'].get('portrait'):
+                image = asset['images']['portrait']
+                profile = records.get(profile_id,{})
+                require(str(profile.get('role_id'))==str(person['id']) and asset['name']==name and
+                        asset['mapping']['table']=='roleinfo' and str(asset['mapping']['id'])==str(person['id']),
+                        'whole registry focus image identity differs',cluster=cid)
+                figures = parsed.image_cards(image['url'])
+                require(len(figures)==1,'exact focus profile image missing or duplicated',cluster=cid,url=image['url'])
+                for figure in figures:
+                    require('게임 인물 이미지 · '+name in ''.join(figure['caption']) and
+                            BASE+'/people/'+str(person['id'])+'.html#field-info' in figure['links'] and
+                            BASE+'/game-images/provenance.json' in figure['links'],
+                            'focus profile image role or original link differs',cluster=cid)
+                    rendered=[im for im in figure['images'] if im.get('src')==image['url']]
+                    require(len(rendered)==1 and rendered[0].get('alt')==name+'의 게임 인물 이미지' and
+                            rendered[0].get('width')==str(image['width']) and
+                            rendered[0].get('height')==str(image['height']),
+                            'focus profile image accessibility or actual dimensions differ',cluster=cid)
+                for ref in source_refs:
+                    value = next((v for v in profile.get('values',[]) if v['field']==ref['field']),None)
+                    require(value is not None and hashlib.sha256(value['raw'].encode()).hexdigest()==ref['source_text_sha256']
+                            and ref['excerpt'] in value['text'],
+                            'focus image profile reference differs from original',cluster=cid)
+                stats['wholeRegistryFocusProfileImages'] += 1
+        stats['wholeRegistryClusters'] += 1
+    stats['wholeRegistryEntities'] = len(entities)
+    book = load(site/'settings/editorial.json')
+    declared_names = {n['name'] for _,c in authored for n in c['nodes']}
+    for concept in book['concepts']:
+        entity = entities.get(concept['name'],{})
+        require(bool(entity) and entity.get('kind')!='설정 대상',
+                'glossary concept classification missing',name=concept['name'])
+        if concept['name'] not in declared_names:
+            require(entity.get('kind')=='개념',
+                    'glossary-only entity classification differs',name=concept['name'])
+    for entity in graph['entities']:
+        require(entity.get('kind') and entity['kind']!='설정 대상',
+                'registered graph entity lacks its source registry class',name=entity['name'])
     stats.update(profilePeople=len(index['characters']),peopleCards=len(actual),uniqueEvidenceTuples=len(evidence_tuples),htmlPages=len(cache),curatedSources=len(curated))
     print(json.dumps({'status':'PASS' if not errors else 'FAIL',**dict(stats),'errorsTotal':len(errors),'errors':errors[:30]},ensure_ascii=False))
     return bool(errors)
