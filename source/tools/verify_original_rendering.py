@@ -18,6 +18,49 @@ EXCLUDED = {'name', 'title', 'type', 'birthday', 'sex'}
 PROFILE = {'info', 'talent_name', 'talent_document', 'talent_certification'}
 
 
+class ReadingTemplatePage(HTMLParser):
+    """Check custom-reader boundaries independently of source-text collection."""
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack=[];self.errors=[];self.disclosures=[];self.summary=None
+    def handle_starttag(self,tag,attrs):
+        a=dict(attrs);classes=set(a.get('class','').split());kind=a.get('data-reading-template')
+        boundary=kind=='reader' and {'rw-reader','not-content'}<=classes
+        inside=boundary or any(x['boundary'] for x in self.stack)
+        if kind=='reader' and not boundary:self.errors.append('reader boundary classes missing')
+        if classes & {'original-row','quest-source-line'}:
+            if kind!='row' or 'rw-source-row' not in classes:self.errors.append('source row common template missing')
+            if not inside:self.errors.append('source row outside isolated reader boundary')
+        if 'source-section' in classes and not boundary:self.errors.append('source scene common reader boundary missing')
+        technical=bool(classes & {'source-details','mission-scene-index','mission-reference-scenes','quest-info','quest-scene-info'})
+        disclosure=None
+        if kind=='disclosure' or technical:
+            if tag!='details' or kind!='disclosure' or 'rw-disclosure' not in classes:self.errors.append('disclosure common template missing')
+            disclosure={'summaries':0};self.disclosures.append(disclosure)
+        summary=None
+        if tag=='summary' and self.stack and self.stack[-1]['disclosure'] is not None:
+            self.stack[-1]['disclosure']['summaries']+=1;summary=[];self.summary=summary
+        if tag not in VOID:self.stack.append({'tag':tag,'boundary':boundary,'disclosure':disclosure,'summary':summary})
+    def handle_startendtag(self,tag,attrs):
+        self.handle_starttag(tag,attrs)
+        if tag not in VOID:self.handle_endtag(tag)
+    def handle_data(self,text):
+        if self.summary is not None:self.summary.append(text)
+    def handle_endtag(self,tag):
+        for i in range(len(self.stack)-1,-1,-1):
+            if self.stack[i]['tag']==tag:
+                removed=self.stack[i:];del self.stack[i:]
+                for element in removed:
+                    if element['summary'] is not None:
+                        if re.match(r'^\s*[>›▶▸▹▷→]', ''.join(element['summary'])):self.errors.append('disclosure summary has literal leading arrow')
+                        self.summary=None
+                break
+    def finish(self):
+        for disclosure in self.disclosures:
+            if disclosure['summaries']!=1:self.errors.append('disclosure must have one immediate summary')
+        return self.errors
+
+
 class LorePage(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -235,8 +278,11 @@ def check_quests(site, dist, stats, errors):
         if not path.is_file():
             errors.append({'page': relative, 'error': 'missing built quest page'})
             continue
+        html = path.read_text(encoding='utf-8')
+        template = ReadingTemplatePage(); template.feed(html)
+        errors.extend({'page': relative, 'error': error} for error in template.finish())
         parser = QuestPage()
-        parser.feed(path.read_text(encoding='utf-8'))
+        parser.feed(html)
         intro, scenes = quest_expected(source.decode('utf-8'))
         actual_intros = [''.join(x) for x in parser.intros]
         if actual_intros != [intro]:

@@ -2,6 +2,7 @@ import {readFile,writeFile,mkdir,copyFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import {readerFrame,readerDisclosure,rowAttributes} from '../src/lib/reading-kit/reader.mjs';
 
 const source=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const site=path.resolve(source,'..');
@@ -10,6 +11,7 @@ const all=JSON.parse(await readFile(path.join(site,'content-manifest.json'),'utf
 const items=process.env.WUWA_SAMPLE_ONLY==='1'?all.filter(x=>['915000001','915000003','915000004'].includes(x.id)):all;
 const base='/wuwa-quests';
 const e=(s)=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/\r/g,'&#13;').replace(/\n/g,'&#10;');
+const sourceDisclosure=(summary,body,className)=>readerDisclosure(summary,body,{className,attributes:{'data-pagefind-ignore':''}});
 const display=(s)=>s.replace(/^기타임무_유형(\d+)$/,'기타임무 (유형 $1)').replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
 const readable=(s)=>s.replace(/<\/?(?:te|color|size|b|i|u|ano|s)(?:[=\s][^>]*)?>/g,'');
 const versions=[...new Set(items.map(x=>x.version))].sort((a,b)=>/^\d\.\d$/.test(a)&&/^\d\.\d$/.test(b)?parseFloat(b)-parseFloat(a):/^\d\.\d$/.test(a)?-1:/^\d\.\d$/.test(b)?1:a.localeCompare(b,'ko'));
@@ -27,20 +29,23 @@ for(const x of items){
  md+=`<div class="quest-context" data-pagefind-ignore><a href="${base}/index.html?version=${encodeURIComponent(x.version)}">${e(display(x.version))}</a><span>›</span><a href="${base}/index.html?version=${encodeURIComponent(x.version)}&amp;type=${encodeURIComponent(x.type)}">${e(display(x.type))}</a></div>\n\n`;
  md+=`<p class="quest-id">퀘스트 <span data-pagefind-meta="퀘스트">${x.id}</span></p>\n\n`;
  md+=`<div class="quest-actions" data-pagefind-ignore><span>${matches.length}개 장면</span><a href="${base}/originals/${x.id}.txt" download>원본 TXT</a><button id="line-toggle" type="button" aria-pressed="false">대사 번호 보기</button></div>\n\n`;
- md+=`<details class="quest-info" data-pagefind-ignore><summary>퀘스트 설명 · 수록 안내</summary><pre>${e(intro)}</pre></details>\n\n`;
+ md+=sourceDisclosure('퀘스트 설명 · 수록 안내',`<pre>${e(intro)}</pre>`,'quest-info')+'\n\n';
  for(let i=0;i<matches.length;i++){
   const match=matches[i],segment=text.slice(match.index+match[0].length,i+1<matches.length?matches[i+1].index:text.length);
   md+=`<div id="scene-${i+1}" class="quest-section-anchor" aria-hidden="true"></div>\n\n## ${e(match[0])}\n\n`;
-  const metadata=[];
+  const metadata=[];let sceneBody='';
   for(const raw of segment.split('\n')){
    if(!raw.trim())continue;
    if(/^(순서 근거:|대화 ID:|대화 묶음)/.test(raw.trim())||/^─+$/.test(raw.trim())){metadata.push(raw);continue;}
    const line=readable(raw).trim();const cls=line.startsWith('선택 ')?'quest-choice':line.startsWith('→')?'quest-branch':'quest-utterance';
    const m=line.match(/^(\[대화ID [^\]]+\])\s*([^:：]+):\s*(.*)$/);
-   const body=m?`<span class="line-id">${e(m[1])} </span><strong class="quest-speaker">${e(m[2])}</strong><span class="quest-speech"><span class="speaker-colon">: </span>${e(m[3])}</span>`:e(line);
-   md+=`<p class="quest-source-line ${cls}">${body}</p>\n\n`;
+   const body=m?`<span class="line-id">${e(m[1])} </span><strong class="quest-speaker">${e(m[2])}</strong><span class="quest-speech rw-source-body"><span class="speaker-colon">: </span>${e(m[3])}</span>`:e(line);
+   const attrs=rowAttributes(cls==='quest-choice'?'choice':cls==='quest-branch'?'branch':'dialogue');
+   attrs.class=`quest-source-line ${cls} ${attrs.class}`;
+   sceneBody+=`<p ${Object.entries(attrs).map(([key,value])=>`${key}="${e(value)}"`).join(' ')}>${body}</p>`;
   }
-  if(metadata.length)md+=`<details class="quest-scene-info" data-pagefind-ignore><summary>장면 자료 정보</summary><pre>${e(metadata.join('\n'))}</pre></details>\n\n`;
+  if(metadata.length)sceneBody+=sourceDisclosure('장면 자료 정보',`<pre>${e(metadata.join('\n'))}</pre>`,'quest-scene-info');
+  md+=readerFrame(sceneBody,{variant:'transcript',className:'quest-reader'})+'\n\n';
  }
  md+='<nav class="quest-pager" aria-label="같은 분류의 퀘스트" data-pagefind-ignore>';
  for(const [other,label] of [[same[pos-1],'← 이전 퀘스트'],[same[pos+1],'다음 퀘스트 →']])md+=other?`<a href="${base}/quests/${other.id}.html"><small>${label}</small><strong>${e(other.title)}</strong><span>${other.id}</span></a>`:'<span></span>';
