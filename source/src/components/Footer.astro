@@ -1,6 +1,9 @@
 ---
 import Default from '@astrojs/starlight/components/Footer.astro';
+import { createHash } from 'node:crypto';
+import contextSource from '../../public/lore/context.js?raw';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const contextVersion = createHash('sha256').update(contextSource.replace(/\r\n/g, '\n')).digest('hex').slice(0, 12);
 ---
 <footer class="quest-footer" data-pagefind-ignore="all">
   <div class="quest-footer-brand">
@@ -22,7 +25,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </footer>
 <script>import '../lib/reading-kit/state.mjs';</script>
 <Default />
-<script src={`${base}/lore/context.js`} defer></script>
+<script src={`${base}/lore/context.js?v=${contextVersion}`} defer></script>
 <script>
   const button=document.querySelector<HTMLButtonElement>('#line-toggle');
   button?.addEventListener('click',()=>{const show=document.documentElement.classList.toggle('show-line-ids');button.setAttribute('aria-pressed',String(show));button.textContent=show?'대사 번호 숨기기':'대사 번호 보기';});
