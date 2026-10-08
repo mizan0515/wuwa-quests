@@ -400,6 +400,50 @@ def audit_relation_semantics(site, atlas, npc, records, aliases, require, stats)
     stats['semanticSpeakerCanaries'] += 3
 
 
+
+def check_rendered_relation(parsed, claim, evidence, candidate_suffixes):
+    """One source proof must retain the reason, every quote and its own URL."""
+    expected_reason = re.sub(r'\s+', ' ', visible_text(claim['text'])).strip()
+    candidates = [n for n in parsed.nodes if n['tag']=='details' and any(
+        n['attrs'].get('id','').endswith('-edge-'+suffix) for suffix in candidate_suffixes)]
+    for node in candidates:
+        paragraphs = [re.sub(r'\s+', ' ', ''.join(n['text'])).strip() for n in node['children'] if n['tag']=='p']
+        descendants = [n for n in parsed.nodes if Page.within(n,node)]
+        quotes = [''.join(n['text']) for n in descendants if n['tag']=='blockquote']
+        links = [n['attrs'].get('href','') for n in descendants if n['tag']=='a']
+        if expected_reason in paragraphs and all(visible_text(e['quote']) in quotes and e['url'] in links for e in evidence):
+            return True
+    return False
+
+
+
+def rendered_relation_self_test():
+    claim = {'text':'관계 요약'}
+    evidence = [{'quote':'가 > 나, 「원문」','url':'/original.html#row-1'}]
+    html = '<details id="supplemental-edge-relation-0"><summary>근거</summary><p>관계 요약</p><blockquote>가 &gt; 나, 「원문」</blockquote><a href="/original.html#row-1">원문</a></details>'
+    def accepted(value):
+        page = Page()
+        page.feed(value)
+        try:
+            result = check_rendered_relation(page, claim, evidence, ['relation-0'])
+        except ValueError:
+            return False
+        return result is not False
+    if not accepted(html):
+        raise ValueError('Valid relation disclosure rejected')
+    mutations = {
+        'HTML_REASON_REMOVED': html.replace('<p>관계 요약</p>', ''),
+        'HTML_REASON_CHANGED': html.replace('관계 요약','변형 요약'),
+        'HTML_QUOTE_CHANGED': html.replace('가 &gt; 나','가 &lt; 나'),
+        'HTML_SOURCE_LINK_CHANGED': html.replace('/original.html#row-1','/foreign.html'),
+        'HTML_RELATION_ID_CHANGED': html.replace('edge-relation-0','edge-foreign'),
+        'HTML_QUOTE_OUTSIDE_PROOF': html.replace('<blockquote>가 &gt; 나, 「원문」</blockquote>','')+'<blockquote>가 &gt; 나, 「원문」</blockquote>'}
+    for name, value in mutations.items():
+        if accepted(value):
+            raise ValueError('Contaminated relation disclosure accepted: '+name)
+    return list(mutations)
+
+
 def main(dist):
     site = Path(__file__).resolve().parents[2]
     load = lambda path: json.loads(path.read_text(encoding='utf-8'))
@@ -413,6 +457,7 @@ def main(dist):
     entries = {e['id']:e for e in index['entries']}
     aliases = index.get('aliases',{})
     errors, stats, cache = [], Counter(), {}
+    stats['relationHtmlMutationRejections'] = len(rendered_relation_self_test())
     def require(condition,error,**context):
         if not condition: errors.append({'error':error,**context})
     audit_relation_semantics(site,atlas,npc,records,aliases,require,stats)
@@ -746,6 +791,8 @@ def main(dist):
     image_manifest = load(site/'source/public/game-images/provenance.json')
     profiles = {p['name']:p for p in index['characters']}
     relation_index = {r['id']:r for r in graph['relations']}
+    relation_claims = {c['id']:c for c in graph['claims']}
+    relation_evidence = {e['id']:e for e in graph['evidence']}
     authored = [(group,c) for group in ('regions','sentinels','cosmology','factions','people')
                 for c in atlas[group]] + [('people',c) for c in npc['people']]
     for group,c in authored:
@@ -784,6 +831,13 @@ def main(dist):
                     'whole registry relationship attribution or reading kind differs',cluster=cid,index=i)
             require(actual_edge.get('structure')==edge.get('structure'),
                     'whole registry source-backed relationship structure differs',cluster=cid,index=i)
+            relation_claim = relation_claims[actual_edge['reasonClaimId']]
+            require(relation_claim['text']==edge['reason'], 'whole registry relation reason differs',cluster=cid,index=i)
+            relation_proofs = [relation_evidence[eid] for eid in relation_claim['evidenceIds']]
+            suffixes = [actual_edge['id']] + [e['id'] for t in [cluster.get('topology'),*(cluster.get('views') or [])]
+                                            if t for e in t['edges'] if e['claimId']==actual_edge['reasonClaimId']]
+            require(check_rendered_relation(parsed,relation_claim,relation_proofs,suffixes),
+                    'authored relation reason/original quotes/own source links absent from HTML proof',cluster=cid,index=i)
             stats['wholeRegistryRelations'] += 1
         source_topologies = [c.get('topology')]+c.get('views',[])
         emitted_topologies = [cluster.get('topology')]+cluster.get('views',[])
@@ -806,6 +860,13 @@ def main(dist):
                             for key in ('id','from','to','label','kind','structure')),
                         'whole registry topology statement direction or structure differs',cluster=cid,
                         topology=source_topology['id'],edge=source_edge['id'])
+                topology_claim = relation_claims[emitted_edge['claimId']]
+                require(topology_claim['text']==source_edge['text'],
+                        'whole registry topology reason differs',cluster=cid,edge=source_edge['id'])
+                require(check_rendered_relation(parsed,topology_claim,
+                            [relation_evidence[eid] for eid in topology_claim['evidenceIds']], [emitted_edge['id']]),
+                        'authored topology reason/original quotes/own source links absent from HTML proof',
+                        cluster=cid,topology=source_topology['id'],edge=source_edge['id'])
                 stats['wholeRegistryTopologyRelations'] += 1
         person = profiles.get(name)
         if person:
