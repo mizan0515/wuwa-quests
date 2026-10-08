@@ -1,8 +1,8 @@
 /* On-demand original texts. Shared Starlight navigation/theme surrounds this view. */
-(()=>{'use strict';const root=document.getElementById('lore-reader'),base=root.dataset.base,H=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let index,book,serial=0;const cache=new Map();
+(()=>{'use strict';const root=document.getElementById('lore-reader'),base=root.dataset.base,H=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let index,book,curated,serial=0;const cache=new Map();
 async function load(name){if(!cache.has(name)){const p=fetch(base+'/settings/'+name).then(r=>{if(!r.ok)throw Error('자료 파일을 읽지 못했습니다.');return r.json();}).catch(e=>{cache.delete(name);throw e;});cache.set(name,p);}return cache.get(name);}
 const canonical=id=>index.aliases[id]||id,entry=id=>index.entries.find(e=>e.id===canonical(id));
-const sourceUrl=e=>base+e.page;
+const sourceUrl=e=>curated?.sources[e.id]?base+'/sources/'+curated.sources[e.id]+'.html?from='+encodeURIComponent(location.pathname+location.search+location.hash):base+e.page;
 const chapterLink=id=>{const c=book.chapters.find(c=>c.id===id);return c?`<a href="${base}/world/${id}.html"><strong>${H(c.title)}</strong><small>${H(c.question)}</small></a>`:'';};
 const clean=s=>s.replace(/<br\s*\/?\s*>/gi,'\n').replace(/<\/?(?:te|color|size|b|i|u|ano|s)(?:[=\s][^>]*)?>/g,'').replace(/&(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi,m=>{const known={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&apos;':"'"};if(known[m.toLowerCase()])return known[m.toLowerCase()];const n=m.slice(0,3).toLowerCase()==='&#x'?parseInt(m.slice(3,-1),16):parseInt(m.slice(2,-1),10);return n>=0&&n<=0x10ffff?String.fromCodePoint(n):m;});
 function text(raw){let out='',last=0;for(const m of raw.matchAll(/<te\s+href[=\s]+["']?(\d+)["']?\s*>(.*?)<\/te>/gs)){out+=H(clean(raw.slice(last,m.index)));const i=book.concepts.findIndex(c=>c.term_id===m[1]);out+=i>=0?`<a href="${base}/concepts/${i}.html">${H(clean(m[2]))}</a>`:H(clean(m[2]));last=m.index+m[0].length;}return out+H(clean(raw.slice(last)));}
@@ -11,7 +11,7 @@ function fields(row){const vals=row.values.filter(v=>!['name','title','type','bi
 const current=()=>{const raw=location.hash.slice(1).replace(/^\//,'')||'library';const [path,q='']=raw.split('?');return {parts:path.split('/').map(decodeURIComponent),params:new URLSearchParams(q)};};
 function row(e,q='',body=''){let excerpt=e.excerpt;if(q&&body){const at=body.toLocaleLowerCase('ko').indexOf(q.toLocaleLowerCase('ko'));if(at>=0){const from=Math.max(0,at-35);excerpt=(from?'…':'')+body.slice(from,at+100).replace(/\s+/g,' ')+(at+100<body.length?'…':'');}}return `<a class="lore-record" href="${H(sourceUrl(e))}"><small>${H(e.category_label)}${e.role_name?' · '+H(e.role_name):''}${e.duplicate_count>1?' · 동일 원문 '+e.duplicate_count+'개':''}</small><strong>${H(e.title)}</strong><p>${H(excerpt)}</p></a>`;}
 async function render(){const token=++serial;root.innerHTML='<p role="status">자료를 불러오는 중입니다.</p>';try{
- if(!index)[index,book]=await Promise.all([load('index.json'),load('editorial.json')]);const r=current(),q=(r.params.get('q')||'').trim(),technical=r.params.get('technical')==='1';let markup,title='원문 보관함',field='';
+ if(!index)[index,book,curated]=await Promise.all([load('index.json'),load('editorial.json'),load('curated-sources.json')]);const r=current(),q=(r.params.get('q')||'').trim(),technical=r.params.get('technical')==='1';let markup,title='원문 보관함',field='';
  if(r.parts[0]==='source'){
   const e=entry(r.parts.slice(1).join('/'));if(!e)throw Error('찾을 수 없는 원문입니다.');const rows=await load('records-'+e.chunk+'.json'),record=rows[e.id];title=e.title;field=r.params.get('field')||'';
   const adjacent=index.entries.filter(x=>x.id!==e.id&&x.group!=='technical'&&x.term_ids.filter(t=>e.term_ids.includes(t)).length>=2).slice(0,6);

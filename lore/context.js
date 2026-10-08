@@ -1,6 +1,8 @@
 (()=>{
  const base='/wuwa-quests',path=location.pathname;let point;try{point=JSON.parse(sessionStorage.getItem('wuwa-reading-return')||'null');}catch{}
- if(point&&/^\/wuwa-quests\/quests\/\d+\.html(?:#[\w-]+)?$/.test(point.path)&&!path.includes('/quests/')){const bar=document.createElement('aside'),a=document.createElement('a');bar.className='reading-return';bar.setAttribute('aria-label','읽던 대사');a.href=point.path;a.textContent='← '+point.title+' · 읽던 대사로 돌아가기';bar.append(a);document.querySelector('main')?.prepend(bar);}
+ let from;try{const value=new URLSearchParams(location.search).get('from');if(value?.startsWith(base+'/')){const url=new URL(value,location.origin);if(url.origin===location.origin&&url.pathname.startsWith(base+'/')&&url.pathname!==path)from=url.pathname+url.search+url.hash;}}catch{}
+ if(from){const bar=document.createElement('aside'),a=document.createElement('a');bar.className='reading-return';bar.setAttribute('aria-label','이전 자료');a.href=from;a.textContent='← 읽던 자료로 돌아가기';bar.append(a);document.querySelector('main')?.prepend(bar);}
+ else if(point&&/^\/wuwa-quests\/quests\/\d+\.html(?:#[\w-]+)?$/.test(point.path)&&!path.includes('/quests/')){const bar=document.createElement('aside'),a=document.createElement('a');bar.className='reading-return';bar.setAttribute('aria-label','읽던 대사');a.href=point.path;a.textContent='← '+point.title+' · 읽던 대사로 돌아가기';bar.append(a);document.querySelector('main')?.prepend(bar);}
  if(!/^\/wuwa-quests\/quests\/\d+\.html$/.test(path))return;
  if(point?.path?.split('#')[0]===path){requestAnimationFrame(()=>scrollTo(0,Number(point.y)||0));try{sessionStorage.removeItem('wuwa-reading-return');}catch{}}
  const actions=document.querySelector('.quest-actions');if(!actions)return;

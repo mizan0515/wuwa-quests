@@ -128,6 +128,7 @@ def main(dist):
     require(len({url for _,url in expected})==len(expected),'duplicate person URL in merged inputs')
     require(len({p['id'] for p in people})==len(people),'duplicate atlas NPC ID')
     require(any(p['id']=='scar' for p in people),'scar missing from people')
+    require(any(p['id']=='ab' for p in people),'Ab missing from canonical people inputs')
     require(not any(p['id']=='scar' for p in atlas['factions']),'scar remains a faction')
     require(BASE+'/factions/scar.html' not in page('factions.html').links,'scar remains in faction directory')
     old = page('factions/scar.html')
@@ -153,6 +154,13 @@ def main(dist):
         name = person['title'].split(' · ')[0]
         relative = 'people/'+person['id']+'.html'
         parsed = page(relative)
+        if person in npc['people']:
+            legacy_slug = hashlib.sha256(name.encode('utf-8')).hexdigest()[:16]
+            legacy = page('entities/'+legacy_slug+'.html')
+            require(BASE+'/'+relative in legacy.links,'NPC legacy entity route lacks canonical link',person=name)
+            legacy_path = dist/'entities'/f'{legacy_slug}.html'
+            legacy_html = legacy_path.read_text(encoding='utf-8') if legacy_path.exists() else ''
+            require('location.search+location.hash' in legacy_html,'NPC legacy route drops reading state',person=name)
         entity = entities.get(name,{})
         require(entity.get('kind')=='인물' and entity.get('url')==BASE+'/'+relative,
                 'NPC graph entity classification or URL differs',person=name,entity=entity)
@@ -173,6 +181,15 @@ def main(dist):
         for item in person.get('timeline',{}).get('items',[]):
             require(bool(item.get('refs')),'NPC event lacks evidence references',person=name,title=item.get('title'))
         qrefs = [r for r in refs if r.get('quest_id')]
+        if name=='아브':
+            require({'880000013','114000026','140000011','158800019'}.issubset({str(r['quest_id']) for r in qrefs}),
+                    'Ab dossier omits major source contexts')
+            require(any(r.get('speaker')=='"쪼꼬미"' and '이 이름으로 할래' in r.get('quote','') for r in qrefs),
+                    'Ab chosen-name primary evidence missing')
+            require(any(r.get('speaker')=='양양' and '공생' in r.get('quote','') for r in qrefs),
+                    'Ab symbiosis attribution missing')
+            require(any(r.get('speaker')=='크리스토포로' and '될지도' in r.get('quote','') for r in qrefs),
+                    'Ab identity possibility attribution missing')
         require(any(r.get('speaker')==name or name in r.get('quote','') for r in qrefs) or
                 any(name in r.get('label','') for r in refs),
                 'NPC identity has no named primary source',person=name)
