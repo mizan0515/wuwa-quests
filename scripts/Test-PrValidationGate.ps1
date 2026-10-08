@@ -15,5 +15,7 @@ try {
   if($LASTEXITCODE -ne 0){throw 'People classification and original evidence QA failed'}
   & python tools/verify_game_images.py
   if($LASTEXITCODE -ne 0){throw 'Game image source QA failed'}
+  & python tools/verify_threnodian_site.py --dist dist
+  if($LASTEXITCODE -ne 0){throw 'Threnodian source and relation QA failed'}
   Write-Output 'RESULT: PASS'
 } finally {Pop-Location}
