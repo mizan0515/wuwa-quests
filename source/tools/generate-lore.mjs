@@ -1,4 +1,5 @@
 import {paragraphRuns,readingMedia} from '../src/lib/reading-kit/render.mjs';
+import {sourceLinkAttributes,htmlAttributes,sourceLink as renderSourceLink} from '../src/lib/reading-kit/reader.mjs';
 import {readFile,writeFile,mkdir,copyFile,readdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
@@ -21,7 +22,7 @@ const libraryScriptVersion=crypto.createHash('sha256').update((await readFile(pa
 const monsterImages=new Map([...(imageManifest.monsters||[]),...(imageManifest.geography||[])].map(m=>[m.sourceId,m]));
 for(const monster of monsterImages.values())sourceLink(monster.sourceId);
 const sourceMedia=id=>{const m=monsterImages.get(id);if(!m)return '';const im=m.images.geography||m.images.bossBanner||m.images.icon;return readingMedia([{...im,alt:m.name+'의 게임 도감 이미지',caption:'게임 도감 이미지 · '+m.name,sourceUrl:base+'/game-images/provenance.json'}]);};
-const cite=r=>`<a href="${H(r.quest_id?base+'/quests/'+r.quest_id+'.html#scene-'+r.scene:sourceLink(r.id,r.field))}">${H(r.label||r.title)} <span aria-hidden="true">↗</span></a>`;
+const cite=r=>`<a ${htmlAttributes(sourceLinkAttributes({reading:true}))} href="${H(r.quest_id?base+'/quests/'+r.quest_id+'.html#scene-'+r.scene:sourceLink(r.id,r.field))}">${H(r.label||r.title)} <span aria-hidden="true">↗</span></a>`;
 const refs=rs=>`<div class="lore-citations" data-pagefind-ignore>${rs.map(cite).join('')}</div>`;
 const clean=s=>s.replace(/<br\s*\/?\s*>/gi,'\n').replace(/<\/?(?:te|color|size|b|i|u|ano|s)(?:[=\s][^>]*)?>/g,'');
 function linked(raw){let out='',last=0;for(const m of raw.matchAll(/<te\s+href[=\s]+["']?(\d+)["']?\s*>(.*?)<\/te>/gs)){out+=H(clean(raw.slice(last,m.index)));const i=book.concepts.findIndex(c=>c.term_id===m[1]);out+=i>=0?`<a href="${base}/concepts/${i}.html">${H(clean(m[2]))}</a>`:H(clean(m[2]));last=m.index+m[0].length;}return out+H(clean(raw.slice(last)));}
@@ -52,7 +53,7 @@ for(const r of [...citedFields,...book.concepts.map(c=>c.ref)]){const row=record
 const values=(row,field)=>row.values.find(v=>v.field===field&&v.status==='OK')?.text||'';
 for(const c of index.characters){const rows=index.entries.filter(e=>String(e.role_id)===c.id),profile=rows.find(e=>e.chunk==='profile');let body=`<div class="lore-profile-meta">${H(c.country)} <span aria-hidden="true">·</span> ${H(c.influence)}</div>${c.chapters.length?`<p class="lore-kicker">이 인물의 설정을 엮어 읽는 해설</p>${related(c.chapters)}`:''}`;
  if(profile)body+=fields(records[profile.id],['info','talent_name','talent_document','talent_certification']);
- for(const [chunk,title] of [['stories','인물 이야기'],['goods','소장품']]){body+=`\n\n## ${title}\n\n`;for(const e of rows.filter(e=>e.chunk===chunk)){const row=records[e.id];body+=`<details class="lore-story"><summary>${H(e.title.replace(c.name+' · ',''))}</summary><div class="lore-story-body">${fields(row,null,e.chunk+'-'+row.entry_id+'-')}<a href="${H(base+e.page)}">이 자료의 원문·출처 ↗</a></div></details>\n\n`;}}
+ for(const [chunk,title] of [['stories','인물 이야기'],['goods','소장품']]){body+=`\n\n## ${title}\n\n`;for(const e of rows.filter(e=>e.chunk===chunk)){const row=records[e.id];body+=`<details class="lore-story"><summary>${H(e.title.replace(c.name+' · ',''))}</summary><div class="lore-story-body">${fields(row,null,e.chunk+'-'+row.entry_id+'-')}${renderSourceLink(base+e.page,'이 자료의 원문·출처 ↗',{reading:true})}</div></details>\n\n`;}}
  body+=`\n\n## 음성 대사와 다른 자료\n\n<div class="lore-actions"><a href="${base}/library.html#/library?role=${c.id}&amp;category=${encodeURIComponent('인물_음성대사')}">음성 대사 ${c.counts.voice||0}개 읽기 ↗</a><a href="${base}/index.html?q=${encodeURIComponent(c.name)}">이름으로 퀘스트 제목 찾기 ↗</a></div><p class="lore-note">인물 자료는 원자료 ID로 묶었습니다. 이야기의 배열은 사건의 전체 연대기를 확정하지 않습니다.</p>`;
  await doc('people/'+c.id,c.name,body);
 }
