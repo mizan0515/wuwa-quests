@@ -17,6 +17,31 @@ from verify_people_catalog import BASE, Page, gather
 from verify_original_rendering import visible_text, load_curated_sources
 
 
+class LinkedTextPage(Page):
+    """Keep anchor ranges in DOM text to detect links inside longer words."""
+    def __init__(self):
+        super().__init__()
+        self.linked_text, self.active_link, self.text_length = [], None, 0
+
+    def handle_starttag(self, tag, attrs):
+        super().handle_starttag(tag, attrs)
+        if tag == 'a':
+            self.active_link = {'href': dict(attrs).get('href', ''),
+                                'start': self.text_length, 'end': self.text_length}
+            self.linked_text.append(self.active_link)
+
+    def handle_data(self, text):
+        super().handle_data(text)
+        self.text_length += len(text)
+        if self.active_link is not None:
+            self.active_link['end'] = self.text_length
+
+    def handle_endtag(self, tag):
+        if tag == 'a':
+            self.active_link = None
+        super().handle_endtag(tag)
+
+
 def source_speakers(scene, quote):
     """Use the people QA's utterance pattern; also accept named screen text."""
     result = set()
@@ -48,7 +73,7 @@ def main(dist):
         if relative not in pages:
             target = dist/relative
             require(target.is_file(), 'missing HTML destination', page=relative)
-            parsed = Page()
+            parsed = LinkedTextPage()
             if target.is_file():
                 parsed.feed(target.read_text(encoding='utf-8'))
             pages[relative] = parsed
@@ -202,6 +227,39 @@ def main(dist):
     outcome_views = generated.get('views', [])
     require(any(sum(e.get('from')==n['id'] for e in v['edges'])>=2
                 for v in outcome_views for n in v['nodes']), 'outcome view loses the two separate branches')
+
+    # These are real lore words, not annotation fixtures. Compare the link's
+    # DOM range with the complete word even when HTML splits the word between
+    # an anchor and adjacent text. Keep the normal faction member discoverable.
+    canary_pages = ('cosmology/threnodians.html', 'cosmology/civilization.html',
+                    'regions/raha.html', 'sentinels.html', 'relationships.html',
+                    'events.html', 'factions/fractsidus.html')
+    observed = Counter()
+    for relative in canary_pages:
+        parsed = page(relative)
+        rendered = ''.join(parsed.text)
+        for match in re.finditer(r'스카우트|스카라베', rendered):
+            observed[match[0]] += 1
+            for anchor in parsed.linked_text:
+                target = urlsplit(anchor['href']).path
+                if target not in (BASE+'/people/scar.html', BASE+'/factions/scar.html'):
+                    continue
+                overlap = anchor['start'] < match.end() and anchor['end'] > match.start()
+                require(not overlap, 'longer lore word incorrectly linked to the person Scar',
+                        page=relative, word=match[0], link=anchor['href'],
+                        linkedText=rendered[anchor['start']:anchor['end']])
+    require(observed['스카우트'] > 0, 'scout canary absent from actual rendered lore')
+    faction_page = page('factions/fractsidus.html')
+    faction_text = ''.join(faction_page.text)
+    require(any(urlsplit(anchor['href']).path==BASE+'/people/scar.html'
+                and faction_text[anchor['start']:anchor['end']].strip()=='스카'
+                for anchor in faction_page.linked_text),
+            'actual Fractsidus member Scar lost his canonical person link')
+    stats['scoutCanaryOccurrences'] = observed['스카우트']
+    stats['scarabCanaryOccurrences'] = observed['스카라베']
+    # Zero reports lack of a current scarab example, rather than fabricating a
+    # public source. The same overlap assertion applies when one is present.
+    stats['scarabCanaryObserved'] = bool(observed['스카라베'])
 
     # Resolve every local anchor on the checked reader pages against actual
     # output. Include links inside maps and proof disclosures, not just cards.
