@@ -1455,8 +1455,8 @@ A팀은 바로 데이터 사전 처리 모드에 진입하고, B팀은 지면 �
 [붉은 숲 사냥터](https://mizan0515.github.io/wuwa-quests/sources/44069aafe5a7c37c.html#field-content) · [사냥단 캠프](https://mizan0515.github.io/wuwa-quests/sources/5c4b3cceb2a4b39c.html#field-content) · [경계의 산](https://mizan0515.github.io/wuwa-quests/sources/952334e031c7191b.html#field-content) · [석룡의 무덤](https://mizan0515.github.io/wuwa-quests/sources/bb7f3741f096c473.html#field-content)
 
 - 카피톨리누스 언덕 도시 → **중심지를 이룬다** → 일곱 언덕: 저지대 흑조 위협을 피한 사람들이 높은 곳에 모여들었다.
-- 석룡의 무덤 → **무너진 전당을 남긴다** → 일곱 언덕: 첫 번째 흑조가 시련의 전당을 무너뜨렸다고 적힌다.
-- 경계의 산 → **침식 흔적을 남긴다** → 일곱 언덕: 첫 번째 흑조가 산에 영구적인 퇴색과 침식 흔적을 남겼다.
+- 석룡의 무덤 → **흑조로 전당이 무너진 시련의 땅** → 일곱 언덕: 첫 번째 흑조가 시련의 전당을 무너뜨렸다고 적힌다.
+- 경계의 산 → **흑조의 침식 흔적이 남은 변경 산맥** → 일곱 언덕: 첫 번째 흑조가 산에 영구적인 퇴색과 침식 흔적을 남겼다.
 
 [화면에서 관계·원문 함께 읽기](https://mizan0515.github.io/wuwa-quests/regions/seven-hills.html)
 
