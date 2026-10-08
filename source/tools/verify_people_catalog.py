@@ -153,6 +153,102 @@ def gather(value):
             for item in value.values(): yield from gather(item)
 
 
+def audit_relation_semantics(site, atlas, npc, records, aliases, require, stats):
+    """Source-only regressions for actor/target, modality and editorial links.
+
+    Rendering cannot prove whether a sentence represents an actual relation.
+    These canaries retain the specific original clauses found in the full
+    registry audit; every source proof is also checked independently below.
+    """
+    clusters = {group+'/'+c['id']:c for group in ('regions','sentinels','cosmology','factions','people')
+                for c in atlas[group]}
+    clusters.update({'people/'+c['id']:c for c in npc['people']})
+    quest_cache = {}
+    for ref in gather([atlas, npc]):
+        if ref.get('quest_id'):
+            ident = str(ref['quest_id'])
+            if ident not in quest_cache:
+                raw = (site/'originals'/(ident+'.txt')).read_bytes()
+                text = raw.decode('utf-8-sig')
+                starts = list(re.finditer(r'^장면 (\d+):',text,re.M))
+                scenes = {int(m[1]):text[m.start():starts[i+1].start() if i+1<len(starts) else len(text)]
+                          for i,m in enumerate(starts)}
+                quest_cache[ident] = hashlib.sha256(raw).hexdigest(), scenes
+            digest, scenes = quest_cache[ident]
+            require(digest==ref['source_sha256'] and ref['quote'] in scenes.get(ref['scene'],''),
+                    'registry quest proof differs from exact scene',quest=ident,scene=ref['scene'])
+            stats['registryQuestProofs'] += 1
+        else:
+            ident = aliases.get(ref['id'],ref['id'])
+            record = records.get(ident,{})
+            value = next((v for v in record.get('values',[]) if v['field']==ref['field']),None)
+            valid = value is not None and hashlib.sha256(value['raw'].encode()).hexdigest()==ref['source_text_sha256']
+            require(valid and ref['excerpt'] in (value or {}).get('text',''),
+                    'registry setting proof differs from exact field',source=ident,field=ref['field'])
+            if valid and ref['excerpt'] in value['text']:
+                end = value['text'].index(ref['excerpt'])+len(ref['excerpt'])
+                require(end==len(value['text']) or value['text'][end]=='\n' or
+                        ref['excerpt'].endswith(('.', '!', '?','。','！','？')),
+                        'registry excerpt stops inside a source line',source=ident,field=ref['field'])
+            stats['registrySettingProofs'] += 1
+    for cid, index, actor, verb, target, source, field, literal in (
+            ('regions/jinzhou',4,'기염','지휘한다','야귀군','잔상_생태:monsterinfo:310000690','discovered_description',
+             '이 모든 부대는 금주 야귀 장군 기염의 지휘 아래 움직인다'),
+            ('regions/huanglong',1,'몽주','황룡에 속한다','황룡','인물_프로필_공명기록:favorroleinfo:1307','info',
+             '황룡 몽주의 도사'),
+            ('cosmology/solaris',0,'로야 빙원','제1차 비명 이후 극점이 되었다','솔라리스','로딩_세계관_도움말:loadingtipstext:201204','content',
+             '제1차 비명으로 인해 자극이 변하며, 이곳은 새로운 솔라리스의 극점이 되면서')):
+        edge = clusters[cid]['edges'][index]
+        require((edge['a'],edge['verb'],edge['b'])==(actor,verb,target) and
+                any(aliases.get(r.get('id'),r.get('id'))==source and r.get('field')==field and
+                    literal in r.get('excerpt','') for r in edge['refs']),
+                'source-backed actor predicate or target regression',cluster=cid,index=index)
+        stats['semanticActorCanaries'] += 1
+    for cid,index in (('regions/new-federation',1),('factions/huaxu',0),('factions/ghost-hounds',3),
+                      ('people/valentina',1)):
+        require(clusters[cid]['edges'][index].get('kind')=='reading',
+                'editorial record connection presented as an explicit relation',cluster=cid,index=index)
+        stats['semanticReadingCanaries'] += 1
+    for cid,index,actor,verb,target,quest,scene,speaker,literal in (
+            ('people/fractsidus-chairman',0,'잔성회 회장','명식 공명자 확보를 조직의 목표로 제시한다','잔성회',
+             '121000040',28,'잔성회 회장','잔성회가 완전하고 제어할 수 있는 명식의 공명자를 손에 넣을 때까지'),
+            ('people/fractsidus-chairman',1,'잔성회 회장','잔성회의 창조물이라고 주장한다','데니아',
+             '121000040',28,'잔성회 회장','데니아는 원래 잔성회의 창조물이었는걸요'),
+            ('people/fractsidus-chairman',3,'잔성회 회장','정신을 그릇에 결합할 대상으로 삼는다','히유키',
+             '121000040',28,'잔성회 회장','훌륭한 그릇을 만든 다음, 거기에 타오르는 벚꽃의 무녀의 정신을 더하면'),
+            ('people/antonio',0,'안토니오','가문의 개인 단말기 연구를 설명한다','몬텔리 가문',
+             '114000027',13,'안토니오','우리 몬텔리 가문은 「개인 단말기」에 대한 연구를 시작한 거고'),
+            ('people/alexis',2,'알렉시스 사제','천상의 나라 건설을 조직의 지향으로 설명한다','깊은 바다 수도회',
+             '114000027',18,'알렉시스 사제','수호신의 뜻 아래 사람들을 인도하고 단결시키며 천상의 나라, 행복한 땅을 만드는 것')):
+        edge = clusters[cid]['edges'][index]
+        require((edge['a'],edge['verb'],edge['b'])==(actor,verb,target) and edge.get('kind')!='reading' and
+                any(r.get('quest_id')==quest and r.get('scene')==scene and r.get('speaker')==speaker and
+                    literal in r.get('quote','') for r in edge['refs']),
+                'NPC relation object or attributed speaker regression',cluster=cid,index=index)
+        stats['semanticNpcCanaries'] += 1
+    investigation = clusters['people/valentina']['edges'][1]
+    require(any(r.get('quest_id')=='880000044' and r.get('scene')==1 and r.get('speaker')=='발렌티나' and
+                'A팀은 바로 데이터 사전 처리 모드' in r.get('quote','') for r in investigation['refs']) and
+            any(r.get('quest_id')=='880000044' and r.get('scene')==1 and r.get('speaker')=='발렌티나' and
+                '검은 해안은 이 문제를 최우선 프로젝트로 지정' in r.get('quote','') for r in investigation['refs']),
+            'editorial investigation route lost either actor instruction or institutional scope')
+    threnodians = clusters['cosmology/threnodians']
+    attempt = threnodians['sections'][4]
+    require('봉인하려 했다고' in attempt['text'] and '봉인한 재난' not in threnodians['summary'] and
+            any(r.get('id')=='로딩_세계관_도움말:loadingtipstext:201206' and
+                '재난을 게이트 너머로 봉인하려 했다' in r.get('excerpt','') for r in attempt['refs']),
+            'planned seal changed into a completed seal')
+    cycle = clusters['cosmology/frequency']['topology']
+    require('깊은 바다 실험장' in cycle['title'] and '깊은 바다 실험장 기록' in cycle['edges'][0]['text'],
+            'regional frequency cycle generalized into a world law')
+    for item in (clusters['regions/jinzhou']['bridge'],clusters['people/scar']['bridge'],
+                 clusters['factions/fractsidus']['comparison'][0]):
+        require(any(r.get('quest_id')=='139000030' and r.get('scene')==7 and r.get('speaker')=='양양'
+                    for r in item['refs']), 'Yangyang attribution has no dialogue proof')
+    stats['semanticModalityCanaries'] += 2
+    stats['semanticSpeakerCanaries'] += 3
+
+
 def main(dist):
     site = Path(__file__).resolve().parents[2]
     load = lambda path: json.loads(path.read_text(encoding='utf-8'))
@@ -166,6 +262,7 @@ def main(dist):
     errors, stats, cache = [], Counter(), {}
     def require(condition,error,**context):
         if not condition: errors.append({'error':error,**context})
+    audit_relation_semantics(site,atlas,npc,records,aliases,require,stats)
     try:
         curated = load_curated_sources(site,dist,index)
     except (ValueError,OSError,KeyError,json.JSONDecodeError) as error:
@@ -528,6 +625,10 @@ def main(dist):
                     actual_edge.get('to')==entities.get(edge['b'],{}).get('id') and
                     actual_edge.get('label')==edge['verb'],
                     'whole registry relationship direction or predicate differs',cluster=cid,index=i)
+            expected_kind = 'inference' if edge.get('kind')=='reading' else 'attributed' if (
+                    edge.get('speaker') or any(r.get('speaker') for r in edge.get('refs',[]))) else 'explicit'
+            require(actual_edge.get('kind')==expected_kind,
+                    'whole registry relationship attribution or reading kind differs',cluster=cid,index=i)
             stats['wholeRegistryRelations'] += 1
         person = profiles.get(name)
         if person:
