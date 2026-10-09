@@ -7,6 +7,8 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Reading build failed'}
   & npm.cmd run qa:reading
   if($LASTEXITCODE -ne 0){throw 'Reading data QA failed'}
+  & npm.cmd run qa:seo
+  if($LASTEXITCODE -ne 0){throw 'Page metadata, canonical sitemap and story footer SEO QA failed'}
   & python -B -X utf8 tools/verify_editorial_sources.py --self-test
   if($LASTEXITCODE -ne 0){throw 'Whole editorial original and source meaning QA failed'}
   & python tools/verify_reading_site.py
