@@ -85,7 +85,9 @@ export async function generateAtlas({site,content,book,index,records,doc,H,refs,
   const slug=crypto.createHash('sha256').update(n.name).digest('hex').slice(0,16);
   n.url='/entities/'+slug+'.html';entityLinks.set(n.name,n.url);entitySources.set(n.name,{slug,sources});
  }
- const namePattern=new RegExp([...entityLinks.keys()].filter(n=>n.length>1).sort((a,b)=>b.length-a.length).map(n=>n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');
+ // 천연 also describes natural terrain/materials. Keep search and explicit
+ // entity-node links; an unqualified adjective does not identify the being.
+ const namePattern=new RegExp([...entityLinks.keys()].filter(n=>n.length>1&&n!=='천연').sort((a,b)=>b.length-a.length).map(n=>n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|'),'g');
  function text(s,excludeName=''){s=String(s).replace(/<br\s*\/?\s*>/gi,'\n').replace(/<\/?(?:te|color|size|b|i|u|ano|s)(?:[=\s][^>]*)?>/g,'');let out='',last=0;const seen=new Set();for(const m of s.matchAll(namePattern)){const at=m.index,after=at+m[0].length;if(at>0&&/[\p{L}\p{N}]/u.test(s[at-1]))continue;if(/[\p{L}\p{N}]/u.test(s[after]||'')&&!/^(?:은|는|이|가|을|를|의|에|에서|에게|와|과|도|로|으로|부터|까지|께서|씨(?:가|는|의|도|를)?)(?=$|[^\p{L}\p{N}])/u.test(s.slice(after)))continue;out+=H(s.slice(last,at));const name=m[0];if(name===excludeName||name==='구원'||seen.has(name)||seen.size>=3)out+=H(name);else{out+=`<a class="setting-entity-link" data-reading-link href="${url(entityLinks.get(name))}">${H(name)}</a>`;seen.add(name);}last=after;}return out+H(s.slice(last));}
  for(const c of all)for(const n of c.nodes)if(!entityLinks.has(n.name))entityLinks.set(n.name,n.url);
  for(const c of all)for(const n of [c.topology,...(c.views||[])].filter(Boolean).flatMap(t=>t.nodes))if(entityLinks.has(n.name))n.url=url(entityLinks.get(n.name));

@@ -31,6 +31,13 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def check_inline_entity_identity(page):
+    for node in page.nodes:
+        if node['tag'] == 'a' and 'setting-entity-link' in node['attrs'].get('class', '').split():
+            require(''.join(node['text']).strip() != '천연',
+                    'ambiguous natural adjective auto-linked as Tianyan')
+
+
 def dynamic_source_route(actual, expected, return_to):
     """A return parameter may be added; the original path/ID/field stays exact."""
     got, original = urlsplit(actual), urlsplit(expected)
@@ -416,6 +423,7 @@ def built_check(site, dist, index, records, book, atlas, curated, stats, fixture
             path = dist/relative
             require(path.is_file(), 'built page missing: '+relative)
             cache[relative] = parse(path.read_text(encoding='utf-8'))
+            check_inline_entity_identity(cache[relative])
             reject_fixtures(cache[relative], fixture_pattern, literals, BASE+'/'+relative, stats)
         return cache[relative]
     groups = ['regions', 'factions', 'cosmology', 'people', 'sentinels']
@@ -518,6 +526,7 @@ def self_test():
     raw_mutant = parse('<section class="lore-field" id="field-content"><h2 class="cva-title">본문</h2><div class="lore-source-text">original</div><details><dl><dd>OK</dd></dl><pre>lost original</pre></details></section>')
     fixture = '아래 값은 표현을 확인하기 위한 가상 예시입니다. 실제 결과를 주장하지 않습니다.'
     for name, check in (
+        ('naturalTerrainLinkedAsTianyan', lambda: check_inline_entity_identity(parse('<p><a class="setting-entity-link" href="/wuwa-quests/cosmology/tianyan.html">천연</a> 장벽 역할을 하고 있다</p>'))),
         ('nonCvaDirectory', lambda: link_in_module(parse('<a href="/x">X</a>'), '/x', 'X')),
         ('rewrittenCvaBody', lambda: require_module(parse('<script data-cva-model>{"modules":[{"props":{"body":"changed"}}]}</script>'), 'original', 'mutated text')),
         ('rawReaderNotScoped', lambda: check_reader_fields(parse('<section class="lore-field" id="field-content"><pre>raw</pre></section>'), ['field-content'], 'mutated wrapper')),
