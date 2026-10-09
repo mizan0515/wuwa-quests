@@ -55,7 +55,8 @@ const atlas=json('settings/atlas.json'),index=json('settings/index.json'),book=j
 atlas.people.push(...json('settings/npc-people.json').people);
 const groups=['regions','sentinels','cosmology','factions','people'];
 const clusters=groups.flatMap(group=>atlas[group].map(c=>({group,c})));
-const kindIndex=entityKindIndex({index,atlas,book});
+const discovery=json('settings/directory-discovery.json');
+const kindIndex=entityKindIndex({index,atlas,book,discovery});
 
 test('전체 등록부의 분류와 관계마다 원문에 기록한 역할을 보존한다',()=>{
  let endpoints=0;

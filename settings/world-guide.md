@@ -1870,7 +1870,7 @@ A팀은 바로 데이터 사전 처리 모드에 진입하고, B팀은 지면 �
 
 잔상을 처치한 뒤에는 일정 확률로 해당 잔향이 남는다. 반고 단말기의 데이터 스테이션은 잔향을 에코로 변환하며, 에코를 이용해 잔상의 능력을 재현한다.
 
-[에코 · 본문](https://mizan0515.github.io/wuwa-quests/sources/ce1a6467038812ad.html#field-content)
+[에코](https://mizan0515.github.io/wuwa-quests/sources/ce1a6467038812ad.html#field-content)
 
 #### 기원 비콘과 공공 에코
 
@@ -1936,7 +1936,7 @@ A팀은 바로 데이터 사전 처리 모드에 진입하고, B팀은 지면 �
 
 비명, 잔향, 울림, 소노라에 관한 도움말은 재난과 주파수의 흔적을 설명한다. 잔상과 에코의 정의는 해당 현상이 생태와 관측 기록에서 어떤 의미로 쓰이는지 확인하는 기준이 된다.
 
-[비명 · 본문](https://mizan0515.github.io/wuwa-quests/sources/0c777bb5026628a5.html#field-content) · [잔향 · 본문](https://mizan0515.github.io/wuwa-quests/sources/75b0942d91925656.html#field-content) · [울림 · 본문](https://mizan0515.github.io/wuwa-quests/sources/33819c8296eb49d7.html#field-content) · [울림 · 본문](https://mizan0515.github.io/wuwa-quests/sources/33819c8296eb49d7.html#field-content) · [잔상 · 본문](https://mizan0515.github.io/wuwa-quests/sources/bc282c9442832d85.html#field-content) · [에코 · 본문](https://mizan0515.github.io/wuwa-quests/sources/ce1a6467038812ad.html#field-content)
+[비명 · 본문](https://mizan0515.github.io/wuwa-quests/sources/0c777bb5026628a5.html#field-content) · [잔향 · 본문](https://mizan0515.github.io/wuwa-quests/sources/75b0942d91925656.html#field-content) · [울림 · 본문](https://mizan0515.github.io/wuwa-quests/sources/33819c8296eb49d7.html#field-content) · [울림 · 본문](https://mizan0515.github.io/wuwa-quests/sources/33819c8296eb49d7.html#field-content) · [잔상 · 본문](https://mizan0515.github.io/wuwa-quests/sources/bc282c9442832d85.html#field-content) · [에코](https://mizan0515.github.io/wuwa-quests/sources/ce1a6467038812ad.html#field-content)
 
 
 [화면에서 관계·원문 함께 읽기](https://mizan0515.github.io/wuwa-quests/cosmology/frequency.html)

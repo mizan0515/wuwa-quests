@@ -260,7 +260,7 @@ def audit_relation_structures(clusters, records, aliases, quest_cache, require, 
         stats['structureOriginalCanaries'] += 1
 
 
-def canonical_topology_urls(index, atlas, npc, book):
+def canonical_topology_urls(index, atlas, npc, book, discovery):
     """Reconstruct approved entity destinations from the original registries.
 
     generate-atlas changes only a topology node's URL after resolving profile,
@@ -279,6 +279,10 @@ def canonical_topology_urls(index, atlas, npc, book):
         links[alias['name']] = alias['targetUrl']
     for i,concept in enumerate(book['concepts']):
         links.setdefault(concept['name'],'/concepts/'+str(i)+'.html')
+    for entry in discovery['entries']:
+        if not entry.get('refs') or not entry['url'].startswith(BASE+'/'):
+            raise ValueError('directory subject lacks original evidence or a local dossier')
+        links[entry['name']] = entry['url'].removeprefix(BASE)
     for _,c in authored:
         proofs = list(gather(c))
         for node in c['nodes']:
@@ -451,7 +455,7 @@ def main(dist):
     index, atlas = load(site/'settings/index.json'), load(site/'settings/atlas.json')
     npc = load(site/'settings/npc-people.json')
     book = load(site/'settings/editorial.json')
-    canonical_urls = canonical_topology_urls(index,atlas,npc,book)
+    canonical_urls = canonical_topology_urls(index,atlas,npc,book,load(site/'settings/directory-discovery.json'))
     people = atlas.get('people',[]) + npc['people']
     records = {}
     for path in (site/'settings').glob('records-*.json'): records.update(load(path))

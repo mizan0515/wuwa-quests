@@ -34,24 +34,57 @@ body,h1,h2,h3,input,select,button,.lore-heading h1,.lore-statement,.lore-card h3
 
 .atlas-interpretation .lore-kind{display:block}.setting-cycle-return{border:1px solid var(--brass);border-radius:2rem;padding:.8rem 1.2rem;max-width:max-content;font-size:.9rem}.setting-containment{border-left:3px solid var(--brass);padding:1rem 1.5rem}.setting-containment ul{display:flex;flex-wrap:wrap;gap:1rem;list-style:none;padding:0}.setting-containment li{border:1px solid var(--line);padding:.7rem 1rem;border-radius:6px}
 
-.lore-person-card:has(.game-person-icon){display:grid;grid-template-columns:64px minmax(0,1fr) auto;column-gap:1.1rem;align-items:center}
+.lore-person-card:not(.npc-person-card):has(.game-person-icon){display:grid;grid-template-columns:64px minmax(0,1fr) auto;column-gap:1.1rem;align-items:center}
 .game-person-icon{grid-row:1/3;width:64px;height:64px;object-fit:contain;margin:0!important;background:var(--selected);border-radius:50%}
-.lore-person-card:has(.game-person-icon)>h3,.lore-person-card:has(.game-person-icon)>p{grid-column:2}
-.lore-person-card:has(.game-person-icon)>small{grid-column:3;grid-row:1/3}
+.lore-person-card:not(.npc-person-card):has(.game-person-icon)>h3,.lore-person-card:not(.npc-person-card):has(.game-person-icon)>p{grid-column:2}
+.lore-person-card:not(.npc-person-card):has(.game-person-icon)>small{grid-column:3;grid-row:1/3}
 .person-overview{display:grid;grid-template-columns:minmax(0,1fr) 14rem;align-items:center;gap:2rem;margin-block:1rem 2.5rem}
 .person-overview>.lore-field{margin:0!important}
 .game-person-portrait{width:100%;margin:0!important}
 .game-person-portrait img{display:block;width:100%;height:21rem;object-fit:contain}
 .game-person-portrait figcaption{text-align:center;font-size:.78rem;color:var(--muted);line-height:1.8}
 .game-person-portrait figcaption a{display:block}
-.npc-directory .lore-person-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:0 1.5rem}
-.npc-person-card{grid-template-columns:minmax(0,1fr);padding:1.25rem 0}
-.npc-person-card>p{font-size:.9rem;line-height:1.8;margin-top:.4rem!important}
-.npc-person-card>small{grid-column:1;grid-row:3;color:var(--brass);padding-top:.65rem}
+.npc-directory .lore-person-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:0 1.5rem;align-items:start}
+.npc-directory .npc-person-card{display:grid;grid-template-columns:minmax(0,1fr);align-content:start;align-items:start;gap:.45rem 1rem;padding:1.25rem 0}
+.npc-directory .npc-person-card>h3{grid-column:1/-1;grid-row:1;min-width:0;align-self:center}
+.npc-directory .npc-person-card>p{grid-column:1/-1;grid-row:2;min-width:0;font-size:.9375rem;line-height:1.85;margin:0!important;word-break:keep-all;overflow-wrap:anywhere}
+.npc-directory .npc-person-card>small{grid-column:1/-1;grid-row:3;color:var(--brass);padding-top:.25rem}
+.npc-directory .npc-person-card:has(.game-person-icon){grid-template-columns:56px minmax(0,1fr)}
+.npc-directory .npc-person-card>.game-person-icon{grid-column:1;grid-row:1;width:56px;height:56px}
+.npc-directory .npc-person-card:has(.game-person-icon)>h3{grid-column:2}
+.discovery-directory{container-type:inline-size}
+.discovery-directory [hidden]{display:none!important}
+.discovery-jump{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.75rem;margin:1.5rem 0 2rem!important}
+.discovery-jump a{display:flex;flex-direction:column;justify-content:space-between;gap:.5rem;min-height:88px;padding:1rem;border:1px solid var(--line);border-radius:8px;text-decoration:none;background:var(--paper)}
+.discovery-jump strong{font-size:1rem;line-height:1.6;color:var(--ink)}
+.discovery-jump a>span{font-size:.8125rem;color:var(--muted)}
+.discovery-jump a:focus-visible,.discovery-controls :focus-visible,.discovery-top:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
+.discovery-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,16rem) auto;gap:1rem;align-items:end;margin:0!important;padding:1.5rem 0;border-block:1px solid var(--line)}
+.discovery-controls label{display:grid;gap:.5rem;min-width:0;font-size:.875rem;font-weight:600;color:var(--ink)}
+.discovery-controls input,.discovery-controls select,.discovery-controls button{box-sizing:border-box;min-width:0;max-width:100%;min-height:44px;border:1px solid var(--line);border-radius:6px;padding:.65rem .8rem;font:inherit;color:var(--ink);background:var(--paper)}
+.discovery-controls input,.discovery-controls select{width:100%;font-size:1rem;font-weight:400}
+.discovery-controls button{cursor:pointer;white-space:nowrap;font-size:.875rem}
+.discovery-controls button:disabled{color:var(--muted);opacity:.6;cursor:default}
+.discovery-result{margin:1rem 0 .4rem!important;font-size:.875rem;font-weight:650}
+.discovery-editorial-note{margin-top:0!important;line-height:1.8}
+.discovery-group{margin:2.5rem 0!important;padding-top:1.5rem;border-top:1px solid var(--line);scroll-margin-top:7rem}
+.discovery-group>header{margin-bottom:1.25rem}
+.discovery-group>header h2{margin:0!important;font-size:1.4rem!important}
+.discovery-group>header p{margin:.6rem 0 0!important;color:var(--muted);font-size:.9375rem;line-height:1.85}
+.discovery-group .rw-directory{margin:0!important}
+.discovery-top{display:inline-flex;align-items:center;min-height:44px;margin-top:.75rem;font-size:.8125rem}
+.discovery-empty{padding:2rem 1rem;border:1px solid var(--line);border-radius:8px;line-height:1.85}
+.discovery-library{margin-top:3rem!important;padding:1.5rem 0;border-top:1px solid var(--line)}
+.discovery-library h2{font-size:1.25rem!important;margin-top:0!important}
+.discovery-library p{font-size:.9375rem;color:var(--muted);line-height:1.85}
+.discovery-library a{display:inline-flex;align-items:center;min-height:44px;margin-right:1.5rem;font-size:.875rem}
+@container(max-width:48rem){.discovery-jump{grid-template-columns:repeat(2,minmax(0,1fr))}.discovery-jump a:last-child{grid-column:1/-1;flex-direction:row;align-items:center;min-height:64px}}
+@container(max-width:40rem){.discovery-controls{grid-template-columns:minmax(0,1fr) auto;gap:1rem}.discovery-controls label:first-child{grid-column:1/-1}}
+@container(max-width:25rem){.discovery-jump{grid-template-columns:1fr}.discovery-jump a{flex-direction:row;align-items:center;min-height:64px}.discovery-jump a>span{white-space:nowrap}}
 @media(max-width:45rem){
- .lore-person-card:has(.game-person-icon){grid-template-columns:56px minmax(0,1fr)}
+ .lore-person-card:not(.npc-person-card):has(.game-person-icon){grid-template-columns:56px minmax(0,1fr)}
  .game-person-icon{width:56px;height:56px;grid-row:1/4}
- .lore-person-card:has(.game-person-icon)>small{grid-column:2;grid-row:auto}
+ .lore-person-card:not(.npc-person-card):has(.game-person-icon)>small{grid-column:2;grid-row:auto}
  .person-overview{grid-template-columns:1fr;gap:1rem}
  .person-overview .game-person-portrait{grid-row:1;max-width:15rem;justify-self:center}
  .game-person-portrait img{height:17rem}

@@ -193,7 +193,11 @@ def main(dist):
     # Check the reader's actual entry paths, including the individual character
     # and playwright bodies. A directory card or an unrelated source page is
     # insufficient to make these references discoverable from their context.
-    for relative in ('world.html', 'cosmology.html', 'cosmology/threnodians.html',
+    require(BASE+'/cosmology.html#group-disasters' in page('world.html').links,
+            'World entrance lacks the disaster and Threnodian reading group')
+    require('group-disasters' in page('cosmology.html').ids,
+            'Disaster reading group target is absent')
+    for relative in ('cosmology.html', 'cosmology/threnodians.html',
                      'regions/jinzhou.html', 'regions/mongju.html',
                      'people/1404.html', 'people/1413.html', 'people/christoforo.html'):
         require(target_url in page(relative).links, 'Axion body not discoverable from related page', page=relative)
