@@ -1,0 +1,11 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+const isNotFound = Astro.locals.starlightRoute.id === '404';
+if (isNotFound) {
+  Astro.locals.starlightRoute.head = Astro.locals.starlightRoute.head.filter(
+    ({ tag, attrs }) => !(tag === 'meta' && String(attrs?.name || '').toLowerCase() === 'robots')
+  );
+}
+---
+<Default />
+{isNotFound && <meta name="robots" content="noindex, follow" />}
