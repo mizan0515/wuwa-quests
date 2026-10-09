@@ -46,6 +46,7 @@ export function entityKindIndex({index,atlas,book}){
    const explicit=[...labels].map(kind=>kindFamilies.get(kind)).filter(Boolean);
    const allowed=known==='인물'?new Set(['인물','수호신']):new Set([known]);
    if(explicit.some(kind=>!allowed.has(kind)))throw Error('Declared entity kind conflicts with canonical source: '+name+' / '+known+' / '+[...labels].join(', '));
+   if(known==='세계관'&&labels.size===1&&families.has('세계관'))resolved.set(name,[...labels][0]);
   }else{
    if(families.size!==1)throw Error('Conflicting declared entity kinds: '+name+' / '+[...labels].join(', '));
    // Keep a named creature or phenomenon's specific declared type. The
