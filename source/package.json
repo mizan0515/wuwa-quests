@@ -7,7 +7,7 @@
     "preview": "astro preview",
     "deploy:files": "node tools/export.mjs",
     "deploy:settings": "node tools/export-settings.mjs",
-    "qa:reading": "node src/lib/reading-kit/integrity.mjs && node --test src/lib/reading-kit/*.test.mjs tools/reading-attribution.test.mjs && node src/lib/reading-kit/qa.mjs public/reading-data",
+    "qa:reading": "node src/lib/reading-kit/integrity.mjs && node --test src/lib/reading-kit/*.test.mjs tools/reading-attribution.test.mjs tools/directory-discovery.test.mjs && node src/lib/reading-kit/qa.mjs public/reading-data",
     "qa:seo": "python -B -X utf8 tools/verify_seo.py --self-test"
   },
   "devDependencies": {

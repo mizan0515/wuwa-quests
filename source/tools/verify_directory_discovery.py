@@ -304,6 +304,39 @@ def main(site, dist):
                 require('overview' in body.ids and 'evidence' in body.ids, 'new dossier reading boundaries missing', **context)
                 visible = ''.join(node_text(node) for node in body.nodes if node['tag'] == 'main')
                 require(not any(value in visible for value in INTERNAL), 'new dossier exposes internal development material', **context)
+            # Reused atlas pages have their own recommendation sections. The
+            # registry's dossier renderer consumes only new, non-reused pages.
+            authored_urls = subject['source'].get('relatedUrls', []) if subject['new'] and not subject.get('reuse') else []
+            if authored_urls:
+                next_sections = [node for node in body.nodes if node['attrs'].get('id') == 'next']
+                require(len(next_sections) == 1, 'authored related reading section missing', **context)
+                if next_sections:
+                    targets = [node['attrs'].get('href') for node in descendants(body, next_sections[0]) if node['tag'] == 'a']
+                    require(all(targets.count(url) == 1 for url in authored_urls), 'authored related URL omitted or duplicated', **context)
+                    for url in authored_urls:
+                        page_url(url)
+    # Different passages in one source field must survive the footer collector.
+    for category in ('regions', 'sentinels', 'cosmology', 'factions', 'people'):
+        for cluster in atlas[category]:
+            distinct = {}
+            for ref in gather(cluster):
+                if ref.get('id') and ref.get('field'):
+                    distinct.setdefault((ref['id'], ref['field']), set()).add(ref.get('excerpt', ref.get('quote', '')))
+            repeated = [quotes for quotes in distinct.values() if len(quotes) > 1]
+            if not repeated:
+                continue
+            body, _ = page_url(BASE + '/' + category + '/' + cluster['id'] + '.html')
+            footers = [node for node in body.nodes if node['tag'] == 'section' and 'atlas-evidence' in classes(node)]
+            rendered_quotes = [node_text(node) for footer in footers for node in descendants(body, footer) if node['tag'] == 'blockquote']
+            for quotes in repeated:
+                require(all(visible_text(quote) in rendered_quotes for quote in quotes),
+                        'distinct same-field excerpts missing from original evidence footer', category=category, id=cluster['id'])
+            stats['multiExcerptClusters'] += 1
+    for name, slug, definition in [('실험과', '6537c66af62436a8', '비콘과 터미널의 내부 구조를 설계했습니다.'),
+                                   ('안전과', 'cb0bf442ec665bce', '공명자가 사용하는 각종 흑석 무기를 설계하고')]:
+        body, _ = page_url(BASE + '/entities/' + slug + '.html')
+        require(any(name + ':' in node_text(node) and definition in node_text(node) for node in body.nodes if node['tag'] == 'blockquote'),
+                'department entity omitted its own original definition', name=name)
     stats['htmlPages'] = len(cache)
     print(json.dumps({'status': 'PASS' if not errors else 'FAIL', 'scope': 'static source and HTML; browser layout and behavior separate', **dict(stats),
                       'errorsTotal': len(errors), 'errors': errors[:40]}, ensure_ascii=False))
