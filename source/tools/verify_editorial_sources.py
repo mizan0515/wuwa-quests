@@ -362,7 +362,7 @@ def main():
     parser.add_argument('--self-test', action='store_true', help='run in-memory source and semantic corruption canaries')
     args = parser.parse_args()
     inputs = {name: json.loads((args.site / 'settings' / name).read_text(encoding='utf-8'))
-              for name in ('atlas.json', 'npc-people.json', 'editorial.json')}
+              for name in ('atlas.json', 'npc-people.json', 'editorial.json', 'directory-discovery.json')}
     audit = SourceAudit(args.site)
     report = audit.verify(inputs)
     if args.self_test and report['status'] == 'PASS':

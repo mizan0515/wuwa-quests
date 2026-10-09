@@ -1,0 +1,1123 @@
+{
+  "schema": "wuwa-directory-discovery.v1",
+  "entries": [
+    {
+      "id": "black-shores",
+      "category": "factions",
+      "name": "검은 해안",
+      "summary": "세계 각지의 인물이 모여 비명에 맞서는 조직이다. 여러 국가와 협력하며, 초청 멤버들이 머무는 군도를 거점으로 삼는다.",
+      "kind": "국제 협력 조직·군도",
+      "url": "/wuwa-quests/regions/black-shores.html",
+      "reuse": true,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:9002",
+          "field": "content",
+          "label": "검은 해안",
+          "excerpt": "폭풍이 휘몰아치는 바다 위에 숨은 검은 군도는 전 세계 각계각층의 엘리트들이 모여 비명과 맞서 싸우며, 수많은 국가와 광범위한 협력을 맺고 있다. 검은 해안의 기술은 개방되어 있지만, 그 출처를 아는 사람은 아무도 없다. 심지어 검은 해안의 구성원들조차 자신들의 기술이 어디서 왔는지 모른다",
+          "source_text_sha256": "fb6e5ae59e507b269115bd39c3aeb6eb0d2477ecd33e81767dfe939e87472e04"
+        },
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:110201",
+          "field": "content",
+          "label": "검은 해안 · 지상",
+          "excerpt": "안개에 가려진 신비한 군도 검은 해안은 세상의 수많은 초청 멤버들과 흑화집사들의 편히 쉴 수 있는 휴식처이다. 검은 해안 멤버의 초대 없이 드넓은 바다에서 세계를 연결해 준 이 작은 해안을 찾을 수 있는 자가 없을 것이다",
+          "source_text_sha256": "2ae5cf48dc29c1c1aa45a8139c938d7df912894648f4cced8726dab1bf1d38fb"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/regions/black-shores.html",
+        "/wuwa-quests/people/1505.html",
+        "/wuwa-quests/people/1307.html"
+      ]
+    },
+    {
+      "id": "spacetrek-collective",
+      "category": "factions",
+      "name": "스페이스트렉 콜렉티브",
+      "summary": "라하이 로이의 국경 없는 연구 공동체다. 스타토치 아카데미와 연구소가 이 공동체에 속하며, 연구소의 엔지니어 모니에는 아카데미에서도 교수로 재직한다.",
+      "kind": "국경 없는 연구 공동체",
+      "url": "/wuwa-quests/factions/spacetrek-collective.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:608201",
+          "field": "content",
+          "label": "연구소",
+          "excerpt": "공식 이름은 「스페이스트렉 콜렉티브: 연구소」. 스타토치 아카데미와 마찬가지로 라하이 로이의 국경 없는 연구 공동체인 「스페이스트렉 콜렉티브」 소속이며, 첨단 과학 연구와 기술 추출 및 전환에 중점을 두고 있다. 연구소는 교통의 중심인 「연동 중추」와 연결되어, 거대한 검의 꼭대기에 높이 매달려 있으며 수호의 별의 고리처럼 라하이 로이 대지를 내려다보고 있다",
+          "source_text_sha256": "f3ac45a20e223f403a80e8fd63ea006fc092a0c7e53366c71456058ddc4c4d32"
+        },
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:201105",
+          "field": "content",
+          "label": "스타토치 아카데미",
+          "excerpt": "공식 이름은 「스페이스트렉 콜렉티브: 스타토치 아카데미」. 국경 없는 연구 공동체로, 순수한 지식을 탐구하는 자들의 유토피아이다. 아카데미의 이름은 「지식을 향한 열망을 불씨로, 문명을 밝힐 횃불을 높이 든다」라는 뜻을 담고 있다. 이 대형 아카데미 도시에서는 자유롭게 지식을 주고받고, 여러 문화가 서로 교차되며 공명한다",
+          "source_text_sha256": "d538f2296282aa8cb821636e5f58d0671f1985b0d27f81279c5f444d3144afb0"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1209",
+          "field": "info",
+          "label": "모니에 · 소개와 공명 기록",
+          "excerpt": "스페이스트렉 콜렉티브 연구소의 엔지니어 모니에는 스타토치 아카데미 엑소스트라이더 공학부에서 교수로 재직 중이다.\n그녀는 인공 다리로 대지에 발을 디디고, 마음속에는 찬란한 뭇별을 품고 있다",
+          "source_text_sha256": "2a3e0c5f6be440772fbcf5ca374221de51ddb2f13148c9f102cae23416195df3"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/regions/raha.html",
+        "/wuwa-quests/cosmology/aleph-one.html",
+        "/wuwa-quests/cosmology/exostrider.html",
+        "/wuwa-quests/people/1209.html"
+      ]
+    },
+    {
+      "id": "startorch-academy",
+      "category": "factions",
+      "name": "스타토치 아카데미",
+      "summary": "스페이스트렉 콜렉티브에 속한 아카데미 도시다. 엑소스트라이더 적격자를 육성하는 라벨 학부와, 공학·보이드매터·빛 에너지를 연구하는 학부가 있다.",
+      "kind": "아카데미 도시",
+      "url": "/wuwa-quests/factions/startorch-academy.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:201105",
+          "field": "content",
+          "label": "스타토치 아카데미",
+          "excerpt": "공식 이름은 「스페이스트렉 콜렉티브: 스타토치 아카데미」. 국경 없는 연구 공동체로, 순수한 지식을 탐구하는 자들의 유토피아이다. 아카데미의 이름은 「지식을 향한 열망을 불씨로, 문명을 밝힐 횃불을 높이 든다」라는 뜻을 담고 있다. 이 대형 아카데미 도시에서는 자유롭게 지식을 주고받고, 여러 문화가 서로 교차되며 공명한다",
+          "source_text_sha256": "d538f2296282aa8cb821636e5f58d0671f1985b0d27f81279c5f444d3144afb0"
+        },
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:607601",
+          "field": "content",
+          "label": "「스타토치 아카데미」 학과 소개",
+          "excerpt": "스타토치 아카데미는 엑소스트라이더와 외생적 공명을 할 수 있는 「적격자」를 선발하고 육성하는 것을 주로 목표로 삼으며 라벨 학부를 설립하였다. 동시에 그것과 관련된 엑소스트라이더의 연구, 보이드 스톰, 리액터 드라이브의 빛 에너지 3대 영역으로, 그에 대응한 엑소스트라이더 공학부, 보이드매터 과학부, 빛 에너지 과학부를 설립하였다. 그중 빛 에너지 과학부에 속한 생태 보존 학과는 그 연구 내용과 엑소 제네시스 랩과 밀접한 관련이 있어, 「농학부」란 별명을 가지고 있다",
+          "source_text_sha256": "0de58ad03e72702313beb27db91c127556b1aa4b473ede28319b3c62cf579c79"
+        },
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:609001",
+          "field": "content",
+          "label": "스타토치 아카데미 · 라벨 학부",
+          "excerpt": "공명 그래프 이론의 창시자이자 라벨 그래프 발명자인 스콧 · 라벨의 이름을 딴 이 학부는 적격자 학부로도 알려져 있다. 엄격하고 계량화된 방식으로 적격자를 발굴하고 육성하는 것을 목표로 한다.\n라벨 학부 건물은 통행 권한을 가진 사람만 출입할 수 있으며, 평소에는 다른 학부 학생들에게 개방되지 않는다",
+          "source_text_sha256": "28aea42fe4a6123159f37b4d51b1de0cbff736b674edcb0611e63b3bec6edb8c"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1109",
+          "field": "info",
+          "label": "루실라 · 소개와 공명 기록",
+          "excerpt": "스타토치 아카데미의 교장 루실라. 현실적인 이상주의자. \n묵묵히 학생들의 뒤를 지키며, 그들이 하늘에 도전하는 모습을 바라본다",
+          "source_text_sha256": "d1758dda0f747935cd6da3a2230f7bc529000c690852a4cec21ab82ae901b47f"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/regions/raha.html",
+        "/wuwa-quests/people/1109.html",
+        "/wuwa-quests/people/1209.html",
+        "/wuwa-quests/cosmology/exostrider.html"
+      ]
+    },
+    {
+      "id": "spacetrek-institute",
+      "category": "factions",
+      "name": "스페이스트렉 콜렉티브 연구소",
+      "summary": "스페이스트렉 콜렉티브에 속한 연구소다. 첨단 과학 연구와 기술 추출·전환에 중점을 두며, 라하이 로이의 연동 중추와 연결되어 있다.",
+      "kind": "연구소",
+      "url": "/wuwa-quests/factions/spacetrek-institute.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:608201",
+          "field": "content",
+          "label": "연구소",
+          "excerpt": "공식 이름은 「스페이스트렉 콜렉티브: 연구소」. 스타토치 아카데미와 마찬가지로 라하이 로이의 국경 없는 연구 공동체인 「스페이스트렉 콜렉티브」 소속이며, 첨단 과학 연구와 기술 추출 및 전환에 중점을 두고 있다. 연구소는 교통의 중심인 「연동 중추」와 연결되어, 거대한 검의 꼭대기에 높이 매달려 있으며 수호의 별의 고리처럼 라하이 로이 대지를 내려다보고 있다",
+          "source_text_sha256": "f3ac45a20e223f403a80e8fd63ea006fc092a0c7e53366c71456058ddc4c4d32"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1209",
+          "field": "info",
+          "label": "모니에 · 소개와 공명 기록",
+          "excerpt": "스페이스트렉 콜렉티브 연구소의 엔지니어 모니에는 스타토치 아카데미 엑소스트라이더 공학부에서 교수로 재직 중이다.\n그녀는 인공 다리로 대지에 발을 디디고, 마음속에는 찬란한 뭇별을 품고 있다",
+          "source_text_sha256": "2a3e0c5f6be440772fbcf5ca374221de51ddb2f13148c9f102cae23416195df3"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/regions/raha.html",
+        "/wuwa-quests/people/1209.html",
+        "/wuwa-quests/cosmology/exostrider.html"
+      ]
+    },
+    {
+      "id": "heliodic-six",
+      "category": "factions",
+      "name": "헬리오딕 식스",
+      "summary": "로야족의 여섯 관측 직책이다. 솔리사이룸에서 리액터 드라이브의 궤적을 연산해 보이드 스톰을 예측하며, 각 마을의 목자들이 모은 데이터를 받는다.",
+      "kind": "로야족의 관측 직책",
+      "url": "/wuwa-quests/factions/heliodic-six.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:608101",
+          "field": "content",
+          "label": "헬리오딕 식스",
+          "excerpt": "로야족 장로, 시계(the Eye), 영실(the Binder), 직성(the Shaper) 등 여섯 직책으로 나뉘어, 헬리오딕 식스라 불린다. 두 사람이 한 조를 이루어, 자신이 맡은 위치에서 관측하고 기록하며, 추론한다. 이들은 「솔리사이룸」에 상주하며, 밤낮으로 리액터 드라이브 궤적을 연산하여 보이드 스톰의 발생을 미리 알린다. 연산 효율을 최대로 높이기 위해, 매 주기마다 대표 6인 중의 한명만 눈을 뜨고 일상사를 처리하며, 매 시즌이 끝날 때면, 각 마을의 목자들이 비야토르 숲에 모여 정리한 데이터를 헬리오딕 식스에게 보내 참고할 수 있게 한다",
+          "source_text_sha256": "f59b11febc34488aa4c5c8c054c89a313cc43eff9ff781793916f96ecb4714a1"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/regions/raha.html",
+        "/wuwa-quests/regions/roya-frostlands.html"
+      ]
+    },
+    {
+      "id": "fools-troupe",
+      "category": "factions",
+      "name": "우인 극단",
+      "summary": "탄식 무덤의 섬을 거점으로 리나시타를 순회하는 극단이다. 단장 브렌트와 조수 로코코가 소개되며, 극단의 기록은 수도회의 진실을 밝히고 고향으로 돌아가려는 목적을 서술한다.",
+      "kind": "공연 단체",
+      "url": "/wuwa-quests/factions/fools-troupe.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:200009",
+          "field": "content",
+          "label": "탄식 무덤의 섬 · 우인 낙원",
+          "excerpt": "리나시타 곳곳을 순회하며 공연을 하는 「우인 극단」은 탄식 무덤의 섬에 있는 거대한 동굴을 거점으로 하였다. 그들은 자유를 숭상하고 웃음을 즐기며 모든 도시에 웃음과 이야기를 선사한다",
+          "source_text_sha256": "14db4199183d3e2367adec7f6e8fef3274bf815152f1645e6f0b31d60f8b4c91"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1206",
+          "field": "info",
+          "label": "브렌트 · 소개와 공명 기록",
+          "excerpt": "브렌트는 리나시타 우인 극단의 단장으로 극단의 기둥이자 리더이다. 또한 소탈하고 자유분방한 성격이 특징인 그는 언제나 낭만을 추구한다.\n무대 위에서의 그는 이야기와 연극의 내용에 따라 가면이나 표정을 바꾸지만, 무대 아래에서의 그는 사람을 대할 때 진심으로 대한다",
+          "source_text_sha256": "c51f81097c8d8be08dd838030cf93fc6e698c83ca459d5adfa58917c7ed284a9"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1606",
+          "field": "info",
+          "label": "로코코 · 소개와 공명 기록",
+          "excerpt": "우인 극단 조수, 만능 소품 담당자와 즉흥 연극배우를 겸하고 있는 로코코는 극단을 질서정연하게 잘 운영한다.\n로코코가 항상 가지고 다니는, 온 세상을 담은 듯한 진기한 상자는 그녀에 의해 만들어진 또 다른 세상 같기도 하다",
+          "source_text_sha256": "d7da738e6ebb9b4ff67b03b79e7ade5e7f913ff28d64b62fc6ed24d3fd16fe4b"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:133002016",
+          "field": "content",
+          "label": "우인 극단",
+          "excerpt": "고룡의 습격에서 살아남은 우인, 이른바 수도회 순례자들은 탄식 무덤의 섬을 둘러싼 난류를 타고 거대한 동굴에 도착했다.\n우인들은 여기를 거점으로 언젠가 수도회가 숨기고 있는 진실을 밝히고 고향으로 돌아가기 위해 극단을 꾸렸다.\n이를 위해 우인 극단은 수많은 연극을 썼으며, 「족쇄를 찬 채 춤을 추며」, 열도에서 순회공연을 했다.\n수년간 그들은 라군나의 카니발 재개를 기대했다. 그때 자신이 쓴 연극으로 진실을 밝히고 월계관을 거머쥐며, 수호신의 신탁을 경청할 기회를 얻길 희망했다",
+          "source_text_sha256": "7847e983c99f16c7be63b3d0a834884f2cd156fb951a8d7792c5b8837327befc"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/regions/rinascita.html",
+        "/wuwa-quests/factions/deep-sea-order.html",
+        "/wuwa-quests/people/1206.html",
+        "/wuwa-quests/people/1606.html"
+      ]
+    },
+    {
+      "id": "mumu-logistics",
+      "category": "factions",
+      "name": "무무물류",
+      "summary": "루미가 내비게이터와 운송팀 팀장을 맡는 물류 조직이다. 금희의 이야기에는 천공부와 협력해 전선의 병사들에게 무료 편지를 전달한 일이 기록된다.",
+      "kind": "물류 조직",
+      "url": "/wuwa-quests/factions/mumu-logistics.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1504",
+          "field": "info",
+          "label": "루미 · 소개와 공명 기록",
+          "excerpt": "무무물류의 내비게이터이자 운송팀의 팀장. \n월주 산속 마을 출신이며, 성실하고 열정적이다. 작은 태양처럼 타인을 밝게 비춰주는 순박한 소녀이다",
+          "source_text_sha256": "b8c61a2f4859492b864a0ec2d40f0cc78bb21e61cf99a0fa56115a5eaa58cd3f"
+        },
+        {
+          "id": "인물_소장품:favorgoods:150402",
+          "field": "content",
+          "label": "루미 · 내비게이터 지휘봉",
+          "excerpt": "무무물류에 막 가입했던 시절의 루미는 아직 자신의 공명 어빌리티 제어에 능숙하지 못했다.\n하지만 업무에 투입되어야 했던, 그녀는 팀 선배의 도움으로 야외에서 사용하는 지휘봉을 만들었다.\n루미는 가장 불안하고 미숙했던 시절을 이 지휘봉과 함께 보냈다. 그녀가 당당한 내비게이터가 되고 믿음직한 팀장으로 성장하는 동안에도 마찬가지로 함께 했다. \n어두운 밤, 지휘봉의 반짝이는 불빛은 루미의 마음을 안심시키는 신호였다",
+          "source_text_sha256": "e429a5b3448f9771318bb8937065724385167030610365f551bd7d4594551e81"
+        },
+        {
+          "id": "인물_이야기:favorstory:130403",
+          "field": "content",
+          "label": "금희 · 따뜻한 행동",
+          "excerpt": "전장에서 야귀 병사들은 용감하게 목숨을 걸고 싸웠다. 출정한 병사의 가족들은 늘 전선의 가족을 걱정하며 식사도 잠도 이루지 못하였다. 무음구역은 신호가 잡히지 않아 단말기로 실시간 통신이 불가하여 영윤은 천공부와 무무물류를 연합하여 군내 특급 배송을 개시하였다. 무무물류는 병사들에게 무료로 편지를 전달하고, 천공부는 그들을 위해 편리한 도로 건설을 지원하였다. 이렇게 되면 성안의 사람들은 군내 상황을 바로 알 수 있고, 졸였던 마음도 한시름 놓을 수 있었다.\n",
+          "source_text_sha256": "b10ac345b709e973fb69b99a5958090f73926b3759b2bca667b872650f9a5365"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1504.html",
+        "/wuwa-quests/people/1304.html",
+        "/wuwa-quests/regions/jinzhou.html",
+        "/wuwa-quests/factions/night-patrollers.html"
+      ]
+    },
+    {
+      "id": "somyeong-association",
+      "category": "factions",
+      "name": "소명 상인회",
+      "summary": "수수가 젊은 이사를 맡는 상인회다. 수수는 답신에서 사람들의 힘과 마음을 모으려는 뜻을 밝히며, 경연은 황룡 안팎의 진귀한 골동품이 이 상인회에서 거래된다고 들었다고 말한다.",
+      "kind": "상인회",
+      "url": "/wuwa-quests/factions/somyeong-association.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1110",
+          "field": "info",
+          "label": "수수 · 소개와 공명 기록",
+          "excerpt": "명정 명문가의 첫째 아가씨. 소명 상인회의 젊은 이사. 물의 부채로 실을 엮고, 상도(商道)로 비단을 짜니, 칼과 검 없이도, 인간 세상의 태평을 엮으리",
+          "source_text_sha256": "b711634ddf0ce8e0eeabf798236207c93bdc8cd2028ce63cc6fedd24d50b87fc"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:35000114",
+          "field": "content",
+          "label": "글씨가 단정한 답글",
+          "excerpt": "수호신께서 저를 어여삐 여기시어 서신으로 불러주시니 그저 감격스러울 따름입니다.\n상인이란 모름지기 사람들의 힘을 모아 성을 쌓고, 사람들의 마음을 이어 저자를 형성하는 법입니다. 만약 여러 현명하신 분들의 뒤를 따르며 천하의 근심을 나눌 수 있다면, 이는 소명의 바람이자 행운입니다.\n이만 답신을 마치오니, 부디 강녕하시길 바랍니다\n \n소명 상인회, 수수 올림",
+          "source_text_sha256": "733609e2ecad5400a836281cc90ea10b84b63c3f90bdbca3942f73878ebd62fe"
+        },
+        {
+          "id": "인물_음성대사:favorword:1212113",
+          "field": "content",
+          "label": "경연 · 수수에 관하여",
+          "excerpt": "명성이 자자한 「꽃 꺾는 중명조」 손님... 일 처리가 깔끔하고, 머리도 잘 돌아가고, 사람 대하는 것도 팔방미인이지. 소명 상인회도 그녀가 맡고 나서 나날이 번창하고 있고, 각 주는 물론 황룡 밖의 진귀한 골동품까지 그 안에서 오가고 있다고 들었는데—— 이건 좀 신경 쓰이네. 묻혀 있던 골동품이나 깨진 옛 기물들을 꽤 많이 봐왔거든. 만약 진짜 누군가가 그렇게 흩어진 것들을 하나하나 모아서, 다시 세상에 돌려보낼 수 있다면... 그것도 능력이지",
+          "source_text_sha256": "9da6c70867255830483bdc172d64db7b85c1c72468d9e6e55133693a241f2359",
+          "speaker": "경연"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1110.html",
+        "/wuwa-quests/regions/huanglong.html"
+      ]
+    },
+    {
+      "id": "tiangong",
+      "category": "factions",
+      "name": "천공부",
+      "summary": "도로와 방어 시설의 건설·점검을 맡은 기록이 있다. 금희는 도기를 변방 수비과 사무장으로 임명했으며, 천공부는 병사들의 편지 배송을 위해 도로 건설을 지원했다.",
+      "kind": "공학·건설 기관",
+      "url": "/wuwa-quests/factions/tiangong.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "문서_편지_일기:infodisplay:11040131",
+          "field": "content",
+          "label": "『고속도로 공지판』",
+          "excerpt": "고속도로에 오신 것을 환영합니다. 이 길은 「곤소항」, 「호환 광산」과 금주 성내까지 연결되어 있으니 목적지를 확인하시기 바랍니다. 또한 이 근처에서 추방자와 잔상이 출몰할 수 있으니 화물 운송 시 경계를 유지하고 신중히 통행하시기 바랍니다.\n (추가 사항: 고속도로 시설물을 고의로 훼손할 시 엄벌 조치될 예정입니다)\n \n 정기점검: 천공부 7팀",
+          "source_text_sha256": "ae0f75ba41d442ebfc32653fe11327ffbf5439e51bd3630bd4f182ba48b506c4"
+        },
+        {
+          "id": "인물_이야기:favorstory:130402",
+          "field": "content",
+          "label": "금희 · 소원을 비는 관습",
+          "excerpt": "「잔상이 몰래 성내로 들어올까봐 걱정돼요.」라는 소원에 금희는, 도기를 천공부 변방 수비과의 사무장으로 임명하여 성벽을 강화하도록 하였다.\n",
+          "source_text_sha256": "b16d5c4a29c17c84f0490eb8c9e4af3495d544f91ceb6075c2226e15b9ecd3ff"
+        },
+        {
+          "id": "인물_이야기:favorstory:130403",
+          "field": "content",
+          "label": "금희 · 따뜻한 행동",
+          "excerpt": "전장에서 야귀 병사들은 용감하게 목숨을 걸고 싸웠다. 출정한 병사의 가족들은 늘 전선의 가족을 걱정하며 식사도 잠도 이루지 못하였다. 무음구역은 신호가 잡히지 않아 단말기로 실시간 통신이 불가하여 영윤은 천공부와 무무물류를 연합하여 군내 특급 배송을 개시하였다. 무무물류는 병사들에게 무료로 편지를 전달하고, 천공부는 그들을 위해 편리한 도로 건설을 지원하였다. 이렇게 되면 성안의 사람들은 군내 상황을 바로 알 수 있고, 졸였던 마음도 한시름 놓을 수 있었다.\n",
+          "source_text_sha256": "b10ac345b709e973fb69b99a5958090f73926b3759b2bca667b872650f9a5365"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1601.html",
+        "/wuwa-quests/people/1304.html",
+        "/wuwa-quests/regions/jinzhou.html"
+      ]
+    },
+    {
+      "id": "junce",
+      "category": "factions",
+      "name": "군책부",
+      "summary": "금주에서는 전사자 가족의 지원 대책을 금희·천공부와 함께 상의했다. 현방성에서는 군책부의 연무장이 정현위의 전투 훈련에 쓰인다.",
+      "kind": "지역 기관",
+      "url": "/wuwa-quests/factions/junce.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_이야기:favorstory:130403",
+          "field": "content",
+          "label": "금희 · 따뜻한 행동",
+          "excerpt": "전사자의 가족들은 뼈와 살이 분리되는 아픔을 겪었기에 위로금만으로는 충분하지 않았다. \n이에 영윤은 군책부, 천공부와 대책을 상의하였고, 위로금 액수를 높여 전사자 가족들이 추후 생계를 걱정하지 않도록 하였다. 그리고 그에 걸맞은 명예를 주었다. 비록 야귀의 전사들이 명예를 중시하여 전장으로 달려가는 것은 아니지만, 전사 한 사람 한 사람의 헌신을 새기는 것은 무척 중요했다. 금주성의 방어벽 업그레이드가 완료된 후 타종광장은 다음 핵심 인프라 프로젝트로 선정되었다. 전사의 이름이 새겨진 비석은 호환 광산에서 채굴한 우수한 광석으로 만들어졌으며, 강한 바람이 불어도 훼손되지 않고, 폭우가 와도 썩지 않으며 철처럼 단단하여 천년의 세월을 유지할 수 있었다. 타종광장이 조성된 후 추모소가 하나 더 생기면서 성내의 분위기나 사람들의 마음은 전보다 한결 편안해졌다.\n\n",
+          "source_text_sha256": "b10ac345b709e973fb69b99a5958090f73926b3759b2bca667b872650f9a5365"
+        },
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:612501",
+          "field": "content",
+          "label": "연무장",
+          "excerpt": "현방성 군책부에 위치한 시뮬레이션 영역. 정현위의 전투 훈련을 위해 사용된다.\n시련을 통과하면 실력을 높이는 다양한 자원을 획득할 수 있다",
+          "source_text_sha256": "c6204fffe21c2cec69b7df296feb9f5085b6f492e6311212baf99e5732631584"
+        },
+        {
+          "id": "인물_이야기:favorstory:131204",
+          "field": "content",
+          "label": "쇄명 · 승부의 한 수",
+          "excerpt": "팔계가 금쇄십계에 합류한 지 얼마 지나지 않아 마침내 현주쇄가 완성되었다. 쇄명은 이를 통해 금쇄십계의 공명 어빌리티를 빌려 「악장」에 맞서려 했다. 하지만 이런 방식으로 힘을 사용하는 것은 처음이었다. 겉으로는 태연한 기색을 유지했지만 마음 한편에는 망설임이 남아 있어, 누구에게 먼저 말을 꺼내야 할지 쉽사리 정하지 못했다. 그때 칠계가 자진해서 나섰다. 군책부의 일원이라면 마땅히 남보다 먼저 용기를 보여야 한다는 것이었다.\n과거 쇄명이 화정의 주부를 제거한 뒤, 군책부도 마침내 속박에서 벗어났다. 군책부의 모든 이들은 본래의 직무를 수행하는 한편 쇄명을 돕고자 했다. 다만 칠계만은 끝까지 고개를 숙이지 않았다. 그는 주부가 아무리 큰 죄를 저질렀다 해도 엄연히 정당한 화정의 통치자이며, 일개 평민에 불과한 쇄명이 그 자리를 대신해서는 안 된다고 완고하게 믿었다. 한동안 그는 사사건건 쇄명과 대립했다. 그러던 어느 날, 쇄명은 그를 데리고 화정 밖으로 나갔다. 처참한 빗속에 파묻힌 성 밖의 마을을 본 칠계는 무너진 담과 폐허 사이에 오랫동안 우두커니 서 있었다. 이윽고 그의 눈시울이 붉어졌다. 그는 쇄명에게 화정성이 다시는 이런 재앙을 겪지 않게 할 수 있겠냐고 물었다.",
+          "source_text_sha256": "24533fdeb3c7be37ca2a0ecdcadb96151d324d8b07d90a0df7c309c9469e6d6f"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1304.html",
+        "/wuwa-quests/people/1413.html",
+        "/wuwa-quests/people/1610.html",
+        "/wuwa-quests/regions/mongju.html"
+      ]
+    },
+    {
+      "id": "jitian",
+      "category": "factions",
+      "name": "제천감",
+      "summary": "몽주에서는 주감 쇄명이 제천감을 관장한다. 제천감의 수호신 통감과 조사 기록에는 관측·감정 및 다른 지역 기관과의 협조가 남아 있다.",
+      "kind": "수호신 관측·조사 기관",
+      "url": "/wuwa-quests/factions/jitian.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1312",
+          "field": "info",
+          "label": "쇄명 · 소개와 공명 기록",
+          "excerpt": "몽주 화정 출신. 고향에 닥친 재앙 ｢악장｣을 해결하기 위해 계주로서 금쇄십계를 만들었다. 이후 ｢수호신｣의 명을 받들어 주감의 직책에 올라, 제천감을 관장하며 몽주를 수호하고 있다",
+          "source_text_sha256": "aeb46b8d71a36340d326224fa5b72568794d7a9e6848dc79a50c212a069b6965"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1311",
+          "field": "talent_document",
+          "label": "여우의 별자리 · 소개와 공명 기록",
+          "excerpt": "「몽주 제천감 · 수호신 통감」\n\n......\n제천감의 역대 관측 기록에 따르면, 수호신 심월 여우는 만물의 형태를 복제하고, 나누고, 늘어나게 하는 권능을 지니고 있다. 자신이 다루는 실체는 물론, 자신의 의식과 감각, 정보까지도 본질에 따라 분화하고 확장한다. 각각의 분형은 독립된 형체를 이루면서도 근원과 이어져 서로의 감각을 공유하며, 다시 하나로 합쳐질 수도 있다.",
+          "source_text_sha256": "fa3eb7cae1827d4c9af3e6d8d67d7d29f2e93eb84d5b87e2bfebb2da921cd871"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1411",
+          "field": "talent_document",
+          "label": "구원 · 소개와 공명 기록",
+          "excerpt": "「명정 제천감 감정 잡록——간찰편」\n양형께 올립니다. 전일, 진무사에서 삼법사 및 화서연구원의 제천감 관련 공문을 전달받아, 즉시 중주의 주감께 협조를 요청하여 중주의 공명자 명부를 정밀히 확인한 결과, 현재 이 자는 중주의 수호신, 명식과 관련이 없는 것으로 파악되었습니다.",
+          "source_text_sha256": "0fc3d29461cceeb0006f11738cf5c4cecb2c40cd3bdc0fd3fdad72c5d5ecb266"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1312.html",
+        "/wuwa-quests/people/1311.html",
+        "/wuwa-quests/people/1411.html",
+        "/wuwa-quests/regions/mongju.html"
+      ]
+    },
+    {
+      "id": "golden-shackles",
+      "category": "factions",
+      "name": "금쇄십계",
+      "summary": "쇄명이 화정의 재앙 악장에 맞서기 위해 만든 모임이다. 마스크 기록에는 오계의 원리 연구, 이계의 제작, 사계의 복제가 구분되며, 현주쇄에는 구성원들의 힘을 유지하는 방식이 설명된다.",
+      "kind": "재앙에 대응한 모임",
+      "url": "/wuwa-quests/factions/golden-shackles.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1312",
+          "field": "info",
+          "label": "쇄명 · 소개와 공명 기록",
+          "excerpt": "몽주 화정 출신. 고향에 닥친 재앙 ｢악장｣을 해결하기 위해 계주로서 금쇄십계를 만들었다. 이후 ｢수호신｣의 명을 받들어 주감의 직책에 올라, 제천감을 관장하며 몽주를 수호하고 있다",
+          "source_text_sha256": "aeb46b8d71a36340d326224fa5b72568794d7a9e6848dc79a50c212a069b6965"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:37000002",
+          "field": "content",
+          "label": "금쇄십계의 마스크",
+          "excerpt": "오계는 피해자의 손상된 조직을 채취하여 「악장(惡瘴)」이 사람의 얼굴을 잠식하는 원리를 연구했고, 이를 바탕으로 스산한 빗 방호면의 설계안을 제시했다. 이계가 원형 제작을 마친 뒤, 사계가 성능을 그대로 유지하면서 이를 복제해 마침내 열 개를 완성했다. 이로써 금쇄십계가 스산한 빗에 진입해 「악장(惡瘴)」과 맞서 싸울 수 있는 기반을 갖추게 되었다",
+          "source_text_sha256": "0c76d66da81fb323e197e8121f6574ccc91d2586aeaf6ca0c1a9f335e7d7ef8c"
+        },
+        {
+          "id": "인물_소장품:favorgoods:131202",
+          "field": "content",
+          "label": "쇄명 · 현주쇄",
+          "excerpt": "쇄명이 「십중계」를 펼치려면 상대가 진심으로 응해야 할 뿐만 아니라, 유지하는 데에도 끊임없이 정신을 쏟아야 한다. 조금이라도 집중력이 흐트러지는 순간, 빌려 온 어빌리티가 그대로 흩어지고 만다. 기묘한 기술이지만, 정작 사용할 기회는 드물었다.\n그러나 금쇄십계와 인연이 차츰 쌓여 가면서, 그녀는 마침내 자신의 손으로 현주쇄를 만들었다. 현주쇄는 검은빛 기둥 열두 개와 주홍빛 덮개 여덟 개로 이루어져 있으며, 모두 열 개의 자물쇠로 구성되어 있다. 그중 아홉 개는 일계부터 구계를 위해, 남은 하나에는 「악장」을 봉인하기 위해 남겨두었다. 현주쇄를 손에 넣은 뒤로 그녀는 금쇄십계 아홉 사람의 힘을 언제든 유지할 수 있게 되었고, 더는 수많은 제약에 얽매이지 않게 되었다.\n사실 현주쇄를 만들 때부터 쇄명의 마음 한편에는 작은 사심이 자리하고 있었다. 언젠가 그들이 결국 떠나게 되더라도, 그녀는 결코 놓아주고 싶지 않았다...",
+          "source_text_sha256": "64c0ee903176c75535f4e8cfcd87f4eab93c9d0c50e8d50f1e749394f2eca062"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1312.html",
+        "/wuwa-quests/regions/mongju.html"
+      ]
+    },
+    {
+      "id": "security-bureau",
+      "category": "factions",
+      "name": "보안서",
+      "summary": "음림의 소개는 보안서 순찰관이었던 이력과 신분 말소를 기록한다. 순찰관은 금주의 치안을 지키며, 잠입 조사원은 신분을 숨겨 범죄 조직을 조사한다.",
+      "kind": "치안 기관",
+      "url": "/wuwa-quests/factions/security-bureau.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1302",
+          "field": "info",
+          "label": "음림 · 소개와 공명 기록",
+          "excerpt": "음림은 선천형 공명자이자 보안서의 훌륭한 순찰관이었다. 그러나 지금은 한 사건으로 순찰관 신분을 말소하고 은밀한 곳에서 홀로 숨어 있는 죄악을 조사하고 있다",
+          "source_text_sha256": "4daf8ce5866a2537dc06f38e063e6f60befdaba50434224bb9ffe29ec1499842"
+        },
+        {
+          "id": "인물_소장품:favorgoods:130203",
+          "field": "content",
+          "label": "음림 · 돋보기",
+          "excerpt": "조사 전용 돋보기, 보안서가 정식으로 순찰관가 된 모든 신입에게 배포한 것. 이를 통해 눈으로 보기 힘든 흔적을 발견할 수 있으며, 매우 작게 디자인되었다.\n음림은 잠입 조사원이기에, 이 도구를 사용할 기회가 많지 않다. 따라서 돋보기는 그녀에게 신물, 부모를 기리기 위한 것이며, 자신의 진짜 신분을 잊지 않기 위한 것이다",
+          "source_text_sha256": "f029a7bcc769e5470ba34268bb6ce9c4631c0730b309f0db44e147a309116bd9"
+        },
+        {
+          "id": "인물_이야기:favorstory:130201",
+          "field": "content",
+          "label": "음림 · 그림자 속의 선명한 선홍색",
+          "excerpt": "금주 주민들이라면 단정한 제복을 입고 거리를 누비며, 사람들의 고민을 해결해 주는 순찰관이라는 존재를 모르는 사람이 없다.\n순찰관들은 금주의 치안을 유지하고 있으며, 금주 주민의 생명과 재산을 보호하고 있다.\n하지만 제복을 입을 기회도 없고 쉽게 신분을 드러내지 못하는 특수 순찰관도 있다.\n이들을 잠입 수사관이라고 부른다. 신분을 숨기고 범죄 조직에 잠입해 범죄 증거를 확보하거나 범죄 행위를 막는다.\n그들은 좀도둑이 아닌 극악무도한 악당을 상대해야 하며, 신분 노출은 종종 임무 실패와 목숨을 잃는 것을 의미했다.",
+          "source_text_sha256": "b42342b6fbf3ef0e15b151022b2e691d6c32101155d1c38d9360a3c3e88b2483"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1302.html",
+        "/wuwa-quests/regions/jinzhou.html"
+      ]
+    },
+    {
+      "id": "jinzhou-magistracy",
+      "category": "factions",
+      "name": "금주의 변정",
+      "summary": "금희의 업무 명세서에는 변정 사무실에서 야귀군 배치와 천공부 업무, 순찰 관련 문서를 검토하는 일이 기록된다. 산화는 이곳에서 영윤의 호위 직을 맡는다.",
+      "kind": "행정 거점",
+      "url": "/wuwa-quests/factions/jinzhou-magistracy.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1102",
+          "field": "info",
+          "label": "산화 · 소개와 공명 기록",
+          "excerpt": "산화는 금주의 변정에서 영윤의 호위 직을 맡고 있다. 과거에 그녀는 재앙을 불러오고 세상 만물을 꿰뚫는 아수라였지만, 현재는 무자비한 눈보라를 수호의 힘으로 전환시켜 과묵한 수호자가 되었다",
+          "source_text_sha256": "43cd62053926bb4816994b6c70eb3b298fb44f07a64ccbba54530ecc489f98f9"
+        },
+        {
+          "id": "인물_소장품:favorgoods:130402",
+          "field": "content",
+          "label": "금희 · 업무 명세서",
+          "excerpt": "영윤인 금희는 항상 바쁜 나날을 보낸다. 야귀군 배치, 천공부의 사무처리, 안전을 위한 순찰까지... 금주성의 모든 일들이 그녀의 검토를 기다린다.\n대기 파일들이 언제나 변정의 사무실 테이블을 가득 채우지만, 금희는 파일만으로는 가장 정확하고 합리적인 판단을 내릴 수 없다며 직접 현장에서 민중의 목소리를 듣는 걸 더 선호한다.",
+          "source_text_sha256": "959176be2b1be7e145c2290bb1afa65c5a336c13ab727912c93b8753eac719d1"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/regions/jinzhou.html",
+        "/wuwa-quests/people/1304.html",
+        "/wuwa-quests/people/1102.html"
+      ]
+    },
+    {
+      "id": "seven-hills-council",
+      "category": "factions",
+      "name": "일곱 언덕 장관부",
+      "summary": "일곱 언덕의 권력 중추다. 정계 인사들이 장관과 도시의 미래를 논의하며, 아우구스타의 소개는 현임 장관 직책을 기록한다.",
+      "kind": "정치 거점",
+      "url": "/wuwa-quests/factions/seven-hills-council.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:606901",
+          "field": "content",
+          "label": "장관부",
+          "excerpt": "걸출한 장인들이 조각한 웅장한 건축물로, 오랜 세월 동안 일곱 언덕의 풍운을 지켜봐왔다. 일곱 언덕 권력의 중추로서 도시 질서를 떠받치고 있다. 일곱 언덕의 정계 인사들은 매일 이곳에 모여 장관과 함께 일곱 언덕의 미래를 논의한다",
+          "source_text_sha256": "4d6df597b9b61b68f58b5edb3c1bb84b420f4eb138b9eb8e3d9b32b766717aac"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1306",
+          "field": "info",
+          "label": "아우구스타 · 소개와 공명 기록",
+          "excerpt": "일곱 언덕의 현임 장관. 영원히 비추는 태양이자 영원히 휘날리는 깃발이다.\n그녀가 왔고, 보았고, 정복하였다.\n예리한 칼날을 높이든 그녀는 다음 도전자, 그리고 저항할 수 없는 운명을 기다린다",
+          "source_text_sha256": "a189b716927c498d5d143d12ccf3e6a4ca414e024f253c0a1847ae89fde26199"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/regions/seven-hills.html",
+        "/wuwa-quests/people/1306.html"
+      ]
+    },
+    {
+      "id": "averardo-bank",
+      "category": "factions",
+      "name": "아베라르도 은행",
+      "summary": "고객의 소장품을 에코 열차로 금고에 옮겨 보관하는 은행이다. 젠니의 소개에는 금고 방위과 직원으로 근무하는 이력이 기록된다.",
+      "kind": "은행",
+      "url": "/wuwa-quests/factions/averardo-bank.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:200101",
+          "field": "content",
+          "label": "아베라르도 금고 · 에코 승강장",
+          "excerpt": "아베라르도 은행은 고객의 소장품을 받은 후, 에코 열차를 이용해 소장품과 은행원을 아베라르도 금고 지하 승강장으로 옮긴다.\n옮겨진 소장품들은 지하 승강장에서 2차 분리를 거쳐 부동한 보관 구역으로 다시 옮겨진다",
+          "source_text_sha256": "0aa108bd117590fc599a5cc8936c6f8712a4bb8397f9f253d5f0461f42b99c2c"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1507",
+          "field": "info",
+          "label": "젠니 · 소개와 공명 기록",
+          "excerpt": "아베라르도 금고 방위과 직원이자, 모범 직원 최다 선정자.\n자신의 여가 시간을 위해 수많은 계획을 짜 두었지만, 일이 이 지경이 된 이상, 일단 정시에 퇴근할 방법부터 찾아야 한다",
+          "source_text_sha256": "482850c90d5b09f3b18d76bce608332096b53b0b290865cb072ea268c0eec8d8"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1507.html",
+        "/wuwa-quests/regions/rinascita.html",
+        "/wuwa-quests/factions/montelli.html"
+      ]
+    },
+    {
+      "id": "mingting-zhenwu",
+      "category": "factions",
+      "name": "명정 진무사",
+      "summary": "구원은 명정 진무사의 전 천호장으로 소개된다. 그의 소장품과 발언에는 진무사의 신물과 명정·황룡을 위해 수행했던 일들이 남아 있다.",
+      "kind": "황룡의 기관",
+      "url": "/wuwa-quests/factions/mingting-zhenwu.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1411",
+          "field": "info",
+          "label": "구원 · 소개와 공명 기록",
+          "excerpt": "전 명정 진무사의 천호장, 두 눈을 잃은 외로운 검객.\n어릴 적엔 그의 원한을 산 자들이 많았고, 장성한 후엔 사람을 쫓는 일을 업으로 삼았다. 하지만 생각지도 못하게 누명을 쓰고 옥에 갇히게 되었다. 지금 그는 지천을 떠도는 방랑의 길 위에 서 있다",
+          "source_text_sha256": "6d49a4d2167b2e859ce2585289b60c1675839010f06e8477772f1ae859af9779"
+        },
+        {
+          "id": "인물_소장품:favorgoods:141102",
+          "field": "content",
+          "label": "구원 · 철 속의 검날",
+          "excerpt": "구원은 평소 명정 진무사의 신물을 지니고 다녔다. 원칙대로라면 그는 진작에 관복을 벗고 신물을 압수당해야 마땅했지만, 명정에서 누군가 그를 몰래 돕고 있어서인지, 이 모든 것을 잃지 않을 수 있었다.\n「... 내 검을 너희에게 맡기니, 모든 관료와 각 주는 이것을 볼 시 곧 나를 보는 것이라 여기라」",
+          "source_text_sha256": "81d59ede1cfb4f00f0e198a1beb21cc470003e39dc4c72b799acdef2fdec738e"
+        },
+        {
+          "id": "인물_음성대사:favorword:141102",
+          "field": "content",
+          "label": "구원 · 마음의 소리 · Ⅱ",
+          "excerpt": "기강을 바로잡기 위해서는, 길을 막고 있는 게 난초라 할지라도 반드시 제거해야 된다. 진무사의 일은 그리 단순한 것이 아니야. 양 대인께서 살아 계셨을 때 우리가 했던 일들은 모두 명정과 황룡을 위해서였지만... 이제는 세월이 흐르고 상황도 변했어. 많은 것이 달라졌다",
+          "source_text_sha256": "b74117875442ea2a0de263a17dfbd271ce040ae550c1b39b863cb513d64693aa",
+          "speaker": "구원"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/people/1411.html",
+        "/wuwa-quests/regions/huanglong.html"
+      ]
+    },
+    {
+      "id": "court-of-pardon",
+      "category": "factions",
+      "name": "사면원",
+      "summary": "라군나의 가문과 평민에 관한 민사·형사 분쟁을 처리한다. 깊은 바다 수도회에 관한 기록은 라군나의 질서를 유지하기 위해 설치된 기관 중 하나로 설명한다.",
+      "kind": "세속 사법 기관",
+      "url": "/wuwa-quests/factions/court-of-pardon.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "문서_편지_일기:infodisplay:133002006",
+          "field": "content",
+          "label": "깊은 바다 수도회",
+          "excerpt": "깊은 바다 수도회는 임페라토르를 신봉한다. 라군나의 전통에서 그들은 수호신의 인간 대리인으로 라군나 사람들을 인도하여 수호신의 가르침을 따르게 하는 역할을 한다. \n깊은 바다 수도회는 「수좌」가 이끌며, 현재 수좌인 펜리코는 스스로를「선지자」, 즉 리나시타 수호신의 공명자라고 자칭했다. 지난번 카니발 후에 그는 세주를 알현하는 방식을 찾았다고 선포했다.\n수좌 아래의 「사제」는 수도회의 각종 의식과 종교 사무를 담당한다. 평범한 성직자들은「성직자」라고 불리며, 그들은 평소에 수도회의 성전을 연구하고 수호신의 가르침을 라군나 곳곳에 전파한다.\n이와 함께 라군나의 신성한 질서를 유지하기 위해 3개의 기관을 설치했다. 그것들은 각각 다음과 같다.\n",
+          "source_text_sha256": "29a1506612582b6b4d34e896e0c30502745e738f830d95de956292c3df044892"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:133002006",
+          "field": "content",
+          "label": "깊은 바다 수도회",
+          "excerpt": "사면원: 라군나에 있는 세속 사법 기관으로, 가문과 평민에 관련된 민사와 형사 사건의 분쟁을 처리한다. 다른 지역의 법정이나 재판소와 유사하다.",
+          "source_text_sha256": "29a1506612582b6b4d34e896e0c30502745e738f830d95de956292c3df044892"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/factions/deep-sea-order.html",
+        "/wuwa-quests/regions/rinascita.html"
+      ]
+    },
+    {
+      "id": "order-enforcement",
+      "category": "factions",
+      "name": "계령원",
+      "summary": "라군나의 법률 집행 기관이자 대외 상비군이다. 에코를 이용해 작전을 펼치며, 소속 집행자는 계령 사자라고도 불린다.",
+      "kind": "법률 집행 기관·상비군",
+      "url": "/wuwa-quests/factions/order-enforcement.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "문서_편지_일기:infodisplay:133002006",
+          "field": "content",
+          "label": "깊은 바다 수도회",
+          "excerpt": "깊은 바다 수도회는 임페라토르를 신봉한다. 라군나의 전통에서 그들은 수호신의 인간 대리인으로 라군나 사람들을 인도하여 수호신의 가르침을 따르게 하는 역할을 한다. \n깊은 바다 수도회는 「수좌」가 이끌며, 현재 수좌인 펜리코는 스스로를「선지자」, 즉 리나시타 수호신의 공명자라고 자칭했다. 지난번 카니발 후에 그는 세주를 알현하는 방식을 찾았다고 선포했다.\n수좌 아래의 「사제」는 수도회의 각종 의식과 종교 사무를 담당한다. 평범한 성직자들은「성직자」라고 불리며, 그들은 평소에 수도회의 성전을 연구하고 수호신의 가르침을 라군나 곳곳에 전파한다.\n이와 함께 라군나의 신성한 질서를 유지하기 위해 3개의 기관을 설치했다. 그것들은 각각 다음과 같다.\n",
+          "source_text_sha256": "29a1506612582b6b4d34e896e0c30502745e738f830d95de956292c3df044892"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:133002006",
+          "field": "content",
+          "label": "깊은 바다 수도회",
+          "excerpt": "계령원: 라군나의 법률 집행 기관이자 라군나의 대외 상비군이다. 계령원은 에코를 이용하여 작전을 많이 펼치며, 계령원 소속 법률 집행자들을 계령 사자라고 부르기도 한다.",
+          "source_text_sha256": "29a1506612582b6b4d34e896e0c30502745e738f830d95de956292c3df044892"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/factions/deep-sea-order.html",
+        "/wuwa-quests/regions/rinascita.html"
+      ]
+    },
+    {
+      "id": "court-of-penance",
+      "category": "factions",
+      "name": "참회원",
+      "summary": "깊은 바다 수도회 직속의 종교 사법 기관이다. 수호신의 가르침에 어긋난다고 여기는 이단과 질의, 무신자를 심판하는 기관으로 기록된다.",
+      "kind": "종교 사법 기관",
+      "url": "/wuwa-quests/factions/court-of-penance.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "문서_편지_일기:infodisplay:133002006",
+          "field": "content",
+          "label": "깊은 바다 수도회",
+          "excerpt": "깊은 바다 수도회는 임페라토르를 신봉한다. 라군나의 전통에서 그들은 수호신의 인간 대리인으로 라군나 사람들을 인도하여 수호신의 가르침을 따르게 하는 역할을 한다. \n깊은 바다 수도회는 「수좌」가 이끌며, 현재 수좌인 펜리코는 스스로를「선지자」, 즉 리나시타 수호신의 공명자라고 자칭했다. 지난번 카니발 후에 그는 세주를 알현하는 방식을 찾았다고 선포했다.\n수좌 아래의 「사제」는 수도회의 각종 의식과 종교 사무를 담당한다. 평범한 성직자들은「성직자」라고 불리며, 그들은 평소에 수도회의 성전을 연구하고 수호신의 가르침을 라군나 곳곳에 전파한다.\n이와 함께 라군나의 신성한 질서를 유지하기 위해 3개의 기관을 설치했다. 그것들은 각각 다음과 같다.\n",
+          "source_text_sha256": "29a1506612582b6b4d34e896e0c30502745e738f830d95de956292c3df044892"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:133002006",
+          "field": "content",
+          "label": "깊은 바다 수도회",
+          "excerpt": "참회원 : 깊은 바다 수도회 직속 종교 사법 기관으로 수호신의 가르침에 어긋나는 이단, 질의, 심지어 노골적으로 수호신에게 등을 돌린 무신자들을 심판한다",
+          "source_text_sha256": "29a1506612582b6b4d34e896e0c30502745e738f830d95de956292c3df044892"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/factions/deep-sea-order.html",
+        "/wuwa-quests/regions/rinascita.html"
+      ]
+    },
+    {
+      "id": "mad-hounds",
+      "category": "factions",
+      "name": "맹견파",
+      "summary": "카카루의 이야기에서 신 연방 무법지대의 조직으로 기록된다. 처음에는 소년들로 구성되었으며, 이후 비밀리에 결성된 유령사냥단에 병합되었다.",
+      "kind": "회고에 기록된 조직",
+      "url": "/wuwa-quests/factions/mad-hounds.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "인물_이야기:favorstory:130103",
+          "field": "content",
+          "label": "카카루 · 동물은 사납다",
+          "excerpt": "과거 신 연방의 차별과 편견은 추방자들이 합법적인 일자리를 찾는 데 가장 큰 걸림돌이었다. \n이로 인해 신 연방 외곽에 있는 추방자 집결지는 \"무법지대\"로 불리기도 했다. \n조직을 구성하는 것은 무법지대의 추방자들의 독특한 생존 방식이다. \n조직들이 횡행하던 시기, \"맹견파\"라는 이름의 조직이 유명세를 탔다. \n맹견파의 최초 멤버는 12세 전후의 소년들로 구성되어 있다. \n선두의 소년은 다른 조직들의 압박에 못 이겨 괴롭힘을 당한 모든 아이들을 몰래 따라다니며 러브콜을 보낸다. \n소년은 놀라운 수단과 패기를 보여주며 몇 년 만에 맹견파를 급부상하게 만들었다. \n조직 내에는 위계도, 압박도 없으며, 오직 소년들의 생존과 자유에 대한 열망만 있을 뿐이였다.\n그러나 조직원들은 결국 다른 조직들의 노림수, 협력자의 음모, 고용주의 변절 등의 사건들로 하나하나 죽음을 맞이했다.\n시대는 결코 그들의 편이 아니였다. \n무법지대에서는 서로 배신하는 것이 숙명이며, 위로 올라가지 않으면 도태되어 사라질 운명이였다. \n이러한 시대의 법칙을 깨달은 소년은 운명을 건 도박을 하게된다.\n......\n그 후, 신 연방은 무법지대 최후의 조직인 \"맹견파\"에 대한 대대적인 소탕작전에 나서면서 처절한 전쟁이 벌어진다.\n이때 비밀리에 조직된 \"유령사냥단\"이라는 용병단이 하루아침에 \"맹견파\"를 병합하며 혼란을 종식시켰다. \n혼란이 끝난 후에야 사람들은 용병단 단장의 이름과 기존 맹견파의 두목이 똑같다는 것을 알아차렸다. \n가시덤불에 싸여 팬텀이 덧씌워진다. \n그는 마치 유령처럼 무서운 모습으로 다시 이곳으로 돌아왔다. \n이번에야 말로 그는 정점에 올라서 자신의 순진함, 측은함, 유유부단함으로 인해 이루어 내지 못한 일들을 해 내려한다. \n몇 년이 지난 후에도 그는 여전히 쓰레기장에서 동료들과 함께 \"맹견파\"를 조직했던 오후를 떠올릴 것이다. \n그것은 그의 인생에 있어 몇 안되는 위안거리이다.",
+          "source_text_sha256": "cb610bafec94db7fd2c309b36d7b24248603bf62183592b7a2556da043c6d6ad"
+        }
+      ],
+      "relatedUrls": [
+        "/wuwa-quests/factions/ghost-hounds.html",
+        "/wuwa-quests/people/1301.html",
+        "/wuwa-quests/regions/new-federation.html"
+      ]
+    },
+    {
+      "id": "overclock",
+      "category": "cosmology",
+      "name": "오버클럭",
+      "summary": "공명자의 정신과 어빌리티가 과부하될 때 유발되기 쉬운 병증으로 설명된다. 양양의 안정성 기록에는 머리카락의 깃털화가 후유증으로 수록되어 있다.",
+      "kind": "개념·기록",
+      "url": "/wuwa-quests/cosmology/overclock.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:9001",
+          "field": "content",
+          "label": "오버클럭 · Ⅰ",
+          "excerpt": "공명자의 정신과 어빌리티가 과부화 되면 「오버클럭」이라는 특수 병증을 유발하기 쉽다. 억제할 수는 있으나 완치할 수는 없다. 극단적인 상황에서는 성흔이 통제 불가하게 번지면서 주변 만물을 삼켜버려 오버클럭 이상자 자신 또한 무음구역의 잔상이 될 것이다",
+          "source_text_sha256": "3476969460e23aa0edce4b93f65ef7654f404b5b4f49e7294bdc1f3c3754dc5c"
+        },
+        {
+          "id": "인물_프로필_공명기록:favorroleinfo:1402",
+          "field": "talent_certification",
+          "label": "인물_프로필_공명기록 1402",
+          "excerpt": "오버클럭 후유증으로 머리카락의 일부분이 깃털화되는 현상을 보이지만, 깃털화 범위와 위치가 고정되어 더이상 확산되지 않는다.",
+          "source_text_sha256": "b1d2112c6228e9e0a83a11d1a12c2ae92c583ace06c043b896e19af682ddd877"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "tethys",
+      "category": "cosmology",
+      "name": "테티스 시스템",
+      "summary": "검은 해안의 슈퍼컴퓨터 시스템이다. 수동 수집과 비콘 접속으로 비명 주파수 데이터를 입력하고, 추론 결과로 전 세계에 비명 경보를 발령한다. 파수인은 자신과 테티스가 같은 문명에서 창조되었다고 말한다.",
+      "kind": "관측 시스템",
+      "url": "/wuwa-quests/cosmology/tethys.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "문서_편지_일기:infodisplay:133001002",
+          "field": "content",
+          "label": "테티스 시스템",
+          "excerpt": "문명 추론 모래판이라고도 불리는 테티스 시스템은 검은 해안에만 있는 슈퍼컴퓨터 시스템이다.\n검은 해안은 세계 각지에서 협력하고 활동하며, 수동 수집과 비콘 접속의 두 가지 방법을 통해 비명 주파수 데이터를 이 시스템에 입력하여 추론하고 계산한다. 이로써 24시간에서 48시간 사이에 비명 경보를 전 세계에 발령할 수 있으며, 이것이 오늘날 검은 해안이 세계 각지와 협력할 수 있는 근본적인 이유이다.\n테티스 시스템의 연산 결과는 최종적으로 검은 해안에 배치된 여러 개의 스테디 앵커와 지하 데이터 중추를 통해 분출되어 검은 해안 지하에 인공 별하늘로 표시된다. 이러한 이유로 검은 해안 지하는 영원한 밤의 도시이다.\n테티스 시스템은 명백한 에너지 구동도 없고, 전통적인 의미의 물리적 저장 장치 및 연산 코어도 없으며 사용되는 코드 언어는 매우 추상적이다. \n단말기가 다양한 자동 로봇으로 표현된다는 것만 알뿐 전체 테티스 시스템은 출처를 알수 없는 천연 창조물에 가깝다고 할 수 있다",
+          "source_text_sha256": "5ce163c1c57f6da3bda087a40291bfc98207081e8571a114e0cc139ffd4b1320"
+        },
+        {
+          "id": "인물_음성대사:favorword:150517",
+          "field": "content",
+          "label": "테티스에 관하여",
+          "excerpt": "테티스는 저와 마찬가지로 그 문명의 창조물이에요. 저희는 같은 곳에서 비롯되었고, 같은 목적으로 창조되었으며, 인간의 기준으로는 그나마 같은 부류라고 할 수 있죠. 하지만... 유감스럽게도 저희는 감정이나 인간, 또는 생명에 대해 전혀 다른 방식으로 이해하고 있어요. 그래서 저희가 서로 다른 길을 걷게 된 거고요",
+          "source_text_sha256": "16f604fa48915f422ed94ed7bc99aa8399058b6badee992c99a980ae73b4d241",
+          "speaker": "파수인"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "blackstone",
+      "category": "cosmology",
+      "name": "흑석",
+      "summary": "울림 에너지를 보존할 수 있는 비명 이상 현상의 산물이다. 개조한 흑석은 공명자의 에너지 무기에 쓰이며, 활성 흑석 샘플의 설명에는 이차 재해와 건강 영향에 대한 주의가 기록되어 있다.",
+      "kind": "개념·기록",
+      "url": "/wuwa-quests/cosmology/blackstone.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:1012",
+          "field": "content",
+          "label": "울림",
+          "excerpt": "연구를 통해 발견된 바, 비명 이상 현상의 산물 「흑석」은 「울림」 에너지를 완전히 보존할 수 있다. 흑석을 개조하면, 공명자가 사용할 수 있는 강력한 에너지 무기가 되며, 이 무기로 잔상에 효과적인 피해를 입힐 수 있다.",
+          "source_text_sha256": "89b3b12ecc95f5522125e8f9ad551eec8abc85176957959934209d86b0b0045c"
+        },
+        {
+          "id": "아이템_배경:iteminfo:70050002",
+          "field": "background",
+          "label": "활성 흑석 샘플",
+          "excerpt": "흑석은 새로운 에너지이자 위험한 광물이다. 무음구역에서 수집한 활성 흑석 샘플은 잘 보관하고, 2차 재해를 일으키거나 다른 사람의 건강에 영향을 미치지 않도록 주의해야 한다",
+          "source_text_sha256": "75f554b1f7c4fb5e1c67d6c2dced1cf7fb015ac1976ab3d8d4b81f9553c56376"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "stigma",
+      "category": "cosmology",
+      "name": "성흔",
+      "summary": "공명자는 몸에 있는 성흔을 통해 공명 어빌리티를 발휘한다. 오버클럭의 설명에는 극단적인 상황에서 성흔이 통제 불가하게 번지는 현상이 기록되어 있다.",
+      "kind": "개념·기록",
+      "url": "/wuwa-quests/cosmology/stigma.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:1005",
+          "field": "content",
+          "label": "공명자",
+          "excerpt": "공명자는 몸에 있는 「성흔」을 통해 「공명 어빌리티」를 발휘할 수 있으며, 학계는 「공명 어빌리티」의 유형과 발휘 방식이 공명자의 경험, 무의식과 밀접하게 관련되어 있다고 생각한다",
+          "source_text_sha256": "7a9b1ffa4b6317cca09f2b7a46d1fc0a864a4c5ac7b6cc3ddf251df6f6a66db4"
+        },
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:9001",
+          "field": "content",
+          "label": "오버클럭 · Ⅰ",
+          "excerpt": "극단적인 상황에서는 성흔이 통제 불가하게 번지면서 주변 만물을 삼켜버려 오버클럭 이상자 자신 또한 무음구역의 잔상이 될 것이다",
+          "source_text_sha256": "3476969460e23aa0edce4b93f65ef7654f404b5b4f49e7294bdc1f3c3754dc5c"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "pangu-terminal",
+      "category": "cosmology",
+      "name": "반고 단말기와 데이터 스테이션",
+      "summary": "반고 단말기는 에코를 포착하고 이용한다. 잔상 처치 뒤 일정 확률로 남는 잔향은 데이터 스테이션을 통해 에코로 변환된다.",
+      "kind": "개념·기록",
+      "url": "/wuwa-quests/cosmology/pangu-terminal.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:1007",
+          "field": "content",
+          "label": "에코",
+          "excerpt": "반고 단말기로 포착하고 이용하며 「잔상」의 능력을 재현할 수 있는 특별한 주파수. \n「잔상」을 처치한 후 일정 확률로 상응하는 「잔향」이 남겨진다. \n「잔향」은 단말기의 데이터 스테이션을 통해 「에코」로 변환되어 전투에서 이용할 수 있는 힘이 된다",
+          "source_text_sha256": "58dbf22c1c9f81217d28de88a3cb773a75d1764c77d4ef300f4ccd3cbffe9fb3"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "dream-realms",
+      "category": "cosmology",
+      "name": "마음의 영역과 나이트 시티",
+      "summary": "신비한 경지의 로딩 설명은 마음의 영역으로 통하는 문에 솔라리스 생명의 꿈이 담겼다는 이야기를 전한다. 나이트 시티는 꿈에서 탄생한 도시로 묘사되며, 과거와 못다 이룬 꿈에 관한 기록이 이어진다.",
+      "kind": "꿈의 공간",
+      "url": "/wuwa-quests/cosmology/dream-realms.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:80020101",
+          "field": "content",
+          "label": "신비한 경지",
+          "excerpt": "마음의 영역이라는 공간으로 통하는 신비한 문이 열렸다. 듣건대 그 문은 솔라리스의 모든 생명의 꿈을 담고 있다고 한다...",
+          "source_text_sha256": "58230951c47dba1308f3c3ab4ff9723617c68c8a903abbd76f5df951cfb10d84"
+        },
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:611401",
+          "field": "content",
+          "label": "마음의 영역 · 나이트 시티",
+          "excerpt": "꿈속에서 탄생한 이 번화한 강철 숲은 언제나 밤의 색채에 뒤덮여, 전과는 다른 모습을 드러내고 있다.\n그것들은 비극적인 과거를 양분 삼아 자라난 감옥이자, 못다 이룬 꿈, 그리고 영영 되돌릴 수 없는 시간들이다",
+          "source_text_sha256": "e770adca27a078fd3dbd0b6c67028f908e93d8067a8e6a3ad9182b1a4fa7efd9"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "sonoro-control",
+      "category": "cosmology",
+      "name": "소노라 제어 연구",
+      "summary": "소노라 제어 프로젝트의 보고서는 공간 확장, 결정벽의 취약점 측정, 비명 잔여 에너지 수용을 실험 목표로 기록한다. 같은 제목의 두 보고서에는 포획 효율과 유지 시간이 서로 다르게 기재되어 있다.",
+      "kind": "실험 기록",
+      "url": "/wuwa-quests/cosmology/sonoro-control.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "문서_편지_일기:infodisplay:120101056",
+          "field": "content",
+          "label": "「소노라 제어 프로젝트」 연구 보고서 · 20 · 자료 120101056",
+          "excerpt": "실험 목표:\n기존 소노라 공간 확장 및 공간 결정벽의 취약점 위치 측정\n비명의 잔여 에너지 수용 및 소노라 제어\n  \n실험 절차:\n· 제20차 현장 테스트\n네온 라이트 포획 효율 4.16% 증가\n소량의 가벼운 무지개 결정이 관측됨 (비명 잔류물로 확인됨)\n스틸 포스가 11분 23초간 유지 후 붕괴됨\n이상 공간 균열 발생 (수용 장치 핵심 코일 용해됨)\n \n...\n  \n현황 분석:\n이번 주기의 비명 주파수는 기준치에 비해 4.23% 이탈\n현재 수용 방법으로는 실험 진행 불가\n  \n비고:\n해당 소노라의 주기적인 리셋 현상은 비명의 잔여 에너지에 의한 것으로 추정됨",
+          "source_text_sha256": "a28417610f06e3af3e7380836e325e3d6ea1ebdb9d262832cc8b2dafed7615cd"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:120101057",
+          "field": "content",
+          "label": "「소노라 제어 프로젝트」 연구 보고서 · 20 · 자료 120101057",
+          "excerpt": "실험 목표\n기존 소노라 공간 확장 및 공간 결정벽의 취약점 위치 측정\n비명의 잔여 에너지 수용 및 소노라 제어\n  \n실험 절차\n· 제20차 현장 테스트\n네온 라이트 포획 효율 7.12% 증가\n스틸 포스가 8분 11초간 유지 후 붕괴됨 (모니터링 장비 3대 파손)\n이상 공간 균열 발생\n \n...\n  \n현황 분석\n이번 주기의 비명 주파수는 기준치에 비해 1.45% 이탈\n현재 수용 방법으로는 실험 진행 불가",
+          "source_text_sha256": "de3f7a4edafb44afa1f52ee851ebd137d85e1619271e67e01932b0603d89f331"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:28030001",
+          "field": "content",
+          "label": "「소노라 제어 프로젝트」 실험 기록",
+          "excerpt": "실험 장소: 핵심 구역 L4층 (네온 타워의 배전실)\n네온 라이트 침식도: ■■■□(경계 한계치 3단계 돌파)\n\n제20차 현장 테스트에서 수용 장치 과부하로 인해 일부분의 시공간 파괴가 발생함\n「비명 포획 장치」가 일부 알 수 없는 주파수를 차단함\n고유값 매칭 성공, 초기 추측 결과 소속 지역은 라██로이로 추정\n\n주파수 해석 실패...\n주파수가 흩어지는 중...\n모든 인원 즉시 현장에서 철수!",
+          "source_text_sha256": "739bdc4b2dec39fcc079e5466fa492ccda621e76b3c67162f826b1f9f006421d"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "sentinels",
+      "category": "cosmology",
+      "name": "수호신",
+      "summary": "문명과 역사가 있는 지역의 수호자로 설명된다. 기록에 따르면 인류의 재난 극복을 인도하고 지식과 예언을 전했으며, 지역별 본문에는 용의 별자리·임페라토르·여우의 별자리의 권능과 신앙이 수록되어 있다.",
+      "kind": "개념·기록",
+      "url": "/wuwa-quests/cosmology/sentinels.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:1008",
+          "field": "content",
+          "label": "수호신",
+          "excerpt": "문명과 역사가 존재하는 지역에는 「수호신」이 존재한다. 기록에 따르면 「수호신」은 인류가 재난을 극복하도록 여러 차례 인도하고, 지식을 전수했으며, 예언을 제시했다. \n「비명」을 겪은 이후, 다시 시작의 발걸음을 내딛는 인류에게 있어서 「수호신」은 문명과 역사의 화신이며, 인류가 재앙을 건너갈 수 있게 돕는 등대이다",
+          "source_text_sha256": "e86c2224626e70a0698c44f42964ff194c493902e45c008f791573d543655428"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "origin-beacon",
+      "category": "cosmology",
+      "name": "기원 비콘",
+      "summary": "리나시타의 중추 비콘이다. 영향 범위 안의 에코는 개인 단말기에 의존하지 않고 오래 존재할 수 있다. 수호신이 비밀을 전했다는 설명은 전설로 수록되어 있다.",
+      "kind": "개념·기록",
+      "url": "/wuwa-quests/cosmology/origin-beacon.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:200014",
+          "field": "content",
+          "label": "기원 비콘",
+          "excerpt": "리나시타의 중추 비콘은 또 「기원 비콘」이라고도 불린다. 전설에 따르면 수호신은 기원 비콘의 비밀을 리나시타 사람들에게 공유해 수호신의 권능을 상징하는 기념비를 세울 수 있게 했다. 기원 비콘의 영향 범위 내에서는 에코가 단말기에 의존하지 않고도 오래 존재할 수 있다",
+          "source_text_sha256": "5077fe2b57b3b1644c2009edb683343b7ab8dd2ff2c175302c6b463472505cde"
+        },
+        {
+          "id": "문서_편지_일기:infodisplay:133002011",
+          "field": "content",
+          "label": "기원 비콘",
+          "excerpt": "리나시타의 중추 비콘은 또 「기원 비콘」이라고도 불린다. 전설에 따르면 수호신은 기원 비콘의 비밀을 리나시타 사람들에게 공유해 수호신의 권능을 상징하는 기념비를 세울 수 있게 했다.\n기원 비콘의 영향 범위 내에서 에코는 단말기에 의존하지 않고 오래 존재할 수 있다",
+          "source_text_sha256": "448cd735c9032a8df3ddd34fa072224ebd7c9155d373b7b80a3c2b49bbba58c0"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "civilization-box",
+      "category": "cosmology",
+      "name": "문명의 상자와 천연륜",
+      "summary": "천연의 생태 기록은 문명의 상자에서 탈취한 데이터가 수호신과 닮은 외형을 만드는 데 쓰였다고 서술한다. 연륜 잔해의 설명은 천연륜이 봉인 도구에서 문명의 상자를 간섭하는 매개체로 변했다고 기록한다.",
+      "kind": "개념·기록",
+      "url": "/wuwa-quests/cosmology/civilization-box.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "잔상_생태:monsterinfo:340000330",
+          "field": "discovered_description",
+          "label": "태초의 여우의 별자리 · 천연",
+          "excerpt": "게다가 문명의 상자 기저에서 탈취한 데이터로 인해 「그」는 여우의 별자리의 기억 속에 있는 「수호신」과 흡사한 모습을 드러냈고, 이는 여우의 별자리를 흔들리게 하여 대치하는 과정에서 점차 열세에 처하게 만들었다.",
+          "source_text_sha256": "8e9ca8851b705f558442559870c67e803dd2d6494bfa7a2bc53a45a9a7ef2852"
+        },
+        {
+          "id": "아이템_배경:iteminfo:41400354",
+          "field": "background",
+          "label": "연륜 잔해",
+          "excerpt": "「여우의 별자리」가 태초의 여우의 별자리 · 천연을 구속하기 위해 설치된 제한 장치로, 천연륜이라 불린다.\n두 존재가 백 년에 걸쳐 권능을 다투는 동안 천연륜은 점차 침식되고 오염되어, 봉인 도구에서 문명의 상자를 간섭하는 매개체로 변했다. 현재 「여우의 별자리」는 천연륜을 회수했으며, 벗겨져 나간 잔해만 일부 남아 있다. 그 안에는 아직도 태초의 여우의 별자리 · 천연이 「수호신」의 권능을 해석하고 침식한 흔적이 남아 있다...",
+          "source_text_sha256": "ef649722d8d0bb75c9d161d0b7afa41c17d7082a10e77ce7135654703a71e42e"
+        }
+      ],
+      "relatedUrls": []
+    },
+    {
+      "id": "time-domain",
+      "category": "cosmology",
+      "name": "시간 흐름의 세계",
+      "summary": "수호신 용의 별자리의 음의 영역이다. 로딩 설명은 아침과 저녁이 뒤섞이고 시간이 정상적으로 흐르지 않는 공간으로 서술한다.",
+      "kind": "용의 별자리의 영역",
+      "url": "/wuwa-quests/cosmology/time-domain.html",
+      "reuse": false,
+      "refs": [
+        {
+          "id": "로딩_세계관_도움말:loadingtipstext:20410101",
+          "field": "content",
+          "label": "시간 흐름의 세계",
+          "excerpt": "수호신 「용의 별자리」의 음의 영역이다. 영역 내에 아침과 저녁이 뒤섞여, 시간이 정상적으로 흐르지 않는다. 세상 만물의 시작과 끝이 이곳에 모여 있다",
+          "source_text_sha256": "de5e68e6445e01ebfbea791097ca905b7f8d7ed21914ff7879734ee81a4d3118"
+        }
+      ],
+      "relatedUrls": []
+    }
+  ],
+  "pages": {
+    "factions": {
+      "title": "세력",
+      "lead": "조직과 기관의 목적·구성·활동을 지역과 인물의 기록으로 읽습니다.",
+      "groups": [
+        {
+          "id": "huanglong",
+          "title": "황룡의 행정과 방위",
+          "summary": "금주와 몽주의 행정, 치안, 군대와 재앙 대응 기관을 읽습니다.",
+          "entryIds": [
+            "jinzhou-magistracy",
+            "night-patrollers",
+            "junce",
+            "tiangong",
+            "security-bureau",
+            "jitian",
+            "mingting-zhenwu",
+            "golden-shackles"
+          ]
+        },
+        {
+          "id": "research",
+          "title": "재난 관측과 연구",
+          "summary": "검은 해안의 관측과 라하이 로이의 교육·연구 조직을 함께 찾습니다.",
+          "entryIds": [
+            "black-shores",
+            "huaxu",
+            "spacetrek-collective",
+            "startorch-academy",
+            "spacetrek-institute",
+            "heliodic-six"
+          ]
+        },
+        {
+          "id": "rinascita",
+          "title": "리나시타의 신앙·가문·공연",
+          "summary": "수도회의 사법·집행 기관과 가문, 우인 극단, 일곱 언덕의 정치 거점을 읽습니다.",
+          "entryIds": [
+            "deep-sea-order",
+            "court-of-pardon",
+            "order-enforcement",
+            "court-of-penance",
+            "montelli",
+            "fisalia",
+            "fools-troupe",
+            "seven-hills-council"
+          ]
+        },
+        {
+          "id": "trade",
+          "title": "운송과 상업",
+          "summary": "배송과 거래, 소장품 보관에 참여하는 조직을 읽습니다.",
+          "entryIds": [
+            "mumu-logistics",
+            "somyeong-association",
+            "averardo-bank"
+          ]
+        },
+        {
+          "id": "armed",
+          "title": "잔성회와 무장 집단",
+          "summary": "잔성회와 추방자, 독립 용병 조직과 회고에 등장하는 맹견파를 읽습니다.",
+          "entryIds": [
+            "fractsidus",
+            "exiles",
+            "ghost-hounds",
+            "mad-hounds"
+          ]
+        }
+      ]
+    },
+    "cosmology": {
+      "title": "세계관의 큰 설정",
+      "lead": "세계의 재앙, 주파수와 에코, 공명자의 몸, 문명과 기억을 주제별로 찾아 읽습니다.",
+      "groups": [
+        {
+          "id": "disasters",
+          "title": "솔라리스의 재앙과 명식",
+          "summary": "세계의 기본 배경에서 비명·흑조·지역별 명식의 기록으로 들어갑니다.",
+          "entryIds": [
+            "solaris",
+            "lament",
+            "tacet-fields",
+            "threnodians",
+            "the-axion",
+            "leviathan",
+            "aleph-one",
+            "black-tide"
+          ]
+        },
+        {
+          "id": "frequency",
+          "title": "주파수와 에코의 이용",
+          "summary": "잔향·울림의 설명과 에코, 단말기, 기원 비콘, 흑석의 쓰임을 함께 읽습니다.",
+          "entryIds": [
+            "frequency",
+            "echoes",
+            "pangu-terminal",
+            "origin-beacon",
+            "blackstone"
+          ]
+        },
+        {
+          "id": "resonance",
+          "title": "공명자의 능력과 신체",
+          "summary": "공명 어빌리티, 성흔, 오버클럭의 정의와 인물별 기록을 읽습니다.",
+          "entryIds": [
+            "resonance",
+            "stigma",
+            "overclock"
+          ]
+        },
+        {
+          "id": "civilization",
+          "title": "수호신과 문명의 기술",
+          "summary": "수호신의 기록, 엑소스트라이더의 기술, 천연의 권능 모방과 관련 사물을 읽습니다.",
+          "entryIds": [
+            "sentinels",
+            "civilization",
+            "exostrider",
+            "tianyan",
+            "civilization-box"
+          ]
+        },
+        {
+          "id": "memory",
+          "title": "기억·꿈·시간과 관측",
+          "summary": "소노라, 꿈의 공간과 시간 영역, 테티스의 관측, 소노라 실험을 각각의 기록으로 살펴봅니다.",
+          "entryIds": [
+            "sonoro",
+            "dream-realms",
+            "time-domain",
+            "tethys",
+            "sonoro-control"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -18,7 +18,7 @@ const kindFamilies=new Map([
  ['수호신',['수호신']],
  ['세계관',['세계관','큰 설정','세계','개념','명식','잔상','재앙','재난','현상']]
 ].flatMap(([family,labels])=>labels.map(label=>[label,family])));
-export function entityKindIndex({index,atlas,book}){
+export function entityKindIndex({index,atlas,book,discovery}){
  const canonical=new Map(),declared=new Map();
  const addCanonical=(name,kind)=>{
   const old=canonical.get(name);
@@ -68,6 +68,7 @@ export function entityKindIndex({index,atlas,book}){
   conceptNames.add(concept.name);
   if(!resolved.has(concept.name))resolved.set(concept.name,'개념');
  }
+ for(const entry of discovery?.entries||[])if(!resolved.has(entry.name))resolved.set(entry.name,entry.kind);
  return resolved;
 }
 export function clusterNodeKinds(c){
@@ -83,9 +84,9 @@ export function localClusterKinds(model){
  const endpoint=n=>kinds.has(n.name)?{...n,canonicalKind:n.kind,kind:kinds.get(n.name)}:n;
  return {...model,relations:model.relations.map(r=>({...r,from:endpoint(r.from),to:endpoint(r.to)}))};
 }
-export async function buildReadingData({source,index,records,atlas,book,entityLinks}){
+export async function buildReadingData({source,index,records,atlas,book,entityLinks,discovery}){
  const atlasPeople=atlas.people||[];
- const entityKinds=entityKindIndex({index,atlas,book});
+ const entityKinds=entityKindIndex({index,atlas,book,discovery});
  const kindFor=name=>entityKinds.get(name)||'설정 대상';
  const base='/wuwa-quests',entities=[...entityLinks].map(([name,url])=>({id:'entity-'+hash(name).slice(0,16),name,url:base+url,kind:kindFor(name)})),byName=new Map(entities.map(e=>[e.name,e]));
  const sources=index.entries.map(e=>{const r=records[e.id];if(!r)throw Error('Missing reading record '+e.id);return {id:e.id,title:e.title,kind:e.category_label,url:base+e.page,blocks:r.values.filter(v=>v.status==='OK'&&v.text).map(v=>({id:v.field,field:v.field,text:v.text,sha256:hash(v.raw),url:base+e.page+(e.page.includes('#')?'':'#field-'+encodeURIComponent(v.field)),locator:{recordId:e.id,field:v.field,textId:v.text_id}}))};});
@@ -115,6 +116,12 @@ export async function buildReadingData({source,index,records,atlas,book,entityLi
   const topologyData=t=>({...t,edges:t.edges.map(e=>{const {refs:rawRefs,text,...edge}=e;return {...edge,claimId:graph.claim(text,refs(rawRefs),claimAttribution(e))};})});
   const topology=c.topology?topologyData(c.topology):null,views=(c.views||[]).map(topologyData);
   clusters.push({id,entityId:byName.get(c.title.split(' · ')[0]).id,title:c.title,url:base+'/'+id+'.html',question:c.question,overview:c.summary,nodeKinds:clusterNodeKinds(c),focusKind:group==='sentinels'?'수호신':kindFor(c.title.split(' · ')[0]),sections,topology,views,comparisons,process,processKind:c.process_kind||'steps',processTitle:c.process_title||'',returnLabel:c.process_kind==='cycle'?'새로운 에코가 분해·제련으로 이어진다':'',containment:c.containment?{...c.containment,children:c.containment.children.map(name=>{const target=byName.get(name),sourceEntry=index.entries.find(e=>e.id===(index.aliases[c.containment.refs[0].id]||c.containment.refs[0].id));return {name,url:target?.url||base+sourceEntry.page};}),evidenceIds:c.containment.refs.map(r=>graph.evidence(refs([r])[0]))}:null,timeNote:c.timeline?.note||'',timeOrdered:!!c.timeline});
+ }
+ for(const e of discovery?.entries||[]){
+  if(e.reuse)continue;
+  const id=e.category+'/'+e.id;
+  const sections=[{id:'overview',title:e.name+'의 개요',claimIds:[graph.claim(e.summary,refs(e.refs),claimAttribution(e))]},...e.refs.map((r,i)=>({id:'record-'+i,title:r.label,claimIds:[graph.claim(r.excerpt,refs([r]),r.speaker?{kind:'attributed',speaker:r.speaker}:{kind:'explicit'})]}))];
+  clusters.push({id,entityId:byName.get(e.name).id,title:e.name,url:e.url,overview:e.summary,question:'',sections,focusKind:e.kind,nodeKinds:[],topology:null,views:[],comparisons:[],process:[],processKind:'steps',processTitle:'',returnLabel:'',containment:null,timeOrdered:false,timeNote:''});
  }
  const data=graph.output({clusters,relations,events});const dir=path.join(source,'public/reading-data');await writeReadingGraph(data,dir);
  console.log(JSON.stringify({readingGraph:'PASS',sources:data.sources.length,entities:entities.length,claims:data.claims.length,evidence:data.evidence.length,clusters:clusters.length}));return {data,cluster:id=>resolveCluster(data,id)};

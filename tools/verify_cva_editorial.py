@@ -428,11 +428,20 @@ def built_check(site, dist, index, records, book, atlas, curated, stats, fixture
         return cache[relative]
     groups = ['regions', 'factions', 'cosmology', 'people', 'sentinels']
     world = page('world.html')
+    discovery = json.loads((site/'settings/directory-discovery.json').read_text(encoding='utf-8'))
+    for category, grouped in discovery['pages'].items():
+        for group in grouped['groups']:
+            link_in_module(world, BASE+'/'+category+'.html#group-'+group['id'], group['title'])
+            contains(world, group['summary'], category+'/'+group['id']+' grouped entrance')
     for group in groups:
         directory = page(group+'.html')
         for cluster in atlas[group]:
             target = BASE+'/'+group+'/'+cluster['id']+'.html'
             for entry_page in (world, directory):
+                # The world entry presents editorial topic groups. Each direct
+                # directory still exposes every original individual subject.
+                if entry_page is world and group in discovery['pages']:
+                    continue
                 # People keeps its existing keyboard/filterable directory.
                 link_in_module(entry_page, target, cluster['title'])
                 contains(entry_page, cluster['summary'], cluster['id']+' directory summary')
