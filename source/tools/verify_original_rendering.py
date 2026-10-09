@@ -16,6 +16,8 @@ VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link',
         'meta', 'param', 'source', 'track', 'wbr'}
 EXCLUDED = {'name', 'title', 'type', 'birthday', 'sex'}
 PROFILE = {'info', 'talent_name', 'talent_document', 'talent_certification'}
+EXTRACTION_SEQUENCE_NOTE = '원본 대화 순서가 없는 대화 항목을 참조합니다. 실제 항목만 수록했으며 누락 참조는 대화순서_참조누락.csv에 기록했습니다.'
+EXTRACTION_READING_NOTE = '이 장면에는 순서 정보가 확인되지 않은 대화 항목이 포함되어 있다.'
 
 
 class ReadingTemplatePage(HTMLParser):
@@ -194,10 +196,18 @@ class QuestPage(HTMLParser):
         a = dict(attrs)
         classes = set(a.get('class', '').split())
         if 'quest-section-anchor' in classes:
-            self.scene = {'id': a.get('id'), 'lines': [], 'metadata': []}
+            self.scene = {'id': a.get('id'), 'lines': [], 'metadata': [], 'notes': []}
             self.scenes.append(self.scene)
         own_capture = False
-        if tag == 'p' and 'quest-source-line' in classes:
+        if tag == 'p' and 'quest-reading-note' in classes:
+            if self.scene is None:
+                raise ValueError('Quest reading note outside scene')
+            text = []
+            self.scene['notes'].append({'text': text, 'ignored': 'data-pagefind-ignore' in a,
+                                        'classes': classes})
+            self.capture = text
+            own_capture = True
+        elif tag == 'p' and 'quest-source-line' in classes:
             text = []
             if self.scene is None:
                 raise ValueError('Quest line outside scene')
@@ -249,9 +259,12 @@ def quest_expected(text):
     scenes = []
     for i, match in enumerate(matches):
         segment = text[match.end():matches[i+1].start() if i+1 < len(matches) else len(text)]
-        metadata, lines = [], []
+        metadata, lines, extraction_note = [], [], False
         for raw in segment.split('\n'):
             if not raw.strip():
+                continue
+            if raw.strip() == EXTRACTION_SEQUENCE_NOTE:
+                extraction_note = True
                 continue
             if re.match(r'^(순서 근거:|대화 ID:|대화 묶음)', raw.strip()) or re.fullmatch(r'─+', raw.strip()):
                 metadata.append(raw)
@@ -262,8 +275,49 @@ def quest_expected(text):
             if m:
                 line = m[1] + ' ' + m[2] + ': ' + m[3]
             lines.append((line, cls))
-        scenes.append({'id': 'scene-'+str(i+1), 'metadata': '\n'.join(metadata), 'lines': lines})
+        scenes.append({'id': 'scene-'+str(i+1), 'metadata': '\n'.join(metadata), 'lines': lines,
+                       'extractionNote': extraction_note})
     return intro, scenes
+
+
+def quest_note_errors(actual, expected):
+    errors = []
+    notes = actual['notes']
+    if len(notes) != int(expected['extractionNote']):
+        errors.append('quest extraction status note count differs')
+    for note in notes:
+        if ''.join(note['text']) != EXTRACTION_READING_NOTE:
+            errors.append('quest extraction status note text differs')
+        if not note['ignored'] or 'quest-source-line' in note['classes']:
+            errors.append('quest extraction status note mixed with indexed game dialogue')
+    if any(''.join(line['text']) == EXTRACTION_SEQUENCE_NOTE for line in actual['lines']):
+        errors.append('quest extraction memo exposed as a game line')
+    return errors
+
+
+def quest_note_self_tests():
+    # Source classification and DOM checks are independent of JS generation.
+    from html import escape
+    text = ('Title\n장면 1: Test\n순서 근거: Test\n' + EXTRACTION_SEQUENCE_NOTE + '\n'
+            '[대화ID 1] 화자: 실제 게임 대사\n화면 문구: 실제 화면 문구\n'
+            '  선택 1: 실제 선택\n    → 대화 종료\n게임 편지의 다음 줄\n'
+            '[대화ID 2] 화자: ' + EXTRACTION_SEQUENCE_NOTE + '\n')
+    expected = quest_expected(text)[1][0]
+    preserved = [line for line, _ in expected['lines']]
+    if len(preserved) != 6 or '게임 편지의 다음 줄' not in preserved or preserved[-1] != '[대화ID 2] 화자: ' + EXTRACTION_SEQUENCE_NOTE:
+        return [{'name': 'game_and_prefixed_lines_preserved', 'status': 'FAIL'}]
+    anchor = '<div class="quest-section-anchor" id="scene-1"></div>'
+    note = '<p class="quest-reading-note" data-pagefind-ignore>' + EXTRACTION_READING_NOTE + '</p>'
+    rows = ''.join('<p class="quest-source-line">' + escape(line) + '</p>' for line in preserved)
+    results = [{'name': 'game_and_prefixed_lines_preserved', 'status': 'PASS'}]
+    for name, html, corrupt in [('valid_status_note', anchor + note + rows, False),
+                                ('missing_status_note_rejected', anchor + rows, True),
+                                ('memo_reinserted_as_dialogue_rejected', anchor + note + rows + '<p class="quest-source-line">' + EXTRACTION_SEQUENCE_NOTE + '</p>', True),
+                                ('indexed_status_note_rejected', anchor + note.replace(' data-pagefind-ignore', '') + rows, True)]:
+        parser = QuestPage(); parser.feed(html)
+        errors = quest_note_errors(parser.scenes[0], expected)
+        results.append({'name': name, 'status': 'PASS' if bool(errors) == corrupt else 'FAIL'})
+    return results
 
 
 def check_quests(site, dist, stats, errors):
@@ -274,6 +328,9 @@ def check_quests(site, dist, stats, errors):
         if hashlib.sha256(source).hexdigest() != quest['source_sha256']:
             errors.append({'page': relative, 'error': 'quest source hash differs'})
             continue
+        copied = dist/'originals'/(quest['id']+'.txt')
+        if not copied.is_file() or copied.read_bytes() != source:
+            errors.append({'page': relative, 'error': 'quest downloadable original bytes differ'})
         path = dist/relative
         if not path.is_file():
             errors.append({'page': relative, 'error': 'missing built quest page'})
@@ -297,6 +354,8 @@ def check_quests(site, dist, stats, errors):
             actual = parser.scenes[n]
             if actual['id'] != expected['id']:
                 errors.append({'page': relative, 'error': 'quest scene anchor differs', 'scene': n+1})
+            errors.extend({'page': relative, 'scene': n+1, 'error': error}
+                          for error in quest_note_errors(actual, expected))
             meta = [''.join(x) for x in actual['metadata']]
             expected_meta = [expected['metadata']] if expected['metadata'] else []
             if meta != expected_meta:
@@ -315,6 +374,7 @@ def check_quests(site, dist, stats, errors):
             stats['questMetadataBlocks'] += bool(expected_meta)
             stats['questChoices'] += sum(c == 'quest-choice' for _,c in expected['lines'])
             stats['questBranches'] += sum(c == 'quest-branch' for _,c in expected['lines'])
+            stats['questExtractionNotes'] += int(expected['extractionNote'])
         stats['quests'] += 1
 
 
@@ -401,9 +461,13 @@ def main(dist):
         check('sources/'+slug+'.html', id)
         stats['curatedSources'] += 1
     check_quests(site, dist, stats, errors)
+    note_tests = quest_note_self_tests()
+    errors.extend({'error': 'quest extraction note self-test failed', 'name': test['name']}
+                  for test in note_tests if test['status'] != 'PASS')
     report = {'status': 'PASS' if not errors else 'FAIL', 'scope': 'built-lore-and-quest-original-raw-and-visible-text',
               **dict(stats), 'htmlPages': len(cache)+stats['quests'], 'errorsTotal': len(errors),
-              'errorsByKind': dict(Counter(e['error'] for e in errors)), 'errors': errors[:30]}
+              'errorsByKind': dict(Counter(e['error'] for e in errors)), 'errors': errors[:30],
+              'questNoteSelfTests': note_tests}
     print(json.dumps(report, ensure_ascii=False))
     return bool(errors)
 

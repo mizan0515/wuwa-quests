@@ -14,6 +14,8 @@ const e=(s)=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'
 const sourceDisclosure=(summary,body,className)=>readerDisclosure(summary,body,{className,attributes:{'data-pagefind-ignore':''}});
 const display=(s)=>s.replace(/^기타임무_유형(\d+)$/,'기타임무 (유형 $1)').replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
 const readable=(s)=>s.replace(/<\/?(?:te|color|size|b|i|u|ano|s)(?:[=\s][^>]*)?>/g,'');
+const extractionSequenceNote='원본 대화 순서가 없는 대화 항목을 참조합니다. 실제 항목만 수록했으며 누락 참조는 대화순서_참조누락.csv에 기록했습니다.';
+const extractionReadingNote='이 장면에는 순서 정보가 확인되지 않은 대화 항목이 포함되어 있다.';
 const versions=[...new Set(items.map(x=>x.version))].sort((a,b)=>/^\d\.\d$/.test(a)&&/^\d\.\d$/.test(b)?parseFloat(b)-parseFloat(a):/^\d\.\d$/.test(a)?-1:/^\d\.\d$/.test(b)?1:a.localeCompare(b,'ko'));
 const groups=new Map();for(const x of items){const key=x.version+'|'+x.type;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(x);}for(const group of groups.values())group.sort((a,b)=>Number(a.id)-Number(b.id));
 await mkdir(path.join(content,'quests'),{recursive:true});await mkdir(path.join(source,'public/originals'),{recursive:true});
@@ -33,9 +35,13 @@ for(const x of items){
  for(let i=0;i<matches.length;i++){
   const match=matches[i],segment=text.slice(match.index+match[0].length,i+1<matches.length?matches[i+1].index:text.length);
   md+=`<div id="scene-${i+1}" class="quest-section-anchor" aria-hidden="true"></div>\n\n## ${e(match[0])}\n\n`;
-  const metadata=[];let sceneBody='';
+  const metadata=[];let sceneBody='',extractionNoteShown=false;
   for(const raw of segment.split('\n')){
    if(!raw.trim())continue;
+   if(raw.trim()===extractionSequenceNote){
+    if(!extractionNoteShown)sceneBody+=`<p class="quest-reading-note" role="note" data-pagefind-ignore>${e(extractionReadingNote)}</p>`;
+    extractionNoteShown=true;continue;
+   }
    if(/^(순서 근거:|대화 ID:|대화 묶음)/.test(raw.trim())||/^─+$/.test(raw.trim())){metadata.push(raw);continue;}
    const line=readable(raw).trim();const cls=line.startsWith('선택 ')?'quest-choice':line.startsWith('→')?'quest-branch':'quest-utterance';
    const m=line.match(/^(\[대화ID [^\]]+\])\s*([^:：]+):\s*(.*)$/);

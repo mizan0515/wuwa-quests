@@ -145,6 +145,7 @@ h1#_top { margin: 0; font-size: clamp(1.8rem, 2.8vw, 2.55rem); line-height: 1.4;
 .quest-actions button[aria-pressed="true"] { border-color: var(--brass); background: var(--selected); }
 .quest-info, .quest-scene-info { font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 8px 14px; margin-block: 1.25rem; }
 .quest-info { background: var(--surface); }
+.sl-markdown-content .quest-reading-note { margin-block: 1rem; padding: .75rem 1rem; border-inline-start: 2px solid var(--brass); background: var(--surface); color: var(--muted); font-size: .82rem; line-height: 1.8; }
 .quest-info summary, .quest-scene-info summary { cursor: pointer; min-height: 36px; padding-block: 7px; }
 .quest-info pre, .quest-scene-info pre { white-space: pre-wrap; overflow-wrap: anywhere; color: inherit; background: transparent; border: 0; font: inherit; }
 .quest-scene-info:not([open]) { border-color: transparent; padding: 0; }
