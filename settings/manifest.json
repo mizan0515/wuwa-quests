@@ -7,7 +7,7 @@
   "characters": 64,
   "source_settings_sha256": "d21962b09d40711b9b1a34bfbfd8ca4d5ce064689f3ddedb35c41a5b21eb91c1",
   "files": {
-    "editorial.json": "12808503e400d2217c7902f49abc6b4f3ae954eb87fbdc43e1c01a31e5013d1c",
+    "editorial.json": "ff2d803868b2aaa97130bf5649f36a68c29f3e1d0d820692346a168405450d2d",
     "index.json": "5f3a1adc04b21aa88ddfb6737f51c7ed06931fd07922e964503f4cdd90d587bd",
     "records-animals.json": "7e25e788eb4b60c64ba204499fbf67336e7746ed3a79b16e83f6e82b2ab108c5",
     "records-documents.json": "b8b52012332831a0c06da573cfebdeb409266e93dbea683e1f4e2b9b8ef6c00a",
@@ -23,7 +23,7 @@
     "records-voice.json": "87e8e6b6454ab4d5602cf403b4f3cbbadffce961ff1a5c38e0987a30e7ed0d9d",
     "records-weapons.json": "4a6f858fd5a547d9f89f4a25173bb7dacac9ce20599a6f95f2104f1028886f1a",
     "records-world.json": "2b153dd3319ed5afbfe1bf1608c7d174ec3d375e15c8d93d99d44c97a41f1c3a",
-    "atlas.json": "da511621a72b432a2e94878347fd832bbb285c24dd5df9a04578e05e337c9914",
+    "atlas.json": "f94812a2a087e6fa5c59eb7b8a566b861845fb39f492b5c28293334cc2173a1b",
     "npc-people.json": "7c6988ff199c06598af43c9af1f52c13d9beea1cbd53f8262556eeafada4f038"
   },
   "hash_normalization": {

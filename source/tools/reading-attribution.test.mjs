@@ -6,7 +6,9 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {claimAttribution,readingReferences,entityKindIndex,clusterNodeKinds,localClusterKinds} from './reading-data.mjs';
 import {clusterGameMedia} from './generate-atlas.mjs';
-import {createReadingGraph} from '../src/lib/reading-kit/graph.mjs';
+import {createReadingGraph,resolveCluster} from '../src/lib/reading-kit/graph.mjs';
+import {createReadingKit,escapeHtml} from '../src/lib/reading-kit/render.mjs';
+import {createReadingSections} from './reading-sections.mjs';
 
 const site=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
 
@@ -109,6 +111,14 @@ test('서로 다른 분류와 미확인 역할 충돌을 이름만으로 합치�
  assert.throws(()=>entityKindIndex({index,atlas,book:duplicateBook}),/duplicate canonical concept/);
 });
 
+test('세계관 탐색 축에 독립 본문을 추가해도 원문의 대상 분류를 보존한다',()=>{
+ for(const kind of ['명식','잔상','재난']){
+  const a=structuredClone(atlas);
+  a.cosmology.push({id:'source-class',title:'분류 검증 대상',nodes:[{name:'분류 검증 대상',kind}]});
+  assert.equal(entityKindIndex({index,atlas:a,book}).get('분류 검증 대상'),kind);
+ }
+});
+
 const records=Object.assign({},...readdirSync(path.join(site,'settings')).filter(f=>/^records-.*\.json$/.test(f)).map(f=>json('settings/'+f)));
 const imageManifest=json('source/public/game-images/provenance.json');
 const refs=value=>value&&typeof value==='object'&&!Array.isArray(value)&&value.id&&value.source_text_sha256?[value]:value&&typeof value==='object'?Object.values(value).flatMap(refs):[];
@@ -153,4 +163,58 @@ test('같은 이름·관련 인물·손상된 식별자로 초점 이미지를 �
  assert.throws(()=>clusterGameMedia(original,{index,records:rows,imageManifest}),/profile identity differs/);
  c=structuredClone(original);const ref=refs(c).find(r=>r.id==='인물_프로필_공명기록:favorroleinfo:'+person.id);ref.source_text_sha256='0'.repeat(64);
  assert.throws(()=>clusterGameMedia(c,{index,records,imageManifest}),/profile evidence differs/);
+});
+
+test('천연과 레비아탄의 본체 도감 이미지를 관련 창조물보다 먼저 보여준다',()=>{
+ for(const name of ['천연','레비아탄']){
+  const c=clusters.find(({c})=>c.title.split(' · ')[0]===name)?.c;
+  assert(c,name+' has no authored original body');
+  const manifest=structuredClone(imageManifest);
+  manifest.monsters.reverse();
+  const images=clusterGameMedia(c,{index,records,imageManifest:manifest});
+  assert(images.length>1,name+' should also retain related subject images');
+  assert(images[0].caption.startsWith('게임 도감 이미지 · '));
+  assert(images[0].caption===('게임 도감 이미지 · '+name)||images[0].caption.endsWith(' · '+name));
+  const original=imageManifest.monsters.find(m=>m.name===name||m.name.endsWith(' · '+name));
+  assert.equal(images[0].url,original.images.icon.url);
+  for(const image of images.slice(1))assert(image.caption.startsWith('관련 대상의 게임 도감 이미지 · '));
+ }
+});
+
+test('알레프-원의 창조물 이미지는 실제 도감 이름으로 표시한다',()=>{
+ const c=clusters.find(({c})=>c.id==='aleph-one').c;
+ const images=clusterGameMedia(c,{index,records,imageManifest});
+ assert(images.length>0);
+ for(const image of images){
+  assert(image.caption.startsWith('관련 대상의 게임 도감 이미지 · '));
+  assert(image.caption.includes('허무의 신'));
+  assert(!image.alt.startsWith('알레프-원'));
+ }
+ const unreferenced={id:c.id,title:c.title,nodes:c.nodes};
+ assert.equal(clusterGameMedia(unreferenced,{index,records,imageManifest}).length,0);
+});
+
+test('관계도 유무와 함께 전체 원문 과정·순서·근거를 표시한다',()=>{
+ const graph=json('source/public/reading-data/graph.json');
+ const claims=new Map(graph.claims.map(c=>[c.id,c]));
+ const evidence=new Map(graph.evidence.map(e=>[e.id,e]));
+ const claim=id=>({...claims.get(id),evidence:claims.get(id).evidenceIds.map(id=>evidence.get(id))});
+ let withRelations=0,steps=0;
+ for(const cluster of graph.clusters.filter(c=>c.process?.length)){
+  const m=resolveCluster(graph,cluster.id);
+  const kit=createReadingKit({evidence:rs=>rs.map(e=>`<blockquote>${escapeHtml(e.quote)}</blockquote><a href="${escapeHtml(e.url)}">${escapeHtml(e.title)}</a>`).join('')});
+  const render=createReadingSections({kit,model:()=>m,claim});
+  const html=render({});
+  assert.equal([...html.matchAll(/id="process"/g)].length,1,cluster.id+' lacks a stable process anchor');
+  const models=[...html.matchAll(/<script[^>]*data-cva-model[^>]*>([\s\S]*?)<\/script>/g)].map(match=>JSON.parse(match[1]));
+  const process=models.flatMap(d=>d.modules).filter(b=>b.id.startsWith('cva-process-'));
+  assert.equal(process.length,1,cluster.id+' lacks its separate sourced process');
+  assert.equal(process[0].variant,m.processKind==='cycle'?'feedback-ring':'quest-route');
+  assert.deepEqual(process[0].props.items.map(i=>({title:i.title,body:i.body})),m.process.map(p=>({title:p.title,body:claim(p.claimId).text})));
+  for(const p of m.process)for(const e of claim(p.claimId).evidence){assert(html.includes(escapeHtml(e.quote)));assert(html.includes(escapeHtml(e.url)));}
+  if(m.topology)withRelations++;
+  steps+=m.process.length;
+ }
+ assert(withRelations>=5);
+ assert(steps>=16);
 });

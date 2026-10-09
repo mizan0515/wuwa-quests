@@ -7,6 +7,8 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Reading build failed'}
   & npm.cmd run qa:reading
   if($LASTEXITCODE -ne 0){throw 'Reading data QA failed'}
+  & python -B -X utf8 tools/verify_editorial_sources.py --self-test
+  if($LASTEXITCODE -ne 0){throw 'Whole editorial original and source meaning QA failed'}
   & python tools/verify_reading_site.py
   if($LASTEXITCODE -ne 0){throw 'Source and link QA failed'}
   & python -B -X utf8 ../tools/verify_cva_editorial.py --self-test
