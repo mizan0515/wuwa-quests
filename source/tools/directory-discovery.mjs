@@ -29,9 +29,9 @@ export function resolveDirectories(data,atlas) {
  return pages;
 }
 
-export function createDirectoryRenderer({kit,H,proofFor,entityLinks,scriptVersion}) {
+export function createDirectoryRenderer({kit,H,proofFor,entityLinks,entityNamesByUrl,scriptVersion}) {
  const base='/wuwa-quests';
- const relatedName=url=>[...entityLinks].find(([,value])=>base+value===url)?.[0];
+ const relatedName=url=>{const name=entityNamesByUrl.get(url);if(!name)throw Error('Unresolved authored related URL: '+url);return name;};
  const cardExtras=(items,group)=>items.map(e=>`<span hidden data-discovery-entry="${H(e.id)}" data-discovery-group="${H(group)}" data-discovery-search="${H(e.name+' '+e.kind+' '+e.summary)}"></span>`);
  const cards=(items,group)=>{const extras=cardExtras(items,group);return kit.directory(items).replaceAll(/(<article\b[^>]*data-cva-item-index="(\d+)"[^>]*>)/g,(opening,_,i)=>opening+extras[Number(i)]);};
  // Each group is capped below the canonical CVA module's 24-item limit.
@@ -48,7 +48,7 @@ export function createDirectoryRenderer({kit,H,proofFor,entityLinks,scriptVersio
   if(e.id==='golden-shackles')body+=`<section id="mask-making"><h2>금쇄십계 마스크의 제작</h2>${kit.process([{title:'오계 · 연구와 설계',text:'악장이 얼굴을 잠식하는 원리를 연구하고 방호면의 설계안을 제시했다.',evidence:[evidence[1]]},{title:'이계 · 원형 제작',text:'방호면의 원형을 제작했다.',evidence:[evidence[1]]},{title:'사계 · 복제',text:'성능을 유지하며 복제해 열 개를 완성했다.',evidence:[evidence[1]]}],{kind:'steps',label:'마스크 원문에 기록된 제작 순서'})}</section>`;
   if(e.id==='sonoro-control')body+=`<section id="comparison"><h2>동명 보고서의 기록 비교</h2><p class="atlas-caption">자료 제목은 모두 제20차 연구 보고서입니다. 자료 식별자를 함께 표시해 각각의 기록을 대조합니다.</p>${kit.comparison(e.refs.slice(0,2).map((r,i)=>({title:r.label,text:r.excerpt,kind:'fact',evidence:[evidence[i]]})))}</section>`;
   body+=`<section class="atlas-evidence" id="evidence"><h2>원문으로 확인하기</h2>${e.refs.map((r,i)=>kit.section({id:'record-'+i,title:r.label,items:[{text:r.excerpt,kind:'fact',speaker:r.speaker||'',evidence:[evidence[i]]}]})).join('')}</section>`;
-  const related=(e.relatedUrls||[]).map(url=>({name:relatedName(url),url,summary:''})).filter(n=>n.name);
+  const related=(e.relatedUrls||[]).map(url=>({name:relatedName(url),url,summary:''}));
   if(e.id==='sentinels')related.push(...['용의 별자리','임페라토르','여우의 별자리'].map(name=>({name,url:base+entityLinks.get(name),summary:'지역별 수호신의 기록과 권능'})));
   if(related.length)body+=`<section id="next"><h2>함께 읽는 인물과 지역</h2>${kit.directory(related)}</section>`;
   return body;
