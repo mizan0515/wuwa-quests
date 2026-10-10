@@ -15,7 +15,7 @@ class Page(HTMLParser):
 
 r=Path(__file__).resolve().parents[2];root=r/'source/dist';pages={};errors=[];count=0;routes=0
 index=json.loads((r/'settings/index.json').read_text(encoding='utf-8'))
-source_ids={e['id'] for e in index['entries']}|set(index.get('aliases',{}))
+source_ids={e['id'] for e in index['entries']+index.get('diagnostic_entries',[])}|set(index.get('aliases',{}))
 for p in root.rglob('*.html'):
  parser=Page();parser.feed(p.read_text(encoding='utf-8'));pages[p.resolve()]=parser
  if parser.duplicates:errors.append([str(p.relative_to(root)),'duplicate ids',parser.duplicates])

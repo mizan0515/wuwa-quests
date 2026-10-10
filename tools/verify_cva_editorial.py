@@ -31,6 +31,30 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def registered_sources(index):
+    """Diagnostic originals have explicit routes, not default reading entries."""
+    entries = {e['id']: e for e in index['entries']}
+    require(len(entries) == len(index['entries']), 'duplicate default reading entry')
+    for entry in index.get('diagnostic_entries', []):
+        require(entry['id'] not in entries, 'diagnostic/default source ID collision')
+        require(entry.get('reading_state') in {'NO_KOREAN_BODY', 'TEST_CONTENT_ONLY', 'PLACEHOLDER_MARKER'},
+                'readable source moved into diagnostics')
+        require(entry.get('page') == '/library.html#/source/'+entry['id'], 'diagnostic original route changed')
+        entries[entry['id']] = entry
+    return entries
+
+
+def dynamic_field_values(row):
+    return [v for v in row['values'] if v['field'] not in EXCLUDED or
+            v['field'] == 'type' and row['category'] == '에코_도감']
+
+
+def dynamic_visible_text(raw):
+    # Intrinsic texture asset tokens are hidden only in the display projection.
+    # check_field_value still requires the complete, unchanged raw in <pre>.
+    return html.unescape(visible_text(re.sub(r'<texture\b[^>]*>', '', raw, flags=re.I)))
+
+
 def check_inline_entity_identity(page):
     for node in page.nodes:
         if node['tag'] == 'a' and 'setting-entity-link' in node['attrs'].get('class', '').split():
@@ -180,7 +204,7 @@ def check_field_value(page, field, value, scope):
             'dynamic whole raw original changed: '+scope)
     visible = [n for n in page.has_class('lore-source-text') if descendant(n, field)]
     if value['status'] == 'OK':
-        require(len(visible) == 1 and ''.join(visible[0]['text']) == html.unescape(visible_text(value['raw'])),
+        require(len(visible) == 1 and ''.join(visible[0]['text']) == dynamic_visible_text(value['raw']),
                 'dynamic visible original changed: '+scope)
     else:
         require(not visible, 'dynamic non-OK field shows text')
@@ -220,17 +244,18 @@ def canonical_fixtures(site):
 
 def source_literals(site, index, records, book, atlas, curated):
     """Exact originals/proven quotes with their real source URL, for collisions."""
-    entries = {e['id']: e for e in index['entries']}
+    entries = registered_sources(index)
     literals = {}
     def add(value, url):
         if value:
             literals.setdefault(value, set()).add(url)
     for id, row in records.items():
+        require(id in entries, 'preserved original has no registered reading/diagnostic route: '+id)
         source = BASE+'/sources/'+curated[id]+'.html' if id in curated else BASE+entries[id]['page']
         for v in row['values']:
             if v['status'] == 'OK':
                 target = source+'#field-'+v['field'] if '#' not in source else source
-                for value in (v['raw'], v['text'], visible_text(v['raw']), html.unescape(visible_text(v['raw']))):
+                for value in (v['raw'], v['text'], visible_text(v['raw']), dynamic_visible_text(v['raw'])):
                     add(value, target)
     def refs(value):
         if isinstance(value, list):
@@ -301,14 +326,22 @@ const index=read('index.json'),book=read('editorial.json');
 const records={};for(const file of fs.readdirSync(setting).filter(n=>/^records-.+\.json$/.test(n)))Object.assign(records,read(file));
 const curated=process.argv[3]?JSON.parse(fs.readFileSync(process.argv[3],'utf8')):{sources:index.curated_sources};
 const root={dataset:{base:'/wuwa-quests'},innerHTML:'',focus(){}},heading={textContent:''},focused=[];
-const context=vm.createContext({console,URLSearchParams,document:{getElementById:id=>id==='lore-reader'?root:id==='_top'?heading:id.startsWith('field-')?{scrollIntoView:()=>focused.push(id)}:null},fetch:async url=>({ok:true,json:async()=>read(url.slice(url.lastIndexOf('/')+1))}),location:{pathname:'/wuwa-quests/library.html',search:'',hash:'#/library'}});
+const context=vm.createContext({console,URL,URLSearchParams,document:{currentScript:{src:'https://example.invalid/wuwa-quests/lore/library.js?v=qa'},getElementById:id=>id==='lore-reader'?root:id==='_top'?heading:id.startsWith('field-')?{scrollIntoView:()=>focused.push(id)}:null},fetch:async url=>({ok:true,json:async()=>read(url.slice(url.lastIndexOf('/')+1))}),location:{pathname:'/wuwa-quests/library.html',search:'',hash:'#/library'}});
 context.window=context;vm.runInContext(fs.readFileSync(components,'utf8'),context);
+// Load the actual shipped pure module into this VM; only remove its two ESM
+// export keywords. No replacement relation/display implementation is supplied.
+let helpers=fs.readFileSync(path.join(site,'source/public/lore/source-relations.js'),'utf8');
+for(const declaration of ['export const stripOriginalAssetMarkup','export function sourceRelations']){
+ if(helpers.split(declaration).length!==2)throw Error('Actual source relation module declarations changed');
+ helpers=helpers.replace(declaration,declaration.replace('export ',''));
+}
+vm.runInContext(helpers,context);
 let source=fs.readFileSync(path.join(site,'source/public/lore/library.js'),'utf8');
 const bootstrap="window.addEventListener('hashchange',render);render();";
 if(source.split(bootstrap).length!==2)throw Error('Dynamic library bootstrap changed; QA must inspect the actual entry point');
-source=source.replace(bootstrap,"globalThis.__libraryQA={fields,row,current,render,libraryReturn,setData:(i,b,c)=>{index=i;book=b;curated=c;}};");
+source=source.replace(bootstrap,"globalThis.__libraryQA={fields,row,current,render,libraryReturn,setData:(i,b,c)=>{index=i;book=b;curated=c;relationRenderer=sourceRelations;stripAssetMarkup=stripOriginalAssetMarkup;}};");
 vm.runInContext(source,context);context.__libraryQA.setData(index,book,curated);
-for(const e of index.entries){
+for(const e of [...index.entries,...(index.diagnostic_entries||[])]){
  const row=records[index.aliases[e.id]||e.id];if(!row)throw Error('Reading record missing: '+e.id);
  process.stdout.write(JSON.stringify({id:e.id,fields:context.__libraryQA.fields(row),row:context.__libraryQA.row(e)})+'\n');
 }
@@ -336,6 +369,13 @@ for(const invalid of ['https://example.invalid/library','//example.invalid/libra
  await context.__libraryQA.render();
  process.stdout.write(JSON.stringify({returnCanary:true,id:chosen.id,invalid,returnValue:context.__libraryQA.libraryReturn(invalid),row:context.__libraryQA.row(chosen),rendered:root.innerHTML})+'\n');
 }
+// Exercise the actual source-route branch for every explicit diagnostic entry.
+for(const e of index.diagnostic_entries||[]){
+ const returnTo='#/library?'+new URLSearchParams({diagnostics:'1',category:e.category}).toString();
+ context.location.hash='#/source/'+encodeURIComponent(e.id)+'?from='+encodeURIComponent(returnTo);
+ await context.__libraryQA.render();
+ process.stdout.write(JSON.stringify({diagnosticRoute:true,id:e.id,returnTo,row:context.__libraryQA.row(e),rendered:root.innerHTML})+'\n');
+}
 })().catch(error=>{console.error(error);process.exitCode=1;});
 """
 
@@ -343,7 +383,8 @@ for(const invalid of ['https://example.invalid/library','//example.invalid/libra
 def dynamic_check(site, index, records, curated, components, stats, fixture_pattern, literals, curated_artifact=None):
     process = subprocess.Popen(['node', '-e', NODE_HARNESS, str(site), str(components), str(curated_artifact) if curated_artifact else ''],
                                stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding='utf-8')
-    entries = {e['id']: e for e in index['entries']}
+    entries = registered_sources(index)
+    diagnostic_ids = {e['id'] for e in index.get('diagnostic_entries', [])}
     seen = set()
     try:
         for line in process.stdout:
@@ -359,7 +400,21 @@ def dynamic_check(site, index, records, curated, components, stats, fixture_patt
                     'dynamic canonical source route changed: '+e['id'])
             if e['id'] not in curated:
                 dynamic_source_route(row_links[0], source_path,
-                                     output['returnTo'] if output.get('canary') else '#/library')
+                                     output['returnTo'] if output.get('canary') or output.get('diagnosticRoute') else '#/library')
+            if output.get('diagnosticRoute'):
+                require(e['id'] in diagnostic_ids, 'non-diagnostic route entered diagnostic acceptance')
+                rendered = dynamic_return_link(output['rendered'], output['returnTo'])
+                row = records[e['id']]
+                values = dynamic_field_values(row)
+                check_reader_fields(rendered, ['field-'+v['field'] for v in values], e['id'])
+                for value in values:
+                    anchor = 'field-'+value['field']
+                    field = next((f for f in rendered.has_class('lore-field') if f['attrs'].get('id') == anchor or any(
+                        n['attrs'].get('id') == anchor and descendant(n, f) for n in rendered.nodes)), None)
+                    require(field is not None, 'diagnostic original field missing: '+e['id']+' / '+anchor)
+                    check_field_value(rendered, field, value, e['id']+' / '+anchor)
+                stats['dynamicDiagnosticRouteCanaries'] += 1
+                continue
             if output.get('returnCanary'):
                 require(output['returnValue'] == '#/library', 'external/non-library return route accepted')
                 dynamic_return_link(output['rendered'], '#/library')
@@ -396,7 +451,7 @@ def dynamic_check(site, index, records, curated, components, stats, fixture_patt
             # Each dynamic source route is fixed by its actual preserved ID.
             reject_fixtures(field_page, fixture_pattern, literals, source_path.split('#')[0].split('?')[0], stats)
             row = records[index.get('aliases', {}).get(e['id'], e['id'])]
-            values = [v for v in row['values'] if v['field'] not in EXCLUDED]
+            values = dynamic_field_values(row)
             check_reader_fields(field_page, ['field-'+v['field'] for v in values], e['id'])
             fields = field_page.has_class('lore-field')
             for value in values:
@@ -406,7 +461,7 @@ def dynamic_check(site, index, records, curated, components, stats, fixture_patt
                 require(field is not None, 'dynamic alias field missing: '+e['id']+' / '+anchor)
                 check_field_value(field_page, field, value, e['id']+' / '+anchor)
                 stats['dynamicFields'] += 1
-            stats['dynamicReadingEntries'] += 1
+            stats['dynamicDiagnosticEntries' if e['id'] in diagnostic_ids else 'dynamicReadingEntries'] += 1
         stderr = process.stderr.read()
         require(process.wait() == 0, 'actual dynamic renderer failed: '+stderr[-2500:])
         require(seen == set(entries), 'dynamic renderer did not cover all preserved reading entries')
@@ -533,6 +588,11 @@ def built_check(site, dist, index, records, book, atlas, curated, stats, fixture
 def self_test():
     rejects = []
     raw_mutant = parse('<section class="lore-field" id="field-content"><h2 class="cva-title">본문</h2><div class="lore-source-text">original</div><details><dl><dd>OK</dd></dl><pre>lost original</pre></details></section>')
+    diagnostic = {'id': 'diagnostic', 'page': '/library.html#/source/diagnostic', 'reading_state': 'NO_KOREAN_BODY'}
+    texture_raw = 'before <texture=/Game/Original.Asset,0.5/> after'
+    texture_page = lambda raw, visible: parse('<section class="lore-field" id="field-content"><h2 class="cva-title">본문</h2><div class="lore-source-text">'+html.escape(visible)+'</div><details><dl><dd>OK</dd></dl><pre>'+html.escape(raw)+'</pre></details></section>')
+    def check_texture_fixture(page, raw):
+        check_field_value(page, page.has_class('lore-field')[0], {'raw': raw, 'status': 'OK'}, 'texture projection')
     fixture = '아래 값은 표현을 확인하기 위한 가상 예시입니다. 실제 결과를 주장하지 않습니다.'
     for name, check in (
         ('naturalTerrainLinkedAsTianyan', lambda: check_inline_entity_identity(parse('<p><a class="setting-entity-link" href="/wuwa-quests/cosmology/tianyan.html">천연</a> 장벽 역할을 하고 있다</p>'))),
@@ -550,7 +610,13 @@ def self_test():
         ('dynamicSourceIdChanged', lambda: dynamic_source_route(BASE+'/library.html#/source/changed?from=%23%2Flibrary', BASE+'/library.html#/source/original', '#/library')),
         ('dynamicFieldQueryLost', lambda: dynamic_source_route(BASE+'/library.html#/source/original?from=%23%2Flibrary', BASE+'/library.html#/source/original?field=info', '#/library')),
         ('dynamicReturnQueryLost', lambda: dynamic_return_link('<a href="#/library">← 원문 보관함</a>', '#/library?q=retained&category=profile&page=3&body=1')),
-        ('dynamicExternalReturnAllowed', lambda: dynamic_return_link('<a href="https://example.invalid/">← 원문 보관함</a>', '#/library'))):
+        ('dynamicExternalReturnAllowed', lambda: dynamic_return_link('<a href="https://example.invalid/">← 원문 보관함</a>', '#/library')),
+        ('diagnosticSourceRouteChanged', lambda: registered_sources({'entries': [], 'diagnostic_entries': [{**diagnostic, 'page': '/wrong'}]})),
+        ('readableSourceHiddenAsDiagnostic', lambda: registered_sources({'entries': [], 'diagnostic_entries': [{**diagnostic, 'reading_state': 'READABLE'}]})),
+        ('diagnosticDefaultIdCollision', lambda: registered_sources({'entries': [diagnostic], 'diagnostic_entries': [diagnostic]})),
+        ('visibleTextureAssetTokenLeaked', lambda: check_texture_fixture(texture_page(texture_raw, texture_raw), texture_raw)),
+        ('intrinsicTextureRawLost', lambda: check_texture_fixture(texture_page('before  after', 'before  after'), texture_raw)),
+        ('echoTypeAnchorLost', lambda: check_reader_fields(parse('<section class="lore-field" id="field-description"><div class="rw-reader not-content cva-page" data-reading-template="reader" data-cva data-cva-profile="forma"><details data-reading-template="disclosure"></details></div></section>'), ['field-type'], 'echo classification'))):
         try:
             check()
         except ValueError:
@@ -561,6 +627,9 @@ def self_test():
     # quotation matches the certified text and the real source link is present.
     reject_fixtures(parse('<p>'+fixture+'</p><a href="/source#field-content">원문</a>'),
                     re.compile(re.escape(fixture)), {fixture: {'/source#field-content'}})
+    require(registered_sources({'entries': [], 'diagnostic_entries': [diagnostic]})['diagnostic'] == diagnostic,
+            'valid diagnostic source registration rejected')
+    check_texture_fixture(texture_page(texture_raw, 'before  after'), texture_raw)
     return rejects
 
 
