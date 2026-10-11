@@ -41,6 +41,8 @@ npm run deploy:files
 
 빌드 결과 `source/dist/`를 검증한 뒤 `deploy:files`로 저장소 루트에 반영합니다. `node_modules/`와 생성 중간 파일은 추적하지 않습니다. Starlight와 Pagefind의 라이선스는 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)에 보관합니다. 게임 대사에는 해당 오픈소스 라이선스가 적용되지 않습니다.
 
+전투·던전·상호작용에서 이어지는 추가 원문은 [퀘스트 원문 보충 절차](docs/design/QUEST-SOURCE-RECOVERY.md)에 따라 재생성합니다. 기존 본문과 장면 번호를 보존하고, 추출 자료의 명시 연결을 따라 확인한 장면을 덧붙입니다.
+
 `settings/`에는 개인 경로와 게임 DB 파일을 제외한 읽기 원문·해설·검증용 해시를 보관합니다. `source/tools/generate-lore.mjs`는 입력 해시와 해설의 근거 문자열 해시를 검사한 뒤 기존 Starlight 문서·목차·검색에 설정집을 생성합니다. 게임 업데이트로 인용한 문장이 달라지면 해설을 다시 읽고 검토해야 합니다. 키워드가 같다는 이유만으로 새 원문에 기존 해석을 자동 적용하지 않습니다.
 
 `npm run deploy:settings`는 검증한 설정집·홈·공통 검색만 반영하는 추가 경로입니다. 퀘스트의 용어 도움말을 포함한 읽기 HTML과 공통 검색을 함께 반영하고 기존 해시 자산은 보존합니다. 전체 내보내기는 `deploy:files`를 사용합니다.

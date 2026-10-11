@@ -59,7 +59,7 @@
           "refs": [
             {
               "quest_id": "121000038",
-              "source_sha256": "bf65100f63291f5f1c2f8e6a62333e67e4fed60312581af49dbe123a813d87c8",
+              "source_sha256": "3d794be1fd43696f2c1c4dcb03c0494abf9095b1716ec778c371150f68d7a2d0",
               "quote": "한동안 같이 행동하던 저희는 이상 현상의 원흉을 찾아냈죠. 바로 잔성회의 극작가 크리스토포로와 명식이었어요",
               "scene": 36,
               "title": "불타는 마음",
@@ -77,7 +77,7 @@
           "refs": [
             {
               "quest_id": "121000038",
-              "source_sha256": "bf65100f63291f5f1c2f8e6a62333e67e4fed60312581af49dbe123a813d87c8",
+              "source_sha256": "3d794be1fd43696f2c1c4dcb03c0494abf9095b1716ec778c371150f68d7a2d0",
               "quote": "전 극작가와 싸우면서, 그 사람이 시나리오를 통제하지 못하도록 했어요",
               "scene": 36,
               "title": "불타는 마음",
@@ -94,7 +94,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "하지만 「진실」이 되기에 그가 갈 길은 멀고도 험했죠. 제가 만들어낸 건 그저 걷기만 하는 육체일 뿐... 즉 저는 세상을 돌아다닐 수 있는 형체만 제공한 겁니다",
               "scene": 42,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -111,7 +111,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "크리스토포로, 넌 우선 신 연방으로 가서 「에리스」에게 소식을 전해 줘",
               "scene": 41,
               "title": "어젯밤의 뭇별들",
@@ -128,7 +128,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "내 몸속에 미리 <ano=검은 파도>흑조(黑潮)</ano>의 낙인을 심어놓고, 침식이 퍼지면 나는 흑조의 세계 깊은 곳으로 빠져든다. 그렇게 주파수도 흑조에 녹아들면...",
               "scene": 86,
               "title": "어두운 물결이 드리울 새벽",
@@ -137,7 +137,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "그다음, 제가 레비아탄의 힘을 빌려 그 안에서 당신의 주파수를 「읽고」 다른 곳에서 당신을 「묘사」한다...",
               "scene": 86,
               "title": "어두운 물결이 드리울 새벽",
@@ -154,7 +154,7 @@
           "refs": [
             {
               "quest_id": "114000026",
-              "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+              "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
               "quote": "죄송합니다, 제 소개부터 하죠. 제 이름은 크리스토포로. 유행에 뒤떨어진 극작가입니다. 새 작품 소재를 찾기 위해 라군나에 왔습니다",
               "scene": 15,
               "title": "망망대해를 누비는 작은 배처럼",
@@ -169,7 +169,7 @@
           "refs": [
             {
               "quest_id": "121000038",
-              "source_sha256": "bf65100f63291f5f1c2f8e6a62333e67e4fed60312581af49dbe123a813d87c8",
+              "source_sha256": "3d794be1fd43696f2c1c4dcb03c0494abf9095b1716ec778c371150f68d7a2d0",
               "quote": "한동안 같이 행동하던 저희는 이상 현상의 원흉을 찾아냈죠. 바로 잔성회의 극작가 크리스토포로와 명식이었어요",
               "scene": 36,
               "title": "불타는 마음",
@@ -178,7 +178,7 @@
             },
             {
               "quest_id": "121000038",
-              "source_sha256": "bf65100f63291f5f1c2f8e6a62333e67e4fed60312581af49dbe123a813d87c8",
+              "source_sha256": "3d794be1fd43696f2c1c4dcb03c0494abf9095b1716ec778c371150f68d7a2d0",
               "quote": "전 극작가와 싸우면서, 그 사람이 시나리오를 통제하지 못하도록 했어요",
               "scene": 36,
               "title": "불타는 마음",
@@ -193,7 +193,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "하지만 「진실」이 되기에 그가 갈 길은 멀고도 험했죠. 제가 만들어낸 건 그저 걷기만 하는 육체일 뿐... 즉 저는 세상을 돌아다닐 수 있는 형체만 제공한 겁니다",
               "scene": 42,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -202,7 +202,7 @@
             },
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "그리고 방금 흑조의 창조물을 흡수할 때 확실히 느꼈어... 아비디우스의 본질 역시 흑조의 창조물이었다는 걸",
               "scene": 42,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -217,7 +217,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "일곱 언덕으로 향하시죠. 그곳에서 곧 피날레가 시작될 겁니다—— 전 <ano=검은 파도>흑조(黑潮)</ano>를 잉크 삼아 리나시타의 운명을 다시 쓸 거고요",
               "scene": 42,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -232,7 +232,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "회장님, 뜻하신 대로 데니아란 소녀는 콜렉티브에서 잘 배치해 뒀습니다",
               "scene": 41,
               "title": "어젯밤의 뭇별들",
@@ -241,7 +241,7 @@
             },
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "크리스토포로, 넌 우선 신 연방으로 가서 「에리스」에게 소식을 전해 줘",
               "scene": 41,
               "title": "어젯밤의 뭇별들",
@@ -256,7 +256,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "내 몸속에 미리 <ano=검은 파도>흑조(黑潮)</ano>의 낙인을 심어놓고, 침식이 퍼지면 나는 흑조의 세계 깊은 곳으로 빠져든다. 그렇게 주파수도 흑조에 녹아들면...",
               "scene": 86,
               "title": "어두운 물결이 드리울 새벽",
@@ -265,7 +265,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "그다음, 제가 레비아탄의 힘을 빌려 그 안에서 당신의 주파수를 「읽고」 다른 곳에서 당신을 「묘사」한다...",
               "scene": 86,
               "title": "어두운 물결이 드리울 새벽",
@@ -274,7 +274,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "사람들이 그 고난을 이겨내지 못한다면 내가 기대했던 그 결말로, 그리고... 영원한 혼란과 고통으로 향하겠지. 그래서 내가 너랑 같이 일하는 거야",
               "scene": 86,
               "title": "어두운 물결이 드리울 새벽",
@@ -291,7 +291,7 @@
       "dialogue": [
         {
           "quest_id": "114000026",
-          "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+          "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
           "quote": "죄송합니다, 제 소개부터 하죠. 제 이름은 크리스토포로. 유행에 뒤떨어진 극작가입니다. 새 작품 소재를 찾기 위해 라군나에 왔습니다",
           "scene": 15,
           "title": "망망대해를 누비는 작은 배처럼",
@@ -300,7 +300,7 @@
         },
         {
           "quest_id": "121000038",
-          "source_sha256": "bf65100f63291f5f1c2f8e6a62333e67e4fed60312581af49dbe123a813d87c8",
+          "source_sha256": "3d794be1fd43696f2c1c4dcb03c0494abf9095b1716ec778c371150f68d7a2d0",
           "quote": "한동안 같이 행동하던 저희는 이상 현상의 원흉을 찾아냈죠. 바로 잔성회의 극작가 크리스토포로와 명식이었어요",
           "scene": 36,
           "title": "불타는 마음",
@@ -309,7 +309,7 @@
         },
         {
           "quest_id": "121000038",
-          "source_sha256": "bf65100f63291f5f1c2f8e6a62333e67e4fed60312581af49dbe123a813d87c8",
+          "source_sha256": "3d794be1fd43696f2c1c4dcb03c0494abf9095b1716ec778c371150f68d7a2d0",
           "quote": "전 극작가와 싸우면서, 그 사람이 시나리오를 통제하지 못하도록 했어요",
           "scene": 36,
           "title": "불타는 마음",
@@ -318,7 +318,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "하지만 「진실」이 되기에 그가 갈 길은 멀고도 험했죠. 제가 만들어낸 건 그저 걷기만 하는 육체일 뿐... 즉 저는 세상을 돌아다닐 수 있는 형체만 제공한 겁니다",
           "scene": 42,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -327,7 +327,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "그리고 방금 흑조의 창조물을 흡수할 때 확실히 느꼈어... 아비디우스의 본질 역시 흑조의 창조물이었다는 걸",
           "scene": 42,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -336,7 +336,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "일곱 언덕으로 향하시죠. 그곳에서 곧 피날레가 시작될 겁니다—— 전 <ano=검은 파도>흑조(黑潮)</ano>를 잉크 삼아 리나시타의 운명을 다시 쓸 거고요",
           "scene": 42,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -345,7 +345,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "회장님, 뜻하신 대로 데니아란 소녀는 콜렉티브에서 잘 배치해 뒀습니다",
           "scene": 41,
           "title": "어젯밤의 뭇별들",
@@ -354,7 +354,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "크리스토포로, 넌 우선 신 연방으로 가서 「에리스」에게 소식을 전해 줘",
           "scene": 41,
           "title": "어젯밤의 뭇별들",
@@ -363,7 +363,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "내 몸속에 미리 <ano=검은 파도>흑조(黑潮)</ano>의 낙인을 심어놓고, 침식이 퍼지면 나는 흑조의 세계 깊은 곳으로 빠져든다. 그렇게 주파수도 흑조에 녹아들면...",
           "scene": 86,
           "title": "어두운 물결이 드리울 새벽",
@@ -372,7 +372,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "그다음, 제가 레비아탄의 힘을 빌려 그 안에서 당신의 주파수를 「읽고」 다른 곳에서 당신을 「묘사」한다...",
           "scene": 86,
           "title": "어두운 물결이 드리울 새벽",
@@ -381,7 +381,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "사람들이 그 고난을 이겨내지 못한다면 내가 기대했던 그 결말로, 그리고... 영원한 혼란과 고통으로 향하겠지. 그래서 내가 너랑 같이 일하는 거야",
           "scene": 86,
           "title": "어두운 물결이 드리울 새벽",
@@ -438,7 +438,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "하지만 「진실」이 되기에 그가 갈 길은 멀고도 험했죠. 제가 만들어낸 건 그저 걷기만 하는 육체일 뿐... 즉 저는 세상을 돌아다닐 수 있는 형체만 제공한 겁니다",
               "scene": 42,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -455,7 +455,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "제 힘도 가져가셔서... 당신의 목표를... 꼭 이루십시오",
               "scene": 41,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -464,7 +464,7 @@
             },
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "이 또한... 제 소원입니다",
               "scene": 41,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -481,7 +481,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "사냥 중이었습니다. 일곱 언덕 검투사의 의무죠",
               "scene": 10,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -490,7 +490,7 @@
             },
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "전 「<ano=배후의 인물>집필자</ano>」를 찾기 위해 라군나 성을 찾았습니다. 성안에서 정보를 수집하던 중, 갑자기 대규모의 잔상이 출현했죠. 정확히 말하면... 「흑조의 창조물」 말입니다",
               "scene": 10,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -505,7 +505,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "하지만 「진실」이 되기에 그가 갈 길은 멀고도 험했죠. 제가 만들어낸 건 그저 걷기만 하는 육체일 뿐... 즉 저는 세상을 돌아다닐 수 있는 형체만 제공한 겁니다",
               "scene": 42,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -514,7 +514,7 @@
             },
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "그리고 방금 흑조의 창조물을 흡수할 때 확실히 느꼈어... 아비디우스의 본질 역시 흑조의 창조물이었다는 걸",
               "scene": 42,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -529,7 +529,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "이 창조물들은 제가 전부 흡수할 테니...",
               "scene": 41,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -538,7 +538,7 @@
             },
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "절 죽이면, 라군나의 위기도 사라질 겁니다",
               "scene": 41,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -547,7 +547,7 @@
             },
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "제 힘도 가져가셔서... 당신의 목표를... 꼭 이루십시오",
               "scene": 41,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -556,7 +556,7 @@
             },
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "이 또한... 제 소원입니다",
               "scene": 41,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -573,7 +573,7 @@
       "dialogue": [
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "사냥 중이었습니다. 일곱 언덕 검투사의 의무죠",
           "scene": 10,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -582,7 +582,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "전 「<ano=배후의 인물>집필자</ano>」를 찾기 위해 라군나 성을 찾았습니다. 성안에서 정보를 수집하던 중, 갑자기 대규모의 잔상이 출현했죠. 정확히 말하면... 「흑조의 창조물」 말입니다",
           "scene": 10,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -591,7 +591,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "하지만 「진실」이 되기에 그가 갈 길은 멀고도 험했죠. 제가 만들어낸 건 그저 걷기만 하는 육체일 뿐... 즉 저는 세상을 돌아다닐 수 있는 형체만 제공한 겁니다",
           "scene": 42,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -600,7 +600,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "그리고 방금 흑조의 창조물을 흡수할 때 확실히 느꼈어... 아비디우스의 본질 역시 흑조의 창조물이었다는 걸",
           "scene": 42,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -609,7 +609,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "이 창조물들은 제가 전부 흡수할 테니...",
           "scene": 41,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -618,7 +618,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "절 죽이면, 라군나의 위기도 사라질 겁니다",
           "scene": 41,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -627,7 +627,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "제 힘도 가져가셔서... 당신의 목표를... 꼭 이루십시오",
           "scene": 41,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -636,7 +636,7 @@
         },
         {
           "quest_id": "168000001",
-          "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+          "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
           "quote": "이 또한... 제 소원입니다",
           "scene": 41,
           "title": "지나간 것은 언젠가 돌아올테니",
@@ -697,7 +697,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "이분이 바로 저희의 「선지자」, 펜리코 수좌이십니다",
               "scene": 18,
               "title": "늘 불어오는 신성한 바람",
@@ -715,7 +715,7 @@
           "refs": [
             {
               "quest_id": "175000000",
-              "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+              "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
               "quote": "다만... 이 신념이 가져온 운명이 저를 잠식시킨 것뿐입니다. 저는 명식을 이용하려고 했고, 그에 대항해 「순회의 천국」이라는 낙원을 만들었지만... 오히려 이용당하고 말았죠",
               "scene": 17,
               "title": "홀로 타향에서 나그네 되었네",
@@ -732,7 +732,7 @@
           "refs": [
             {
               "quest_id": "175000000",
-              "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+              "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
               "quote": "이 등불은... 당신이 가지고 가십시오. 순회의 천국이 정말 다시 강림한다면, 그건 저 멀리 일곱 언덕이 될 겁니다. 방랑하는 의인이 분명 그곳에 있을 테니까",
               "scene": 19,
               "title": "홀로 타향에서 나그네 되었네",
@@ -749,7 +749,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "이분이 바로 저희의 「선지자」, 펜리코 수좌이십니다",
               "scene": 18,
               "title": "늘 불어오는 신성한 바람",
@@ -758,7 +758,7 @@
             },
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "그 카니발의 마지막에 나서서 민중에 대한 신의 징벌을 진정시키신 분이시죠",
               "scene": 18,
               "title": "늘 불어오는 신성한 바람",
@@ -773,7 +773,7 @@
           "refs": [
             {
               "quest_id": "175000000",
-              "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+              "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
               "quote": "사람들은 하나가 된 신념이 필요합니다. 이것이 바로 수좌로서 그들을 지배하는 의의이며, 수좌의 신념입니다.",
               "scene": 17,
               "title": "홀로 타향에서 나그네 되었네",
@@ -782,7 +782,7 @@
             },
             {
               "quest_id": "175000000",
-              "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+              "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
               "quote": "다만... 이 신념이 가져온 운명이 저를 잠식시킨 것뿐입니다. 저는 명식을 이용하려고 했고, 그에 대항해 「순회의 천국」이라는 낙원을 만들었지만... 오히려 이용당하고 말았죠",
               "scene": 17,
               "title": "홀로 타향에서 나그네 되었네",
@@ -797,7 +797,7 @@
           "refs": [
             {
               "quest_id": "175000000",
-              "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+              "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
               "quote": "이 등불은... 당신이 가지고 가십시오. 순회의 천국이 정말 다시 강림한다면, 그건 저 멀리 일곱 언덕이 될 겁니다. 방랑하는 의인이 분명 그곳에 있을 테니까",
               "scene": 19,
               "title": "홀로 타향에서 나그네 되었네",
@@ -806,7 +806,7 @@
             },
             {
               "quest_id": "175000000",
-              "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+              "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
               "quote": "저의 신도들과 깊은 바다 수도회의 성직자들, 그리고 그 방랑하는 의인... 그들은 할 수 있습니다...",
               "scene": 19,
               "title": "홀로 타향에서 나그네 되었네",
@@ -836,7 +836,7 @@
       "dialogue": [
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "이분이 바로 저희의 「선지자」, 펜리코 수좌이십니다",
           "scene": 18,
           "title": "늘 불어오는 신성한 바람",
@@ -845,7 +845,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "그 카니발의 마지막에 나서서 민중에 대한 신의 징벌을 진정시키신 분이시죠",
           "scene": 18,
           "title": "늘 불어오는 신성한 바람",
@@ -854,7 +854,7 @@
         },
         {
           "quest_id": "175000000",
-          "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+          "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
           "quote": "사람들은 하나가 된 신념이 필요합니다. 이것이 바로 수좌로서 그들을 지배하는 의의이며, 수좌의 신념입니다.",
           "scene": 17,
           "title": "홀로 타향에서 나그네 되었네",
@@ -863,7 +863,7 @@
         },
         {
           "quest_id": "175000000",
-          "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+          "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
           "quote": "다만... 이 신념이 가져온 운명이 저를 잠식시킨 것뿐입니다. 저는 명식을 이용하려고 했고, 그에 대항해 「순회의 천국」이라는 낙원을 만들었지만... 오히려 이용당하고 말았죠",
           "scene": 17,
           "title": "홀로 타향에서 나그네 되었네",
@@ -872,7 +872,7 @@
         },
         {
           "quest_id": "175000000",
-          "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+          "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
           "quote": "이 등불은... 당신이 가지고 가십시오. 순회의 천국이 정말 다시 강림한다면, 그건 저 멀리 일곱 언덕이 될 겁니다. 방랑하는 의인이 분명 그곳에 있을 테니까",
           "scene": 19,
           "title": "홀로 타향에서 나그네 되었네",
@@ -881,7 +881,7 @@
         },
         {
           "quest_id": "175000000",
-          "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+          "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
           "quote": "저의 신도들과 깊은 바다 수도회의 성직자들, 그리고 그 방랑하는 의인... 그들은 할 수 있습니다...",
           "scene": 19,
           "title": "홀로 타향에서 나그네 되었네",
@@ -896,7 +896,7 @@
           "refs": [
             {
               "quest_id": "175000000",
-              "source_sha256": "2c8d2c69bec7c2a939fcb2ee47ee29d2455b5d79b380a1dcb455857e72fc1172",
+              "source_sha256": "5bc2bceec87cabcfd79455f1a2f78439cfd164ddfe2ffa88f58e23697d548145",
               "quote": "다만... 이 신념이 가져온 운명이 저를 잠식시킨 것뿐입니다. 저는 명식을 이용하려고 했고, 그에 대항해 「순회의 천국」이라는 낙원을 만들었지만... 오히려 이용당하고 말았죠",
               "scene": 17,
               "title": "홀로 타향에서 나그네 되었네",
@@ -912,7 +912,7 @@
           "refs": [
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "네가 그 균열에 휘말리고 나서 오래 지나진 않았어. 펜리코로 변신한 창조물이 쓰러진 후로, 다른 흑조의 창조물들도 거의 다 흩어진 상태야",
               "scene": 30,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -921,7 +921,7 @@
             },
             {
               "quest_id": "168000001",
-              "source_sha256": "9acd5b6fc12e8681f900dc9e405d7d1d6219365e8b8c76e63da5f100a1dddac9",
+              "source_sha256": "f02b2e2bea0bbc4f384c3cca12143809e5de5ccaf8f46b7bd63655a0b4ba712a",
               "quote": "놈들의 중추는 수도회의 수좌로 변신한 흑조의 창조물이야. 저 자식부터 처리하면 나머지도 같이 무너져",
               "scene": 21,
               "title": "지나간 것은 언젠가 돌아올테니",
@@ -975,7 +975,7 @@
           "refs": [
             {
               "quest_id": "164000000",
-              "source_sha256": "5dc8ac2f2dbaccc23daeb60070a34d86f85fcd486cf4cc7c0215efe80e269065",
+              "source_sha256": "8adbc2a152588200d2af44d539f29c71a47b009e52cc95540d5750fc6e553e32",
               "quote": "사실 전 요즘 새로운 영웅의 시를 쓰기 위해 영감을 찾던 중이었거든요. 마침 이 작품의 주인공이 일곱 언덕의 현 장관님, 아우구스타고요",
               "scene": 1,
               "title": "녹슨 철, 검 그리고 뜨거운 태양",
@@ -992,7 +992,7 @@
           "refs": [
             {
               "quest_id": "164000000",
-              "source_sha256": "5dc8ac2f2dbaccc23daeb60070a34d86f85fcd486cf4cc7c0215efe80e269065",
+              "source_sha256": "8adbc2a152588200d2af44d539f29c71a47b009e52cc95540d5750fc6e553e32",
               "quote": "방랑 시인, 네스토르라고 합니다",
               "scene": 1,
               "title": "녹슨 철, 검 그리고 뜨거운 태양",
@@ -1001,7 +1001,7 @@
             },
             {
               "quest_id": "164000000",
-              "source_sha256": "5dc8ac2f2dbaccc23daeb60070a34d86f85fcd486cf4cc7c0215efe80e269065",
+              "source_sha256": "8adbc2a152588200d2af44d539f29c71a47b009e52cc95540d5750fc6e553e32",
               "quote": "사실 전 요즘 새로운 영웅의 시를 쓰기 위해 영감을 찾던 중이었거든요. 마침 이 작품의 주인공이 일곱 언덕의 현 장관님, 아우구스타고요",
               "scene": 1,
               "title": "녹슨 철, 검 그리고 뜨거운 태양",
@@ -1016,7 +1016,7 @@
           "refs": [
             {
               "quest_id": "164000000",
-              "source_sha256": "5dc8ac2f2dbaccc23daeb60070a34d86f85fcd486cf4cc7c0215efe80e269065",
+              "source_sha256": "8adbc2a152588200d2af44d539f29c71a47b009e52cc95540d5750fc6e553e32",
               "quote": "제가 들려드린 이야기로는 장관의 모든 걸 알 수 없다는 겁니다",
               "scene": 4,
               "title": "녹슨 철, 검 그리고 뜨거운 태양",
@@ -1034,7 +1034,7 @@
       "dialogue": [
         {
           "quest_id": "164000000",
-          "source_sha256": "5dc8ac2f2dbaccc23daeb60070a34d86f85fcd486cf4cc7c0215efe80e269065",
+          "source_sha256": "8adbc2a152588200d2af44d539f29c71a47b009e52cc95540d5750fc6e553e32",
           "quote": "방랑 시인, 네스토르라고 합니다",
           "scene": 1,
           "title": "녹슨 철, 검 그리고 뜨거운 태양",
@@ -1043,7 +1043,7 @@
         },
         {
           "quest_id": "164000000",
-          "source_sha256": "5dc8ac2f2dbaccc23daeb60070a34d86f85fcd486cf4cc7c0215efe80e269065",
+          "source_sha256": "8adbc2a152588200d2af44d539f29c71a47b009e52cc95540d5750fc6e553e32",
           "quote": "사실 전 요즘 새로운 영웅의 시를 쓰기 위해 영감을 찾던 중이었거든요. 마침 이 작품의 주인공이 일곱 언덕의 현 장관님, 아우구스타고요",
           "scene": 1,
           "title": "녹슨 철, 검 그리고 뜨거운 태양",
@@ -1052,7 +1052,7 @@
         },
         {
           "quest_id": "164000000",
-          "source_sha256": "5dc8ac2f2dbaccc23daeb60070a34d86f85fcd486cf4cc7c0215efe80e269065",
+          "source_sha256": "8adbc2a152588200d2af44d539f29c71a47b009e52cc95540d5750fc6e553e32",
           "quote": "제가 들려드린 이야기로는 장관의 모든 걸 알 수 없다는 겁니다",
           "scene": 4,
           "title": "녹슨 철, 검 그리고 뜨거운 태양",
@@ -1112,7 +1112,7 @@
           "refs": [
             {
               "quest_id": "165000004",
-              "source_sha256": "fa3f53498319bcec44b3ab0df77b59e088586ff3dd35e9fb3bbb67458788f918",
+              "source_sha256": "570909913741ddc42dd77c478d983d2c70d7a0aa5b4230354d68dec90e6239ec",
               "quote": "치사는 이제 막 검은 해안에서 폐쇄 치료를 마쳤어요. 라벨 곡선 그래프도 정상 구간에 진입했고, 몸에 뚜렷한 후유증도 없어서 상태는 낙관적인 편이고요",
               "scene": 2,
               "title": "눈 속에 흐르는 별빛",
@@ -1129,7 +1129,7 @@
           "refs": [
             {
               "quest_id": "880000044",
-              "source_sha256": "8d6eca56c6893420fc1bc5f01bea93290e31fcc281c6c27b9cd1a91d0e4ceba4",
+              "source_sha256": "b2abd2e11f2902399917fae7cf29a6d3b3c39726355b8b8c64009fa9d3e58b7e",
               "quote": "A팀은 바로 데이터 사전 처리 모드에 진입하고, B팀은 지면 간섭 제거 설비 조정을... {PlayerName}, 오셨군요",
               "scene": 1,
               "title": "새벽빛이 황야에 멈추자",
@@ -1138,7 +1138,7 @@
             },
             {
               "quest_id": "880000044",
-              "source_sha256": "8d6eca56c6893420fc1bc5f01bea93290e31fcc281c6c27b9cd1a91d0e4ceba4",
+              "source_sha256": "b2abd2e11f2902399917fae7cf29a6d3b3c39726355b8b8c64009fa9d3e58b7e",
               "quote": "검은 해안은 이 문제를 최우선 프로젝트로 지정해서 자원을 동원해 조사하고 시뮬레이션하고 있어요. 중요한 임무가 없는 흑화집사들을 모두 목표 구역으로 이동시켜 조사를 진행하고, 파수인도 연산 능력으로 이 이상 주파수를 추적하고 있고요",
               "scene": 1,
               "title": "새벽빛이 황야에 멈추자",
@@ -1156,7 +1156,7 @@
           "refs": [
             {
               "quest_id": "880000044",
-              "source_sha256": "8d6eca56c6893420fc1bc5f01bea93290e31fcc281c6c27b9cd1a91d0e4ceba4",
+              "source_sha256": "b2abd2e11f2902399917fae7cf29a6d3b3c39726355b8b8c64009fa9d3e58b7e",
               "quote": "검은 해안은 이 문제를 최우선 프로젝트로 지정해서 자원을 동원해 조사하고 시뮬레이션하고 있어요. 중요한 임무가 없는 흑화집사들을 모두 목표 구역으로 이동시켜 조사를 진행하고, 파수인도 연산 능력으로 이 이상 주파수를 추적하고 있고요",
               "scene": 1,
               "title": "새벽빛이 황야에 멈추자",
@@ -1173,7 +1173,7 @@
           "refs": [
             {
               "quest_id": "165000004",
-              "source_sha256": "fa3f53498319bcec44b3ab0df77b59e088586ff3dd35e9fb3bbb67458788f918",
+              "source_sha256": "570909913741ddc42dd77c478d983d2c70d7a0aa5b4230354d68dec90e6239ec",
               "quote": "치사는 이제 막 검은 해안에서 폐쇄 치료를 마쳤어요. 라벨 곡선 그래프도 정상 구간에 진입했고, 몸에 뚜렷한 후유증도 없어서 상태는 낙관적인 편이고요",
               "scene": 2,
               "title": "눈 속에 흐르는 별빛",
@@ -1188,7 +1188,7 @@
           "refs": [
             {
               "quest_id": "165000004",
-              "source_sha256": "fa3f53498319bcec44b3ab0df77b59e088586ff3dd35e9fb3bbb67458788f918",
+              "source_sha256": "570909913741ddc42dd77c478d983d2c70d7a0aa5b4230354d68dec90e6239ec",
               "quote": "호나미 시는 파괴되던 순간 비명의 힘에 의해 특수한 소노라 안에 봉인되었어요. 그래서 마치 응고된 호박석처럼 내부의 시간 흐름이 외부 세계보다 훨씬 느리게 흘렀죠",
               "scene": 3,
               "title": "눈 속에 흐르는 별빛",
@@ -1203,7 +1203,7 @@
           "refs": [
             {
               "quest_id": "880000044",
-              "source_sha256": "8d6eca56c6893420fc1bc5f01bea93290e31fcc281c6c27b9cd1a91d0e4ceba4",
+              "source_sha256": "b2abd2e11f2902399917fae7cf29a6d3b3c39726355b8b8c64009fa9d3e58b7e",
               "quote": "A팀은 바로 데이터 사전 처리 모드에 진입하고, B팀은 지면 간섭 제거 설비 조정을... {PlayerName}, 오셨군요",
               "scene": 1,
               "title": "새벽빛이 황야에 멈추자",
@@ -1212,7 +1212,7 @@
             },
             {
               "quest_id": "880000044",
-              "source_sha256": "8d6eca56c6893420fc1bc5f01bea93290e31fcc281c6c27b9cd1a91d0e4ceba4",
+              "source_sha256": "b2abd2e11f2902399917fae7cf29a6d3b3c39726355b8b8c64009fa9d3e58b7e",
               "quote": "검은 해안은 이 문제를 최우선 프로젝트로 지정해서 자원을 동원해 조사하고 시뮬레이션하고 있어요. 중요한 임무가 없는 흑화집사들을 모두 목표 구역으로 이동시켜 조사를 진행하고, 파수인도 연산 능력으로 이 이상 주파수를 추적하고 있고요",
               "scene": 1,
               "title": "새벽빛이 황야에 멈추자",
@@ -1229,7 +1229,7 @@
       "dialogue": [
         {
           "quest_id": "165000004",
-          "source_sha256": "fa3f53498319bcec44b3ab0df77b59e088586ff3dd35e9fb3bbb67458788f918",
+          "source_sha256": "570909913741ddc42dd77c478d983d2c70d7a0aa5b4230354d68dec90e6239ec",
           "quote": "치사는 이제 막 검은 해안에서 폐쇄 치료를 마쳤어요. 라벨 곡선 그래프도 정상 구간에 진입했고, 몸에 뚜렷한 후유증도 없어서 상태는 낙관적인 편이고요",
           "scene": 2,
           "title": "눈 속에 흐르는 별빛",
@@ -1238,7 +1238,7 @@
         },
         {
           "quest_id": "165000004",
-          "source_sha256": "fa3f53498319bcec44b3ab0df77b59e088586ff3dd35e9fb3bbb67458788f918",
+          "source_sha256": "570909913741ddc42dd77c478d983d2c70d7a0aa5b4230354d68dec90e6239ec",
           "quote": "호나미 시는 파괴되던 순간 비명의 힘에 의해 특수한 소노라 안에 봉인되었어요. 그래서 마치 응고된 호박석처럼 내부의 시간 흐름이 외부 세계보다 훨씬 느리게 흘렀죠",
           "scene": 3,
           "title": "눈 속에 흐르는 별빛",
@@ -1247,7 +1247,7 @@
         },
         {
           "quest_id": "880000044",
-          "source_sha256": "8d6eca56c6893420fc1bc5f01bea93290e31fcc281c6c27b9cd1a91d0e4ceba4",
+          "source_sha256": "b2abd2e11f2902399917fae7cf29a6d3b3c39726355b8b8c64009fa9d3e58b7e",
           "quote": "A팀은 바로 데이터 사전 처리 모드에 진입하고, B팀은 지면 간섭 제거 설비 조정을... {PlayerName}, 오셨군요",
           "scene": 1,
           "title": "새벽빛이 황야에 멈추자",
@@ -1256,7 +1256,7 @@
         },
         {
           "quest_id": "880000044",
-          "source_sha256": "8d6eca56c6893420fc1bc5f01bea93290e31fcc281c6c27b9cd1a91d0e4ceba4",
+          "source_sha256": "b2abd2e11f2902399917fae7cf29a6d3b3c39726355b8b8c64009fa9d3e58b7e",
           "quote": "검은 해안은 이 문제를 최우선 프로젝트로 지정해서 자원을 동원해 조사하고 시뮬레이션하고 있어요. 중요한 임무가 없는 흑화집사들을 모두 목표 구역으로 이동시켜 조사를 진행하고, 파수인도 연산 능력으로 이 이상 주파수를 추적하고 있고요",
           "scene": 1,
           "title": "새벽빛이 황야에 멈추자",
@@ -1316,7 +1316,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "이분이 바로 저희의 「선지자」, 펜리코 수좌이십니다",
               "scene": 18,
               "title": "늘 불어오는 신성한 바람",
@@ -1333,7 +1333,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "지원해 줘서 감사하네, 알렉시스 사제. 「꽃」은... 아주 유용해",
               "scene": 17,
               "title": "늘 불어오는 신성한 바람",
@@ -1342,7 +1342,7 @@
             },
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "그래도 불필요한 시선을 끌면 안 되니 일을 너무 크게 벌이진 마십쇼. 명심해야 됩니다",
               "scene": 17,
               "title": "늘 불어오는 신성한 바람",
@@ -1359,7 +1359,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "수호신의 뜻 아래 사람들을 인도하고 단결시키며 천상의 나라, 행복한 땅을 만드는 것... 이 생각만은 예전부터 지금까지 변함이 없습니다",
               "scene": 18,
               "title": "늘 불어오는 신성한 바람",
@@ -1376,7 +1376,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "지원해 줘서 감사하네, 알렉시스 사제. 「꽃」은... 아주 유용해",
               "scene": 17,
               "title": "늘 불어오는 신성한 바람",
@@ -1385,7 +1385,7 @@
             },
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "그래도 불필요한 시선을 끌면 안 되니 일을 너무 크게 벌이진 마십쇼. 명심해야 됩니다",
               "scene": 17,
               "title": "늘 불어오는 신성한 바람",
@@ -1400,7 +1400,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "수호신의 뜻 아래 사람들을 인도하고 단결시키며 천상의 나라, 행복한 땅을 만드는 것... 이 생각만은 예전부터 지금까지 변함이 없습니다",
               "scene": 18,
               "title": "늘 불어오는 신성한 바람",
@@ -1409,7 +1409,7 @@
             },
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "이분이 바로 저희의 「선지자」, 펜리코 수좌이십니다",
               "scene": 18,
               "title": "늘 불어오는 신성한 바람",
@@ -1424,7 +1424,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "하지만, 의궤에 사용되는 성물은 훼손하지 마시고, 계율을 범하시면 안 됩니다. 이를 지키지 않으면 이단자로 간주할 수밖에 없습니다",
               "scene": 18,
               "title": "늘 불어오는 신성한 바람",
@@ -1441,7 +1441,7 @@
       "dialogue": [
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "지원해 줘서 감사하네, 알렉시스 사제. 「꽃」은... 아주 유용해",
           "scene": 17,
           "title": "늘 불어오는 신성한 바람",
@@ -1450,7 +1450,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "그래도 불필요한 시선을 끌면 안 되니 일을 너무 크게 벌이진 마십쇼. 명심해야 됩니다",
           "scene": 17,
           "title": "늘 불어오는 신성한 바람",
@@ -1459,7 +1459,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "수호신의 뜻 아래 사람들을 인도하고 단결시키며 천상의 나라, 행복한 땅을 만드는 것... 이 생각만은 예전부터 지금까지 변함이 없습니다",
           "scene": 18,
           "title": "늘 불어오는 신성한 바람",
@@ -1468,7 +1468,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "이분이 바로 저희의 「선지자」, 펜리코 수좌이십니다",
           "scene": 18,
           "title": "늘 불어오는 신성한 바람",
@@ -1477,7 +1477,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "하지만, 의궤에 사용되는 성물은 훼손하지 마시고, 계율을 범하시면 안 됩니다. 이를 지키지 않으면 이단자로 간주할 수밖에 없습니다",
           "scene": 18,
           "title": "늘 불어오는 신성한 바람",
@@ -1537,7 +1537,7 @@
           "refs": [
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "그때 나는 엔젤과 방구석에 갇혀 있었고, 문밖은 온통 잔상들로 들끓고 있었어",
               "scene": 15,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1546,7 +1546,7 @@
             },
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "용감한 선배 한 명이 물러서지 않고 마지막까지 그 괴물들과 필사적으로 싸우지 않았다면, 우린 도망칠 기회도 없었을 거야",
               "scene": 15,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1563,7 +1563,7 @@
           "refs": [
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "더 자세히 말하자면... <ano=검은 파도>흑조(黑潮)</ano>가 누군가의 공명 어빌리티와 부딪친 후에 남겨진 잔향에 더 가까워",
               "scene": 23,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1580,7 +1580,7 @@
           "refs": [
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "약 바르게 가만히 있어. 얼굴에 멍까지 들었으면서 웃기는...",
               "scene": 11,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1589,7 +1589,7 @@
             },
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "그럼 아우구스타는 이미 해낸 것 같네. 아, 아니다. 엔리크처럼 나쁜 놈들을 웃게 하는 건 빼고!",
               "scene": 11,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1604,7 +1604,7 @@
           "refs": [
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "맞아. 16년 전 <ano=검은 파도>흑조(黑潮)</ano>가 오기 직전에 있었던 일이야",
               "scene": 3,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1613,7 +1613,7 @@
             },
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "그때 나는 엔젤과 방구석에 갇혀 있었고, 문밖은 온통 잔상들로 들끓고 있었어",
               "scene": 15,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1622,7 +1622,7 @@
             },
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "용감한 선배 한 명이 물러서지 않고 마지막까지 그 괴물들과 필사적으로 싸우지 않았다면, 우린 도망칠 기회도 없었을 거야",
               "scene": 15,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1637,7 +1637,7 @@
           "refs": [
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "엔젤이... 왜 <ano=검은 파도>흑조(黑潮)</ano>의 주파수를 남긴 거지... {PlayerName}, 정말 이게 맞는 건가?",
               "scene": 22,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1646,7 +1646,7 @@
             },
             {
               "quest_id": "311000002",
-              "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+              "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
               "quote": "더 자세히 말하자면... <ano=검은 파도>흑조(黑潮)</ano>가 누군가의 공명 어빌리티와 부딪친 후에 남겨진 잔향에 더 가까워",
               "scene": 23,
               "title": "나를 비추는 뜨거운 햇빛",
@@ -1663,7 +1663,7 @@
       "dialogue": [
         {
           "quest_id": "311000002",
-          "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+          "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
           "quote": "약 바르게 가만히 있어. 얼굴에 멍까지 들었으면서 웃기는...",
           "scene": 11,
           "title": "나를 비추는 뜨거운 햇빛",
@@ -1672,7 +1672,7 @@
         },
         {
           "quest_id": "311000002",
-          "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+          "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
           "quote": "그럼 아우구스타는 이미 해낸 것 같네. 아, 아니다. 엔리크처럼 나쁜 놈들을 웃게 하는 건 빼고!",
           "scene": 11,
           "title": "나를 비추는 뜨거운 햇빛",
@@ -1681,7 +1681,7 @@
         },
         {
           "quest_id": "311000002",
-          "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+          "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
           "quote": "맞아. 16년 전 <ano=검은 파도>흑조(黑潮)</ano>가 오기 직전에 있었던 일이야",
           "scene": 3,
           "title": "나를 비추는 뜨거운 햇빛",
@@ -1690,7 +1690,7 @@
         },
         {
           "quest_id": "311000002",
-          "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+          "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
           "quote": "그때 나는 엔젤과 방구석에 갇혀 있었고, 문밖은 온통 잔상들로 들끓고 있었어",
           "scene": 15,
           "title": "나를 비추는 뜨거운 햇빛",
@@ -1699,7 +1699,7 @@
         },
         {
           "quest_id": "311000002",
-          "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+          "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
           "quote": "용감한 선배 한 명이 물러서지 않고 마지막까지 그 괴물들과 필사적으로 싸우지 않았다면, 우린 도망칠 기회도 없었을 거야",
           "scene": 15,
           "title": "나를 비추는 뜨거운 햇빛",
@@ -1708,7 +1708,7 @@
         },
         {
           "quest_id": "311000002",
-          "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+          "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
           "quote": "엔젤이... 왜 <ano=검은 파도>흑조(黑潮)</ano>의 주파수를 남긴 거지... {PlayerName}, 정말 이게 맞는 건가?",
           "scene": 22,
           "title": "나를 비추는 뜨거운 햇빛",
@@ -1717,7 +1717,7 @@
         },
         {
           "quest_id": "311000002",
-          "source_sha256": "9c815c3aaee46a13533d6046fd39b921cef3c83ebca3050dcdef2e6aca91d9de",
+          "source_sha256": "2b552ed11d0e670e41912180a9edce5192c7c64d367706066f52a3739b03808c",
           "quote": "더 자세히 말하자면... <ano=검은 파도>흑조(黑潮)</ano>가 누군가의 공명 어빌리티와 부딪친 후에 남겨진 잔향에 더 가까워",
           "scene": 23,
           "title": "나를 비추는 뜨거운 햇빛",
@@ -1777,7 +1777,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "자연스럽게 점점 더 많은 사람들이 단말기의 개인화를 필요로 하기 시작했어. 바로 이 사업 기회를 노려서 우리 몬텔리 가문은 「개인 단말기」에 대한 연구를 시작한 거고. 말하자면 「필요는 발명의 어머니」... 라고나 할까",
               "scene": 13,
               "title": "늘 불어오는 신성한 바람",
@@ -1794,7 +1794,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "마음껏 물어봐. 카를로타 아가씨께서 나한테 당신에게 뭐든 알려주라고 당부하셨거든",
               "scene": 13,
               "title": "늘 불어오는 신성한 바람",
@@ -1811,7 +1811,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "하... 피살리아 가문 사람들은 우리 광업 상인들을 찾아가서 이미 맺은 협력 계약을 파기하라고 협박했어. 이런 식으로 라군나에서 가장 큰 광맥을 차지하고, 단말기를 만드는 공급망을 끊어버렸지",
               "scene": 13,
               "title": "늘 불어오는 신성한 바람",
@@ -1828,7 +1828,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "자연스럽게 점점 더 많은 사람들이 단말기의 개인화를 필요로 하기 시작했어. 바로 이 사업 기회를 노려서 우리 몬텔리 가문은 「개인 단말기」에 대한 연구를 시작한 거고. 말하자면 「필요는 발명의 어머니」... 라고나 할까",
               "scene": 13,
               "title": "늘 불어오는 신성한 바람",
@@ -1837,7 +1837,7 @@
             },
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "근데 최근 몇 년동안 외부 세계로 통하는 해상 항로가 개방되면서, 점점 더 많은 라군나 사람들이 바깥세상에 관해 궁금해하기 시작했어. 이런 상황에서 공공 에코의 보호가 없는 항해자는 더 안전하고 기능도 강력한 「개인 단말기」에 의존할 수밖에 없지",
               "scene": 13,
               "title": "늘 불어오는 신성한 바람",
@@ -1852,7 +1852,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "마음껏 물어봐. 카를로타 아가씨께서 나한테 당신에게 뭐든 알려주라고 당부하셨거든",
               "scene": 13,
               "title": "늘 불어오는 신성한 바람",
@@ -1867,7 +1867,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "하... 피살리아 가문 사람들은 우리 광업 상인들을 찾아가서 이미 맺은 협력 계약을 파기하라고 협박했어. 이런 식으로 라군나에서 가장 큰 광맥을 차지하고, 단말기를 만드는 공급망을 끊어버렸지",
               "scene": 13,
               "title": "늘 불어오는 신성한 바람",
@@ -1876,7 +1876,7 @@
             },
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "그렇다면야… 정말 고마워! 지금은 인력이 너무 부족해서 도와줄 순 없지만, 몬텔리 가문은 계약을 아주 중요하게 생각하거든. 우선 보증금부터 지불할게. 일이 잘 해결되면 더 후하게 보답할 테니까!",
               "scene": 13,
               "title": "늘 불어오는 신성한 바람",
@@ -1893,7 +1893,7 @@
       "dialogue": [
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "자연스럽게 점점 더 많은 사람들이 단말기의 개인화를 필요로 하기 시작했어. 바로 이 사업 기회를 노려서 우리 몬텔리 가문은 「개인 단말기」에 대한 연구를 시작한 거고. 말하자면 「필요는 발명의 어머니」... 라고나 할까",
           "scene": 13,
           "title": "늘 불어오는 신성한 바람",
@@ -1902,7 +1902,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "근데 최근 몇 년동안 외부 세계로 통하는 해상 항로가 개방되면서, 점점 더 많은 라군나 사람들이 바깥세상에 관해 궁금해하기 시작했어. 이런 상황에서 공공 에코의 보호가 없는 항해자는 더 안전하고 기능도 강력한 「개인 단말기」에 의존할 수밖에 없지",
           "scene": 13,
           "title": "늘 불어오는 신성한 바람",
@@ -1911,7 +1911,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "마음껏 물어봐. 카를로타 아가씨께서 나한테 당신에게 뭐든 알려주라고 당부하셨거든",
           "scene": 13,
           "title": "늘 불어오는 신성한 바람",
@@ -1920,7 +1920,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "하... 피살리아 가문 사람들은 우리 광업 상인들을 찾아가서 이미 맺은 협력 계약을 파기하라고 협박했어. 이런 식으로 라군나에서 가장 큰 광맥을 차지하고, 단말기를 만드는 공급망을 끊어버렸지",
           "scene": 13,
           "title": "늘 불어오는 신성한 바람",
@@ -1929,7 +1929,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "그렇다면야… 정말 고마워! 지금은 인력이 너무 부족해서 도와줄 순 없지만, 몬텔리 가문은 계약을 아주 중요하게 생각하거든. 우선 보증금부터 지불할게. 일이 잘 해결되면 더 후하게 보답할 테니까!",
           "scene": 13,
           "title": "늘 불어오는 신성한 바람",
@@ -2003,7 +2003,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "데니아가 있다면, 자연스럽게 그다음이 있을 거고, 그리고 또 다음도 있을 거잖아요? —— 잔성회가 완전하고 제어할 수 있는 명식의 공명자를 손에 넣을 때까지 말이에요",
               "scene": 28,
               "title": "어젯밤의 뭇별들",
@@ -2020,7 +2020,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "데니아는 원래 잔성회의 창조물이었는걸요. 이렇게 쓰이는 건 이 아이만의 영광이라고 할 수 있죠",
               "scene": 28,
               "title": "어젯밤의 뭇별들",
@@ -2037,7 +2037,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "크리스토포로, 넌 우선 신 연방으로 가서 「에리스」에게 소식을 전해 줘",
               "scene": 41,
               "title": "어젯밤의 뭇별들",
@@ -2054,7 +2054,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "미아 이후로 저는 늘 생각하고 있었어요. 훌륭한 그릇을 만든 다음, 거기에 타오르는 벚꽃의 무녀의 정신을 더하면 명식의 힘을 완벽하게 지배할 수 있지 않을까, 하고",
               "scene": 28,
               "title": "어젯밤의 뭇별들",
@@ -2071,7 +2071,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "데니아는 원래 잔성회의 창조물이었는걸요. 이렇게 쓰이는 건 이 아이만의 영광이라고 할 수 있죠",
               "scene": 28,
               "title": "어젯밤의 뭇별들",
@@ -2080,7 +2080,7 @@
             },
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "미아 이후로 저는 늘 생각하고 있었어요. 훌륭한 그릇을 만든 다음, 거기에 타오르는 벚꽃의 무녀의 정신을 더하면 명식의 힘을 완벽하게 지배할 수 있지 않을까, 하고",
               "scene": 28,
               "title": "어젯밤의 뭇별들",
@@ -2089,7 +2089,7 @@
             },
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "데니아가 있다면, 자연스럽게 그다음이 있을 거고, 그리고 또 다음도 있을 거잖아요? —— 잔성회가 완전하고 제어할 수 있는 명식의 공명자를 손에 넣을 때까지 말이에요",
               "scene": 28,
               "title": "어젯밤의 뭇별들",
@@ -2104,7 +2104,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "명식 공명자로서의 제 미래의 가능성은 이미 모두 사용했어요. 당신의 계획도 더 이상 의미가 없게 됐고요",
               "scene": 28,
               "title": "어젯밤의 뭇별들",
@@ -2113,7 +2113,7 @@
             },
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "그리고 이 분신은... 신경 쓰실 필요 없어요",
               "scene": 28,
               "title": "어젯밤의 뭇별들",
@@ -2128,7 +2128,7 @@
           "refs": [
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "회장님, 뜻하신 대로 데니아란 소녀는 콜렉티브에서 잘 배치해 뒀습니다",
               "scene": 41,
               "title": "어젯밤의 뭇별들",
@@ -2137,7 +2137,7 @@
             },
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "크리스토포로, 넌 우선 신 연방으로 가서 「에리스」에게 소식을 전해 줘",
               "scene": 41,
               "title": "어젯밤의 뭇별들",
@@ -2146,7 +2146,7 @@
             },
             {
               "quest_id": "121000040",
-              "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+              "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
               "quote": "알겠습니다. 부회장님께서는 귀찮게 절 보내셨다며 회장님을 원망하시겠지만요",
               "scene": 41,
               "title": "어젯밤의 뭇별들",
@@ -2163,7 +2163,7 @@
       "dialogue": [
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "데니아는 원래 잔성회의 창조물이었는걸요. 이렇게 쓰이는 건 이 아이만의 영광이라고 할 수 있죠",
           "scene": 28,
           "title": "어젯밤의 뭇별들",
@@ -2172,7 +2172,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "미아 이후로 저는 늘 생각하고 있었어요. 훌륭한 그릇을 만든 다음, 거기에 타오르는 벚꽃의 무녀의 정신을 더하면 명식의 힘을 완벽하게 지배할 수 있지 않을까, 하고",
           "scene": 28,
           "title": "어젯밤의 뭇별들",
@@ -2181,7 +2181,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "데니아가 있다면, 자연스럽게 그다음이 있을 거고, 그리고 또 다음도 있을 거잖아요? —— 잔성회가 완전하고 제어할 수 있는 명식의 공명자를 손에 넣을 때까지 말이에요",
           "scene": 28,
           "title": "어젯밤의 뭇별들",
@@ -2190,7 +2190,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "명식 공명자로서의 제 미래의 가능성은 이미 모두 사용했어요. 당신의 계획도 더 이상 의미가 없게 됐고요",
           "scene": 28,
           "title": "어젯밤의 뭇별들",
@@ -2199,7 +2199,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "그리고 이 분신은... 신경 쓰실 필요 없어요",
           "scene": 28,
           "title": "어젯밤의 뭇별들",
@@ -2208,7 +2208,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "회장님, 뜻하신 대로 데니아란 소녀는 콜렉티브에서 잘 배치해 뒀습니다",
           "scene": 41,
           "title": "어젯밤의 뭇별들",
@@ -2217,7 +2217,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "크리스토포로, 넌 우선 신 연방으로 가서 「에리스」에게 소식을 전해 줘",
           "scene": 41,
           "title": "어젯밤의 뭇별들",
@@ -2226,7 +2226,7 @@
         },
         {
           "quest_id": "121000040",
-          "source_sha256": "13c387af4d74808ac503fe0726890ae96f91c0c182b064119c07e66cf0c5240a",
+          "source_sha256": "8d80ec586a180b7f7a4710be3515a6a2c482fb193bfbc6078dcece692810ccaa",
           "quote": "알겠습니다. 부회장님께서는 귀찮게 절 보내셨다며 회장님을 원망하시겠지만요",
           "scene": 41,
           "title": "어젯밤의 뭇별들",
@@ -2345,7 +2345,7 @@
           "refs": [
             {
               "quest_id": "114000026",
-              "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+              "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
               "quote": "...아브의 주파수가 아주 천천히 약해지고 있어요",
               "scene": 2,
               "title": "망망대해를 누비는 작은 배처럼",
@@ -2354,7 +2354,7 @@
             },
             {
               "quest_id": "114000026",
-              "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+              "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
               "quote": "리나시타 문명을 이끄는 수호신인 임페라토르가 아브의 주파수 약화에 대한 해결법을 갖고 있는 것 같아요",
               "scene": 3,
               "title": "망망대해를 누비는 작은 배처럼",
@@ -2371,7 +2371,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "전에 「사냥 평원」에서 먹어본 적이 있는데... 엄청 이상한 맛이었어. 먹고 나니까 자꾸 잠도 오고, 악몽도 계속 꾸고...",
               "scene": 2,
               "title": "어두운 물결이 드리울 새벽",
@@ -2380,7 +2380,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "아브의 몸속에... 정말로 <ano=검은 파도>흑조(黑潮)</ano>의 주파수가 있어...",
               "scene": 2,
               "title": "어두운 물결이 드리울 새벽",
@@ -2397,7 +2397,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "아브의 몸에는 더 엑시온의 힘이 있고, 그 힘은 명식의 근원과 일치합니다. 만약 두 명식 주파수가 서로 부딪히게 된다면...",
               "scene": 51,
               "title": "어두운 물결이 드리울 새벽",
@@ -2406,7 +2406,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "레비아탄은 <ano=검은 파도>흑조(黑潮)</ano>를 이용해 아브를 완전히 잠식할 수 있는 것은 물론, 더 엑시온의 주파수를 「융합」하여 자신을 완전히 부활시킬 수 있을 겁니다",
               "scene": 51,
               "title": "어두운 물결이 드리울 새벽",
@@ -2525,7 +2525,7 @@
           "refs": [
             {
               "quest_id": "114000026",
-              "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+              "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
               "quote": "...아브의 주파수가 아주 천천히 약해지고 있어요",
               "scene": 2,
               "title": "망망대해를 누비는 작은 배처럼",
@@ -2534,7 +2534,7 @@
             },
             {
               "quest_id": "114000026",
-              "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+              "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
               "quote": "지난번 만났을 때 자신의 주파수가 약해지는 것이 당신한테까지 영향을 미칠까 봐 굉장히 걱정하더군요. 저한테 계속해서 해결 방법을 물어봤어요",
               "scene": 2,
               "title": "망망대해를 누비는 작은 배처럼",
@@ -2543,7 +2543,7 @@
             },
             {
               "quest_id": "114000026",
-              "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+              "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
               "quote": "리나시타 문명을 이끄는 수호신인 임페라토르가 아브의 주파수 약화에 대한 해결법을 갖고 있는 것 같아요",
               "scene": 3,
               "title": "망망대해를 누비는 작은 배처럼",
@@ -2559,7 +2559,7 @@
           "refs": [
             {
               "quest_id": "140000011",
-              "source_sha256": "19ffc871869b24203592dc4fa3d99a1ef0f35b50dc8fba8365d194ca32ac9595",
+              "source_sha256": "7e58d0b20ae126d683b3a39843ab0eb33ec856bcb8cb044aa620f83460c64de9",
               "quote": "아브가 방랑자를 물에서 구해낸 다음, 너무 피곤해서 다시 몸속으로 들어간 것 같네요",
               "scene": 1,
               "title": "슬펐던 내가 지금은 노래를 부르기로 한다",
@@ -2575,7 +2575,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "전에 「사냥 평원」에서 먹어본 적이 있는데... 엄청 이상한 맛이었어. 먹고 나니까 자꾸 잠도 오고, 악몽도 계속 꾸고...",
               "scene": 2,
               "title": "어두운 물결이 드리울 새벽",
@@ -2584,7 +2584,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "아브의 몸속에... 정말로 <ano=검은 파도>흑조(黑潮)</ano>의 주파수가 있어...",
               "scene": 2,
               "title": "어두운 물결이 드리울 새벽",
@@ -2599,7 +2599,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "아브의 몸에는 더 엑시온의 힘이 있고, 그 힘은 명식의 근원과 일치합니다. 만약 두 명식 주파수가 서로 부딪히게 된다면...",
               "scene": 51,
               "title": "어두운 물결이 드리울 새벽",
@@ -2608,7 +2608,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "레비아탄은 <ano=검은 파도>흑조(黑潮)</ano>를 이용해 아브를 완전히 잠식할 수 있는 것은 물론, 더 엑시온의 주파수를 「융합」하여 자신을 완전히 부활시킬 수 있을 겁니다",
               "scene": 51,
               "title": "어두운 물결이 드리울 새벽",
@@ -2617,7 +2617,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "레비아탄과 융합하고 나면 아브의 기억도 깨어나 자신의 「진정한 본질」을 찾게 될지도 모르죠...",
               "scene": 51,
               "title": "어두운 물결이 드리울 새벽",
@@ -2695,7 +2695,7 @@
         },
         {
           "quest_id": "114000026",
-          "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+          "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
           "quote": "...아브의 주파수가 아주 천천히 약해지고 있어요",
           "scene": 2,
           "title": "망망대해를 누비는 작은 배처럼",
@@ -2704,7 +2704,7 @@
         },
         {
           "quest_id": "114000026",
-          "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+          "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
           "quote": "지난번 만났을 때 자신의 주파수가 약해지는 것이 당신한테까지 영향을 미칠까 봐 굉장히 걱정하더군요. 저한테 계속해서 해결 방법을 물어봤어요",
           "scene": 2,
           "title": "망망대해를 누비는 작은 배처럼",
@@ -2713,7 +2713,7 @@
         },
         {
           "quest_id": "114000026",
-          "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+          "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
           "quote": "리나시타 문명을 이끄는 수호신인 임페라토르가 아브의 주파수 약화에 대한 해결법을 갖고 있는 것 같아요",
           "scene": 3,
           "title": "망망대해를 누비는 작은 배처럼",
@@ -2722,7 +2722,7 @@
         },
         {
           "quest_id": "140000011",
-          "source_sha256": "19ffc871869b24203592dc4fa3d99a1ef0f35b50dc8fba8365d194ca32ac9595",
+          "source_sha256": "7e58d0b20ae126d683b3a39843ab0eb33ec856bcb8cb044aa620f83460c64de9",
           "quote": "아브가 방랑자를 물에서 구해낸 다음, 너무 피곤해서 다시 몸속으로 들어간 것 같네요",
           "scene": 1,
           "title": "슬펐던 내가 지금은 노래를 부르기로 한다",
@@ -2731,7 +2731,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "전에 「사냥 평원」에서 먹어본 적이 있는데... 엄청 이상한 맛이었어. 먹고 나니까 자꾸 잠도 오고, 악몽도 계속 꾸고...",
           "scene": 2,
           "title": "어두운 물결이 드리울 새벽",
@@ -2740,7 +2740,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "아브의 몸속에... 정말로 <ano=검은 파도>흑조(黑潮)</ano>의 주파수가 있어...",
           "scene": 2,
           "title": "어두운 물결이 드리울 새벽",
@@ -2749,7 +2749,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "아브의 몸에는 더 엑시온의 힘이 있고, 그 힘은 명식의 근원과 일치합니다. 만약 두 명식 주파수가 서로 부딪히게 된다면...",
           "scene": 51,
           "title": "어두운 물결이 드리울 새벽",
@@ -2758,7 +2758,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "레비아탄은 <ano=검은 파도>흑조(黑潮)</ano>를 이용해 아브를 완전히 잠식할 수 있는 것은 물론, 더 엑시온의 주파수를 「융합」하여 자신을 완전히 부활시킬 수 있을 겁니다",
           "scene": 51,
           "title": "어두운 물결이 드리울 새벽",
@@ -2767,7 +2767,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "레비아탄과 융합하고 나면 아브의 기억도 깨어나 자신의 「진정한 본질」을 찾게 될지도 모르죠...",
           "scene": 51,
           "title": "어두운 물결이 드리울 새벽",
@@ -2832,7 +2832,7 @@
             },
             {
               "quest_id": "114000026",
-              "source_sha256": "e34edd1b84ad3b084ea271354a62a81dbee5ef245be09ed1881b191dbe45eb76",
+              "source_sha256": "7cabeb6460798e81b22c0eb6bdb7b932eb79527d331a0c0d2f62e1d25eea6a42",
               "quote": "아브처럼 오랫동안 실체화해서 존재하는 에코가 많이 있거든요",
               "scene": 3,
               "title": "망망대해를 누비는 작은 배처럼",
@@ -2848,7 +2848,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "아브의 몸에는 더 엑시온의 힘이 있고, 그 힘은 명식의 근원과 일치합니다. 만약 두 명식 주파수가 서로 부딪히게 된다면...",
               "scene": 51,
               "title": "어두운 물결이 드리울 새벽",
@@ -2857,7 +2857,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "레비아탄은 <ano=검은 파도>흑조(黑潮)</ano>를 이용해 아브를 완전히 잠식할 수 있는 것은 물론, 더 엑시온의 주파수를 「융합」하여 자신을 완전히 부활시킬 수 있을 겁니다",
               "scene": 51,
               "title": "어두운 물결이 드리울 새벽",
@@ -2866,7 +2866,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "레비아탄과 융합하고 나면 아브의 기억도 깨어나 자신의 「진정한 본질」을 찾게 될지도 모르죠...",
               "scene": 51,
               "title": "어두운 물결이 드리울 새벽",
@@ -2930,7 +2930,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "지원해 줘서 감사하네, 알렉시스 사제. 「꽃」은... 아주 유용해",
               "scene": 17,
               "title": "늘 불어오는 신성한 바람",
@@ -2947,7 +2947,7 @@
           "refs": [
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "지원해 줘서 감사하네, 알렉시스 사제. 「꽃」은... 아주 유용해",
               "scene": 17,
               "title": "늘 불어오는 신성한 바람",
@@ -2956,7 +2956,7 @@
             },
             {
               "quest_id": "114000027",
-              "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+              "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
               "quote": "우리의 믿음은 이미 진작에 하나가 됐어. 이게 바로 그분이 바라시는 길이라고",
               "scene": 17,
               "title": "늘 불어오는 신성한 바람",
@@ -2972,7 +2972,7 @@
           "refs": [
             {
               "quest_id": "114000028",
-              "source_sha256": "5e63c450450136fbcfdf0510a581146ed228cfe2ceae7f25109caa69b95c7da1",
+              "source_sha256": "8dd88f1644809818418ee1113c3f534cbd7dc17106fe385d0110c86c47735554",
               "quote": "여왕으로 하여 구름 바다가 라군나를 뒤덮게 하사",
               "scene": 13,
               "title": "밤과 낮, 모두 베일을 벗는다",
@@ -2981,7 +2981,7 @@
             },
             {
               "quest_id": "114000028",
-              "source_sha256": "5e63c450450136fbcfdf0510a581146ed228cfe2ceae7f25109caa69b95c7da1",
+              "source_sha256": "8dd88f1644809818418ee1113c3f534cbd7dc17106fe385d0110c86c47735554",
               "quote": "심연에 숨은 신이여, 파도와 비밀의 왕이여, 당신의 해방을 간절히 축원하옵나이다.",
               "scene": 13,
               "title": "밤과 낮, 모두 베일을 벗는다",
@@ -3001,7 +3001,7 @@
       "dialogue": [
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "지원해 줘서 감사하네, 알렉시스 사제. 「꽃」은... 아주 유용해",
           "scene": 17,
           "title": "늘 불어오는 신성한 바람",
@@ -3010,7 +3010,7 @@
         },
         {
           "quest_id": "114000027",
-          "source_sha256": "8e46c9f3d7730d2db867d368e13c6a4920cba46f563c63d3b6c4cdb329e24c58",
+          "source_sha256": "a314dd58030daf2548530bc14b3f412faa49621244e03213e597b883890f8aec",
           "quote": "우리의 믿음은 이미 진작에 하나가 됐어. 이게 바로 그분이 바라시는 길이라고",
           "scene": 17,
           "title": "늘 불어오는 신성한 바람",
@@ -3019,7 +3019,7 @@
         },
         {
           "quest_id": "114000028",
-          "source_sha256": "5e63c450450136fbcfdf0510a581146ed228cfe2ceae7f25109caa69b95c7da1",
+          "source_sha256": "8dd88f1644809818418ee1113c3f534cbd7dc17106fe385d0110c86c47735554",
           "quote": "여왕으로 하여 구름 바다가 라군나를 뒤덮게 하사",
           "scene": 13,
           "title": "밤과 낮, 모두 베일을 벗는다",
@@ -3028,7 +3028,7 @@
         },
         {
           "quest_id": "114000028",
-          "source_sha256": "5e63c450450136fbcfdf0510a581146ed228cfe2ceae7f25109caa69b95c7da1",
+          "source_sha256": "8dd88f1644809818418ee1113c3f534cbd7dc17106fe385d0110c86c47735554",
           "quote": "심연에 숨은 신이여, 파도와 비밀의 왕이여, 당신의 해방을 간절히 축원하옵나이다.",
           "scene": 13,
           "title": "밤과 낮, 모두 베일을 벗는다",
@@ -3083,7 +3083,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "내 힘을 가져가... 그리고 살아남아... 나 대신, 우리 대신 살아야 돼...",
               "scene": 26,
               "title": "어두운 물결이 드리울 새벽",
@@ -3092,7 +3092,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "넌 아직 <ano=검은 파도>흑조(黑潮)</ano>에 완전히 동화된 게 아니잖아... 우리보다 희망이 있으니까, 여기서 도망쳐... 우리의... 소원이야...",
               "scene": 26,
               "title": "어두운 물결이 드리울 새벽",
@@ -3109,7 +3109,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "내 힘을 가져가... 그리고 살아남아... 나 대신, 우리 대신 살아야 돼...",
               "scene": 26,
               "title": "어두운 물결이 드리울 새벽",
@@ -3118,7 +3118,7 @@
             },
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "넌 아직 <ano=검은 파도>흑조(黑潮)</ano>에 완전히 동화된 게 아니잖아... 우리보다 희망이 있으니까, 여기서 도망쳐... 우리의... 소원이야...",
               "scene": 26,
               "title": "어두운 물결이 드리울 새벽",
@@ -3134,7 +3134,7 @@
           "refs": [
             {
               "quest_id": "158800019",
-              "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+              "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
               "quote": "고개를 들고, 가슴을 펴고, 자유롭고 자랑스럽게 살아가는 거야... 우리 대신 운명 앞에 증명해 줘...",
               "scene": 26,
               "title": "어두운 물결이 드리울 새벽",
@@ -3154,7 +3154,7 @@
       "dialogue": [
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "내 힘을 가져가... 그리고 살아남아... 나 대신, 우리 대신 살아야 돼...",
           "scene": 26,
           "title": "어두운 물결이 드리울 새벽",
@@ -3163,7 +3163,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "넌 아직 <ano=검은 파도>흑조(黑潮)</ano>에 완전히 동화된 게 아니잖아... 우리보다 희망이 있으니까, 여기서 도망쳐... 우리의... 소원이야...",
           "scene": 26,
           "title": "어두운 물결이 드리울 새벽",
@@ -3172,7 +3172,7 @@
         },
         {
           "quest_id": "158800019",
-          "source_sha256": "3fa1cf29d457cf87c62eb405101d076e46747522acb86be2ac8feabc36d0371f",
+          "source_sha256": "4b96c1928349d3912bbdbaeaf455e38f01a5e5549eaccaa6a30e29ab19eb166c",
           "quote": "고개를 들고, 가슴을 펴고, 자유롭고 자랑스럽게 살아가는 거야... 우리 대신 운명 앞에 증명해 줘...",
           "scene": 26,
           "title": "어두운 물결이 드리울 새벽",
@@ -3227,7 +3227,7 @@
           "refs": [
             {
               "quest_id": "140000011",
-              "source_sha256": "19ffc871869b24203592dc4fa3d99a1ef0f35b50dc8fba8365d194ca32ac9595",
+              "source_sha256": "7e58d0b20ae126d683b3a39843ab0eb33ec856bcb8cb044aa620f83460c64de9",
               "quote": "여기는 펠로. 이 상자의 주인이에요. 제가 이 상자에 살 때, 펠로가 절 많이 도와줬어요",
               "scene": 1,
               "title": "슬펐던 내가 지금은 노래를 부르기로 한다",
@@ -3244,7 +3244,7 @@
           "refs": [
             {
               "quest_id": "140000011",
-              "source_sha256": "19ffc871869b24203592dc4fa3d99a1ef0f35b50dc8fba8365d194ca32ac9595",
+              "source_sha256": "7e58d0b20ae126d683b3a39843ab0eb33ec856bcb8cb044aa620f83460c64de9",
               "quote": "여기는 펠로. 이 상자의 주인이에요. 제가 이 상자에 살 때, 펠로가 절 많이 도와줬어요",
               "scene": 1,
               "title": "슬펐던 내가 지금은 노래를 부르기로 한다",
@@ -3260,7 +3260,7 @@
           "refs": [
             {
               "quest_id": "140000011",
-              "source_sha256": "19ffc871869b24203592dc4fa3d99a1ef0f35b50dc8fba8365d194ca32ac9595",
+              "source_sha256": "7e58d0b20ae126d683b3a39843ab0eb33ec856bcb8cb044aa620f83460c64de9",
               "quote": "펠로가 다른 사람을 이렇게 반기는 건 거의 없는 일인데... 당신을 엄청 좋아하나 봐요. 당신한테 있는 특별한 주파수한테 끌린 것 같아요",
               "scene": 1,
               "title": "슬펐던 내가 지금은 노래를 부르기로 한다",
@@ -3281,7 +3281,7 @@
       "dialogue": [
         {
           "quest_id": "140000011",
-          "source_sha256": "19ffc871869b24203592dc4fa3d99a1ef0f35b50dc8fba8365d194ca32ac9595",
+          "source_sha256": "7e58d0b20ae126d683b3a39843ab0eb33ec856bcb8cb044aa620f83460c64de9",
           "quote": "여기는 펠로. 이 상자의 주인이에요. 제가 이 상자에 살 때, 펠로가 절 많이 도와줬어요",
           "scene": 1,
           "title": "슬펐던 내가 지금은 노래를 부르기로 한다",
@@ -3290,7 +3290,7 @@
         },
         {
           "quest_id": "140000011",
-          "source_sha256": "19ffc871869b24203592dc4fa3d99a1ef0f35b50dc8fba8365d194ca32ac9595",
+          "source_sha256": "7e58d0b20ae126d683b3a39843ab0eb33ec856bcb8cb044aa620f83460c64de9",
           "quote": "펠로가 다른 사람을 이렇게 반기는 건 거의 없는 일인데... 당신을 엄청 좋아하나 봐요. 당신한테 있는 특별한 주파수한테 끌린 것 같아요",
           "scene": 1,
           "title": "슬펐던 내가 지금은 노래를 부르기로 한다",

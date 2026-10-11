@@ -143,6 +143,9 @@ h1#_top { margin: 0; font-size: clamp(1.8rem, 2.8vw, 2.55rem); line-height: 1.4;
 .quest-actions a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--brass); padding-block: 8px; min-height: 40px; }
 .quest-actions button { min-height: 40px; border: 1px solid var(--line); border-radius: 5px; padding: 7px 12px; background: var(--surface); color: var(--ink); font: inherit; }
 .quest-actions button[aria-pressed="true"] { border-color: var(--brass); background: var(--selected); }
+.quest-supplement-notice { margin-block: 2rem 1rem; padding: 1.1rem 1.25rem; border: 1px solid var(--line); border-inline-start: 3px solid var(--brass); border-radius: .4rem; background: var(--surface); }
+.quest-supplement-notice strong { color: var(--ink); font-size: 1.05rem; }
+.quest-supplement-notice p { color: var(--muted); margin: .5rem 0 0; line-height: 1.7; }
 .quest-info, .quest-scene-info { font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 8px 14px; margin-block: 1.25rem; }
 .quest-info { background: var(--surface); }
 .sl-markdown-content .quest-reading-note { margin-block: 1rem; padding: .75rem 1rem; border-inline-start: 2px solid var(--brass); background: var(--surface); color: var(--muted); font-size: .82rem; line-height: 1.8; }

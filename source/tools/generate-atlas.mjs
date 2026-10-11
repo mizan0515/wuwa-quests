@@ -148,6 +148,7 @@ export async function generateAtlas({site,content,book,index,records,doc,H,refs,
  await doc('factions/scar','스카',`<p><a href="${url('/people/scar.html')}">스카의 인물 자료와 관계 읽기 →</a></p><script>location.replace('/wuwa-quests/people/scar.html'+location.search+location.hash)</script>`,'스카의 인물 자료',false,false);
  // Resolve old automatic entity routes through the same canonical registry.
  const canonicalEntities=new Map(all.map(c=>[c.title.split(' · ')[0],{target:'/'+groupFor(c)+'/'+c.id+'.html'}]));
+ for(const entry of discovery.entries)canonicalEntities.set(entry.name,{target:entry.url.slice(base.length)});
  for(const alias of canonicalAliases)canonicalEntities.set(alias.name,{target:alias.targetUrl,alias});
  for(const [name,entry] of canonicalEntities){
   const slug=crypto.createHash('sha256').update(name).digest('hex').slice(0,16),target=url(entry.target);
