@@ -32,12 +32,14 @@
     "records-handbook-types.json": "f99ee2b94ff4fc8982546778b9671fd40fa2ac68183042a18278b91dfc8a2a5a",
     "source-relations.json": "0cfbe7578bbfe7b299499cb47bd7c0a8c7feae79a6bb3e9a6a49d1fb60282655",
     "handbook-provenance.json": "0a3f77afd72999293dbfe1780c0ee6b99de6cfc7d8a4ad7e77aa877d1f8c80f6",
-    "quest-supplements.json": "90713e92ae83f14d99d0a4e9f0481abd60b1b5f6d53cd7380b4439f8ae69db59"
+    "quest-supplements.json": "97a4bb16c6de28873bfd8ba66ef14b9bca37d1f2dcc93ced24409c41e6122711",
+    "dialogue-attribution.json": "f5906c62023da479fc8d2c28440c860bdf759427434b7b5c7e4c1d3255dcb85e"
   },
   "hash_normalization": {
     "editorial.json": "lf",
     "atlas.json": "lf",
-    "npc-people.json": "lf"
+    "npc-people.json": "lf",
+    "quest-supplements.json": "lf"
   },
   "handbook_expansion": {
     "schema": "wuwa-handbook-originals.v1",

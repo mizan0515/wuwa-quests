@@ -236,3 +236,13 @@ h1#_top { margin: 0; font-size: clamp(1.8rem, 2.8vw, 2.55rem); line-height: 1.4;
   .speaker-colon { position: static; clip-path: none; width: auto; height: auto; }
   .quest-speaker, .quest-speech { color: #000; }
 }
+.dialogue-source-filters {display:flex;flex-wrap:wrap;align-items:end;gap:1rem;margin-block:1.5rem;}
+.dialogue-source-filters label {display:grid;gap:.4rem;flex:1 1 12rem;}
+.dialogue-source-filters input[type="search"],.dialogue-source-filters select,.dialogue-source-filters button,#dialogue-more {font:inherit;color:var(--sl-color-text);background:var(--sl-color-bg-nav);border:1px solid var(--sl-color-gray-4);border-radius:.5rem;min-height:44px;padding:.55rem .75rem;max-width:100%;}
+.dialogue-source-filters .dialogue-source-check {display:flex;align-items:center;min-height:44px;flex:1 1 14rem;}
+.dialogue-source-results {display:grid;gap:1rem;margin-block:1.25rem;}
+.dialogue-source-card {border:1px solid var(--sl-color-gray-5);border-radius:.6rem;padding:1.15rem 1.35rem;overflow-wrap:anywhere;}
+.dialogue-source-card h2 {font-size:1.2rem;margin:0 0 .6rem;}
+.dialogue-source-card p {margin:.5rem 0 0;}
+.dialogue-source-card .dialogue-source-meta {font-size:.85rem;color:var(--sl-color-gray-2);margin:0 0 .45rem;}
+.dialogue-source-card a:focus-visible,.dialogue-source-filters :focus-visible,#dialogue-more:focus-visible {outline:3px solid var(--sl-color-text-accent);outline-offset:3px;}

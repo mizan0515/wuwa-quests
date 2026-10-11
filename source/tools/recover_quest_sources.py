@@ -354,7 +354,8 @@ def refresh_preserved_citations(repo, quests, previous_hashes):
             path.write_bytes(data)
             manifest['files'][name] = sha(data)
     report_data = (repo / 'settings/quest-supplements.json').read_bytes()
-    manifest['files']['quest-supplements.json'] = sha(report_data)
+    manifest['files']['quest-supplements.json'] = sha(report_data.replace(b'\r\n', b'\n'))
+    manifest.setdefault('hash_normalization', {})['quest-supplements.json'] = 'lf'
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 
