@@ -23,15 +23,16 @@
     "records-voice.json": "87e8e6b6454ab4d5602cf403b4f3cbbadffce961ff1a5c38e0987a30e7ed0d9d",
     "records-weapons.json": "4a6f858fd5a547d9f89f4a25173bb7dacac9ce20599a6f95f2104f1028886f1a",
     "records-world.json": "2b153dd3319ed5afbfe1bf1608c7d174ec3d375e15c8d93d99d44c97a41f1c3a",
-    "atlas.json": "f94812a2a087e6fa5c59eb7b8a566b861845fb39f492b5c28293334cc2173a1b",
-    "npc-people.json": "7c6988ff199c06598af43c9af1f52c13d9beea1cbd53f8262556eeafada4f038",
+    "atlas.json": "2f3fd1a4e9cb6b07868d2d527205f58f1c34c8ac8578da29efdec36a0dc2b0cb",
+    "npc-people.json": "7229f4379fd10798f68fc9035a4f27387c0c36c6d82d013cb0fcf7c28292e7c9",
     "records-tutorials.json": "139e29f088e4b11d4146b0550a7638d97af53eb85d69eefb760e52bebdac83b5",
     "records-help.json": "212f8caf00b46dbf944063dcc0f360a41f5ad46edf30c460cc3f119e331bc83a",
     "records-monster-handbook.json": "6d3ac7c44cb338df229eb841dd00c2d1676a2ac3f57592afb03487fb6947c844",
     "records-echoes.json": "6d50443b9c44d72f7250d7a810a16d3b41706226d1cf7c9f8934eeaf62c77c64",
     "records-handbook-types.json": "f99ee2b94ff4fc8982546778b9671fd40fa2ac68183042a18278b91dfc8a2a5a",
     "source-relations.json": "0cfbe7578bbfe7b299499cb47bd7c0a8c7feae79a6bb3e9a6a49d1fb60282655",
-    "handbook-provenance.json": "0a3f77afd72999293dbfe1780c0ee6b99de6cfc7d8a4ad7e77aa877d1f8c80f6"
+    "handbook-provenance.json": "0a3f77afd72999293dbfe1780c0ee6b99de6cfc7d8a4ad7e77aa877d1f8c80f6",
+    "quest-supplements.json": "90713e92ae83f14d99d0a4e9f0481abd60b1b5f6d53cd7380b4439f8ae69db59"
   },
   "hash_normalization": {
     "editorial.json": "lf",

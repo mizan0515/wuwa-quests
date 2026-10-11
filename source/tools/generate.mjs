@@ -30,10 +30,11 @@ for(const x of items){
  let md=`---\ntitle: ${JSON.stringify(x.title)}\ndescription: ${JSON.stringify(display(x.version)+' '+display(x.type)+' · '+x.title+' · 퀘스트 '+x.id+' · '+matches.length+'개 장면의 한국어 대사와 선택지')}\n---\n\n`;
  md+=`<div class="quest-context" data-pagefind-ignore><a href="${base}/index.html?version=${encodeURIComponent(x.version)}">${e(display(x.version))}</a><span>›</span><a href="${base}/index.html?version=${encodeURIComponent(x.version)}&amp;type=${encodeURIComponent(x.type)}">${e(display(x.type))}</a></div>\n\n`;
  md+=`<p class="quest-id">퀘스트 <span data-pagefind-meta="퀘스트">${x.id}</span></p>\n\n`;
- md+=`<div class="quest-actions" data-pagefind-ignore><span>${matches.length}개 장면</span><a href="${base}/originals/${x.id}.txt" download>원본 TXT</a><button id="line-toggle" type="button" aria-pressed="false">대사 번호 보기</button></div>\n\n`;
+ md+=`<div class="quest-actions" data-pagefind-ignore><span>${matches.length}개 장면</span>${x.recovered_scenes?`<a href="#scene-${x.baseline_scenes+1}">추가 원문 ${x.recovered_scenes}개 장면</a>`:''}<a href="${base}/originals/${x.id}.txt" download>원본 TXT</a><button id="line-toggle" type="button" aria-pressed="false">대사 번호 보기</button></div>\n\n`;
  md+=sourceDisclosure('퀘스트 설명 · 수록 안내',`<pre>${e(intro)}</pre>`,'quest-info')+'\n\n';
  for(let i=0;i<matches.length;i++){
   const match=matches[i],segment=text.slice(match.index+match[0].length,i+1<matches.length?matches[i+1].index:text.length);
+  if(x.recovered_scenes&&i===x.baseline_scenes)md+='<aside class="quest-supplement-notice" data-pagefind-ignore><strong>함께 읽는 추가 원문</strong><p>이 퀘스트와 연결된 전투·던전·상호작용의 대사와 기록입니다. 선택과 진행 상태에 따른 자료를 함께 수록했으며, 아래 장면의 수록 순서는 실제 진행 순서와 다를 수 있습니다.</p></aside>\n\n';
   md+=`<div id="scene-${i+1}" class="quest-section-anchor" aria-hidden="true"></div>\n\n## ${e(match[0])}\n\n`;
   const metadata=[];let sceneBody='',extractionNoteShown=false;
   for(const raw of segment.split('\n')){
