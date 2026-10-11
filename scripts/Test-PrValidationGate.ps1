@@ -7,8 +7,12 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Quest source ownership regression QA failed'}
   & python -B -X utf8 tools/verify_quest_recovery.py
   if($LASTEXITCODE -ne 0){throw 'Recovered quest original and coverage QA failed'}
+  & python -B -X utf8 tools/verify_dialogue_attribution.py
+  if($LASTEXITCODE -ne 0){throw 'Unassigned dialogue source inventory QA failed'}
   & npm.cmd run build
   if($LASTEXITCODE -ne 0){throw 'Reading build failed'}
+  & python -B -X utf8 tools/verify_dialogue_attribution.py --dist dist
+  if($LASTEXITCODE -ne 0){throw 'Whole attributed dialogue original rendering QA failed'}
   & npm.cmd run qa:reading
   if($LASTEXITCODE -ne 0){throw 'Reading data QA failed'}
   & npm.cmd run qa:seo
