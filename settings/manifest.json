@@ -33,7 +33,8 @@
     "source-relations.json": "0cfbe7578bbfe7b299499cb47bd7c0a8c7feae79a6bb3e9a6a49d1fb60282655",
     "handbook-provenance.json": "0a3f77afd72999293dbfe1780c0ee6b99de6cfc7d8a4ad7e77aa877d1f8c80f6",
     "quest-supplements.json": "97a4bb16c6de28873bfd8ba66ef14b9bca37d1f2dcc93ced24409c41e6122711",
-    "dialogue-attribution.json": "22324accc0437a50bb34ed1fe717687c272db712c7d4b59fef2751711ac6b78f"
+    "dialogue-attribution.json": "22324accc0437a50bb34ed1fe717687c272db712c7d4b59fef2751711ac6b78f",
+    "native-sequence-references.json": "3101246045e211adf5c2606709e932103d6385d2704b23e20d6650622324ea06"
   },
   "hash_normalization": {
     "editorial.json": "lf",

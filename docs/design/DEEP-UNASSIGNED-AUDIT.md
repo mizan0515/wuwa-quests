@@ -77,3 +77,12 @@ Generated KeyFrames의 SSequencesKeyFrames(자막·shot 시각과 FrameEventFram
 OpenMultiTextCaption 소비 코드가 전달 인자를 TidSubtitleText로 사용하는 것은 확인했다. 조사한 EventChannel의 Function은 null이므로 특정 호출과 본문 인자는 입증하지 못했다. master blueprint의 OpenCaptionImage는 이미지 경로였다. 한국어가 없는 다른 PlaySequenceData 경로도 Data_M0229에서 명시 import와 SubSequence 4개를 따라 scene·camera·audio·function 자료를 조사했으나 새 본문 키를 확인하지 못했다.
 
 이번 추가 조사에서 새 읽을 원문과 귀속은 0건이었다. 51개 UFunction/UStruct script tail과 4개 native container schema의 최초 실패 package·export·offset을 별도 내부 근거에 남겼다. 함수 직렬화와 bytecode의 명명된 reader가 필요한 경계이며, 조사한 canary를 전체 native graph의 완전성으로 확대하지 않는다.
+
+
+## Native sequence corroboration (2026-10-12 continuation)
+
+The remaining frozen 1,522 states were rechecked against the observed Flow and Korean databases. 23 states explicitly name Sequence assets; 1,499 have no such declared field in this snapshot. Whole export/property and FText spans confirm 1,002 sections against 261 existing Flow items, requiring simultaneous DialogueID, SpeakerID and TidTalk equality. These references are stored in `settings/native-sequence-references.json`, pinned by the settings manifest, and disclosed alongside the existing state transcript. No original body, group identity, classification or external quest/region owner is changed.
+
+16 native sections covering four DYHD keys have a different DialogueID from their Flow item. Eight sections covering two MAIN_YHX keys lack an exact current Flow/Korean record. Those cannot supply reader additions. Unsupported property bodies retain exact first failures; successful export framing does not establish field semantics or actual playback.
+
+`source/tools/verify_native_sequence_references.py` independently replays public proof closure, source attribution and semantic rejection cases; optional ConfigDB/native-root arguments additionally reread actual input bytes. The dist check covers all existing 687 group transcripts and the added 1,002 evidence markers. Native owner resolution remains UNPROVEN; the unknown-state count remains 1,522.
