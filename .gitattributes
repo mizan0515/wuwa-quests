@@ -10,3 +10,4 @@ originals/*.txt -text
 *.ts text eol=lf
 *.svg text eol=lf
 settings/native-sequence-references.json -text
+settings/compiled-sequence-references.json -text
