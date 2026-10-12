@@ -6,6 +6,7 @@ import {readerFrame,readerDisclosure,rowAttributes,htmlAttributes} from '../src/
 
 const source=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=path.dirname(source),base='/wuwa-quests';
 const data=JSON.parse(await readFile(path.join(site,'settings/dialogue-attribution.json'),'utf8'));
+const native=JSON.parse(await readFile(path.join(site,'settings/native-sequence-references.json'),'utf8'));
 const content=path.join(source,'src/content/docs'),out=path.join(content,'dialogue-sources');
 await mkdir(out,{recursive:true});await mkdir(path.join(source,'public/dialogue-sources'),{recursive:true});
 const H=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])).replace(/\r/g,'&#13;').replace(/\n/g,'&#10;');
@@ -38,7 +39,10 @@ for(const group of data.groups){
    return `<li>${H(info.title||({quest:'이름 미확인 임무',level:'이름 미확인 탐색 콘텐츠',entity:'인물·사물 배치',config:'공용 상호작용 설정'}[info.kind]))}${info.published?` · <a href="${base}/quests/${info.id}.html">퀘스트 본문</a>`:''}<pre>${H(owner+'\n'+evidence.proof.join('\n→ '))}</pre>${typed}</li>`;
   }).join('');
   const rows=state.rows.map(row=>({text_id:row.text_id,locale_db:row.source,kind:row.kind,speaker_id:row.speaker_id,talk_id:row.talk_id,option:row.option,action_path:row.action_path,status:row.status,raw:row.raw}));
+  const nativeState=native.states[key];
+  const nativeDisclosure=nativeState?readerDisclosure('네이티브 연출의 원문 참조',`<div data-native-sequence-state="${H(key)}"><p>연출 파일의 대사 ID·화자 ID·문자열 키가 이 원문과 일치합니다. 이 연출을 호출하는 임무·지역은 확인되지 않았습니다.</p><pre>${H(JSON.stringify({sequenceDataAsset:nativeState.sequenceDataAsset,sourceActionPointer:nativeState.sourceActionPointer,sourceFieldPointer:nativeState.sourceFieldPointer,flowBlobSha256:nativeState.flowBlobSha256},null,2))}</pre><ul>${nativeState.nativeSequenceReferences.map(ref=>`<li data-native-section="${H(ref.nativeSectionProof)}" data-native-flow-talk="${H(ref.talkId)}" data-native-flow-text="${H(ref.textId)}"><p>대사 ${H(ref.talkId)} · ${H(ref.textId)}</p><pre>${H(JSON.stringify({reference:ref,section:native.proofs[ref.nativeSectionProof],objectChain:ref.nativeObjectPointerChain.map(k=>native.proofs[k])},null,2))}</pre></li>`).join('')}</ul></div>`,{className:'quest-scene-info',attributes:{'data-pagefind-ignore':'all'}}):'';
   const proof=`<p>${state.owners&&Object.keys(state.owners).length?'설정의 명시 참조와 대화 호출로 연결된 자료입니다. 실행 조건과 출시 시점은 확인되지 않았습니다.':'원문과 문자열 키를 확인했으며 호출 대상은 확인되지 않았습니다.'}</p><pre>${H(key)}</pre><ul>${ownerList}</ul><pre>${H(JSON.stringify(rows,null,2))}</pre>`;
+  transcript+=nativeDisclosure;
   transcript+=readerDisclosure('원문·연결 근거',proof,{className:'quest-scene-info',attributes:{'data-pagefind-ignore':'all'}});
   body+=`<section data-dialogue-state="${H(key)}">${readerFrame(transcript,{variant:'transcript',className:'quest-reader'})}</section>`;
  }
