@@ -12,6 +12,7 @@ import re
 from recover_quest_sources import Sources, sha
 from verify_quest_recovery import dictionaries
 from wuwa_handbook import FB, clean, connect
+from typed_flow_references import independent_value as independent_typed_value
 
 
 def location(pointer):
@@ -77,7 +78,9 @@ def verify(repo,configdb=None,flowlists=None,dist=None):
     def source_value(root):
         if root in cache:return cache[root]
         kind,key=root.split(':',1)
-        if kind=='config':value=extra[root]
+        if kind=='config':
+            owner=data['owners'][root]
+            value=independent_typed_value(configdb,owner) if owner.get('encoding')=='typed_fields' else extra[root]
         elif kind=='entity':
             ids=tuple(map(int,key.split(':')));fb=FB(sources.entities[ids]);pos=fb.root()
             assert (fb.scalar(pos,1),fb.scalar(pos,2))==ids,'Entity identity'

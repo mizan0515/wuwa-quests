@@ -33,7 +33,9 @@ for(const group of data.groups){
    if(row.transition){const branch=rowAttributes('branch');branch.class+=' quest-branch';transcript+=`<p ${htmlAttributes(branch)}>${H(row.transition)}</p>`;}
   }
   const ownerList=Object.entries(state.owners).map(([owner,evidence])=>{
-   const info=data.owners[owner];return `<li>${H(info.title||({quest:'이름 미확인 임무',level:'이름 미확인 탐색 콘텐츠',entity:'인물·사물 배치',config:'공용 상호작용 설정'}[info.kind]))}${info.published?` · <a href="${base}/quests/${info.id}.html">퀘스트 본문</a>`:''}<pre>${H(owner+'\n'+evidence.proof.join('\n→ '))}</pre></li>`;
+   const info=data.owners[owner];
+   const typed=info.encoding==='typed_fields'?`<p>이 설정은 아래 필드의 값으로 대화 상태를 참조합니다.</p><pre>${H(JSON.stringify({fields:info.schema_fields,values:info.native_values,encoding:info.reference_encoding,schema:info.schema_source,schema_sha256:info.schema_sha256,source_sha256:info.blob_sha256,...(info.consumer?{consumer:info.consumer.file,consumer_sha256:info.consumer.sha256,reference:info.consumer.required_expression}:{})},null,2))}</pre>`:'';
+   return `<li>${H(info.title||({quest:'이름 미확인 임무',level:'이름 미확인 탐색 콘텐츠',entity:'인물·사물 배치',config:'공용 상호작용 설정'}[info.kind]))}${info.published?` · <a href="${base}/quests/${info.id}.html">퀘스트 본문</a>`:''}<pre>${H(owner+'\n'+evidence.proof.join('\n→ '))}</pre>${typed}</li>`;
   }).join('');
   const rows=state.rows.map(row=>({text_id:row.text_id,locale_db:row.source,kind:row.kind,speaker_id:row.speaker_id,talk_id:row.talk_id,option:row.option,action_path:row.action_path,status:row.status,raw:row.raw}));
   const proof=`<p>${state.owners&&Object.keys(state.owners).length?'설정의 명시 참조와 대화 호출로 연결된 자료입니다. 실행 조건과 출시 시점은 확인되지 않았습니다.':'원문과 문자열 키를 확인했으며 호출 대상은 확인되지 않았습니다.'}</p><pre>${H(key)}</pre><ul>${ownerList}</ul><pre>${H(JSON.stringify(rows,null,2))}</pre>`;

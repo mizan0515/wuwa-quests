@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 from recover_quest_sources import Sources, sha
 from wuwa_handbook import FB, clean, connect
+from typed_flow_references import load as load_typed_references
 
 
 def node_name(node):
@@ -13,7 +14,7 @@ def node_name(node):
     return kind + ':' + (':'.join(map(str, key)) if isinstance(key, tuple) else key)
 
 
-def audit(sources, previous):
+def audit(sources, previous, client_scripts=None):
     reverse, metadata = defaultdict(list), {}
     published = set(previous['quests'])
     def insert(source, value, location, relative=None):
@@ -74,6 +75,12 @@ def audit(sources, previous):
                 title_key=value.get('BaseInfoComponent',{}).get('TidName','') if isinstance(value,dict) else ''
                 metadata[key]=dict(kind='config',database=file,table=table,id=number,field=field,
                     title_key=title_key,title=clean(sources.locale.get(title_key,('',''))[0]),encoding=encoding)
+    typed,typed_hashes=load_typed_references(sources.root,client_scripts)
+    extra_hashes.update(typed_hashes)
+    for key,record in typed.items():
+        if key in metadata:raise ValueError('Typed configuration owner collision')
+        insert(key,record['value'],key)
+        metadata[key]=record['metadata']
     states={};counts=Counter();used=set()
     for key in previous['unassigned_states']:
         first='flow:'+key;parents={first:None};queue=deque([first]);owners={}
@@ -157,11 +164,12 @@ if __name__=='__main__':
     parser.add_argument('--configdb',required=True,type=Path)
     parser.add_argument('--flowlists',required=True,type=Path)
     parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[2])
+    parser.add_argument('--client-scripts-root',type=Path)
     args=parser.parse_args()
     previous=json.loads((args.repo/'settings/quest-supplements.json').read_text(encoding='utf8'))
     sources=Sources(args.configdb,args.flowlists)
     if sources.hashes!=previous['source_databases']:raise ValueError('Fixed snapshot differs from prior audit')
-    data=reading_groups(audit(sources,previous),args.repo)
+    data=reading_groups(audit(sources,previous,args.client_scripts_root),args.repo)
     target=args.repo/'settings/dialogue-attribution.json'
     raw=(json.dumps(data,ensure_ascii=False,separators=(',',':'))+'\n').encode('utf8')
     target.write_bytes(raw)

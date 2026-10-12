@@ -1,0 +1,369 @@
+{
+  "schema": "wuwa-installed-typed-flow-schemas.v1",
+  "observed_snapshot": "2026-10-08; client version unverified",
+  "tables": {
+    "db_DangoBrawl.db/dangobrawlrole": {
+      "database": "db_DangoBrawl.db",
+      "table": "dangobrawlrole",
+      "database_sha256": "85fe5493d226b91ee9e3ea89a1a8dd01a3adf3a6ed1c508736b0548851df5fe8",
+      "schema_source": "Core/Define/Config/DangoBrawlRole.js",
+      "schema_sha256": "3405d929469320c16fdb15678d6d3a643d3fb6839b4f5cdfec2340aa9354eae3",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "winflowlistname": {
+              "field": 45,
+              "type": "string",
+              "vector": false
+            },
+            "winflowid": {
+              "field": 46,
+              "type": "Int32",
+              "vector": false
+            },
+            "winstateid": {
+              "field": 47,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        },
+        {
+          "field_schema": {
+            "loseflowlistname": {
+              "field": 48,
+              "type": "string",
+              "vector": false
+            },
+            "loseflowid": {
+              "field": 49,
+              "type": "Int32",
+              "vector": false
+            },
+            "losestateid": {
+              "field": 50,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        }
+      ]
+    },
+    "db_GuessJokerCard.db/guessjokerplotconfig": {
+      "database": "db_GuessJokerCard.db",
+      "table": "guessjokerplotconfig",
+      "database_sha256": "aa591ea4129fed42ed5b8740b60e2652b0fbba8af221a2ec6ac4e09760adaa10",
+      "schema_source": "Core/Define/Config/GuessJokerPlotConfig.js",
+      "schema_sha256": "81d9ef059ac69857f4d3589acdfeb61d4f4918e43f64de15409c772612de7216",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "flowlistname": {
+              "field": 1,
+              "type": "string",
+              "vector": false
+            },
+            "flowid": {
+              "field": 2,
+              "type": "Int32",
+              "vector": false
+            },
+            "stateid": {
+              "field": 3,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        }
+      ]
+    },
+    "db_HonamiStory.db/honamistorytalent": {
+      "database": "db_HonamiStory.db",
+      "table": "honamistorytalent",
+      "database_sha256": "8eec2904a46d330c4f8a0f53186e2ec6045474a0f9c581dde241f2cbafffdb01",
+      "schema_source": "Core/Define/Config/HonamiStoryTalent.js",
+      "schema_sha256": "dc6bc85bf90e99d7e920942cbdd9494c5f84f961dd1ce0078df3263d0ff5e2b6",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "flowlistname": {
+              "field": 20,
+              "type": "string",
+              "vector": false
+            },
+            "flowid": {
+              "field": 21,
+              "type": "Int32",
+              "vector": false
+            },
+            "stateid": {
+              "field": 22,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        }
+      ]
+    },
+    "db_MoonChasing.db/building": {
+      "database": "db_MoonChasing.db",
+      "table": "building",
+      "database_sha256": "5aaf629bfe9fa3f580cb2004062722d84c775643b9f2172a47b3988918de525b",
+      "schema_source": "Core/Define/Config/Building.js",
+      "schema_sha256": "b408eca0bb7af53b817a3c0fc1a9450bd39bf4d768b308fe7afdcf7927602bf1",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "flowlistname": {
+              "field": 14,
+              "type": "string",
+              "vector": false
+            },
+            "flowid": {
+              "field": 15,
+              "type": "Int32",
+              "vector": false
+            },
+            "stateid": {
+              "field": 16,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        }
+      ]
+    },
+    "db_PermanentRogue.db/rogueresevent": {
+      "database": "db_PermanentRogue.db",
+      "table": "rogueresevent",
+      "database_sha256": "93625297e47e5ea58a8ed31965d6bd60ad44fe3014b585bc04d544fdddb15efb",
+      "schema_source": "Core/Define/Config/RogueResEvent.js",
+      "schema_sha256": "b6d07c9419639cac243d4458f9686c90045730a6171e16b712192e7d8e65240a",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "flowlistname": {
+              "field": 6,
+              "type": "string",
+              "vector": false
+            },
+            "flowid": {
+              "field": 7,
+              "type": "Int32",
+              "vector": false
+            },
+            "stateid": {
+              "field": 8,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        }
+      ]
+    },
+    "db_PhantomBattle.db/phantombattlewinseq": {
+      "database": "db_PhantomBattle.db",
+      "table": "phantombattlewinseq",
+      "database_sha256": "0653172d89dfe19065eabfb46ccc9e8ddbd696b6286671d1d4d361829a92283c",
+      "schema_source": "Core/Define/Config/PhantomBattleWinSeq.js",
+      "schema_sha256": "fa127f94d62004a727d87307ab677d2f5779257bf2f3ab76deabb83f6031b99d",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "flowlistname": {
+              "field": 1,
+              "type": "string",
+              "vector": false
+            },
+            "flowid": {
+              "field": 2,
+              "type": "Int32",
+              "vector": false
+            },
+            "stateid": {
+              "field": 3,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        }
+      ]
+    },
+    "db_Rogue.db/rogueevent": {
+      "database": "db_Rogue.db",
+      "table": "rogueevent",
+      "database_sha256": "10018eaa584c09bbdc56472306cedbd5a7ee747ec7ae7be34a1965ebc195f212",
+      "schema_source": "Core/Define/Config/RogueEvent.js",
+      "schema_sha256": "79b24f6b7775308cd8064693431de39ee2e02b767efdc170fbec41251c5313a2",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "flowlistname": {
+              "field": 6,
+              "type": "string",
+              "vector": false
+            },
+            "flowid": {
+              "field": 7,
+              "type": "Int32",
+              "vector": false
+            },
+            "stateid": {
+              "field": 8,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        }
+      ]
+    },
+    "db_weather.db/observatory": {
+      "database": "db_weather.db",
+      "table": "observatory",
+      "database_sha256": "a6769ef1c574ba443386946868192b0230833e78c3d710f1899480f4fb5d2a0e",
+      "schema_source": "Core/Define/Config/Observatory.js",
+      "schema_sha256": "d4940f4e399b75e2837d847d6ec466720a7b67d08bcc39530db69c8923bacde5",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "flowlistname": {
+              "field": 2,
+              "type": "string",
+              "vector": false
+            },
+            "flowid": {
+              "field": 3,
+              "type": "Int32",
+              "vector": false
+            },
+            "stateid": {
+              "field": 4,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": null
+        }
+      ]
+    },
+    "db_PhantomBattle.db/phantombattledialog": {
+      "database": "db_PhantomBattle.db",
+      "table": "phantombattledialog",
+      "database_sha256": "0653172d89dfe19065eabfb46ccc9e8ddbd696b6286671d1d4d361829a92283c",
+      "schema_source": "Core/Define/Config/PhantomBattleDialog.js",
+      "schema_sha256": "f58518322ae0c4a56d89fe60928da8d0f6fe406db868c525e2bab5523ba3415b",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "plotname": {
+              "field": 1,
+              "type": "string",
+              "vector": false
+            },
+            "flowid": {
+              "field": 2,
+              "type": "Int32",
+              "vector": false
+            },
+            "stateid": {
+              "field": 3,
+              "type": "Int32",
+              "vector": false
+            }
+          },
+          "encoding": "named_triple",
+          "consumer": {
+            "file": "Game/Module/PhantomArena/Battle/Dialog/PhantomArenaBattleDialog.js",
+            "sha256": "01474f0611fe2679d80dffc66e86d23784352904d24ee61cb4e768a77c1b860d",
+            "required_expression": "GetFlowStateActions(e.PlotName,e.FlowId,e.StateId)",
+            "byte_offset": 2346
+          }
+        }
+      ]
+    },
+    "db_Drinks.db/drinksroleinvite": {
+      "database": "db_Drinks.db",
+      "table": "drinksroleinvite",
+      "database_sha256": "1d65d53797650436e019ff497d9c162c2c3a0e2afdb730eed7fbaabd11e38f25",
+      "schema_source": "Core/Define/Config/DrinksRoleInvite.js",
+      "schema_sha256": "beaa2dae7b434a96816b5bb960b34ebf687f11cef688e01c6bb185ff3a477057",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "aftertalk": {
+              "field": 13,
+              "type": "string",
+              "vector": false
+            },
+            "aftertalkstateid": {
+              "field": 14,
+              "type": "Int32",
+              "vector": true
+            }
+          },
+          "encoding": "pair_state_vector",
+          "consumer": {
+            "file": "Game/Module/ActivityGamePlay/Drinks/View/DrinksShowView.js",
+            "sha256": "d161ff6b84a9f5219eafd733ffada0e3c00f9d9245627659c55ea888f025ba87",
+            "required_expression": "var r=o.AfterTalk,a=o.AfterTalkStateId[t],n=r.split(\",\");ControllerHolder_1.ControllerHolder.FlowController.StartFlow(n[0],Number(n[1]),a)",
+            "byte_offset": 1657
+          }
+        }
+      ]
+    },
+    "db_teleporter.db/teleporter": {
+      "database": "db_teleporter.db",
+      "table": "teleporter",
+      "database_sha256": "a6d01fb38a0b7dcacd1065738a34ffc6c529acdeddaac3e9f1cd663f910c7d74",
+      "schema_source": "Core/Define/Config/Teleporter.js",
+      "schema_sha256": "686f985cf075a449bf34f7bde5e8977e1d4f8ed1cd0921fbf56c0011ceb287c4",
+      "id_field": 0,
+      "references": [
+        {
+          "field_schema": {
+            "plot": {
+              "field": 6,
+              "type": "string",
+              "vector": false
+            }
+          },
+          "encoding": "serialized_triple",
+          "consumer": {
+            "file": "Game/Module/Map/Controller/TeleportAssistant.js",
+            "sha256": "0ef8f32a194f08a66f5e9c305d0ae1e307f91d9dd2985d6b6f48d24479056d29",
+            "required_expression": "this.uDi=t[0],this.cDi=Number(t[1]),t=Number(t[2])",
+            "byte_offset": 3155
+          }
+        }
+      ]
+    }
+  },
+  "limits": "Declared generated accessor field indices/types and installed runtime consumers establish static configuration usage. Numeric domains, quest ownership, geographic ownership, release status and runtime reachability are not inferred."
+}
