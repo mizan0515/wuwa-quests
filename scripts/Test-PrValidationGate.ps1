@@ -1,10 +1,12 @@
 #requires -Version 7.0
-param([string]$Root=(Split-Path $PSScriptRoot -Parent),[int]$MaxTotalSeconds=600,[int]$ChildTimeoutSeconds=90)
+param([string]$Root=(Split-Path $PSScriptRoot -Parent),[int]$MaxTotalSeconds=600,[int]$ChildTimeoutSeconds=90,[switch]$PrePublish)
 $ErrorActionPreference='Stop'
 Push-Location (Join-Path $Root 'source')
 try {
   & python -B -X utf8 tools/verify_native_sequence_references.py --self-test
   if($LASTEXITCODE -ne 0){throw 'Native source consumer and independent negative QA failed'}
+  & python -B -X utf8 tools/verify_compiled_sequence_references.py --project-root $Root --public-only
+  if($LASTEXITCODE -ne 0){throw 'Compiled source overlay and semantic negative QA failed'}
   & python -B -X utf8 tools/test_quest_recovery.py
   if($LASTEXITCODE -ne 0){throw 'Quest source ownership regression QA failed'}
   & python -B -X utf8 tools/verify_quest_recovery.py
@@ -15,6 +17,8 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Reading build failed'}
   & python -B -X utf8 tools/verify_native_sequence_references.py --dist dist
   if($LASTEXITCODE -ne 0){throw 'Native consumer evidence and preserved static original QA failed'}
+  & python -B -X utf8 tools/verify_compiled_sequence_references.py --project-root $Root --public-only --dist dist
+  if($LASTEXITCODE -ne 0){throw 'Compiled source disclosure identity and rendered source QA failed'}
   & python -B -X utf8 tools/verify_dialogue_attribution.py --dist dist
   if($LASTEXITCODE -ne 0){throw 'Whole attributed dialogue original rendering QA failed'}
   & npm.cmd run qa:reading
@@ -39,7 +43,11 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Game image source QA failed'}
   & python tools/verify_threnodian_site.py --dist dist
   if($LASTEXITCODE -ne 0){throw 'Threnodian source and relation QA failed'}
-  & python tools/verify_published_site.py
-  if($LASTEXITCODE -ne 0){throw 'Published files differ from build; run npm run deploy:files and include the generated output'}
-  Write-Output 'RESULT: PASS'
+  if($PrePublish){
+    Write-Output 'RESULT: PRE_PUBLISH_PASS (publication surface comparison pending)'
+  } else {
+    & python tools/verify_published_site.py
+    if($LASTEXITCODE -ne 0){throw 'Published files differ from build; run npm run deploy:files and include the generated output'}
+    Write-Output 'RESULT: PASS'
+  }
 } finally {Pop-Location}
