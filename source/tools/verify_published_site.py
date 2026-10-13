@@ -15,6 +15,9 @@ def sha256(path):
 
 def verify(dist, site):
     errors = []
+    for root in (dist, site):
+        if (root / '_config.yml').exists() and (root / '.nojekyll').exists():
+            errors.append('Publication exclusions bypassed by .nojekyll: ' + str(root))
     files = sorted(path for path in dist.rglob('*') if path.is_file())
     if not (dist / 'index.html').is_file():
         return {'status': 'FAIL', 'files': len(files), 'errors': ['Missing build index.html']}

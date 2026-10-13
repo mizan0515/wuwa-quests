@@ -1,5 +1,6 @@
 source/node_modules/
 source/.astro/
+source/.codex-work/
 source/dist/
 source/src/content/docs/
 source/public/originals/

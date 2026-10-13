@@ -1,0 +1,1 @@
+var e=document.querySelector(`#line-toggle`);e?.addEventListener(`click`,()=>{let t=document.documentElement.classList.toggle(`show-line-ids`);e.setAttribute(`aria-pressed`,String(t)),e.textContent=t?`대사 번호 숨기기`:`대사 번호 보기`});
