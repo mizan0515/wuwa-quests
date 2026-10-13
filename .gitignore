@@ -6,5 +6,6 @@ source/public/originals/
 source/public/settings/
 source/generated-sidebar.json
 source/generated-catalog.json
+source/src/data/quest-reading-navigation.json
 .runtime/
 source/build.log

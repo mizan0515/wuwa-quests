@@ -1,20 +1,65 @@
 ---
 import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
 import items from '../../generated-catalog.json';
+import reading from '../data/quest-reading-navigation.json';
 const routeId=Astro.locals.starlightRoute.id;
 const base=import.meta.env.BASE_URL.replace(/\/$/,'');
 const currentQuest=items.find(x=>'quests/'+x.id===routeId);
+const questContext=currentQuest?reading.quests[currentQuest.id]:undefined;
+const currentOwner=Object.values(reading.owners).find(o=>'quest-sources/'+o.id===routeId);
+const currentGroup=Object.values(reading.groups).find(g=>'dialogue-sources/'+g.id===routeId);
+const localSections=questContext?questContext.scenes.map(s=>({anchor:'scene-'+s.number,title:s.title})):currentOwner?currentOwner.states:currentGroup?.states||[];
+const contextTitle=currentQuest?.title||currentOwner?.title||currentGroup?.title;
+const contextGroups=currentOwner?[...new Set(currentOwner.states.map(s=>s.groupId))].map(id=>reading.groups[id]):currentGroup?[currentGroup]:[];
+const relatedQuestIds=[...new Set(contextGroups.flatMap(g=>g.relatedQuests.map(q=>q.id)))];
+const returnGroups=questContext?questContext.relatedSources.map(g=>reading.groups[g.id]):contextGroups;
+const returnView=record=>({id:record.id,title:record.title,...(record.scenes?{scenes:record.scenes.map(s=>({number:s.number}))}:{}),...(record.states?{states:record.states.map(s=>({anchor:s.anchor,rowIndices:s.rowIndices}))}:{})});
+const origins={quests:Object.fromEntries(relatedQuestIds.map(id=>[id,returnView(reading.quests[id])])),groups:Object.fromEntries(returnGroups.map(g=>[g.id,returnView(g)])),owners:Object.fromEntries(returnGroups.flatMap(g=>g.owners).map(k=>[k,returnView(reading.owners[k])]))};
 const versions=[...new Set(items.map(x=>x.version))];
 const label=(v:string)=>v.replace('버전미확인','버전 미확인').replace('버전혼합_','버전 혼합 ');
 const nav=[['','퀘스트 목록'],['dialogue-sources','현장 대화와 기록'],['world','설정집'],['regions','지역'],['people','인물'],['factions','세력'],['cosmology','세계관의 큰 설정'],['about','자료 안내']];
-const active=(id:string)=>id===''?routeId===''||routeId.startsWith('quests/'):id==='regions'?/^(regions|places|entities)(\/|$)/.test(routeId):routeId===id||routeId.startsWith(id+'/');
+const active=(id:string)=>id===''?routeId===''||routeId.startsWith('quests/'):id==='dialogue-sources'?/^(dialogue-sources|quest-sources)(\/|$)/.test(routeId):id==='regions'?/^(regions|places|entities)(\/|$)/.test(routeId):routeId===id||routeId.startsWith(id+'/');
 ---
 <div class="archive-sidebar">
+ {contextTitle&&<section class="sidebar-reading-context" aria-label="현재 원문의 독서 문맥" data-reading-context data-origin-model={JSON.stringify(origins)}>
+  <div class="sidebar-reading-origin" hidden><p class="sidebar-caption">읽던 퀘스트·원문</p><a class="archive-nav-link" data-reading-origin-link></a></div>
+  <p class="sidebar-caption">{currentQuest?'지금 읽는 퀘스트':currentOwner?'지금 읽는 퀘스트 자료':'지금 읽는 자료 묶음'}</p><p class="sidebar-current-title">{contextTitle}</p>
+  {currentQuest&&<a class="archive-nav-link" href={`${base}/index.html?version=${encodeURIComponent(currentQuest.version)}&type=${encodeURIComponent(currentQuest.type)}`}>{label(currentQuest.version)} · {currentQuest.type}</a>}
+  <details class="sidebar-local-sections" open><summary>이 원문의 목차</summary><nav aria-label="현재 원문의 절">{localSections.map((s,i)=><a class="archive-nav-link" href={'#'+s.anchor} data-reading-section={s.anchor}>{questContext?s.title:`${i+1} · ${s.label||s.title}`}</a>)}</nav></details>
+  {questContext?.relatedSources.length>0&&<details><summary>같은 원자료의 다른 진행 상태</summary><nav aria-label="같은 원자료의 다른 진행 상태">{questContext.relatedSources.map(g=><a class="archive-nav-link" href={`${base}/${g.url}`} data-reading-context-link>{g.title}</a>)}</nav></details>}
+  {contextGroups.length>0&&<details><summary>연결된 원문으로 읽기</summary><nav aria-label="연결된 원문">{currentOwner&&contextGroups.map(g=><a class="archive-nav-link" href={`${base}/${g.url}`} data-reading-context-link>{g.title} · 원자료 묶음</a>)}{currentGroup&&currentGroup.owners.map(k=><a class="archive-nav-link" href={`${base}/${reading.owners[k].url}`} data-reading-context-link>{reading.owners[k].title} · 임무 소속 원문</a>)}{relatedQuestIds.map(id=><a class="archive-nav-link" href={`${base}/${reading.quests[id].url}`} data-reading-context-link>{reading.quests[id].title} · 같은 원자료</a>)}</nav></details>}
+ </section>}
  <p class="sidebar-caption">이야기 자료집</p>
  <nav class="site-global-nav" aria-label="주요 탐색">{nav.map(([id,title])=><a class="archive-nav-link" href={`${base}/${id||'index'}.html`} aria-current={active(id)?'page':undefined}>{title}{id===''&&<span class="nav-count">{items.length}</span>}</a>)}</nav>
- {currentQuest&&<div class="sidebar-section"><p class="sidebar-caption">지금 읽는 퀘스트</p><p>{currentQuest.title}</p><a class="archive-nav-link" href={`${base}/index.html?version=${encodeURIComponent(currentQuest.version)}&type=${encodeURIComponent(currentQuest.type)}`}>{label(currentQuest.version)} · {currentQuest.type}</a></div>}
+ <a class="archive-nav-link" href={`${base}/quest-sources.html`} aria-current={routeId==='quest-sources'?'page':undefined}>보충 퀘스트 원문</a>
  <details class="sidebar-section" open={routeId===''||routeId.startsWith('quests/')}><summary class="sidebar-caption">버전으로 찾기</summary>{[3,2,1].map(era=><div class="version-era"><span class="era-label">{era}.x</span><div class="version-grid">{versions.filter(v=>v.startsWith(`${era}.`)).map(v=><a href={`${base}/index.html?version=${v}`} data-version-link={v} aria-label={`${v} 버전 퀘스트`}>{v}</a>)}</div></div>)}<div class="unknown-versions">{versions.filter(v=>!/^\d\.\d$/.test(v)).map(v=><a href={`${base}/index.html?version=${encodeURIComponent(v)}`} data-version-link={v}>{label(v)}</a>)}</div></details>
  <details class="sidebar-section"><summary class="sidebar-caption">연결해서 읽기</summary>{[['sentinels','수호신과 문명'],['relationships','인물·장소의 관계'],['events','사건과 전환점'],['concepts','개념과 용어']].map(([id,title])=><a class="archive-nav-link" href={`${base}/${id}.html`} aria-current={active(id)?'page':undefined}>{title}</a>)}</details>
  <div class="sidebar-section"><a class="archive-nav-link" href={`${base}/library.html`} aria-current={active('library')||active('sources')?'page':undefined}>원문 보관함</a></div>
  <div class="md:sl-hidden"><MobileMenuFooter /></div>
 </div>
+<script>
+ import {safeReadingReturn} from '../lib/reading-return.mjs';
+ const panel=document.querySelector<HTMLElement>('[data-reading-context]');
+ if(panel){
+  const model=JSON.parse(panel.dataset.originModel||'{}'),base=import.meta.env.BASE_URL.replace(/\/$/,'');
+  const from=safeReadingReturn(new URLSearchParams(location.search).get('from'),{origin:location.origin,base,model,readersOnly:true});
+  if(from){const url=new URL(from,location.origin),match=url.pathname.match(/\/(quests|quest-sources|dialogue-sources)\/([^/]+)\.html$/),kind=match?.[1],id=match?.[2];const entry=kind==='quests'?model.quests[id]:kind==='quest-sources'?Object.values(model.owners).find((o:any)=>o.id===id):model.groups[id];if(entry&&url.pathname!==location.pathname){const box=panel.querySelector<HTMLElement>('.sidebar-reading-origin'),link=panel.querySelector<HTMLAnchorElement>('[data-reading-origin-link]');link.href=from;link.textContent=entry.title;box.hidden=false;}}
+  const links=[...panel.querySelectorAll<HTMLAnchorElement>('[data-reading-section]')];
+  const update=()=>{let active=links[0]?.dataset.readingSection;const padding=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0;for(const link of links){const target=document.getElementById(link.dataset.readingSection!);if(target&&target.getBoundingClientRect().top<=Math.max(150,padding+(parseFloat(getComputedStyle(target).scrollMarginTop)||0)+2))active=link.dataset.readingSection;}for(const link of links){if(link.dataset.readingSection===active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');}};
+  let pending=false;window.addEventListener('scroll',()=>{if(!pending){pending=true;requestAnimationFrame(()=>{pending=false;update();});}},{passive:true});window.addEventListener('hashchange',update);update();
+  panel.addEventListener('click',event=>{
+   const link=event.target instanceof Element?event.target.closest<HTMLAnchorElement>('a[data-reading-section]'):null;if(!link)return;
+   const menu=document.getElementById('starlight__sidebar');
+   if(menu?.matches(':popover-open'))menu.hidePopover();
+   requestAnimationFrame(()=>requestAnimationFrame(()=>{const target=document.getElementById(link.dataset.readingSection!);const heading=target?.getAttribute('aria-hidden')==='true'?target.nextElementSibling?.querySelector('h2,h3')||target.nextElementSibling:target;if(heading instanceof HTMLElement){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}update();}));
+  });
+  document.documentElement.setAttribute('data-context-lnb','');
+  const actions=document.querySelector('.quest-actions');if(actions){const button=document.createElement('button');button.type='button';button.id='reading-focus-toggle';button.setAttribute('aria-pressed','false');button.textContent='집중 모드';actions.append(button);button.addEventListener('click',()=>{const candidates=[...document.querySelectorAll<HTMLElement>('.quest-source-line')];const point=candidates.find(n=>n.getBoundingClientRect().bottom>150)||candidates[0],offset=point?.getBoundingClientRect().top;const focused=document.documentElement.toggleAttribute('data-reading-focus');button.setAttribute('aria-pressed',String(focused));button.textContent=focused?'탐색 펼치기':'집중 모드';requestAnimationFrame(()=>{if(point&&offset!==undefined)window.scrollBy(0,point.getBoundingClientRect().top-offset);});});}
+ }
+ document.addEventListener('click',event=>{
+  const link=event.target instanceof Element?event.target.closest<HTMLAnchorElement>('a[data-reading-context-link]'):null;if(!link)return;
+  const url=new URL(link.href);if(url.origin!==location.origin)return;
+  let hash=location.hash;for(const node of document.querySelectorAll<HTMLElement>('[id^="scene-"],[id^="state-"]'))if(node.getBoundingClientRect().top<=150)hash='#'+node.id;
+  const from=safeReadingReturn(location.pathname+location.search+hash,{origin:location.origin,base:import.meta.env.BASE_URL.replace(/\/$/,''),readersOnly:true});if(from){link.dataset.readingOriginalHref ||= link.href;url.searchParams.set('from',from);link.href=url.href;}
+ });
+</script>

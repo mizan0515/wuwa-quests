@@ -3,6 +3,12 @@ param([string]$Root=(Split-Path $PSScriptRoot -Parent),[int]$MaxTotalSeconds=600
 $ErrorActionPreference='Stop'
 Push-Location (Join-Path $Root 'source')
 try {
+  & node tools/generate.mjs
+  if($LASTEXITCODE -ne 0){throw 'Current quest navigation source generation failed'}
+  & node --test tools/quest-reading-navigation.test.mjs
+  if($LASTEXITCODE -ne 0){throw 'Quest connected reader semantic QA failed'}
+  & python -B -X utf8 tools/verify_quest_reading_navigation.py
+  if($LASTEXITCODE -ne 0){throw 'Quest source navigation and original preservation QA failed'}
   & python -B -X utf8 tools/verify_native_sequence_references.py --self-test
   if($LASTEXITCODE -ne 0){throw 'Native source consumer and independent negative QA failed'}
   & python -B -X utf8 tools/verify_compiled_sequence_references.py --project-root $Root --public-only
@@ -15,6 +21,8 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Unassigned dialogue source inventory QA failed'}
   & npm.cmd run build
   if($LASTEXITCODE -ne 0){throw 'Reading build failed'}
+  & python -B -X utf8 tools/verify_quest_reading_navigation.py --dist dist
+  if($LASTEXITCODE -ne 0){throw 'Whole rendered quest source navigation QA failed'}
   & python -B -X utf8 tools/verify_native_sequence_references.py --dist dist
   if($LASTEXITCODE -ne 0){throw 'Native consumer evidence and preserved static original QA failed'}
   & python -B -X utf8 tools/verify_compiled_sequence_references.py --project-root $Root --public-only --dist dist
