@@ -54,6 +54,10 @@ try {
   if($PrePublish){
     Write-Output 'RESULT: PRE_PUBLISH_PASS (publication surface comparison pending)'
   } else {
+    & python -B -X utf8 -m unittest tools/test_share_publication_ui.py
+    if($LASTEXITCODE -ne 0){throw 'Shared publication UI boundary and inverse QA failed'}
+    & python -B -X utf8 tools/share_publication_ui.py
+    if($LASTEXITCODE -ne 0){throw 'Shared publication UI and exact original inverse failed'}
     & python tools/verify_published_site.py
     if($LASTEXITCODE -ne 0){throw 'Published files differ from build; run npm run deploy:files and include the generated output'}
     Write-Output 'RESULT: PASS'

@@ -1,0 +1,20 @@
+# Copy the already-built reader site through the existing branch publisher.
+# Keep build inputs and internal project files outside the published artifact.
+include:
+  - _astro
+  - _shared-ui
+exclude:
+  - source
+  - docs
+  - scripts
+  - tools
+  - README.md
+  - AGENTS.md
+  - .codex-work
+  - .runtime
+  - node_modules
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - .sass-cache
+  - .jekyll-cache
