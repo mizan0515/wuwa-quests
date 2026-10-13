@@ -152,8 +152,8 @@ h1#_top { margin: 0; font-size: clamp(1.8rem, 2.8vw, 2.55rem); line-height: 1.4;
 .quest-info summary, .quest-scene-info summary { cursor: pointer; min-height: 36px; padding-block: 7px; }
 .quest-info pre, .quest-scene-info pre { white-space: pre-wrap; overflow-wrap: anywhere; color: inherit; background: transparent; border: 0; font: inherit; }
 .quest-scene-info:not([open]) { border-color: transparent; padding: 0; }
-.quest-section-anchor { margin: 0 !important; height: 0; scroll-margin-top: 6rem; }
-.sl-markdown-content .quest-section-anchor + .sl-heading-wrapper { border-top: 1px solid var(--line); padding-top: 1.7rem; margin-top: 2.75rem; }
+.quest-section-anchor { margin: 0 !important; height: 0; scroll-margin-top: 0; }
+.sl-markdown-content .quest-section-anchor + .sl-heading-wrapper { border-top: 1px solid var(--line); padding-top: 1.1rem; margin-top: 1.75rem; }
 .sl-markdown-content .quest-source-line { margin-block: 0; padding-block: .8rem; overflow-wrap: anywhere; }
 .quest-utterance:has(.quest-speaker) { display: grid; grid-template-columns: 7.8rem minmax(0,1fr); gap: 1.25rem; align-items: baseline; }
 .quest-speaker { color: var(--brass); font-size: 12px; font-weight: 650; line-height: 1.8; }
