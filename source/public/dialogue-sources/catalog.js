@@ -6,12 +6,14 @@
  const params=new URLSearchParams(location.search);query.value=params.get('q')||'';if([...kind.options].some(o=>o.value===params.get('kind')))kind.value=params.get('kind');hide.checked=params.get('review')!=='1';
  function render(){
   const value=query.value.trim().toLocaleLowerCase();
-  const matching=data.filter(row=>(!hide.checked||!row.review)&&(kind.value==='all'||kind.value==='connected'?kind.value==='all'||row.kinds.some(k=>k!=='unreferenced'):row.kinds.includes(kind.value))&&(!value||[row.title,row.excerpt,...row.speakers,...row.regions].join(' ').toLocaleLowerCase().includes(value)));
+  const matching=data.filter(row=>(!hide.checked||!row.review)&&(kind.value==='all'||kind.value==='connected'?kind.value==='all'||row.kinds.some(k=>k!=='unreferenced'):row.kinds.includes(kind.value))&&(!value||[row.title,row.excerpt,...row.speakers,...row.regions,...(row.ownerTitles||[]),...(row.ownerIds||[])].join(' ').toLocaleLowerCase().includes(value)));
   results.replaceChildren();
   for(const row of matching.slice(0,limit)){
    const article=document.createElement('article');article.className='dialogue-source-card';const h=document.createElement('h2'),link=document.createElement('a');link.href=row.page;link.textContent=row.title;h.append(link);
    const tags=document.createElement('p');tags.className='dialogue-source-meta';tags.textContent=[...row.kinds.map(k=>labels[k]),...row.regions,`${row.states.length}개 대화 상태`].join(' · ');
-   const text=document.createElement('p');text.textContent=row.excerpt;article.append(tags,h,text);results.append(article);
+   const text=document.createElement('p');text.textContent=row.excerpt;article.append(tags,h,text);
+   if(row.ownerReaders?.length){const owners=document.createElement('nav');owners.className='dialogue-owner-readers';owners.setAttribute('aria-label','임무 소속 원문');for(const owner of row.ownerReaders){const a=document.createElement('a');a.href=owner.page;a.textContent=owner.title;owners.append(a);}article.append(owners);}
+   results.append(article);
   }
   status.textContent=`${matching.length}개 원문 묶음 · ${Math.min(limit,matching.length)}개 표시`;more.hidden=limit>=matching.length;
   const state=new URLSearchParams();if(query.value)state.set('q',query.value);if(kind.value!=='connected')state.set('kind',kind.value);if(!hide.checked)state.set('review','1');history.replaceState(null,'',location.pathname+(state.size?'?'+state:'')+location.hash);

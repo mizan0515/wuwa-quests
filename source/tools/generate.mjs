@@ -3,6 +3,7 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {readerFrame,readerDisclosure,rowAttributes} from '../src/lib/reading-kit/reader.mjs';
+import {generateQuestNavigation} from './generate-quest-navigation.mjs';
 
 const source=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const site=path.resolve(source,'..');
@@ -20,6 +21,12 @@ const versions=[...new Set(items.map(x=>x.version))].sort((a,b)=>/^\d\.\d$/.test
 const groups=new Map();for(const x of items){const key=x.version+'|'+x.type;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(x);}for(const group of groups.values())group.sort((a,b)=>Number(a.id)-Number(b.id));
 await mkdir(path.join(content,'quests'),{recursive:true});await mkdir(path.join(source,'public/originals'),{recursive:true});
 const catalog=[];
+const questScenes={};
+for(const x of all){
+ const raw=(await readFile(path.join(site,'originals',x.id+'.txt'),'utf8')).replace(/^\uFEFF/,'').replace(/\r\n?/g,'\n');
+ questScenes[x.id]=[...raw.matchAll(/^장면 (\d+):[^\n]+/gm)].map(m=>({number:Number(m[1]),title:m[0],url:'quests/'+x.id+'.html#scene-'+m[1]}));
+}
+const {model:readingContext}=await generateQuestNavigation({source,site,catalog:all,questScenes});
 for(const x of items){
  const original=path.join(site,'originals',x.id+'.txt');const bytes=await readFile(original);
  if(crypto.createHash('sha256').update(bytes).digest('hex')!==x.source_sha256)throw new Error('Source SHA mismatch: '+x.id);
@@ -32,6 +39,8 @@ for(const x of items){
  md+=`<p class="quest-id">퀘스트 <span data-pagefind-meta="퀘스트">${x.id}</span></p>\n\n`;
  md+=`<div class="quest-actions" data-pagefind-ignore><span>${matches.length}개 장면</span>${x.recovered_scenes?`<a href="#scene-${x.baseline_scenes+1}">추가 원문 ${x.recovered_scenes}개 장면</a>`:''}<a href="${base}/originals/${x.id}.txt" download>원본 TXT</a><button id="line-toggle" type="button" aria-pressed="false">대사 번호 보기</button></div>\n\n`;
  md+=sourceDisclosure('퀘스트 설명 · 수록 안내',`<pre>${e(intro)}</pre>`,'quest-info')+'\n\n';
+ const related=readingContext.quests[x.id].relatedSources;
+ if(related.length)md+=`<section class="quest-related-sources" data-same-source-context="${x.id}" data-pagefind-ignore><h2>같은 원자료의 다른 진행 상태</h2><p>같은 원자료 묶음의 다른 대화입니다. 소속과 실제 발화·진행 순서는 확인된 범위에서 따로 표시합니다.</p><ul>${related.map(g=>`<li><a href="${base}/${g.url}" data-reading-context-link>${e(g.title)}</a></li>`).join('')}</ul></section>\n\n`;
  for(let i=0;i<matches.length;i++){
   const match=matches[i],segment=text.slice(match.index+match[0].length,i+1<matches.length?matches[i+1].index:text.length);
   if(x.recovered_scenes&&i===x.baseline_scenes)md+='<aside class="quest-supplement-notice" data-pagefind-ignore><strong>함께 읽는 추가 원문</strong><p>이 퀘스트와 연결된 전투·던전·상호작용의 대사와 기록입니다. 선택과 진행 상태에 따른 자료를 함께 수록했으며, 아래 장면의 수록 순서는 실제 진행 순서와 다를 수 있습니다.</p></aside>\n\n';
@@ -69,4 +78,6 @@ await writeFile(path.join(source,'generated-sidebar.json'),JSON.stringify(sideba
 await writeFile(path.join(content,'index.mdx'),`---\ntitle: 퀘스트 목록\ndescription: 명조 퀘스트 ${all.length}개의 한국어 대사와 선택지를 버전·임무 종류·제목·ID로 찾아 읽는 자료집.\npagefind: false\ntableOfContents: false\n---\n\nimport QuestCatalog from '../../components/QuestCatalog.astro';\n\n<QuestCatalog />\n`);
 await writeFile(path.join(content,'about.md'),`---\ntitle: 자료 안내\ndescription: 명조 한국어 대사 자료집의 수록 범위, 버전 분류, 장면 순서와 원문 자료의 출처를 안내한다.\n---\n\n## 수록 범위\n\n한국어 제목과 대사가 있는 퀘스트 ${all.length}개를 수록했습니다. 원본 데이터 ${1901}개 중 내부 테스트와 식별이 불분명한 항목 등을 제외했습니다. 원본 TXT 다운로드에는 게임 내부 태그와 변수, 선택지 및 분기 정보가 보존되어 있습니다.\n\n## 버전과 임무 분류\n\n버전은 대화 식별자 등 추출 자료를 근거로 분류했습니다. 최초 출시 버전을 보장하지 않습니다. 확인할 수 없는 경우 ‘버전 미확인’ 표시를 유지합니다. 원본의 ‘조수 임무’는 ‘메인임무’로 표시합니다. 이름을 확인하지 못한 임무 종류는 원본 유형 번호를 함께 표시합니다.\n\n## 장면 순서\n\n장면은 추출 자료의 순서입니다. 같은 분류의 이전·다음 퀘스트는 ID 순서이며 이야기의 시간 순서를 뜻하지 않습니다. 여러 퀘스트에 같은 제목이 있을 수 있으므로 ID를 함께 표시합니다.\n\n## 출처와 권리\n\n이 사이트는 비공식 자료집입니다. 대사와 게임 콘텐츠의 권리는 KURO GAMES 등 해당 권리자에게 있습니다. 공개 접근 가능 여부는 재게시 이용허락을 의미하지 않습니다. 원문 전체의 재게시를 명시적으로 허용하는 이용허락은 확인되지 않았으며 게임 콘텐츠에 오픈 라이선스를 부여하지 않았습니다.\n\n[KURO GAMES 팬 콘텐츠 가이드라인](https://wutheringwaves.kurogames.com/p/en/produce.html)\n\n## 재사용한 문서 도구\n\n문서 레이아웃·목차·검색은 [Starlight](https://starlight.astro.build/)와 [Pagefind](https://pagefind.app/)를 사용합니다. 도구 코드는 해당 오픈소스 라이선스를 따르며 게임 대사의 권리와는 별개입니다.\n`);
 await writeFile(path.join(source,'public/.nojekyll'),'');await writeFile(path.join(source,'public/robots.txt'),'User-agent: *\nAllow: /\n');
+const indexPath=path.join(content,'index.mdx');
+await writeFile(indexPath,(await readFile(indexPath,'utf8')).replace('<QuestCatalog />',`<p class="quest-source-entry"><a href="${base}/quest-sources.html">임무 소속 원문 ${Object.keys(readingContext.owners).length}개에서 이어 읽기 →</a></p>\n\n<QuestCatalog />`));
 console.log(JSON.stringify({generated:items.length,sourceSha256:'PASS'}));
