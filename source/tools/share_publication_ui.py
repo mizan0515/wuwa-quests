@@ -36,9 +36,8 @@ def frames(text):
  ranges=[]
  for start,end in sorted(parser.ranges,key=lambda x:(x[0],-x[1])):
   if not ranges or start>=ranges[-1][1]:ranges.append((start,end))
- # Current-document content stays between a shared frame prefix and suffix.
- for m in re.finditer(r'<aside class="reader-guide-rail[^>]*>[\s\S]*?<div class="reader-guide-body">',text):
-  if not PROTECTED.search(m[0]):ranges.append(m.span())
+ # Native guide landmarks stay balanced and usable without JavaScript.
+ # Their layout and behavior are shared CSS/JS; only complete UI trees move.
  return sorted(ranges)
 def optimize(root,base,receipt):
  target=root/'_shared-ui'

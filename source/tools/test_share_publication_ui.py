@@ -26,6 +26,9 @@ class SharedUITest(unittest.TestCase):
  def test_starlight_custom_sidebar_is_shared_as_one_balanced_frame(self):
   text='<sl-sidebar-pane id="starlight__sidebar"><div><nav>전체 탐색</nav></div></sl-sidebar-pane><main>본문</main>'
   self.assertEqual(M.frames(text),[(0,text.index('<main>'))])
+ def test_native_guide_scaffolding_never_becomes_a_partial_parser_fragment(self):
+  guide='<aside class="reader-guide-rail"><details id="reader-guide" open><summary>원문 목차</summary><div class="reader-guide-body"><a href="#scene-39">장면 39</a></div></details></aside>'
+  self.assertEqual(M.frames(guide),[])
  def test_svg_shape_shared_without_changing_outer_accessibility_or_exact_inverse(self):
   with TemporaryDirectory()as tmp:
    root=Path(tmp)/'dist';root.mkdir();receipt=Path(tmp)/'receipt.json'
