@@ -54,6 +54,8 @@ try {
   if($PrePublish){
     Write-Output 'RESULT: PRE_PUBLISH_PASS (publication surface comparison pending)'
   } else {
+    & python -B -X utf8 -m unittest discover -s tools -p test_pages_artifact.py
+    if($LASTEXITCODE -ne 0){throw 'Actual Pages artifact inventory and original byte QA failed'}
     & python -B -X utf8 -m unittest tools/test_share_publication_ui.py
     if($LASTEXITCODE -ne 0){throw 'Shared publication UI boundary and inverse QA failed'}
     & python -B -X utf8 tools/share_publication_ui.py

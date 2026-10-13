@@ -4,10 +4,10 @@ include:
   - _astro
   - _shared-ui
 exclude:
-  - source
-  - docs
-  - scripts
-  - tools
+  - source/**
+  - docs/**
+  - scripts/**
+  - tools/**
   - README.md
   - AGENTS.md
   - .codex-work
@@ -18,3 +18,5 @@ exclude:
   - Gemfile.lock
   - .sass-cache
   - .jekyll-cache
+optional_front_matter:
+  enabled: false
