@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 const source=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');const site=path.resolve(source,'..');
 const dist=path.join(source,'dist');
 if(!(await stat(path.join(dist,'index.html'))).isFile())throw new Error('Build output missing');
+if(await stat(path.join(dist,'.nojekyll')).catch(()=>null))throw new Error('Rebuild without .nojekyll so publication exclusions take effect');
 execFileSync('python',['-B','-X','utf8','tools/share_publication_ui.py'],{cwd:source,stdio:'inherit'});
 // The existing branch publisher applies _config.yml exclusions to build inputs.
 await rm(path.join(site,'.nojekyll'),{force:true});
