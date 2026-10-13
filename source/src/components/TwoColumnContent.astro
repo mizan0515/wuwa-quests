@@ -1,0 +1,8 @@
+---
+import {hasDocumentGuide} from '../lib/reader-frame.mjs';
+const hasGuide=Boolean(Astro.locals.starlightRoute.toc||hasDocumentGuide(Astro.locals.starlightRoute.id));
+---
+<div class:list={['reader-layout',{'reader-layout-with-guide':hasGuide}]}>
+ {hasGuide&&<aside class="reader-guide-rail print:hidden" aria-label="현재 글의 독서 안내"><slot name="right-sidebar" /></aside>}
+ <div class="main-pane reader-main"><slot /></div>
+</div>

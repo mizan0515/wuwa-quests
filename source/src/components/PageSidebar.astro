@@ -1,0 +1,48 @@
+---
+import DefaultTableOfContents from '@astrojs/starlight/components/TableOfContents.astro';
+import ReadingContext from './ReadingContext.astro';
+import {hasDocumentGuide} from '../lib/reader-frame.mjs';
+const {id,toc}=Astro.locals.starlightRoute;
+const reader=/^(quests|quest-sources|dialogue-sources)\//.test(id);
+---
+{(toc||hasDocumentGuide(id))&&<details class="reader-guide" id="reader-guide" open>
+ <summary class="reader-guide-toggle"><span>{reader?'원문 목차':'이 글의 목차'}</span><span data-guide-current aria-hidden="true"></span></summary>
+ <div class="reader-guide-body">{reader?<ReadingContext />:toc?<DefaultTableOfContents />:<nav class="reader-local-sections" aria-label="이 글의 목차" data-guide-sections><a href="#_top">이 글 처음으로</a></nav>}</div>
+</details>}
+<script>
+ const guide=document.getElementById('reader-guide');
+ if(guide instanceof HTMLDetailsElement){
+  const wide=matchMedia('(min-width:90rem)');
+  const summary=guide.querySelector<HTMLElement>('summary');
+  const hashTarget=(hash:string)=>{try{return document.getElementById(decodeURIComponent(hash.slice(1)));}catch{return null;}};
+  const sections=guide.querySelector('[data-guide-sections]'),seen=new Set<string>();
+  if(sections)for(const heading of document.querySelectorAll<HTMLElement>('main h2[id],main h3[id],main section[id]')){
+   if(heading.closest('details,.cva-module'))continue;
+   const parentSection=heading.parentElement?.closest('section[id]');
+   if(parentSection&&seen.has(parentSection.id))continue;
+   const title=heading.matches('h2,h3')?heading.textContent:heading.querySelector('h2,h3')?.textContent;
+   if(!title?.trim()||seen.has(heading.id))continue;
+   seen.add(heading.id);const link=document.createElement('a');link.href='#'+encodeURIComponent(heading.id);link.textContent=title.trim();sections.append(link);
+  }
+  if(!guide.querySelector('[data-reading-context]')){const updateCurrent=()=>{const links=[...guide.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')],padding=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0;const active=links.filter(link=>{const target=hashTarget(link.hash);return target?.getClientRects().length&&target.getBoundingClientRect().top<=padding+24;}).at(-1)||links[0];const current=guide.querySelector('[data-guide-current]');if(current)current.textContent=active?.textContent||'';if(sections)for(const link of links){if(link===active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');}};let pending=false;window.addEventListener('scroll',()=>{if(!pending){pending=true;requestAnimationFrame(()=>{updateCurrent();pending=false;});}},{passive:true});guide.addEventListener('toggle',updateCurrent);updateCurrent();}
+  const apply=()=>{const focused=document.activeElement;if(!wide.matches&&focused&&guide.contains(focused)&&focused!==summary)summary?.focus({preventScroll:true});guide.open=wide.matches;if(wide.matches&&focused===summary)guide.querySelector<HTMLElement>('a[aria-current="location"],a[aria-current="true"],a')?.focus({preventScroll:true});};
+  apply();guide.closest('.reader-layout')?.setAttribute('data-guide-ready','');wide.addEventListener('change',apply);
+  guide.addEventListener('keydown',event=>{if(event.key==='Escape'&&!wide.matches){guide.open=false;summary?.focus({preventScroll:true});}});
+  guide.addEventListener('click',event=>{
+   const target=event.target instanceof Element?event.target.closest<HTMLAnchorElement>('a[href^="#"]'):null;
+   if(!target)return;
+   if(!wide.matches)guide.open=false;
+   requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    const anchor=hashTarget(target.hash);
+    const heading=anchor?.getAttribute('aria-hidden')==='true'?anchor.nextElementSibling?.querySelector('h2,h3')||anchor.nextElementSibling:anchor;
+    if(heading instanceof HTMLElement){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+   }));
+  });
+  const reveal=()=>{const target=hashTarget(location.hash);if(target&&guide.contains(target)){guide.open=true;target.scrollIntoView({block:'nearest'});}};
+  reveal();window.addEventListener('hashchange',reveal);
+ }
+ const visiblePoint=()=>{const padding=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0;return [...document.querySelectorAll<HTMLElement>('main .quest-source-line,main .rw-source-body,main .lore-paragraph p,main .lore-source-text,main p')].find(node=>node.getClientRects().length&&!node.closest('[hidden],details:not([open])')&&node.getBoundingClientRect().bottom>padding&&node.getBoundingClientRect().top<innerHeight);};
+ const focus=document.createElement('button');focus.type='button';focus.id='reading-focus-toggle';focus.setAttribute('aria-pressed','false');focus.setAttribute('aria-controls',guide?'reader-guide starlight__sidebar':'starlight__sidebar');focus.textContent='집중 모드';document.body.append(focus);
+ focus.addEventListener('click',()=>{const point=visiblePoint(),top=point?.getBoundingClientRect().top;const active=document.documentElement.toggleAttribute('data-reading-focus');focus.setAttribute('aria-pressed',String(active));focus.textContent=active?'탐색 펼치기':'집중 모드';requestAnimationFrame(()=>{if(point&&top!==undefined)window.scrollBy(0,point.getBoundingClientRect().top-top);});});
+ if(!document.querySelector('[data-reading-context]')){let point:{element:HTMLElement,top:number}|undefined;const remember=()=>{const element=visiblePoint();point=element?{element,top:element.getBoundingClientRect().top}:undefined;};window.addEventListener('scroll',remember,{passive:true});window.addEventListener('resize',()=>{const saved=point;requestAnimationFrame(()=>{if(saved?.element.isConnected&&saved.element.getClientRects().length)window.scrollBy(0,saved.element.getBoundingClientRect().top-saved.top);remember();});});remember();}
+</script>
