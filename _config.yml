@@ -4,6 +4,7 @@ include:
   - _astro
   - _shared-ui
 exclude:
+  - reading-data/**
   - source/**
   - docs/**
   - scripts/**

@@ -326,7 +326,7 @@ const index=read('index.json'),book=read('editorial.json');
 const records={};for(const file of fs.readdirSync(setting).filter(n=>/^records-.+\.json$/.test(n)))Object.assign(records,read(file));
 const curated=process.argv[3]?JSON.parse(fs.readFileSync(process.argv[3],'utf8')):{sources:index.curated_sources};
 const root={dataset:{base:'/wuwa-quests'},innerHTML:'',focus(){}},heading={textContent:''},focused=[];
-const context=vm.createContext({console,URL,URLSearchParams,document:{currentScript:{src:'https://example.invalid/wuwa-quests/lore/library.js?v=qa'},getElementById:id=>id==='lore-reader'?root:id==='_top'?heading:id.startsWith('field-')?{scrollIntoView:()=>focused.push(id)}:null},fetch:async url=>({ok:true,json:async()=>read(url.slice(url.lastIndexOf('/')+1))}),location:{pathname:'/wuwa-quests/library.html',search:'',hash:'#/library'}});
+const context=vm.createContext({console,URL,URLSearchParams,document:{currentScript:{src:'https://example.invalid/wuwa-quests/lore/library.js?v=qa'},getElementById:id=>id==='lore-reader'?root:id==='_top'?heading:id.startsWith('field-')?{scrollIntoView:()=>focused.push(id)}:null},fetch:async url=>({ok:true,json:async()=>{const name=new URL(url,'https://example.invalid').pathname.split('/').pop();return name.startsWith('library-')?JSON.parse(fs.readFileSync(path.join(site,'source/public/settings',name),'utf8')):read(name);}}),location:{pathname:'/wuwa-quests/library.html',search:'',hash:'#/library'}});
 context.window=context;vm.runInContext(fs.readFileSync(components,'utf8'),context);
 // Load the actual shipped pure module into this VM; only remove its two ESM
 // export keywords. No replacement relation/display implementation is supplied.

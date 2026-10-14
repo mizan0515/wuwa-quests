@@ -1,3 +1,4 @@
+import {originalSearchIntegration} from './tools/search-originals.mjs';
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
@@ -32,5 +33,5 @@ export default defineConfig({
     components:{Head:'./src/components/Head.astro',Footer:'./src/components/Footer.astro',Sidebar:'./src/components/Sidebar.astro',PageSidebar:'./src/components/PageSidebar.astro',TwoColumnContent:'./src/components/TwoColumnContent.astro',PageTitle:'./src/components/PageTitle.astro',Search:'./src/components/Search.astro'},
     expressiveCode:false,
     credits:true,
-  })],
+  }),originalSearchIntegration()],
 });
