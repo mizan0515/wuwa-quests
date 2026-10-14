@@ -6,7 +6,7 @@ HTML fail; original pages, exports and shared assets must retain their Git bytes
 import argparse,hashlib,json,subprocess,tarfile
 from pathlib import Path,PurePosixPath
 
-FORBIDDEN={'source','docs','scripts','tools','.runtime','.codex-work','.nojekyll'}
+FORBIDDEN={'source','docs','scripts','tools','.runtime','.codex-work','.nojekyll','reading-data'}
 def blob_digest(raw):return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
 def expected_files(repo,revision,dist):
  tree={}
@@ -14,7 +14,7 @@ def expected_files(repo,revision,dist):
   if not row:continue
   meta,path=row.split(b'\t',1);mode,kind,digest=meta.split()
   if kind==b'blob':tree[path.decode('utf8')]=digest.decode()
- paths={p.relative_to(dist).as_posix()for p in dist.rglob('*')if p.is_file()and p.name!='_config.yml'}
+ paths={p.relative_to(dist).as_posix()for p in dist.rglob('*')if p.is_file()and p.name!='_config.yml'and p.relative_to(dist).parts[0]!='reading-data'}
  paths.update(name for name in ('content-manifest.json','THIRD_PARTY_NOTICES.md')if name in tree)
  if any(p not in tree for p in paths):raise ValueError('Build has uncommitted publication files')
  return {p:tree[p]for p in paths}

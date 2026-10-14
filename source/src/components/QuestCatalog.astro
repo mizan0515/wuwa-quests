@@ -20,7 +20,7 @@ const label = (s: string) => s.replace(/^기타임무_유형(\d+)$/,'기타임�
     </div>
   </div>
   <div class="catalog-results"><p id="catalog-count" role="status" aria-live="polite">{items.length}개 퀘스트</p><div class="catalog-results-actions"><span>버전 · 임무 · ID 순</span><button type="button" id="catalog-reset" disabled>초기화 <span aria-hidden="true">↺</span></button></div></div>
-  <div id="catalog-empty" hidden><span class="empty-symbol" aria-hidden="true">⌕</span><h2>찾으시는 퀘스트가 없어요</h2><p>검색어를 짧게 바꾸거나 다른 버전·임무 종류를 선택해 보세요.</p><button type="button" id="empty-reset">검색 조건 초기화</button></div>
+  <div id="catalog-empty" hidden><span class="empty-symbol" aria-hidden="true">⌕</span><h2>찾으시는 퀘스트가 없어요</h2><p>검색어를 짧게 바꾸거나 다른 버전·임무 종류를 선택해 보세요.</p><p><a id="catalog-original-search" href={`${base}/library.html`}>전체 원문에서 찾기 →</a></p><button type="button" id="empty-reset">검색 조건 초기화</button></div>
   {versions.map(v => <section class="catalog-group" data-version={v}>
     <h2><span class="version-heading">{label(v)}</span><span class="group-count">{items.filter(x => x.version === v).length}개 퀘스트</span><span class="version-rule" aria-hidden="true"></span></h2>
     <ul role="list">{items.filter(x => x.version === v).map(x => <li class="catalog-row" data-version={x.version} data-type={x.type} data-title={x.title} data-id={x.id}>
@@ -54,6 +54,8 @@ const label = (s: string) => s.replace(/^기타임무_유형(\d+)$/,'기타임�
     }
     document.querySelector('#catalog-count')!.textContent = count + '개 퀘스트' + (q.value || v.value || t.value ? ' · 전체 ' + rows.length + '개' : '');
     (document.querySelector('#catalog-empty') as HTMLElement).hidden = count !== 0;
+    const originalSearch=document.querySelector<HTMLAnchorElement>('#catalog-original-search')!;
+    originalSearch.hash='#/library'+(q.value.trim()?'?'+new URLSearchParams({q:q.value.trim()}):'');
     (document.querySelector('#catalog-reset') as HTMLButtonElement).disabled = !(q.value || v.value || t.value);
     document.querySelectorAll<HTMLButtonElement>('[data-quick-type]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.quickType === t.value)));
     document.querySelectorAll<HTMLAnchorElement>('[data-version-link]').forEach(link => {

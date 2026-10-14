@@ -29,6 +29,8 @@ try {
   if($LASTEXITCODE -ne 0){throw 'Compiled source disclosure identity and rendered source QA failed'}
   & python -B -X utf8 tools/verify_dialogue_attribution.py --dist dist
   if($LASTEXITCODE -ne 0){throw 'Whole attributed dialogue original rendering QA failed'}
+  & python -B -X utf8 tools/verify_publication_boundary.py dist
+  if($LASTEXITCODE -ne 0){throw 'Public data boundary or retained validation graph failed'}
   & npm.cmd run qa:reading
   if($LASTEXITCODE -ne 0){throw 'Reading data QA failed'}
   & npm.cmd run qa:seo
