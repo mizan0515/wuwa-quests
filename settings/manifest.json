@@ -35,7 +35,8 @@
     "quest-supplements.json": "97a4bb16c6de28873bfd8ba66ef14b9bca37d1f2dcc93ced24409c41e6122711",
     "dialogue-attribution.json": "22324accc0437a50bb34ed1fe717687c272db712c7d4b59fef2751711ac6b78f",
     "native-sequence-references.json": "3101246045e211adf5c2606709e932103d6385d2704b23e20d6650622324ea06",
-    "compiled-sequence-references.json": "2f43abcc2a3b958fee79d3fbe52f9c8372b0276826ec9655d3352045b111e3f2"
+    "compiled-sequence-references.json": "2f43abcc2a3b958fee79d3fbe52f9c8372b0276826ec9655d3352045b111e3f2",
+    "random-flow-references.json": "11294a6f7f1fef9bea279ffb1b12da70513ececa420ed7297073d2c743f252d4"
   },
   "hash_normalization": {
     "editorial.json": "lf",
